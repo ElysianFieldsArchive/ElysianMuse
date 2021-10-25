@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_2tOmMDWxEeyghuCVBA5yaw" name="User Component">
+  <ownedComment xmi:type="uml:Comment" xmi:id="_3zJ0ADXTEeyghuCVBA5yaw" annotatedElement="_x2x_MDWyEeyghuCVBA5yaw">
+    <body>as per issue #9</body>
+  </ownedComment>
   <packageImport xmi:type="uml:PackageImport" xmi:id="_2tfr8DWxEeyghuCVBA5yaw">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
@@ -18,14 +21,28 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_Q0YN4DW1EeyghuCVBA5yaw" name="email">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-      </packagedElement>
-      <packagedElement xmi:type="uml:Class" xmi:id="_kdEzIDWyEeyghuCVBA5yaw" name="UserTags">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_8_H6sDW0EeyghuCVBA5yaw" name="id">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="__77qEDW0EeyghuCVBA5yaw" name="tagName">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ElBO4DXSEeyghuCVBA5yaw" name="realName">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_TINLgDXSEeyghuCVBA5yaw" name="signUpDate">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_UuaUUDXSEeyghuCVBA5yaw" name="lastLoginDate">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Xt1S0DXSEeyghuCVBA5yaw" name="bio">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Y1-moDXSEeyghuCVBA5yaw" name="birthday">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_aDBokDXSEeyghuCVBA5yaw" name="validatedAuthor">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_cpMZkDXSEeyghuCVBA5yaw" name="onProbation">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_eXV9cDXSEeyghuCVBA5yaw" name="settings" type="_vGsPoDXSEeyghuCVBA5yaw"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Enumeration" xmi:id="_x2x_MDWyEeyghuCVBA5yaw" name="Role">
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_1FL_cDWzEeyghuCVBA5yaw" name="ADMINISTRATOR"/>
@@ -40,6 +57,12 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_7xwTMDW1EeyghuCVBA5yaw" name="blob">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EByteObject"/>
         </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_vGsPoDXSEeyghuCVBA5yaw" name="UserSettings"/>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_APREsDXUEeyghuCVBA5yaw" name="UserTags">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_B4-0gDXUEeyghuCVBA5yaw" name="BETA"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_E3qzMDXUEeyghuCVBA5yaw" name="ARTIST"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_H-A5EDXUEeyghuCVBA5yaw" name="AUTHOR"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_1F9esDW3EeyghuCVBA5yaw" name="repository">
@@ -74,16 +97,6 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_QIKWMzW3EeyghuCVBA5yaw" name="user" type="_i0OmADWyEeyghuCVBA5yaw" association="_QIJvIDW3EeyghuCVBA5yaw"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_QIKWMDW3EeyghuCVBA5yaw" name="role" type="_x2x_MDWyEeyghuCVBA5yaw" aggregation="composite" association="_QIJvIDW3EeyghuCVBA5yaw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_T8_SsDW3EeyghuCVBA5yaw" memberEnd="_T8_5wjW3EeyghuCVBA5yaw _T9Ag0TW3EeyghuCVBA5yaw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_T8_5wDW3EeyghuCVBA5yaw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_T8_5wTW3EeyghuCVBA5yaw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_T9Ag0TW3EeyghuCVBA5yaw" name="user" type="_i0OmADWyEeyghuCVBA5yaw" association="_T8_SsDW3EeyghuCVBA5yaw"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_T8_5wjW3EeyghuCVBA5yaw" name="usertags" type="_kdEzIDWyEeyghuCVBA5yaw" aggregation="composite" association="_T8_SsDW3EeyghuCVBA5yaw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T8_5wzW3EeyghuCVBA5yaw"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T9Ag0DW3EeyghuCVBA5yaw" value="*"/>
-    </ownedEnd>
-  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_VIVrgDW3EeyghuCVBA5yaw" memberEnd="_VIVrgzW3EeyghuCVBA5yaw _VIWSkjW3EeyghuCVBA5yaw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_VIVrgTW3EeyghuCVBA5yaw" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_VIVrgjW3EeyghuCVBA5yaw" key="nature" value="UML_Nature"/>
@@ -92,6 +105,26 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_VIVrgzW3EeyghuCVBA5yaw" name="avatar" type="_5VoPADW1EeyghuCVBA5yaw" aggregation="composite" association="_VIVrgDW3EeyghuCVBA5yaw">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VIWSkDW3EeyghuCVBA5yaw"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VIWSkTW3EeyghuCVBA5yaw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_zKpNQDXSEeyghuCVBA5yaw" memberEnd="_zKp0UjXSEeyghuCVBA5yaw _zKp0VTXSEeyghuCVBA5yaw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_zKp0UDXSEeyghuCVBA5yaw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_zKp0UTXSEeyghuCVBA5yaw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_zKp0VTXSEeyghuCVBA5yaw" name="user" type="_i0OmADWyEeyghuCVBA5yaw" association="_zKpNQDXSEeyghuCVBA5yaw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_zKp0UjXSEeyghuCVBA5yaw" name="usersettings" type="_vGsPoDXSEeyghuCVBA5yaw" aggregation="composite" association="_zKpNQDXSEeyghuCVBA5yaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zKp0UzXSEeyghuCVBA5yaw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zKp0VDXSEeyghuCVBA5yaw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JRkysDXUEeyghuCVBA5yaw" memberEnd="_JRmA0jXUEeyghuCVBA5yaw _JRmn4jXUEeyghuCVBA5yaw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JRmA0DXUEeyghuCVBA5yaw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JRmA0TXUEeyghuCVBA5yaw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JRmn4jXUEeyghuCVBA5yaw" name="user" type="_i0OmADWyEeyghuCVBA5yaw" association="_JRkysDXUEeyghuCVBA5yaw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JRmA0jXUEeyghuCVBA5yaw" name="usertags" type="_APREsDXUEeyghuCVBA5yaw" aggregation="composite" association="_JRkysDXUEeyghuCVBA5yaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JRmn4DXUEeyghuCVBA5yaw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JRmn4TXUEeyghuCVBA5yaw" value="*"/>
     </ownedEnd>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_ZlE5YDWzEeyghuCVBA5yaw">
