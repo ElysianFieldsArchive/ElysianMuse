@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_2tOmMDWxEeyghuCVBA5yaw" name="User Component">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_2tfr8DWxEeyghuCVBA5yaw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_nLb20DWyEeyghuCVBA5yaw" name="org.dark-solace.muse.user">
+    <packagedElement xmi:type="uml:Package" xmi:id="_rYOAUDWyEeyghuCVBA5yaw" name="model">
+      <packagedElement xmi:type="uml:Class" xmi:id="_i0OmADWyEeyghuCVBA5yaw" name="User" visibility="public">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_H4xPsDWzEeyghuCVBA5yaw" name="id" isID="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Yk4nsDWzEeyghuCVBA5yaw" name="username" visibility="public">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_wsT6sDWzEeyghuCVBA5yaw" name="password">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Q0YN4DW1EeyghuCVBA5yaw" name="email">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_kdEzIDWyEeyghuCVBA5yaw" name="UserTags">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_8_H6sDW0EeyghuCVBA5yaw" name="id">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="__77qEDW0EeyghuCVBA5yaw" name="tagName">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_x2x_MDWyEeyghuCVBA5yaw" name="Role">
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_1FL_cDWzEeyghuCVBA5yaw" name="ADMINISTRATOR"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_2oSw8DWzEeyghuCVBA5yaw" name="MODERATOR"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_3JO60DWzEeyghuCVBA5yaw" name="USER"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_3m35EDWzEeyghuCVBA5yaw" name="SUSPENDED"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_5VoPADW1EeyghuCVBA5yaw" name="Avatar">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_6OZDADW1EeyghuCVBA5yaw" name="id">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_7xwTMDW1EeyghuCVBA5yaw" name="blob">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EByteObject"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_1F9esDW3EeyghuCVBA5yaw" name="repository">
+      <packagedElement xmi:type="uml:Class" xmi:id="_22-JUDW3EeyghuCVBA5yaw" name="UserRepository">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_BSno0DW4EeyghuCVBA5yaw" name="findById" concurrency="guarded">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_F6kEUDW4EeyghuCVBA5yaw" name="id">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_HHX1sDW4EeyghuCVBA5yaw" name="getAll"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_L6iCsDW4EeyghuCVBA5yaw" name="service">
+      <packagedElement xmi:type="uml:Class" xmi:id="_OywNADW4EeyghuCVBA5yaw" name="UserService">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_P_nowDW4EeyghuCVBA5yaw" name="userRepository" type="_22-JUDW3EeyghuCVBA5yaw"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_3eN6EDW4EeyghuCVBA5yaw" name="createUser"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_5B5TUDW4EeyghuCVBA5yaw" name="suspendUser"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_6Inq0DW4EeyghuCVBA5yaw" name="changeRole"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_8EgvwDW4EeyghuCVBA5yaw" name="changeAvatar"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_AgNfADW5EeyghuCVBA5yaw" name="getById"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Bbh3wDW5EeyghuCVBA5yaw" name="getAll"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_CG4h4DW5EeyghuCVBA5yaw" name="getAllWithRole"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_GJLSoDW5EeyghuCVBA5yaw" name="addTagToUser"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_HDjQMDW5EeyghuCVBA5yaw" name="removeTagFromUser"/>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_QIJvIDW3EeyghuCVBA5yaw" memberEnd="_QIKWMDW3EeyghuCVBA5yaw _QIKWMzW3EeyghuCVBA5yaw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_QIJvITW3EeyghuCVBA5yaw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_QIJvIjW3EeyghuCVBA5yaw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QIKWMzW3EeyghuCVBA5yaw" name="user" type="_i0OmADWyEeyghuCVBA5yaw" association="_QIJvIDW3EeyghuCVBA5yaw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_QIKWMDW3EeyghuCVBA5yaw" name="role" type="_x2x_MDWyEeyghuCVBA5yaw" aggregation="composite" association="_QIJvIDW3EeyghuCVBA5yaw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_T8_SsDW3EeyghuCVBA5yaw" memberEnd="_T8_5wjW3EeyghuCVBA5yaw _T9Ag0TW3EeyghuCVBA5yaw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_T8_5wDW3EeyghuCVBA5yaw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_T8_5wTW3EeyghuCVBA5yaw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_T9Ag0TW3EeyghuCVBA5yaw" name="user" type="_i0OmADWyEeyghuCVBA5yaw" association="_T8_SsDW3EeyghuCVBA5yaw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_T8_5wjW3EeyghuCVBA5yaw" name="usertags" type="_kdEzIDWyEeyghuCVBA5yaw" aggregation="composite" association="_T8_SsDW3EeyghuCVBA5yaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_T8_5wzW3EeyghuCVBA5yaw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_T9Ag0DW3EeyghuCVBA5yaw" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_VIVrgDW3EeyghuCVBA5yaw" memberEnd="_VIVrgzW3EeyghuCVBA5yaw _VIWSkjW3EeyghuCVBA5yaw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_VIVrgTW3EeyghuCVBA5yaw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_VIVrgjW3EeyghuCVBA5yaw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_VIWSkjW3EeyghuCVBA5yaw" name="user" type="_i0OmADWyEeyghuCVBA5yaw" association="_VIVrgDW3EeyghuCVBA5yaw"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_VIVrgzW3EeyghuCVBA5yaw" name="avatar" type="_5VoPADW1EeyghuCVBA5yaw" aggregation="composite" association="_VIVrgDW3EeyghuCVBA5yaw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VIWSkDW3EeyghuCVBA5yaw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VIWSkTW3EeyghuCVBA5yaw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_ZlE5YDWzEeyghuCVBA5yaw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZlGHgDWzEeyghuCVBA5yaw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>
