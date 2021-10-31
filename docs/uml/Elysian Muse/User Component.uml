@@ -97,6 +97,7 @@
       <packagedElement xmi:type="uml:Enumeration" xmi:id="_APREsDXUEeyghuCVBA5yaw" name="UserTag">
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_B4-0gDXUEeyghuCVBA5yaw" name="BETA"/>
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_E3qzMDXUEeyghuCVBA5yaw" name="ARTIST"/>
+        <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_pgBW8DpEEeyBJ_cFoW_mzg" name="ARTIST_INACTIVE"/>
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_H-A5EDXUEeyghuCVBA5yaw" name="AUTHOR"/>
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_xNCpEDmsEeyPHJs8624f1A" name="COMMENTER"/>
       </packagedElement>

@@ -254,6 +254,10 @@
                 <element xmi:type="uml:EnumerationLiteral" href="User%20Component.uml#_xNCpEDmsEeyPHJs8624f1A"/>
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_xNmpwTmsEeyPHJs8624f1A"/>
               </children>
+              <children xmi:type="notation:Shape" xmi:id="_phdhYDpEEeyBJ_cFoW_mzg" type="EnumerationLiteral_LiteralLabel">
+                <element xmi:type="uml:EnumerationLiteral" href="User%20Component.uml#_pgBW8DpEEeyBJ_cFoW_mzg"/>
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_phdhYTpEEeyBJ_cFoW_mzg"/>
+              </children>
               <styles xmi:type="notation:TitleStyle" xmi:id="_APcD1jXUEeyghuCVBA5yaw"/>
               <styles xmi:type="notation:SortingStyle" xmi:id="_APcD1zXUEeyghuCVBA5yaw"/>
               <styles xmi:type="notation:FilteringStyle" xmi:id="_APcD2DXUEeyghuCVBA5yaw"/>
@@ -857,7 +861,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="__0pJoTnCEeyPHJs8624f1A"/>
     <element xmi:type="uml:Association" href="User%20Component.uml#__0oikDnCEeyPHJs8624f1A"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="__0pJojnCEeyPHJs8624f1A" points="[1380, 320, -643984, -643984]$[1400, 232, -643984, -643984]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="__1W7UDnCEeyPHJs8624f1A" id="(0.21691973969631237,0.0)"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="__1W7UDnCEeyPHJs8624f1A" id="(0.2603036876355748,0.0)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="__1XiYDnCEeyPHJs8624f1A" id="(0.5988023952095808,1.0)"/>
   </edges>
 </notation:Diagram>
