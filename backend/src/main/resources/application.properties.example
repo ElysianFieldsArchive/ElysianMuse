@@ -1,0 +1,10 @@
+# Select a server port
+server.port=8000
+#!!!Verify for production!!!
+# https://springhow.com/spring-boot-database-initialization/#h-database-schema-initialization-through-hibernate
+spring.jpa.hibernate.ddl-auto=create
+# Your postgres configuration; Check wiki for other databases
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.datasource.url=jdbc:postgresql://<localhost/domain/IP>:<port>/<databasename>
+spring.datasource.username=username
+spring.datasource.password=password

@@ -11,7 +11,7 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+# *.jar - required for gradle-wrapper
 *.war
 *.nar
 *.ear
@@ -24,3 +24,13 @@ hs_err_pid*
 
 # Eclipse Papyrus UML metadata
 docs/uml/.metadata
+
+# IntelliJ
+.idea
+
+# backend build and additional files/folders
+build/
+.gradle
+
+# exclude configurations containing passwords etc
+backend/src/main/resources/*.properties
