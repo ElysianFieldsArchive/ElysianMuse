@@ -23,7 +23,7 @@
 hs_err_pid*
 
 # Eclipse Papyrus UML metadata
-docs/uml/.metadata
+docs/uml/**/.metadata
 
 # IntelliJ
 .idea
