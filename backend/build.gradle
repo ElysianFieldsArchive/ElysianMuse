@@ -1,0 +1,48 @@
+plugins {
+    id 'org.springframework.boot' version '2.5.6'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.31'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.5.31'
+    id 'org.jetbrains.kotlin.plugin.jpa' version '1.5.31'
+}
+
+group = 'org.dark-solace'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+def spring_version = '2.5.6'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${spring_version}"
+    implementation "org.springframework.boot:spring-boot-starter-security:${spring_version}"
+    implementation "org.springframework.boot:spring-boot-starter-web:${spring_version}"
+    developmentOnly "org.springframework.boot:spring-boot-devtools:${spring_version}"
+    runtimeOnly "org.postgresql:postgresql:42.2.24"
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${spring_version}"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${spring_version}"
+    testImplementation "org.springframework.security:spring-security-test:5.5.1"
+    testImplementation 'org.testcontainers:junit-jupiter:1.16.0'
+    testImplementation 'org.testcontainers:postgresql:1.16.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions { jvmTarget = "11" }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
