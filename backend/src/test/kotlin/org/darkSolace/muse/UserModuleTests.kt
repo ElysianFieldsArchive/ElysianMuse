@@ -375,4 +375,19 @@ class UserModuleTests {
         Assertions.assertTrue(user.userSettings.realNameVisible)
         Assertions.assertFalse(user.userSettings.birthdayVisible)
     }
+
+    @Test
+    fun updateUserSettingsByUsername() {
+        var user = userService.createUser(User(username = "testUser917", password = "123", email = "test17@example.com"))
+        val oldUserSettings = user.userSettings.copy()
+
+        val userByUsername = User(username = "testUser917", password = "", email = "")
+
+        user = userService.updateUserSettings(userByUsername, UserSettings(emailVisible = true, realNameVisible = true))
+
+        Assertions.assertNotEquals(oldUserSettings, user.userSettings)
+        Assertions.assertTrue(user.userSettings.emailVisible)
+        Assertions.assertTrue(user.userSettings.realNameVisible)
+        Assertions.assertFalse(user.userSettings.birthdayVisible)
+    }
 }

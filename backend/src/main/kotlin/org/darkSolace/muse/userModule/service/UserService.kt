@@ -120,7 +120,7 @@ class UserService(
     }
 
     @Transactional
-    fun updateUserSettings(user: User, settings: UserSettings) {
+    fun updateUserSettings(user: User, settings: UserSettings) : User {
         val changedUser =
             if (user.id == null) {
                 userRepository.findByUsername(user.username)
@@ -133,5 +133,7 @@ class UserService(
         changedUser.userSettings = settings
         userRepository.save(changedUser)
         userSettingsRepository.delete(oldSettings)
+
+        return changedUser
     }
 }
