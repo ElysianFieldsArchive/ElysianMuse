@@ -3,7 +3,6 @@ package org.darkSolace.muse.userModule.model
 import org.hibernate.Hibernate
 import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
-import org.hibernate.annotations.Fetch
 import java.util.*
 import javax.persistence.*
 
