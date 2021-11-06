@@ -1,7 +1,6 @@
 package org.dark_solace.muse
 
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.DynamicPropertyRegistry
@@ -14,6 +13,7 @@ import javax.persistence.EntityManager
 
 @SpringBootTest
 @Testcontainers
+@TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 class ElysianMuseApplicationTests {
 
     @Autowired
@@ -40,6 +40,7 @@ class ElysianMuseApplicationTests {
      * Checks if Spring Boot is starting without issues
      */
     @Test
+    @Order(1)
     fun contextLoads() {
     }
 
@@ -47,6 +48,7 @@ class ElysianMuseApplicationTests {
      * Checks if the testcontainer is loading properly without issues
      */
     @Test
+    @Order(2)
     fun testContainerLoads() {
         val result = em.createNativeQuery("SELECT 1 FROM pg_tables").singleResult
         Assertions.assertTrue(result is Int)
