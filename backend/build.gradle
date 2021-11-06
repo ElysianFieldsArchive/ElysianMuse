@@ -4,6 +4,8 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.5.31'
     id 'org.jetbrains.kotlin.plugin.spring' version '1.5.31'
     id 'org.jetbrains.kotlin.plugin.jpa' version '1.5.31'
+    id 'io.gitlab.arturbosch.detekt' version '1.18.1'
+    id 'jacoco'
 }
 
 group = 'org.dark-solace'
@@ -53,3 +55,27 @@ java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
 }
+
+detekt {
+    buildUponDefaultConfig = true
+    allRules = false
+    ignoreFailures = true
+
+    reports {
+        html.enabled = true // observe findings in your browser with structure and code snippets
+        xml.enabled = true // checkstyle like format mainly for integrations like Jenkins
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+    }
+}
+
+test.finalizedBy(jacocoTestReport)

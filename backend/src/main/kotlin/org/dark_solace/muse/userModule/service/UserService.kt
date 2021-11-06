@@ -72,19 +72,11 @@ class UserService(
 
         changedUser.userTags.add(tag)
         if (tag.name.endsWith("_INACTIVE")) {
-            try {
-                val activeTag = UserTags.valueOf(tag.name.removeSuffix("_INACTIVE"))
+                val activeTag = UserTags.values().first { it.name == tag.name.removeSuffix("_INACTIVE") }
                 changedUser.userTags.remove(activeTag)
-            } catch (e: IllegalArgumentException) {
-                //do nothing
-            }
         } else {
-            try {
-                val inactiveTag = UserTags.valueOf(tag.name + "_INACTIVE")
+                val inactiveTag = UserTags.values().first { it.name == (tag.name + "_INACTIVE") }
                 changedUser.userTags.remove(inactiveTag)
-            } catch (e: IllegalArgumentException) {
-                //do nothing
-            }
         }
         userRepository.save(changedUser)
     }
