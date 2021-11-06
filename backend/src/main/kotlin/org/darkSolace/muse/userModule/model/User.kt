@@ -3,6 +3,7 @@ package org.darkSolace.muse.userModule.model
 import org.hibernate.Hibernate
 import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
+import org.hibernate.annotations.Fetch
 import java.util.*
 import javax.persistence.*
 
@@ -29,7 +30,6 @@ data class User(
     @Cascade(CascadeType.ALL)
     var userSettings: UserSettings = UserSettings(),
     @ElementCollection
-    @Enumerated(EnumType.ORDINAL)
     val userTags: MutableSet<UserTags> = mutableSetOf(),
     @OneToOne
     @Cascade(CascadeType.ALL)

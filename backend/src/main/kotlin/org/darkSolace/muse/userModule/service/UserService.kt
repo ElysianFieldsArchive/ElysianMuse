@@ -7,6 +7,7 @@ import org.darkSolace.muse.userModule.repository.UserSettingsRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UserService(
@@ -15,16 +16,19 @@ class UserService(
     @Autowired val userSettingsRepository: UserSettingsRepository
 ) {
 
+    @Transactional
     fun createUser(user: User): User {
         userRepository.save(user)
         return user
     }
 
+    @Transactional
     fun suspendUser(user: User): User {
         changeRole(user, Role.SUSPENDED)
         return user
     }
 
+    @Transactional
     fun changeRole(user: User, role: Role): User {
         val changedUser =
             if (user.id == null) {
@@ -38,7 +42,8 @@ class UserService(
         return changedUser
     }
 
-    fun changeAvatar(user: User, avatar: Avatar) {
+    @Transactional
+    fun changeAvatar(user: User, avatar: Avatar): User {
         val changedUser =
             if (user.id == null) {
                 userRepository.findByUsername(user.username)
@@ -54,15 +59,21 @@ class UserService(
             changedUser.avatar?.avatarBlob = avatar.avatarBlob
             userRepository.save(changedUser)
         }
+
+        return changedUser
     }
 
+    @Transactional
     fun getById(id: Long) = userRepository.findByIdOrNull(id)
 
+    @Transactional
     fun getAll(): List<User> = userRepository.findAll().toList()
 
+    @Transactional
     fun getAllWithRole(role: Role) = userRepository.findAllByRole(role)
 
-    fun addTagToUser(user: User, tag: UserTags) {
+    @Transactional
+    fun addTagToUser(user: User, tag: UserTags): User {
         val changedUser =
             if (user.id == null) {
                 userRepository.findByUsername(user.username)
@@ -79,9 +90,11 @@ class UserService(
             changedUser.userTags.remove(inactiveTag)
         }
         userRepository.save(changedUser)
+        return changedUser
     }
 
-    fun removeTagFromUser(user: User, tag: UserTags) {
+    @Transactional
+    fun removeTagFromUser(user: User, tag: UserTags) : User {
         val changedUser =
             if (user.id == null) {
                 userRepository.findByUsername(user.username)
@@ -91,8 +104,10 @@ class UserService(
 
         changedUser.userTags.remove(tag)
         userRepository.save(changedUser)
+        return changedUser
     }
 
+    @Transactional
     fun deleteUser(user: User) {
         val deletedUser =
             if (user.id == null) {
@@ -104,6 +119,7 @@ class UserService(
         userRepository.delete(deletedUser)
     }
 
+    @Transactional
     fun updateUserSettings(user: User, settings: UserSettings) {
         val changedUser =
             if (user.id == null) {

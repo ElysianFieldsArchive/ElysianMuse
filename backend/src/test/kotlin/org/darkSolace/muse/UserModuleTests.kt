@@ -117,6 +117,19 @@ class UserModuleTests {
     }
 
     @Test
+    fun changeRoleByUsername() {
+        var user = userService.createUser(User(username = "testUser94", password = "123", email = "test94@example.com"))
+        Assertions.assertEquals(Role.MEMBER, user.role)
+        val userByUserName = User(username = "testUser94", password = "", email = "")
+        user = userService.changeRole(userByUserName, Role.MODERATOR)
+        Assertions.assertEquals(Role.MODERATOR, user.role)
+        user = userService.changeRole(userByUserName, Role.ADMINISTRATOR)
+        Assertions.assertEquals(Role.ADMINISTRATOR, user.role)
+        user = userService.changeRole(userByUserName, Role.SUSPENDED)
+        Assertions.assertEquals(Role.SUSPENDED, user.role)
+    }
+
+    @Test
     fun changeAvatar() {
         val user = userService.createUser(User(username = "testUser5", password = "123", email = "test5@example.com"))
         Assertions.assertNull(user.avatar)
@@ -125,6 +138,20 @@ class UserModuleTests {
         Assertions.assertNotNull(user.avatar?.id)
         Assertions.assertArrayEquals(byteArrayOf(0, 1, 2, 3), user.avatar?.avatarBlob)
         userService.changeAvatar(user, Avatar(null, byteArrayOf(3, 4, 5, 6)))
+        Assertions.assertArrayEquals(byteArrayOf(3, 4, 5, 6), user.avatar?.avatarBlob)
+        Assertions.assertEquals(avatarId, user.avatar?.id)
+    }
+
+    @Test
+    fun changeAvatarByUsername() {
+        var user = userService.createUser(User(username = "testUser95", password = "123", email = "test95@example.com"))
+        Assertions.assertNull(user.avatar)
+        val userByUsername = User(username = "testUser95", password = "", email = "")
+        user = userService.changeAvatar(userByUsername, Avatar(null, byteArrayOf(0, 1, 2, 3)))
+        val avatarId = user.avatar?.id
+        Assertions.assertNotNull(user.avatar?.id)
+        Assertions.assertArrayEquals(byteArrayOf(0, 1, 2, 3), user.avatar?.avatarBlob)
+        user = userService.changeAvatar(userByUsername, Avatar(null, byteArrayOf(3, 4, 5, 6)))
         Assertions.assertArrayEquals(byteArrayOf(3, 4, 5, 6), user.avatar?.avatarBlob)
         Assertions.assertEquals(avatarId, user.avatar?.id)
     }
@@ -221,6 +248,37 @@ class UserModuleTests {
     }
 
     @Test
+    fun addTagToUserByUsername() {
+        userService.createUser(
+            User(
+                username = "testUser914",
+                password = "123",
+                email = "test914@example.com",
+                userTags = mutableSetOf()
+            )
+        )
+        val userByUsername = User(username = "testUser914", password = "", email = "")
+        var user = userService.addTagToUser(userByUsername, UserTags.BETA)
+        // check if tag is applied
+        Assertions.assertEquals(1, user.userTags.count())
+        Assertions.assertTrue(user.userTags.contains(UserTags.BETA))
+        user = userService.addTagToUser(userByUsername, UserTags.BETA)
+        // check if tag isn't applied twice
+        Assertions.assertEquals(1, user.userTags.count())
+        Assertions.assertTrue(user.userTags.contains(UserTags.BETA))
+        user = userService.addTagToUser(userByUsername, UserTags.BETA_INACTIVE)
+        // check if active tag is removed if inactive tag is applied
+        Assertions.assertEquals(1, user.userTags.count())
+        Assertions.assertTrue(user.userTags.contains(UserTags.BETA_INACTIVE))
+        Assertions.assertFalse(user.userTags.contains(UserTags.BETA))
+        user = userService.addTagToUser(userByUsername, UserTags.BETA)
+        // check if inactive tag is removed if active tag is applied
+        Assertions.assertEquals(1, user.userTags.count())
+        Assertions.assertTrue(user.userTags.contains(UserTags.BETA))
+        Assertions.assertFalse(user.userTags.contains(UserTags.BETA_INACTIVE))
+    }
+
+    @Test
     fun removeTagFromUser() {
         val user = userService.createUser(
             User(
@@ -250,12 +308,56 @@ class UserModuleTests {
     }
 
     @Test
+    fun removeTagFromUserByUsername() {
+        var user = userService.createUser(
+            User(
+                username = "testUser915",
+                password = "123",
+                email = "test915@example.com",
+                userTags = mutableSetOf(UserTags.BETA, UserTags.ARTIST)
+            )
+        )
+        val userByUsername = User(username = "testUser915", password = "", email = "")
+
+        Assertions.assertEquals(2, user.userTags.count())
+        Assertions.assertTrue(user.userTags.contains(UserTags.BETA))
+        Assertions.assertTrue(user.userTags.contains(UserTags.ARTIST))
+
+        user = userService.removeTagFromUser(userByUsername, UserTags.BETA)
+
+        Assertions.assertEquals(1, user.userTags.count())
+        Assertions.assertFalse(user.userTags.contains(UserTags.BETA))
+        Assertions.assertTrue(user.userTags.contains(UserTags.ARTIST))
+
+        //try to remove nonexistent tag
+        user = userService.removeTagFromUser(userByUsername, UserTags.BETA)
+
+        Assertions.assertEquals(1, user.userTags.count())
+        Assertions.assertFalse(user.userTags.contains(UserTags.BETA))
+        Assertions.assertTrue(user.userTags.contains(UserTags.ARTIST))
+    }
+
+    @Test
     fun deleteUser() {
         val user = userService.createUser(User(username = "testUser16", password = "123", email = "test16@example.com"))
         val count = userRepository.count()
         Assertions.assertTrue(userService.getAll().contains(user))
 
         userService.deleteUser(user)
+
+        Assertions.assertEquals(count - 1, userRepository.count())
+        Assertions.assertFalse(userService.getAll().contains(user))
+    }
+
+    @Test
+    fun deleteUserByUserName() {
+        val user =
+            userService.createUser(User(username = "testUser916", password = "123", email = "test916@example.com"))
+        val count = userRepository.count()
+        Assertions.assertTrue(userService.getAll().contains(user))
+        val userByUsername = User(username = "testUser916", password = "", email = "")
+
+        userService.deleteUser(userByUsername)
 
         Assertions.assertEquals(count - 1, userRepository.count())
         Assertions.assertFalse(userService.getAll().contains(user))
