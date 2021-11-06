@@ -12,7 +12,9 @@ class TestClassOrderer: ClassOrderer {
     private fun getClassOrder(classDescriptor: ClassDescriptor): Int {
         return when(classDescriptor.displayName) {
             "ElysianMuseApplicationTests" -> 1
-            "UserModuleTests" -> 2
+            "UserServiceTests" -> 2
+            "UserTagServiceTests" -> 3
+            "UserRoleServiceTests" -> 4
             else -> 99
         }
     }

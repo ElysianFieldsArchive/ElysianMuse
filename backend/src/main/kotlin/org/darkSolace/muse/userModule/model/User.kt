@@ -30,6 +30,7 @@ data class User(
     @Cascade(CascadeType.ALL)
     var userSettings: UserSettings = UserSettings(),
     @ElementCollection
+    @Enumerated(EnumType.ORDINAL)
     val userTags: MutableSet<UserTags> = mutableSetOf(),
     @OneToOne
     @Cascade(CascadeType.ALL)

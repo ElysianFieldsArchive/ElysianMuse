@@ -1,4 +1,4 @@
-package org.darkSolace.muse
+package org.darkSolace.muse.userModule
 
 import org.darkSolace.muse.userModule.model.*
 import org.darkSolace.muse.userModule.repository.UserRepository
@@ -18,8 +18,7 @@ import java.util.*
 
 @SpringBootTest
 @Testcontainers
-class UserModuleTests {
-
+class UserServiceTests {
     @Autowired
     lateinit var userService: UserService
 
@@ -94,39 +93,6 @@ class UserModuleTests {
                         """userTags = \[BETA] , avatar = Avatar\(id = \d+ \) , roles = MEMBER \)""".toPattern()
             )
         )
-    }
-
-    @Test
-    fun suspendUser() {
-        val user = userService.createUser(User(username = "testUser3", password = "123", email = "test3@example.com"))
-        Assertions.assertNotEquals(Role.SUSPENDED, user.role)
-        userService.suspendUser(user)
-        Assertions.assertEquals(Role.SUSPENDED, user.role)
-    }
-
-    @Test
-    fun changeRole() {
-        val user = userService.createUser(User(username = "testUser4", password = "123", email = "test4@example.com"))
-        Assertions.assertEquals(Role.MEMBER, user.role)
-        userService.changeRole(user, Role.MODERATOR)
-        Assertions.assertEquals(Role.MODERATOR, user.role)
-        userService.changeRole(user, Role.ADMINISTRATOR)
-        Assertions.assertEquals(Role.ADMINISTRATOR, user.role)
-        userService.changeRole(user, Role.SUSPENDED)
-        Assertions.assertEquals(Role.SUSPENDED, user.role)
-    }
-
-    @Test
-    fun changeRoleByUsername() {
-        var user = userService.createUser(User(username = "testUser94", password = "123", email = "test94@example.com"))
-        Assertions.assertEquals(Role.MEMBER, user.role)
-        val userByUserName = User(username = "testUser94", password = "", email = "")
-        user = userService.changeRole(userByUserName, Role.MODERATOR)
-        Assertions.assertEquals(Role.MODERATOR, user.role)
-        user = userService.changeRole(userByUserName, Role.ADMINISTRATOR)
-        Assertions.assertEquals(Role.ADMINISTRATOR, user.role)
-        user = userService.changeRole(userByUserName, Role.SUSPENDED)
-        Assertions.assertEquals(Role.SUSPENDED, user.role)
     }
 
     @Test
@@ -218,126 +184,6 @@ class UserModuleTests {
     }
 
     @Test
-    fun addTagToUser() {
-        val user = userService.createUser(
-            User(
-                username = "testUser14",
-                password = "123",
-                email = "test14@example.com",
-                userTags = mutableSetOf()
-            )
-        )
-        userService.addTagToUser(user, UserTags.BETA)
-        // check if tag is applied
-        Assertions.assertEquals(1, user.userTags.count())
-        Assertions.assertTrue(user.userTags.contains(UserTags.BETA))
-        userService.addTagToUser(user, UserTags.BETA)
-        // check if tag isn't applied twice
-        Assertions.assertEquals(1, user.userTags.count())
-        Assertions.assertTrue(user.userTags.contains(UserTags.BETA))
-        userService.addTagToUser(user, UserTags.BETA_INACTIVE)
-        // check if active tag is removed if inactive tag is applied
-        Assertions.assertEquals(1, user.userTags.count())
-        Assertions.assertTrue(user.userTags.contains(UserTags.BETA_INACTIVE))
-        Assertions.assertFalse(user.userTags.contains(UserTags.BETA))
-        userService.addTagToUser(user, UserTags.BETA)
-        // check if inactive tag is removed if active tag is applied
-        Assertions.assertEquals(1, user.userTags.count())
-        Assertions.assertTrue(user.userTags.contains(UserTags.BETA))
-        Assertions.assertFalse(user.userTags.contains(UserTags.BETA_INACTIVE))
-    }
-
-    @Test
-    fun addTagToUserByUsername() {
-        userService.createUser(
-            User(
-                username = "testUser914",
-                password = "123",
-                email = "test914@example.com",
-                userTags = mutableSetOf()
-            )
-        )
-        val userByUsername = User(username = "testUser914", password = "", email = "")
-        var user = userService.addTagToUser(userByUsername, UserTags.BETA)
-        // check if tag is applied
-        Assertions.assertEquals(1, user.userTags.count())
-        Assertions.assertTrue(user.userTags.contains(UserTags.BETA))
-        user = userService.addTagToUser(userByUsername, UserTags.BETA)
-        // check if tag isn't applied twice
-        Assertions.assertEquals(1, user.userTags.count())
-        Assertions.assertTrue(user.userTags.contains(UserTags.BETA))
-        user = userService.addTagToUser(userByUsername, UserTags.BETA_INACTIVE)
-        // check if active tag is removed if inactive tag is applied
-        Assertions.assertEquals(1, user.userTags.count())
-        Assertions.assertTrue(user.userTags.contains(UserTags.BETA_INACTIVE))
-        Assertions.assertFalse(user.userTags.contains(UserTags.BETA))
-        user = userService.addTagToUser(userByUsername, UserTags.BETA)
-        // check if inactive tag is removed if active tag is applied
-        Assertions.assertEquals(1, user.userTags.count())
-        Assertions.assertTrue(user.userTags.contains(UserTags.BETA))
-        Assertions.assertFalse(user.userTags.contains(UserTags.BETA_INACTIVE))
-    }
-
-    @Test
-    fun removeTagFromUser() {
-        val user = userService.createUser(
-            User(
-                username = "testUser15",
-                password = "123",
-                email = "test15@example.com",
-                userTags = mutableSetOf(UserTags.BETA, UserTags.ARTIST)
-            )
-        )
-
-        Assertions.assertEquals(2, user.userTags.count())
-        Assertions.assertTrue(user.userTags.contains(UserTags.BETA))
-        Assertions.assertTrue(user.userTags.contains(UserTags.ARTIST))
-
-        userService.removeTagFromUser(user, UserTags.BETA)
-
-        Assertions.assertEquals(1, user.userTags.count())
-        Assertions.assertFalse(user.userTags.contains(UserTags.BETA))
-        Assertions.assertTrue(user.userTags.contains(UserTags.ARTIST))
-
-        //try to remove nonexistent tag
-        userService.removeTagFromUser(user, UserTags.BETA)
-
-        Assertions.assertEquals(1, user.userTags.count())
-        Assertions.assertFalse(user.userTags.contains(UserTags.BETA))
-        Assertions.assertTrue(user.userTags.contains(UserTags.ARTIST))
-    }
-
-    @Test
-    fun removeTagFromUserByUsername() {
-        var user = userService.createUser(
-            User(
-                username = "testUser915",
-                password = "123",
-                email = "test915@example.com",
-                userTags = mutableSetOf(UserTags.BETA, UserTags.ARTIST)
-            )
-        )
-        val userByUsername = User(username = "testUser915", password = "", email = "")
-
-        Assertions.assertEquals(2, user.userTags.count())
-        Assertions.assertTrue(user.userTags.contains(UserTags.BETA))
-        Assertions.assertTrue(user.userTags.contains(UserTags.ARTIST))
-
-        user = userService.removeTagFromUser(userByUsername, UserTags.BETA)
-
-        Assertions.assertEquals(1, user.userTags.count())
-        Assertions.assertFalse(user.userTags.contains(UserTags.BETA))
-        Assertions.assertTrue(user.userTags.contains(UserTags.ARTIST))
-
-        //try to remove nonexistent tag
-        user = userService.removeTagFromUser(userByUsername, UserTags.BETA)
-
-        Assertions.assertEquals(1, user.userTags.count())
-        Assertions.assertFalse(user.userTags.contains(UserTags.BETA))
-        Assertions.assertTrue(user.userTags.contains(UserTags.ARTIST))
-    }
-
-    @Test
     fun deleteUser() {
         val user = userService.createUser(User(username = "testUser16", password = "123", email = "test16@example.com"))
         val count = userRepository.count()
@@ -378,7 +224,8 @@ class UserModuleTests {
 
     @Test
     fun updateUserSettingsByUsername() {
-        var user = userService.createUser(User(username = "testUser917", password = "123", email = "test17@example.com"))
+        var user =
+            userService.createUser(User(username = "testUser917", password = "123", email = "test17@example.com"))
         val oldUserSettings = user.userSettings.copy()
 
         val userByUsername = User(username = "testUser917", password = "", email = "")

@@ -23,26 +23,6 @@ class UserService(
     }
 
     @Transactional
-    fun suspendUser(user: User): User {
-        changeRole(user, Role.SUSPENDED)
-        return user
-    }
-
-    @Transactional
-    fun changeRole(user: User, role: Role): User {
-        val changedUser =
-            if (user.id == null) {
-                userRepository.findByUsername(user.username)
-            } else {
-                user
-            }
-
-        changedUser.role = role
-        userRepository.save(changedUser)
-        return changedUser
-    }
-
-    @Transactional
     fun changeAvatar(user: User, avatar: Avatar): User {
         val changedUser =
             if (user.id == null) {
@@ -71,41 +51,6 @@ class UserService(
 
     @Transactional
     fun getAllWithRole(role: Role) = userRepository.findAllByRole(role)
-
-    @Transactional
-    fun addTagToUser(user: User, tag: UserTags): User {
-        val changedUser =
-            if (user.id == null) {
-                userRepository.findByUsername(user.username)
-            } else {
-                user
-            }
-
-        changedUser.userTags.add(tag)
-        if (tag.name.endsWith("_INACTIVE")) {
-            val activeTag = UserTags.values().first { it.name == tag.name.removeSuffix("_INACTIVE") }
-            changedUser.userTags.remove(activeTag)
-        } else {
-            val inactiveTag = UserTags.values().first { it.name == (tag.name + "_INACTIVE") }
-            changedUser.userTags.remove(inactiveTag)
-        }
-        userRepository.save(changedUser)
-        return changedUser
-    }
-
-    @Transactional
-    fun removeTagFromUser(user: User, tag: UserTags) : User {
-        val changedUser =
-            if (user.id == null) {
-                userRepository.findByUsername(user.username)
-            } else {
-                user
-            }
-
-        changedUser.userTags.remove(tag)
-        userRepository.save(changedUser)
-        return changedUser
-    }
 
     @Transactional
     fun deleteUser(user: User) {
