@@ -10,7 +10,7 @@ import javax.persistence.*
 @Table(name = "museUser", uniqueConstraints = [UniqueConstraint(columnNames = ["username", "email"])])
 data class User(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     var id: Long? = null,
     val username: String,
     var password: String,

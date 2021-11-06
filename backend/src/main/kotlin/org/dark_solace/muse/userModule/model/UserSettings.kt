@@ -11,7 +11,7 @@ import javax.persistence.*
 @Entity
 data class UserSettings(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     var id: Long? = null,
     @OneToOne
     var selectedLayout: Layout? = null,

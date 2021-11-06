@@ -3,12 +3,13 @@ package org.dark_solace.muse.userModule.model
 import org.hibernate.Hibernate
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
 data class Avatar(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     var id: Long? = null,
     var avatarBlob: ByteArray? = null
 ) {
