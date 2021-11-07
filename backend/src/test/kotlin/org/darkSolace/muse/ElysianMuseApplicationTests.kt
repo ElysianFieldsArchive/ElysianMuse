@@ -21,11 +21,12 @@ class ElysianMuseApplicationTests {
 
     companion object {
         @Container
-        private val postgresqlContainer: PostgreSQLContainer<*> = PostgreSQLContainer<Nothing>("postgres:14.0").apply {
-            withDatabaseName("foo")
-            withUsername("foo")
-            withPassword("secret")
-        }
+        private val postgresqlContainer: PostgreSQLContainer<*> =
+            PostgreSQLContainer<Nothing>("postgres:14.0-alpine").apply {
+                withDatabaseName("foo")
+                withUsername("foo")
+                withPassword("secret")
+            }
 
         @JvmStatic
         @DynamicPropertySource

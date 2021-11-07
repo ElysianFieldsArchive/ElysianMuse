@@ -5,6 +5,7 @@ import org.darkSolace.muse.userModule.repository.UserRepository
 import org.darkSolace.muse.userModule.service.UserService
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.fail
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.DynamicPropertyRegistry
@@ -27,11 +28,12 @@ class UserServiceTests {
 
     companion object {
         @Container
-        private val postgresqlContainer: PostgreSQLContainer<*> = PostgreSQLContainer<Nothing>("postgres:14.0").apply {
-            withDatabaseName("foo")
-            withUsername("foo")
-            withPassword("secret")
-        }
+        private val postgresqlContainer: PostgreSQLContainer<*> =
+            PostgreSQLContainer<Nothing>("postgres:14.0-alpine").apply {
+                withDatabaseName("foo")
+                withUsername("foo")
+                withPassword("secret")
+            }
 
         @JvmStatic
         @DynamicPropertySource
@@ -44,12 +46,10 @@ class UserServiceTests {
 
     // RegExHelpers
     val defaultUserSettings =
-        "UserSettings\\(id = \\d+ , selectedLayout = null , emailVisible = false , birthdayVisible = false , " +
-                "realNameVisible = false , maxRating = PARENTAL_GUIDANCE_13 , shareButtonsVisible = true , " +
-                "showEntireStories = false , selectedFontFamily = SANS , storyBannersVisible = true , " +
-                "selectedFontSize = MEDIUM \\)"
-    val regExDay = "(Mon|Tue|Wed|Thu|Fri|Sat|Sun)"
-    val regExMonth = "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+        "UserSettings\\(id = \\d+, selectedLayout = null, emailVisible = false, birthdayVisible = false, " +
+                "realNameVisible = false, maxRating = PARENTAL_GUIDANCE_13, shareButtonsVisible = true, " +
+                "showEntireStories = false, selectedFontFamily = SANS, storyBannersVisible = true, " +
+                "selectedFontSize = MEDIUM\\)"
 
     @Test
     fun createUserTest() {
@@ -60,6 +60,7 @@ class UserServiceTests {
 
     @Test
     fun createFullUserTest() {
+        // create test user with specific values and save to db
         val userCount = userRepository.count()
         val user = User(
             id = null,
@@ -74,35 +75,40 @@ class UserServiceTests {
             validatedAuthor = false,
             onProbation = false,
             userSettings = UserSettings(),
-            userTags = mutableSetOf(UserTags.BETA),
+            userTags = mutableSetOf(UserTag.BETA),
             avatar = Avatar(null, byteArrayOf(0x00, 0x01, 0x02, 0x03)),
             role = Role.MEMBER
         )
         userRepository.save(user)
 
+        // check if user is created, retrieve it and check content of retrieved user
         Assertions.assertEquals(userCount + 1, userRepository.count())
         MatcherAssert.assertThat(
-            user.toString(),
+            userService.getById(user.id!!).toString(),
             Matchers.matchesPattern(
-                """User\(id = \d+ , username = testUser2 , password = 123 , """ +
-                        """email = test\d@example.com , realName = Thomas Test , """ +
-                        """signUpDate = $regExDay $regExMonth \d+ \d+:\d+:\d+ """ +
-                        """CET 202\d , lastLogInDate = null , bio = Short Bio , """ +
-                        """birthday = $regExDay $regExMonth 01 00:00:00 CET 1980 , """ +
-                        """validatedAuthor = false , onProbation = false , userSettings = $defaultUserSettings , """ +
-                        """userTags = \[BETA] , avatar = Avatar\(id = \d+ \) , roles = MEMBER \)""".toPattern()
+                """User\(id = \d+, username = testUser2, """ +
+                        """email = test\d@example.com, realName = Thomas Test, """ +
+                        """signUpDate = 202\d-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}, """ +
+                        """lastLogInDate = null, bio = Short Bio, birthday = 1980-01-01, """ +
+                        """validatedAuthor = false, onProbation = false, userSettings = $defaultUserSettings, """ +
+                        """userTags = \[BETA], avatar = Avatar\(id = \d+\), roles = MEMBER\)""".toPattern()
             )
         )
     }
 
     @Test
     fun changeAvatar() {
+        //create test user
         val user = userService.createUser(User(username = "testUser5", password = "123", email = "test5@example.com"))
         Assertions.assertNull(user.avatar)
+
+        //set an avatar and save avatarId
         userService.changeAvatar(user, Avatar(null, byteArrayOf(0, 1, 2, 3)))
         val avatarId = user.avatar?.id
         Assertions.assertNotNull(user.avatar?.id)
         Assertions.assertArrayEquals(byteArrayOf(0, 1, 2, 3), user.avatar?.avatarBlob)
+
+        // change the avatar, check if blob changed but id stayed the same
         userService.changeAvatar(user, Avatar(null, byteArrayOf(3, 4, 5, 6)))
         Assertions.assertArrayEquals(byteArrayOf(3, 4, 5, 6), user.avatar?.avatarBlob)
         Assertions.assertEquals(avatarId, user.avatar?.id)
@@ -110,34 +116,48 @@ class UserServiceTests {
 
     @Test
     fun changeAvatarByUsername() {
+        //create test user
         var user = userService.createUser(User(username = "testUser95", password = "123", email = "test95@example.com"))
         Assertions.assertNull(user.avatar)
         val userByUsername = User(username = "testUser95", password = "", email = "")
-        user = userService.changeAvatar(userByUsername, Avatar(null, byteArrayOf(0, 1, 2, 3)))
+
+        //set an avatar and save avatarId
+        user = userService.changeAvatar(userByUsername, Avatar(null, byteArrayOf(0, 1, 2, 3))) ?: fail("User was null")
         val avatarId = user.avatar?.id
         Assertions.assertNotNull(user.avatar?.id)
         Assertions.assertArrayEquals(byteArrayOf(0, 1, 2, 3), user.avatar?.avatarBlob)
-        user = userService.changeAvatar(userByUsername, Avatar(null, byteArrayOf(3, 4, 5, 6)))
+
+        // change the avatar, check if blob changed but id stayed the same
+        user = userService.changeAvatar(userByUsername, Avatar(null, byteArrayOf(3, 4, 5, 6))) ?: fail("User was null")
         Assertions.assertArrayEquals(byteArrayOf(3, 4, 5, 6), user.avatar?.avatarBlob)
         Assertions.assertEquals(avatarId, user.avatar?.id)
     }
 
     @Test
     fun getById() {
+        // create test user and save to db
         val user = userService.createUser(User(username = "testUser6", password = "123", email = "test6@example.com"))
         val id = user.id
+        // retrieve same user from db
         val otherUser = userService.getById(id ?: -1L)
+        // check if they are the same
         Assertions.assertEquals(user, otherUser)
     }
 
     @Test
     fun getAll() {
+        // get before count
         val count = userRepository.count()
+        // create test user
         val user = userService.createUser(User(username = "testUser7", password = "123", email = "test7@example.com"))
         val user2 = userService.createUser(User(username = "testUser8", password = "123", email = "test8@example.com"))
         val user3 = userService.createUser(User(username = "testUser9", password = "123", email = "test9@example.com"))
-        Assertions.assertEquals(count + 3, userRepository.count())
+
+        // get all users
         val all = userService.getAll()
+        //should be three more than before
+        Assertions.assertEquals(count.toInt() + 3, all.count())
+        //check if all created testusers are there
         Assertions.assertTrue(all.contains(user))
         Assertions.assertTrue(all.contains(user2))
         Assertions.assertTrue(all.contains(user3))
@@ -145,37 +165,35 @@ class UserServiceTests {
 
     @Test
     fun getAllWithRole() {
+        // create test user
         userService.createUser(User(username = "testUser10", password = "123", email = "test10@example.com"))
-        val members = userService.getAllWithRole(Role.MEMBER)
         userService.createUser(
             User(
-                username = "testUser11",
-                password = "123",
-                email = "test11@example.com",
+                username = "testUser11", password = "123", email = "test11@example.com",
                 role = Role.ADMINISTRATOR
             )
         )
-        val admins = userService.getAllWithRole(Role.ADMINISTRATOR)
         userService.createUser(
             User(
-                username = "testUser12",
-                password = "123",
-                email = "test12@example.com",
+                username = "testUser12", password = "123", email = "test12@example.com",
                 role = Role.MODERATOR
             )
         )
-        val mods = userService.getAllWithRole(Role.MODERATOR)
         userService.createUser(
             User(
-                username = "testUser13",
-                password = "123",
-                email = "test13@example.com",
+                username = "testUser13", password = "123", email = "test13@example.com",
                 role = Role.SUSPENDED
             )
         )
-        val suspended = userService.getAllWithRole(Role.SUSPENDED)
-        val count = userRepository.count()
 
+        //get all users by role
+        val count = userRepository.count()
+        val members = userService.getAllWithRole(Role.MEMBER)
+        val admins = userService.getAllWithRole(Role.ADMINISTRATOR)
+        val mods = userService.getAllWithRole(Role.MODERATOR)
+        val suspended = userService.getAllWithRole(Role.SUSPENDED)
+
+        //check if everything adds up and all users per group have the specified role
         Assertions.assertEquals(count.toInt(), members.count() + admins.count() + mods.count() + suspended.count())
         Assertions.assertTrue(members.all { it.role == Role.MEMBER })
         Assertions.assertTrue(mods.all { it.role == Role.MODERATOR })
@@ -184,7 +202,74 @@ class UserServiceTests {
     }
 
     @Test
+    fun getAllWithUserTags() {
+        // create test users
+        userService.createUser(
+            User(
+                username = "testUser18", password = "123", email = "test18@example.com",
+                userTags = mutableSetOf(UserTag.ARTIST)
+            )
+        )
+        userService.createUser(
+            User(
+                username = "testUser19", password = "123", email = "test19@example.com",
+                userTags = mutableSetOf(UserTag.ARTIST_INACTIVE)
+            )
+        )
+        userService.createUser(
+            User(
+                username = "testUser20", password = "123", email = "test20@example.com",
+                userTags = mutableSetOf(UserTag.BETA)
+            )
+        )
+        userService.createUser(
+            User(
+                username = "testUser21", password = "123", email = "test21@example.com",
+                userTags = mutableSetOf(UserTag.BETA_INACTIVE)
+            )
+        )
+        userService.createUser(
+            User(
+                username = "testUser22", password = "123", email = "test22@example.com",
+                userTags = mutableSetOf(UserTag.AUTHOR)
+            )
+        )
+        userService.createUser(
+            User(
+                username = "testUser23", password = "123", email = "test23@example.com",
+                userTags = mutableSetOf(UserTag.COMMENTER)
+            )
+        )
+        userService.createUser(User(username = "testUser24", password = "123", email = "test24@example.com"))
+
+        //collect values
+        val countAll = userRepository.count()
+        val countWithoutTags = userRepository.findAll().count { it.userTags.isEmpty() }
+        val countBeta = userService.getAllWithUserTag(UserTag.BETA).count()
+        val countBetaInactive = userService.getAllWithUserTag(UserTag.BETA_INACTIVE).count()
+        val countArtist = userService.getAllWithUserTag(UserTag.ARTIST).count()
+        val countArtistInactive = userService.getAllWithUserTag(UserTag.ARTIST_INACTIVE).count()
+        val countCommenter = userService.getAllWithUserTag(UserTag.COMMENTER).count()
+        val countAuthor = userService.getAllWithUserTag(UserTag.AUTHOR).count()
+
+        //assertions
+        Assertions.assertTrue(countWithoutTags > 0)
+        Assertions.assertTrue(countBeta > 0)
+        Assertions.assertTrue(countBetaInactive > 0)
+        Assertions.assertTrue(countArtist > 0)
+        Assertions.assertTrue(countArtistInactive > 0)
+        Assertions.assertTrue(countCommenter > 0)
+        Assertions.assertTrue(countAuthor > 0)
+        Assertions.assertEquals(
+            countAll.toInt(),
+            countWithoutTags + countBeta + countBetaInactive + countArtist +
+                    countArtistInactive + countCommenter + countAuthor
+        )
+    }
+
+    @Test
     fun deleteUser() {
+        // create test user
         val user = userService.createUser(User(username = "testUser16", password = "123", email = "test16@example.com"))
         val count = userRepository.count()
         Assertions.assertTrue(userService.getAll().contains(user))
@@ -197,6 +282,7 @@ class UserServiceTests {
 
     @Test
     fun deleteUserByUserName() {
+        // create test user
         val user =
             userService.createUser(User(username = "testUser916", password = "123", email = "test916@example.com"))
         val count = userRepository.count()
@@ -211,11 +297,12 @@ class UserServiceTests {
 
     @Test
     fun updateUserSettings() {
+        // create test user
         val user = userService.createUser(User(username = "testUser17", password = "123", email = "test17@example.com"))
         val oldUserSettings = user.userSettings.copy()
 
+        // set new user settings and check changes as well as check if previous settings are still default
         userService.updateUserSettings(user, UserSettings(emailVisible = true, realNameVisible = true))
-
         Assertions.assertNotEquals(oldUserSettings, user.userSettings)
         Assertions.assertTrue(user.userSettings.emailVisible)
         Assertions.assertTrue(user.userSettings.realNameVisible)
@@ -224,14 +311,15 @@ class UserServiceTests {
 
     @Test
     fun updateUserSettingsByUsername() {
+        // create test user
         var user =
             userService.createUser(User(username = "testUser917", password = "123", email = "test17@example.com"))
         val oldUserSettings = user.userSettings.copy()
-
         val userByUsername = User(username = "testUser917", password = "", email = "")
 
+        // set new user settings and check changes as well as check if previous settings are still default
         user = userService.updateUserSettings(userByUsername, UserSettings(emailVisible = true, realNameVisible = true))
-
+            ?: fail("User was null")
         Assertions.assertNotEquals(oldUserSettings, user.userSettings)
         Assertions.assertTrue(user.userSettings.emailVisible)
         Assertions.assertTrue(user.userSettings.realNameVisible)

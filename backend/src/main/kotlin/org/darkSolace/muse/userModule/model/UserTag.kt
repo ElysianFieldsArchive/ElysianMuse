@@ -1,6 +1,9 @@
 package org.darkSolace.muse.userModule.model
 
-enum class UserTags {
+/**
+ * Enumeration of available user tags.
+ */
+enum class UserTag {
     ARTIST,
     ARTIST_INACTIVE,
     AUTHOR,

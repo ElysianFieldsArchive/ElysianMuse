@@ -4,6 +4,9 @@ import org.hibernate.Hibernate
 import javax.persistence.Entity
 import javax.persistence.Id
 
+/**
+ * Placeholder for a story tag class
+ */
 @Entity
 data class StoryTag (
     @Id

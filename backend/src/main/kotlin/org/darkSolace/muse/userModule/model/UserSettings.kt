@@ -8,6 +8,14 @@ import org.darkSolace.muse.storyModule.model.StoryTag
 import org.hibernate.Hibernate
 import javax.persistence.*
 
+/**
+ * The [UserSettings] model class, is part of a [User].
+ *
+ * Holds user configurations, e.g. which values should be visible on the user profile as well as default
+ * content filter/warning settings.
+ *
+ * @see [User]
+ */
 @Entity
 data class UserSettings(
     @Id
@@ -39,11 +47,11 @@ data class UserSettings(
 
     @Override
     override fun toString(): String {
-        return this::class.simpleName + "(id = $id , selectedLayout = $selectedLayout , " +
-                "emailVisible = $emailVisible , birthdayVisible = $birthdayVisible , " +
-                "realNameVisible = $realNameVisible , maxRating = $maxRating , " +
-                "shareButtonsVisible = $shareButtonsVisible , showEntireStories = $showEntireStories , " +
-                "selectedFontFamily = $selectedFontFamily , storyBannersVisible = $storyBannersVisible , " +
-                "selectedFontSize = $selectedFontSize )"
+        return this::class.simpleName + "(id = $id, selectedLayout = $selectedLayout, " +
+                "emailVisible = $emailVisible, birthdayVisible = $birthdayVisible, " +
+                "realNameVisible = $realNameVisible, maxRating = $maxRating, " +
+                "shareButtonsVisible = $shareButtonsVisible, showEntireStories = $showEntireStories, " +
+                "selectedFontFamily = $selectedFontFamily, storyBannersVisible = $storyBannersVisible, " +
+                "selectedFontSize = $selectedFontSize)"
     }
 }

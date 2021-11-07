@@ -6,6 +6,11 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 
+/**
+ * The [Avatar] model class.
+ *
+ * Holds a [ByteArray] containing the avatar picture data.
+ */
 @Entity
 data class Avatar(
     @Id
@@ -25,6 +30,6 @@ data class Avatar(
 
     @Override
     override fun toString(): String {
-        return this::class.simpleName + "(id = $id )"
+        return this::class.simpleName + "(id = $id)"
     }
 }

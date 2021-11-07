@@ -1,11 +1,17 @@
 package org.darkSolace.muse.userModule.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.Hibernate
 import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
 import java.util.*
 import javax.persistence.*
 
+/**
+ * The [User] model class
+ *
+ * Holds all values containing to a registered user.
+ */
 @Entity
 @Table(name = "museUser", uniqueConstraints = [UniqueConstraint(columnNames = ["username", "email"])])
 data class User(
@@ -13,6 +19,7 @@ data class User(
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     var id: Long? = null,
     val username: String,
+    @JsonIgnore
     var password: String,
     var email: String,
     var realName: String? = null,
@@ -28,9 +35,9 @@ data class User(
     @OneToOne
     @Cascade(CascadeType.ALL)
     var userSettings: UserSettings = UserSettings(),
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.ORDINAL)
-    val userTags: MutableSet<UserTags> = mutableSetOf(),
+    val userTags: MutableSet<UserTag> = mutableSetOf(),
     @OneToOne
     @Cascade(CascadeType.ALL)
     var avatar: Avatar? = null,
@@ -49,9 +56,9 @@ data class User(
 
     @Override
     override fun toString(): String {
-        return this::class.simpleName + "(id = $id , username = $username , password = $password , email = $email , " +
-                "realName = $realName , signUpDate = $signUpDate , lastLogInDate = $lastLogInDate , bio = $bio , " +
-                "birthday = $birthday , validatedAuthor = $validatedAuthor , onProbation = $onProbation , " +
-                "userSettings = $userSettings , userTags = $userTags , avatar = $avatar , roles = $role )"
+        return this::class.simpleName + "(id = $id, username = $username, email = $email, " +
+                "realName = $realName, signUpDate = $signUpDate, lastLogInDate = $lastLogInDate, bio = $bio, " +
+                "birthday = $birthday, validatedAuthor = $validatedAuthor, onProbation = $onProbation, " +
+                "userSettings = $userSettings, userTags = $userTags, avatar = $avatar, roles = $role)"
     }
 }
