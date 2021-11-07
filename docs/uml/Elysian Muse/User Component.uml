@@ -3,7 +3,7 @@
   <packageImport xmi:type="uml:PackageImport" xmi:id="_2tfr8DWxEeyghuCVBA5yaw">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Package" xmi:id="_nLb20DWyEeyghuCVBA5yaw" name="org.dark-solace.muse.user">
+  <packagedElement xmi:type="uml:Package" xmi:id="_nLb20DWyEeyghuCVBA5yaw" name="org.darkSolace.muse.user">
     <packagedElement xmi:type="uml:Package" xmi:id="_rYOAUDWyEeyghuCVBA5yaw" name="model">
       <ownedComment xmi:type="uml:Comment" xmi:id="_3zJ0ADXTEeyghuCVBA5yaw" annotatedElement="_x2x_MDWyEeyghuCVBA5yaw">
         <body>as per issue #9</body>
@@ -48,6 +48,7 @@
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7G4cADmsEeyPHJs8624f1A" value="*"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_9uae8DmsEeyPHJs8624f1A" name="avatar" type="_5VoPADW1EeyghuCVBA5yaw"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_eKRCwD_uEey6CaR9X_gGUg" name="role" type="_x2x_MDWyEeyghuCVBA5yaw"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Enumeration" xmi:id="_x2x_MDWyEeyghuCVBA5yaw" name="Role">
         <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_1FL_cDWzEeyghuCVBA5yaw" name="ADMINISTRATOR"/>
@@ -125,6 +126,9 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_3eN6EDW4EeyghuCVBA5yaw" name="createUser">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_g57TADnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
         </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Hejr4DnEEeyPHJs8624f1A" name="deleteUser">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_QPU98DnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
+        </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_5B5TUDW4EeyghuCVBA5yaw" name="suspendUser">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_i71gYDnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
         </ownedOperation>
@@ -155,9 +159,6 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_HDjQMDW5EeyghuCVBA5yaw" name="removeTagFromUser" visibility="public">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_SovFUDnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_U3rpIDnEEeyPHJs8624f1A" name="tag" type="_APREsDXUEeyghuCVBA5yaw"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_Hejr4DnEEeyPHJs8624f1A" name="deleteUser">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_QPU98DnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_KlfAkDnEEeyPHJs8624f1A" name="updateUserSettings">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_IZwTYDnFEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
