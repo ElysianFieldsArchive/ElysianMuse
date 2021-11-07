@@ -134,6 +134,16 @@ class UserServiceTests {
     }
 
     @Test
+    fun changeAvatarUnknownUser() {
+        //create unknown user - not persisted
+        val unknownUser = User(username = "notKnown", password = "", email = "")
+
+        //assert return null
+        val user = userService.changeAvatar(unknownUser, Avatar(avatarBlob = byteArrayOf(1,2,3,4)))
+        Assertions.assertNull(user)
+    }
+
+    @Test
     fun getById() {
         // create test user and save to db
         val user = userService.createUser(User(username = "testUser6", password = "123", email = "test6@example.com"))
@@ -157,7 +167,7 @@ class UserServiceTests {
         val all = userService.getAll()
         //should be three more than before
         Assertions.assertEquals(count.toInt() + 3, all.count())
-        //check if all created testusers are there
+        //check if all created test users are there
         Assertions.assertTrue(all.contains(user))
         Assertions.assertTrue(all.contains(user2))
         Assertions.assertTrue(all.contains(user3))
@@ -296,6 +306,16 @@ class UserServiceTests {
     }
 
     @Test
+    fun deleteUnknownUser() {
+        //create unknown user - not persisted
+        val unknownUser = User(username = "notKnown", password = "", email = "")
+
+        //assert return Unit
+        val user = userService.deleteUser(unknownUser)
+        Assertions.assertInstanceOf(Unit::class.java, user)
+    }
+
+    @Test
     fun updateUserSettings() {
         // create test user
         val user = userService.createUser(User(username = "testUser17", password = "123", email = "test17@example.com"))
@@ -324,5 +344,15 @@ class UserServiceTests {
         Assertions.assertTrue(user.userSettings.emailVisible)
         Assertions.assertTrue(user.userSettings.realNameVisible)
         Assertions.assertFalse(user.userSettings.birthdayVisible)
+    }
+
+    @Test
+    fun updateUserSettingsForUnknownUser() {
+        //create unknown user - not persisted
+        val unknownUser = User(username = "notKnown", password = "", email = "")
+
+        //assert return null
+        val user = userService.updateUserSettings(unknownUser, UserSettings())
+        Assertions.assertNull(user)
     }
 }
