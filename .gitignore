@@ -25,8 +25,9 @@ hs_err_pid*
 # Eclipse Papyrus UML metadata
 docs/uml/**/.metadata
 
-# IntelliJ
+# IntelliJ + plugins
 .idea
+.jpb
 
 # backend build and additional files/folders
 build/
