@@ -8,11 +8,11 @@
 
 fun [changeAvatar](change-avatar.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md), avatar: [Avatar](../../org.darkSolace.muse.userModule.model/-avatar/index.md)): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?
 
-Changes the [Avatar](../../org.darkSolace.muse.userModule.model/-avatar/index.md) for the specified user and persists it in the database.
+Changes the [Avatar](../../org.darkSolace.muse.userModule.model/-avatar/index.md) for the specified [User](../../org.darkSolace.muse.userModule.model/-user/index.md) and persists it in the database.
 
 #### Return
 
-the modified [User](../../org.darkSolace.muse.userModule.model/-user/index.md) or null if the user was not found
+the modified [User](../../org.darkSolace.muse.userModule.model/-user/index.md) or null if the [User](../../org.darkSolace.muse.userModule.model/-user/index.md) was not found
 
 ## Parameters
 

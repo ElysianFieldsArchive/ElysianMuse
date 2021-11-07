@@ -27,8 +27,8 @@ jvm
 
 | Name | Summary |
 |---|---|
-| [changeRole](change-role.md) | [jvm]<br>@Transactional<br>fun [changeRole](change-role.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md), role: [Role](../../org.darkSolace.muse.userModule.model/-role/index.md)): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?<br>Changes the role of an [User](../../org.darkSolace.muse.userModule.model/-user/index.md) and persists it in the database |
-| [suspendUser](suspend-user.md) | [jvm]<br>@Transactional<br>fun [suspendUser](suspend-user.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md)): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?<br>Suspends the provided user and persists it in the database |
+| [changeRole](change-role.md) | [jvm]<br>@Transactional<br>fun [changeRole](change-role.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md), role: [Role](../../org.darkSolace.muse.userModule.model/-role/index.md)): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?<br>Changes the role of a [User](../../org.darkSolace.muse.userModule.model/-user/index.md) and persists it in the database |
+| [suspendUser](suspend-user.md) | [jvm]<br>@Transactional<br>fun [suspendUser](suspend-user.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md)): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?<br>Suspends the provided [User](../../org.darkSolace.muse.userModule.model/-user/index.md) and persists it in the database |
 
 ## Properties
 

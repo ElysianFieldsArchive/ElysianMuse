@@ -28,11 +28,11 @@ class UserService(
     }
 
     /**
-     * Changes the [Avatar] for the specified user and persists it in the database.
+     * Changes the [Avatar] for the specified [User] and persists it in the database.
      *
      * @param user the [User] to modify
      * @param avatar the new [Avatar]
-     * @return the modified [User] or null if the user was not found
+     * @return the modified [User] or null if the [User] was not found
      */
     @Transactional
     fun changeAvatar(user: User, avatar: Avatar): User? {

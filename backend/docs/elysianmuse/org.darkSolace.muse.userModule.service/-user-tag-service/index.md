@@ -7,12 +7,28 @@
 
 class [UserTagService](index.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.userModule.repository/-user-repository/index.md))
 
+Service class for [UserTag](../../org.darkSolace.muse.userModule.model/-user-tag/index.md) related tasks when working with [User](../../org.darkSolace.muse.userModule.model/-user/index.md)s.
+
+## See also
+
+jvm
+
+| | |
+|---|---|
+| [org.darkSolace.muse.userModule.service.UserService](../-user-service/index.md) |  |
+
+## Constructors
+
+| | |
+|---|---|
+| [UserTagService](-user-tag-service.md) | [jvm]<br>fun [UserTagService](-user-tag-service.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.userModule.repository/-user-repository/index.md)) |
+
 ## Functions
 
 | Name | Summary |
 |---|---|
-| [addTagToUser](add-tag-to-user.md) | [jvm]<br>@Transactional<br>fun [addTagToUser](add-tag-to-user.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md), tag: [UserTag](../../org.darkSolace.muse.userModule.model/-user-tag/index.md)): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)? |
-| [removeTagFromUser](remove-tag-from-user.md) | [jvm]<br>@Transactional<br>fun [removeTagFromUser](remove-tag-from-user.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md), tag: [UserTag](../../org.darkSolace.muse.userModule.model/-user-tag/index.md)): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)? |
+| [addTagToUser](add-tag-to-user.md) | [jvm]<br>@Transactional<br>fun [addTagToUser](add-tag-to-user.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md), tag: [UserTag](../../org.darkSolace.muse.userModule.model/-user-tag/index.md)): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?<br>Adds a [UserTag](../../org.darkSolace.muse.userModule.model/-user-tag/index.md) to a [User](../../org.darkSolace.muse.userModule.model/-user/index.md) |
+| [removeTagFromUser](remove-tag-from-user.md) | [jvm]<br>@Transactional<br>fun [removeTagFromUser](remove-tag-from-user.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md), tag: [UserTag](../../org.darkSolace.muse.userModule.model/-user-tag/index.md)): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?<br>Removes a [UserTag](../../org.darkSolace.muse.userModule.model/-user-tag/index.md) to a [User](../../org.darkSolace.muse.userModule.model/-user/index.md) |
 
 ## Properties
 

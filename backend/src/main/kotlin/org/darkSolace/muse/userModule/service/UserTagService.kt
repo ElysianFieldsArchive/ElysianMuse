@@ -1,5 +1,6 @@
 package org.darkSolace.muse.userModule.service
 
+import org.darkSolace.muse.userModule.model.Role
 import org.darkSolace.muse.userModule.model.User
 import org.darkSolace.muse.userModule.model.UserTag
 import org.darkSolace.muse.userModule.repository.UserRepository
@@ -7,8 +8,21 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
+/**
+ * Service class for [UserTag] related tasks when working with [User]s.
+ *
+ * @see UserService
+ */
 @Service
 class UserTagService(@Autowired val userRepository: UserRepository) {
+
+    /**
+     * Adds a [UserTag] to a [User]
+     *
+     * @param user the [User] to be modified
+     * @param tag the [UserTag] to be added
+     * @return the modified [User] or null if [User] does not exist
+     */
     @Transactional
     fun addTagToUser(user: User, tag: UserTag): User? {
         val changedUser =
@@ -34,6 +48,13 @@ class UserTagService(@Autowired val userRepository: UserRepository) {
         return changedUser
     }
 
+    /**
+     * Removes a [UserTag] to a [User]
+     *
+     * @param user the [User] to be modified
+     * @param tag the [UserTag] to be removed
+     * @return the modified [User] or null if [User] does not exist
+     */
     @Transactional
     fun removeTagFromUser(user: User, tag: UserTag): User? {
         val changedUser =

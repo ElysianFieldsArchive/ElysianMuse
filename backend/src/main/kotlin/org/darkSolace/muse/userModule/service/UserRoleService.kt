@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional
 class UserRoleService(@Autowired val userRepository: UserRepository) {
 
     /**
-     * Suspends the provided user and persists it in the database
+     * Suspends the provided [User] and persists it in the database
      *
      * @param user the [User] to be suspended
      * @return the suspended [User] or null if the [User] was not found
@@ -27,7 +27,7 @@ class UserRoleService(@Autowired val userRepository: UserRepository) {
     }
 
     /**
-     * Changes the role of an [User] and persists it in the database
+     * Changes the role of a [User] and persists it in the database
      *
      * @param user the [User] to modify
      * @param role the new [Role] of this [User]

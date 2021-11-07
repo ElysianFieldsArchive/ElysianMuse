@@ -5,7 +5,9 @@
 [jvm]\
 enum [FontSize](index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html)&lt;[FontSize](index.md)&gt; 
 
-Enumeration of supported font sizes Currently just a placeholder
+Enumeration of supported font sizes
+
+Currently just a placeholder
 
 ## Entries
 

@@ -5,7 +5,9 @@
 [jvm]\
 enum [FontFamily](index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html)&lt;[FontFamily](index.md)&gt; 
 
-Enumeration of supported font families Currently just a placeholder
+Enumeration of supported font families
+
+Currently just a placeholder
 
 ## Entries
 

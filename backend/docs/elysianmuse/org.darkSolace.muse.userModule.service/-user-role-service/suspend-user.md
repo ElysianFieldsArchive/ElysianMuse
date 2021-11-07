@@ -8,7 +8,7 @@
 
 fun [suspendUser](suspend-user.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md)): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?
 
-Suspends the provided user and persists it in the database
+Suspends the provided [User](../../org.darkSolace.muse.userModule.model/-user/index.md) and persists it in the database
 
 #### Return
 

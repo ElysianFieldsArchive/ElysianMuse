@@ -1,10 +1,12 @@
 package org.darkSolace.muse.userModule
 
+import org.darkSolace.muse.DBClearer
 import org.darkSolace.muse.userModule.model.Role
 import org.darkSolace.muse.userModule.model.User
 import org.darkSolace.muse.userModule.service.UserRoleService
 import org.darkSolace.muse.userModule.service.UserService
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.springframework.beans.factory.annotation.Autowired
@@ -24,6 +26,9 @@ class UserRoleServiceTests {
     @Autowired
     lateinit var userRoleService: UserRoleService
 
+    @Autowired
+    lateinit var dbClearer: DBClearer
+
     companion object {
         @Container
         private val postgresqlContainer: PostgreSQLContainer<*> =
@@ -40,6 +45,11 @@ class UserRoleServiceTests {
             registry.add("spring.datasource.password", postgresqlContainer::getPassword)
             registry.add("spring.datasource.username", postgresqlContainer::getUsername)
         }
+    }
+
+    @BeforeEach
+    fun clearDB() {
+        dbClearer.clearAll()
     }
 
     @Test

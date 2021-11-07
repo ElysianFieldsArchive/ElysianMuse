@@ -1,9 +1,11 @@
 package org.darkSolace.muse.userModule
 
+import org.darkSolace.muse.DBClearer
 import org.darkSolace.muse.userModule.model.*
 import org.darkSolace.muse.userModule.repository.UserRepository
 import org.darkSolace.muse.userModule.service.UserService
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.springframework.beans.factory.annotation.Autowired
@@ -25,6 +27,9 @@ class UserServiceTests {
 
     @Autowired
     lateinit var userRepository: UserRepository
+
+    @Autowired
+    lateinit var dbClearer: DBClearer
 
     companion object {
         @Container
@@ -50,6 +55,11 @@ class UserServiceTests {
                 "realNameVisible = false, maxRating = PARENTAL_GUIDANCE_13, shareButtonsVisible = true, " +
                 "showEntireStories = false, selectedFontFamily = SANS, storyBannersVisible = true, " +
                 "selectedFontSize = MEDIUM\\)"
+
+    @BeforeEach
+    fun clearDB() {
+        dbClearer.clearAll()
+    }
 
     @Test
     fun createUserTest() {
@@ -87,8 +97,8 @@ class UserServiceTests {
             userService.getById(user.id!!).toString(),
             Matchers.matchesPattern(
                 """User\(id = \d+, username = testUser2, """ +
-                        """email = test\d@example.com, realName = Thomas Test, """ +
-                        """signUpDate = 202\d-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}, """ +
+                        """email = test\d@example\.com, realName = Thomas Test, """ +
+                        """signUpDate = 202\d-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{0,3}, """ +
                         """lastLogInDate = null, bio = Short Bio, birthday = 1980-01-01, """ +
                         """validatedAuthor = false, onProbation = false, userSettings = $defaultUserSettings, """ +
                         """userTags = \[BETA], avatar = Avatar\(id = \d+\), roles = MEMBER\)""".toPattern()
@@ -139,7 +149,7 @@ class UserServiceTests {
         val unknownUser = User(username = "notKnown", password = "", email = "")
 
         //assert return null
-        val user = userService.changeAvatar(unknownUser, Avatar(avatarBlob = byteArrayOf(1,2,3,4)))
+        val user = userService.changeAvatar(unknownUser, Avatar(avatarBlob = byteArrayOf(1, 2, 3, 4)))
         Assertions.assertNull(user)
     }
 
@@ -250,10 +260,15 @@ class UserServiceTests {
                 userTags = mutableSetOf(UserTag.COMMENTER)
             )
         )
-        userService.createUser(User(username = "testUser24", password = "123", email = "test24@example.com"))
+        userService.createUser(
+            User(
+                username = "testUser24", password = "123", email = "test24@example.com",
+                userTags = mutableSetOf(UserTag.COMMENTER, UserTag.AUTHOR, UserTag.BETA_INACTIVE)
+            )
+        )
+        userService.createUser(User(username = "testUser25", password = "123", email = "test25@example.com"))
 
         //collect values
-        val countAll = userRepository.count()
         val countWithoutTags = userRepository.findAll().count { it.userTags.isEmpty() }
         val countBeta = userService.getAllWithUserTag(UserTag.BETA).count()
         val countBetaInactive = userService.getAllWithUserTag(UserTag.BETA_INACTIVE).count()
@@ -263,18 +278,13 @@ class UserServiceTests {
         val countAuthor = userService.getAllWithUserTag(UserTag.AUTHOR).count()
 
         //assertions
-        Assertions.assertTrue(countWithoutTags > 0)
-        Assertions.assertTrue(countBeta > 0)
-        Assertions.assertTrue(countBetaInactive > 0)
-        Assertions.assertTrue(countArtist > 0)
-        Assertions.assertTrue(countArtistInactive > 0)
-        Assertions.assertTrue(countCommenter > 0)
-        Assertions.assertTrue(countAuthor > 0)
-        Assertions.assertEquals(
-            countAll.toInt(),
-            countWithoutTags + countBeta + countBetaInactive + countArtist +
-                    countArtistInactive + countCommenter + countAuthor
-        )
+        Assertions.assertEquals(1, countWithoutTags)
+        Assertions.assertEquals(1, countBeta)
+        Assertions.assertEquals(2, countBetaInactive)
+        Assertions.assertEquals(1, countArtist)
+        Assertions.assertEquals(1, countArtistInactive)
+        Assertions.assertEquals(2, countCommenter)
+        Assertions.assertEquals(2, countAuthor)
     }
 
     @Test
