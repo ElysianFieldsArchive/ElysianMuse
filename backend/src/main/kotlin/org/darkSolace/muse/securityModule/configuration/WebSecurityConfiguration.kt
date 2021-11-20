@@ -20,14 +20,15 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+/**
+ * Configuration class to configure authentication via JWT
+ */
 class WebSecurityConfiguration : WebSecurityConfigurerAdapter() {
     @Autowired
     private lateinit var userDetailsService: UserDetailsService
 
     @Autowired
     private lateinit var unauthorizedHandler: AuthEntryPointJwt
-
-    fun authenticationJwtTokenFilter(): AuthTokenFilter = AuthTokenFilter()
 
     override fun configure(auth: AuthenticationManagerBuilder?) {
         auth?.userDetailsService(userDetailsService)?.passwordEncoder(passwordEncoder())
@@ -45,9 +46,11 @@ class WebSecurityConfiguration : WebSecurityConfigurerAdapter() {
         http.cors().and().csrf().disable()
             .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-            .authorizeRequests().antMatchers("/api/auth/**").permitAll()
+            .authorizeRequests()
+            //allow access to all api endpoints, permissions handled in the controller
+            .antMatchers("/api/**").permitAll()
             .anyRequest().authenticated()
 
-        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter::class.java)
+        http.addFilterBefore(AuthTokenFilter(), UsernamePasswordAuthenticationFilter::class.java)
     }
 }

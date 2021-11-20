@@ -14,7 +14,6 @@ $dokka.location:org.darkSolace.muse.layoutModule.model/Layout/id/#/PointingToDec
 $dokka.location:org.darkSolace.muse.securityModule.configuration////PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.configuration/index.md
 $dokka.location:org.darkSolace.muse.securityModule.configuration/WebSecurityConfiguration///PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.configuration/-web-security-configuration/index.md
 $dokka.location:org.darkSolace.muse.securityModule.configuration/WebSecurityConfiguration/WebSecurityConfiguration/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.configuration/-web-security-configuration/-web-security-configuration.md
-$dokka.location:org.darkSolace.muse.securityModule.configuration/WebSecurityConfiguration/authenticationJwtTokenFilter/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.configuration/-web-security-configuration/authentication-jwt-token-filter.md
 $dokka.location:org.darkSolace.muse.securityModule.configuration/WebSecurityConfiguration/passwordEncoder/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.configuration/-web-security-configuration/password-encoder.md
 $dokka.location:org.darkSolace.muse.securityModule.controller////PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.controller/index.md
 $dokka.location:org.darkSolace.muse.securityModule.controller/AuthController///PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.controller/-auth-controller/index.md

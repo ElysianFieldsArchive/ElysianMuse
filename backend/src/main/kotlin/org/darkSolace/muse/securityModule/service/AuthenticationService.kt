@@ -29,6 +29,10 @@ class AuthenticationService {
     @Autowired
     lateinit var jwtUtils: JwtUtils
 
+    /**
+     *
+     * TODO: Distinguish between wrong credentials and suspended users
+     */
     fun authenticate(loginRequest: LoginRequest): JwtResponse? {
         try {
             val authentication: Authentication = authenticationManager.authenticate(

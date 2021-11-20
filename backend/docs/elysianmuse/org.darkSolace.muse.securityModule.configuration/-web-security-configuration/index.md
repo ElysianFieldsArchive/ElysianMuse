@@ -12,11 +12,18 @@
 
 class [WebSecurityConfiguration](index.md) : WebSecurityConfigurerAdapter
 
+Configuration class to configure authentication via JWT
+
+## Constructors
+
+| | |
+|---|---|
+| [WebSecurityConfiguration](-web-security-configuration.md) | [jvm]<br>fun [WebSecurityConfiguration](-web-security-configuration.md)() |
+
 ## Functions
 
 | Name | Summary |
 |---|---|
-| [authenticationJwtTokenFilter](authentication-jwt-token-filter.md) | [jvm]<br>fun [authenticationJwtTokenFilter](authentication-jwt-token-filter.md)(): [AuthTokenFilter](../../org.darkSolace.muse.securityModule.service/-auth-token-filter/index.md) |
 | [authenticationManagerBean](index.md#542724139%2FFunctions%2F-1216412040) | [jvm]<br>open fun [authenticationManagerBean](index.md#542724139%2FFunctions%2F-1216412040)(): AuthenticationManager |
 | [configure](index.md#138919942%2FFunctions%2F-1216412040) | [jvm]<br>open override fun [configure](index.md#138919942%2FFunctions%2F-1216412040)(p0: WebSecurity) |
 | [getApplicationContext](index.md#581339%2FFunctions%2F-1216412040) | [jvm]<br>fun [getApplicationContext](index.md#581339%2FFunctions%2F-1216412040)(): ApplicationContext |

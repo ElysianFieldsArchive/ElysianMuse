@@ -12,7 +12,7 @@ class [AuthenticationService](index.md)
 
 | Name | Summary |
 |---|---|
-| [authenticate](authenticate.md) | [jvm]<br>fun [authenticate](authenticate.md)(loginRequest: [LoginRequest](../../org.darkSolace.muse.securityModule.model/-login-request/index.md)): [JwtResponse](../../org.darkSolace.muse.securityModule.model/-jwt-response/index.md)? |
+| [authenticate](authenticate.md) | [jvm]<br>fun [authenticate](authenticate.md)(loginRequest: [LoginRequest](../../org.darkSolace.muse.securityModule.model/-login-request/index.md)): [JwtResponse](../../org.darkSolace.muse.securityModule.model/-jwt-response/index.md)?<br>TODO: Distinguish between wrong credentials and suspended users |
 | [signUpUser](sign-up-user.md) | [jvm]<br>fun [signUpUser](sign-up-user.md)(signUpRequest: [SignupRequest](../../org.darkSolace.muse.securityModule.model/-signup-request/index.md)): [SignUpResponse](../../org.darkSolace.muse.securityModule.model/-sign-up-response/index.md) |
 
 ## Properties

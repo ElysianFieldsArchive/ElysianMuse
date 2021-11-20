@@ -25,7 +25,7 @@ class AuthController {
         return if (token == null) {
             ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Username or password wrong!")
         } else {
-            ResponseEntity.ok().body("User logged in successfully")
+            ResponseEntity.ok().body(token)
         }
     }
 

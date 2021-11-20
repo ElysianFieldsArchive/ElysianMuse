@@ -99,6 +99,11 @@ class UserService(
      * Deletes a [User] from the database
      *
      * @param user the [User] to be deleted
+     *
+     * TODO: deal with created content by this user
+     *  * assign stories and chapters to orphan accounts
+     *  * replace username in private messages and comments
+     *  * other occurrences where a user might be involved
      */
     @Transactional
     fun deleteUser(user: User) {
@@ -109,11 +114,6 @@ class UserService(
                 user
             }
 
-        /*TODO: deal with created content by this user
-         *  * assign stories and chapters to orphan accounts
-         *  * replace username in private messages and comments
-         *  * other occurrences where a user might be involved
-         */
         userRepository.delete(deletedUser)
     }
 

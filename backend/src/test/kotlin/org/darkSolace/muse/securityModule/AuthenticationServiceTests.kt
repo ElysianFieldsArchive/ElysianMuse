@@ -1,15 +1,17 @@
 package org.darkSolace.muse.securityModule
 
 import org.darkSolace.muse.DBClearer
-import org.darkSolace.muse.securityModule.controller.AuthController
 import org.darkSolace.muse.securityModule.model.LoginRequest
 import org.darkSolace.muse.securityModule.model.SignUpResponse
 import org.darkSolace.muse.securityModule.model.SignupRequest
 import org.darkSolace.muse.securityModule.service.AuthenticationService
+import org.darkSolace.muse.userModule.model.User
+import org.darkSolace.muse.userModule.service.UserRoleService
 import org.junit.Assert
 import org.junit.jupiter.api.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.security.authentication.LockedException
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
 import org.testcontainers.containers.PostgreSQLContainer
@@ -21,10 +23,10 @@ import org.testcontainers.junit.jupiter.Testcontainers
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 class AuthenticationServiceTests {
     @Autowired
-    lateinit var authController: AuthController
+    lateinit var authService: AuthenticationService
 
     @Autowired
-    lateinit var authService: AuthenticationService
+    lateinit var userRoleService: UserRoleService
 
     @Autowired
     lateinit var dbClearer: DBClearer
@@ -106,5 +108,20 @@ class AuthenticationServiceTests {
         val loginRequest = LoginRequest("test", "1234")
         val jwtToken = authService.authenticate(loginRequest)
         Assert.assertNull(jwtToken)
+    }
+
+    @Test
+    @Order(6)
+    fun testSignIn_SuspendedUser() {
+        val signupRequest = SignupRequest("test", "123", "test@example.com")
+        val response = authService.signUpUser(signupRequest)
+        Assert.assertEquals(SignUpResponse.OK, response)
+        userRoleService.suspendUser(User(username = "test", password = "", email = "test@example.com"))
+
+        val exception = Assertions.assertThrows(LockedException::class.java) {
+            authService.authenticate(LoginRequest("test", "123"))
+        }
+
+        Assertions.assertEquals("User account is locked", exception.message)
     }
 }
