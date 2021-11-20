@@ -5,7 +5,21 @@
 [jvm]\
 @Entity
 
-data class [User](index.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?, username: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), password: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), email: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), realName: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?, signUpDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html), lastLogInDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)?, bio: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?, birthday: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)?, validatedAuthor: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html), onProbation: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html), userSettings: [UserSettings](../-user-settings/index.md), userTags: [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html)&lt;[UserTag](../-user-tag/index.md)&gt;, avatar: [Avatar](../-avatar/index.md)?, role: [Role](../-role/index.md))
+data class [User](index.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?,
+username: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html),
+password: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html),
+salt: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html),
+email: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html),
+realName: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?,
+signUpDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html),
+lastLogInDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)?,
+bio: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?,
+birthday: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)?,
+validatedAuthor: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html),
+onProbation: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html),
+userSettings: [UserSettings](../-user-settings/index.md),
+userTags: [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html)&lt;[UserTag](
+../-user-tag/index.md)&gt;, avatar: [Avatar](../-avatar/index.md)?, role: [Role](../-role/index.md))
 
 The [User](index.md) model class
 
@@ -15,7 +29,7 @@ Holds all values containing to a registered user.
 
 | | |
 |---|---|
-| [User](-user.md) | [jvm]<br>fun [User](-user.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null, username: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), password: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), email: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), realName: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null, signUpDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html) = Date(), lastLogInDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)? = null, bio: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null, birthday: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)? = null, validatedAuthor: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false, onProbation: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false, userSettings: [UserSettings](../-user-settings/index.md) = UserSettings(), userTags: [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html)&lt;[UserTag](../-user-tag/index.md)&gt; = mutableSetOf(), avatar: [Avatar](../-avatar/index.md)? = null, role: [Role](../-role/index.md) = Role.MEMBER) |
+| [User](-user.md) | [jvm]<br>fun [User](-user.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null, username: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), password: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), salt: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = BCrypt.gensalt(), email: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), realName: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null, signUpDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html) = Date(), lastLogInDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)? = null, bio: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null, birthday: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)? = null, validatedAuthor: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false, onProbation: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false, userSettings: [UserSettings](../-user-settings/index.md) = UserSettings(), userTags: [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html)&lt;[UserTag](../-user-tag/index.md)&gt; = mutableSetOf(), avatar: [Avatar](../-avatar/index.md)? = null, role: [Role](../-role/index.md) = Role.MEMBER) |
 
 ## Functions
 
@@ -39,6 +53,7 @@ Holds all values containing to a registered user.
 | [password](password.md) | [jvm]<br>var [password](password.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [realName](real-name.md) | [jvm]<br>var [realName](real-name.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null |
 | [role](role.md) | [jvm]<br>var [role](role.md): [Role](../-role/index.md) |
+| [salt](salt.md) | [jvm]<br>var [salt](salt.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [signUpDate](sign-up-date.md) | [jvm]<br>val [signUpDate](sign-up-date.md): [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html) |
 | [username](username.md) | [jvm]<br>val [username](username.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [userSettings](user-settings.md) | [jvm]<br>var [userSettings](user-settings.md): [UserSettings](../-user-settings/index.md) |

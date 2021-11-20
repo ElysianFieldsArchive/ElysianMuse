@@ -1,11 +1,13 @@
 package org.darkSolace.muse.userModule.service
 
+import org.darkSolace.muse.securityModule.model.SignupRequest
 import org.darkSolace.muse.userModule.model.*
 import org.darkSolace.muse.userModule.repository.AvatarRepository
 import org.darkSolace.muse.userModule.repository.UserRepository
 import org.darkSolace.muse.userModule.repository.UserSettingsRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull
+import org.springframework.security.crypto.bcrypt.BCrypt
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -23,6 +25,9 @@ class UserService(
 ) {
 
     fun createUser(user: User): User {
+        //hash the password before saving the user
+        user.password = BCrypt.hashpw(user.password, user.salt)
+
         userRepository.save(user)
         return user
     }
@@ -138,5 +143,20 @@ class UserService(
         userSettingsRepository.delete(oldSettings)
 
         return changedUser
+    }
+
+    /**
+     * Creates a user from a [SignupRequest]
+     *
+     * @param signUpRequest The [SignupRequest] containing all required information
+     */
+    fun createUserFromSignUpRequest(signUpRequest: SignupRequest) {
+        val user = User(
+            username = signUpRequest.username,
+            password = signUpRequest.password,
+            email = signUpRequest.email
+        )
+
+        createUser(user)
     }
 }

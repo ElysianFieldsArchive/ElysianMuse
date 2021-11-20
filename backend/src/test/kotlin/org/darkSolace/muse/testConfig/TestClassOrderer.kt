@@ -15,6 +15,7 @@ class TestClassOrderer: ClassOrderer {
             "UserServiceTests" -> 2
             "UserTagServiceTests" -> 3
             "UserRoleServiceTests" -> 4
+            "AuthenticationServiceTests" -> 5
             else -> 99
         }
     }
