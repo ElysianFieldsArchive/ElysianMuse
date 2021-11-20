@@ -1,6 +1,5 @@
 package org.darkSolace.muse.userModule.service
 
-import org.darkSolace.muse.userModule.model.Role
 import org.darkSolace.muse.userModule.model.User
 import org.darkSolace.muse.userModule.model.UserTag
 import org.darkSolace.muse.userModule.repository.UserRepository

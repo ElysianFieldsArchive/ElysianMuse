@@ -141,19 +141,15 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Hejr4DnEEeyPHJs8624f1A" name="deleteUser">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_QPU98DnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_5B5TUDW4EeyghuCVBA5yaw" name="suspendUser">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_i71gYDnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_6Inq0DW4EeyghuCVBA5yaw" name="changeRole">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ktg5YDnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_msyCcDnEEeyPHJs8624f1A" name="role" type="_x2x_MDWyEeyghuCVBA5yaw"/>
-        </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_8EgvwDW4EeyghuCVBA5yaw" name="changeAvatar">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_omFtcDnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_qZ7poDnEEeyPHJs8624f1A" name="avatar" type="_5VoPADW1EeyghuCVBA5yaw"/>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_AgNfADW5EeyghuCVBA5yaw" name="getById">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_29c0kDnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw" direction="return"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_sCH9EEn3EeybnbdfBqhpEw" name="id">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_Bbh3wDW5EeyghuCVBA5yaw" name="getAll">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_70h4QDnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw" isUnique="false" direction="return">
@@ -164,17 +160,62 @@
         <ownedOperation xmi:type="uml:Operation" xmi:id="_CG4h4DW5EeyghuCVBA5yaw" name="getAllWithRole">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_CEah8DnFEeyPHJs8624f1A" type="_i0OmADWyEeyghuCVBA5yaw" direction="return"/>
         </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_GJLSoDW5EeyghuCVBA5yaw" name="addTagToUser">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_D0NEkDnFEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_FihnkDnFEeyPHJs8624f1A" name="tag" type="_APREsDXUEeyghuCVBA5yaw"/>
-        </ownedOperation>
-        <ownedOperation xmi:type="uml:Operation" xmi:id="_HDjQMDW5EeyghuCVBA5yaw" name="removeTagFromUser" visibility="public">
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_SovFUDnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
-          <ownedParameter xmi:type="uml:Parameter" xmi:id="_U3rpIDnEEeyPHJs8624f1A" name="tag" type="_APREsDXUEeyghuCVBA5yaw"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_ZsNVsEn3EeybnbdfBqhpEw" name="getAllWithUserTag">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_fIhNYEn3EeybnbdfBqhpEw" name="tag" type="_APREsDXUEeyghuCVBA5yaw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_htoOcEn3EeybnbdfBqhpEw" type="_i0OmADWyEeyghuCVBA5yaw" direction="return">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iuvGIEn3EeybnbdfBqhpEw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ivWKIEn3EeybnbdfBqhpEw" value="*"/>
+          </ownedParameter>
         </ownedOperation>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_KlfAkDnEEeyPHJs8624f1A" name="updateUserSettings">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_IZwTYDnFEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_NdjkcDnFEeyPHJs8624f1A" name="user" type="_vGsPoDXSEeyghuCVBA5yaw"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_KhjJYEn3EeybnbdfBqhpEw" name="UserRoleService">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_g9CpkEn4EeybnbdfBqhpEw" name="userRepository" type="_1yBpEECwEeyzvuYyfzLb-A"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_5B5TUDW4EeyghuCVBA5yaw" name="suspendUser">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_i71gYDnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_1BS3gEn3EeybnbdfBqhpEw" type="_i0OmADWyEeyghuCVBA5yaw" direction="return"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_6Inq0DW4EeyghuCVBA5yaw" name="changeRole">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ktg5YDnEEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_msyCcDnEEeyPHJs8624f1A" name="role" type="_x2x_MDWyEeyghuCVBA5yaw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_3ufdkEn3EeybnbdfBqhpEw" type="_i0OmADWyEeyghuCVBA5yaw" direction="return"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_SiuKgEn3EeybnbdfBqhpEw" name="UserTagService">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_hPqDkEn4EeybnbdfBqhpEw" name="userRepository" type="_1yBpEECwEeyzvuYyfzLb-A"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_GJLSoDW5EeyghuCVBA5yaw" name="addTagToUser">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_D0NEkDnFEeyPHJs8624f1A" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_FihnkDnFEeyPHJs8624f1A" name="tag" type="_APREsDXUEeyghuCVBA5yaw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_E_MeoEn4EeybnbdfBqhpEw" type="_i0OmADWyEeyghuCVBA5yaw" direction="return">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_F3zhoEn4EeybnbdfBqhpEw"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_5ejtAEn3EeybnbdfBqhpEw" name="removeTagFromUser">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_9beOgEn3EeybnbdfBqhpEw" name="user" type="_i0OmADWyEeyghuCVBA5yaw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="__ZzjcEn3EeybnbdfBqhpEw" name="tag" type="_APREsDXUEeyghuCVBA5yaw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_A1Rb4En4EeybnbdfBqhpEw" type="_i0OmADWyEeyghuCVBA5yaw" direction="return">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_B42YwEn4EeybnbdfBqhpEw"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_zVqmsEn4EeybnbdfBqhpEw" name="controller">
+      <packagedElement xmi:type="uml:Class" xmi:id="_DX8-kEn5EeybnbdfBqhpEw" name="UserRestController">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_E5FaIEn5EeybnbdfBqhpEw" name="userService" type="_OywNADW4EeyghuCVBA5yaw"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_IsUbMEn5EeybnbdfBqhpEw" name="getUserById">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_O_d0QEn5EeybnbdfBqhpEw" name="id" type="_i0OmADWyEeyghuCVBA5yaw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_Rvx_wEn5EeybnbdfBqhpEw" type="_i0OmADWyEeyghuCVBA5yaw" direction="return">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_S7DgEEn5EeybnbdfBqhpEw"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Vw32oEn5EeybnbdfBqhpEw" name="getAllUsers">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_aavkwEn5EeybnbdfBqhpEw" type="_i0OmADWyEeyghuCVBA5yaw" direction="return">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bFOsMEn5EeybnbdfBqhpEw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bFubcEn5EeybnbdfBqhpEw" value="*"/>
+          </ownedParameter>
         </ownedOperation>
       </packagedElement>
     </packagedElement>
@@ -231,6 +272,9 @@
   <packagedElement xmi:type="uml:Association" xmi:id="_WdP-kECwEeyzvuYyfzLb-A"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_5h_6wECwEeyzvuYyfzLb-A"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_hLqlEEDcEeyzvuYyfzLb-A"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_S8rGIEn4EeybnbdfBqhpEw"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Y6fvcEn4EeybnbdfBqhpEw"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_c_2l0En5EeybnbdfBqhpEw"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_ZlE5YDWzEeyghuCVBA5yaw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZlGHgDWzEeyghuCVBA5yaw" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
