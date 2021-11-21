@@ -1,4 +1,4 @@
-//[elysianmuse](../../../index.md)/[org.darkSolace.muse.securityModule.model](../index.md)/[SignupRequest](index.md)
+//[elysianmuse](../../../index.md)/[org.darkSolace.muse.securityModule.model](../index.md)/[SignUpRequest](index.md)
 /[username](username.md)
 
 # username

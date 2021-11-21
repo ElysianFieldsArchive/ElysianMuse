@@ -12,8 +12,8 @@
 
 | Name | Summary |
 |---|---|
-| [main](main.md) | [jvm]<br>fun [main](main.md)() |
-| [secretCheck](secret-check.md) | [jvm]<br>fun [secretCheck](secret-check.md)() |
+| [main](main.md) | [jvm]<br>fun [main](main.md)()<br>Starts Elysian Muse |
+| [secretCheck](secret-check.md) | [jvm]<br>fun [secretCheck](secret-check.md)()<br>Checks whether the chosen JWT Secret is large enough. If not the program is closed with an error. |
 
 ## Properties
 

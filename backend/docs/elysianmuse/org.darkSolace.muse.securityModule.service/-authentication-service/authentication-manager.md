@@ -4,7 +4,4 @@
 # authenticationManager
 
 [jvm]\
-
-@Autowired
-
-lateinit var [authenticationManager](authentication-manager.md): AuthenticationManager
+val [authenticationManager](authentication-manager.md): AuthenticationManager

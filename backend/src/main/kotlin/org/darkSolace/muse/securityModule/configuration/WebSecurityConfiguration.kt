@@ -17,29 +17,43 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 
-@Configuration
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 /**
  * Configuration class to configure authentication via JWT
  */
-class WebSecurityConfiguration : WebSecurityConfigurerAdapter() {
-    @Autowired
-    private lateinit var userDetailsService: UserDetailsService
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+class WebSecurityConfiguration(
+    @Autowired val userDetailsService: UserDetailsService,
+    @Autowired val unauthorizedHandler: AuthEntryPointJwt
+) : WebSecurityConfigurerAdapter() {
 
-    @Autowired
-    private lateinit var unauthorizedHandler: AuthEntryPointJwt
-
+    /**
+     * Configures the [AuthenticationManager], via [AuthenticationManagerBuilder],
+     * to use [UserDetailsService] and [BCryptPasswordEncoder]
+     */
     override fun configure(auth: AuthenticationManagerBuilder?) {
         auth?.userDetailsService(userDetailsService)?.passwordEncoder(passwordEncoder())
     }
 
+    /**
+     * Use the default [AuthenticationManager]
+     */
     @Bean
     override fun authenticationManager(): AuthenticationManager = super.authenticationManager()
 
+    /**
+     * Sets the password encoder to [BCryptPasswordEncoder]
+     */
     @Bean
     fun passwordEncoder() = BCryptPasswordEncoder()
 
+    /**
+     * The actual [WebSecurityConfiguration]. Defimes [AuthEntryPointJwt] as handler for unauthorized requests
+     * and allows access to all API endpoints.
+     *
+     * Access to API endpoints is configured in each RestController via `@PreAuthorize`
+     */
     override fun configure(http: HttpSecurity?) {
         if (http == null) return
 

@@ -4,4 +4,5 @@
 # AuthController
 
 [jvm]\
-fun [AuthController](-auth-controller.md)()
+fun [AuthController](-auth-controller.md)(
+@AutowiredauthenticationService: [AuthenticationService](../../org.darkSolace.muse.securityModule.service/-authentication-service/index.md))

@@ -1,6 +1,6 @@
 package org.darkSolace.muse.userModule.service
 
-import org.darkSolace.muse.securityModule.model.SignupRequest
+import org.darkSolace.muse.securityModule.model.SignUpRequest
 import org.darkSolace.muse.userModule.model.*
 import org.darkSolace.muse.userModule.repository.AvatarRepository
 import org.darkSolace.muse.userModule.repository.UserRepository
@@ -24,6 +24,10 @@ class UserService(
     @Autowired val userSettingsRepository: UserSettingsRepository
 ) {
 
+    /**
+     * Creates and persists a [User] in the database
+     * Password is hashed in the process
+     */
     fun createUser(user: User): User {
         //hash the password before saving the user
         user.password = BCrypt.hashpw(user.password, user.salt)
@@ -37,7 +41,7 @@ class UserService(
      *
      * @param user the [User] to modify
      * @param avatar the new [Avatar]
-     * @return the modified [User] or null if the [User] was not found
+     * @return the modified [User] or `null` if the [User] was not found
      */
     @Transactional
     fun changeAvatar(user: User, avatar: Avatar): User? {
@@ -67,7 +71,7 @@ class UserService(
      * Finds a [User] by its ID
      *
      * @param id the ID as [Long]
-     * @return the found [User] or null
+     * @return the found [User] or `null`
      */
     @Transactional
     fun getById(id: Long) = userRepository.findByIdOrNull(id)
@@ -122,7 +126,7 @@ class UserService(
      *
      * @param user the [User] to be modified
      * @param settings the new [UserSettings] to be applied
-     * @return the modified [User] or null if the [User] does not exist
+     * @return the modified [User] or `null` if the [User] does not exist
      */
     @Transactional
     fun updateUserSettings(user: User, settings: UserSettings): User? {
@@ -146,11 +150,11 @@ class UserService(
     }
 
     /**
-     * Creates a user from a [SignupRequest]
+     * Creates a user from a [SignUpRequest]
      *
-     * @param signUpRequest The [SignupRequest] containing all required information
+     * @param signUpRequest The [SignUpRequest] containing all required information
      */
-    fun createUserFromSignUpRequest(signUpRequest: SignupRequest) {
+    fun createUserFromSignUpRequest(signUpRequest: SignUpRequest) {
         val user = User(
             username = signUpRequest.username,
             password = signUpRequest.password,

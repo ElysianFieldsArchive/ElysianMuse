@@ -8,17 +8,18 @@
 
 @RequestMapping(value = ["api/auth"])
 
-class [AuthController](index.md)
+class [AuthController](index.md)(
+@AutowiredauthenticationService: [AuthenticationService](../../org.darkSolace.muse.securityModule.service/-authentication-service/index.md))
 
 ## Functions
 
 | Name | Summary |
 |---|---|
-| [authenticateUser](authenticate-user.md) | [jvm]<br>@PostMapping(value = ["/signin"])<br>fun [authenticateUser](authenticate-user.md)(@RequestBodyloginRequest: [LoginRequest](../../org.darkSolace.muse.securityModule.model/-login-request/index.md)): ResponseEntity&lt;*&gt;? |
-| [registerUser](register-user.md) | [jvm]<br>@PostMapping(value = ["/signup"])<br>fun [registerUser](register-user.md)(@RequestBodysignUpRequest: [SignupRequest](../../org.darkSolace.muse.securityModule.model/-signup-request/index.md)): ResponseEntity&lt;[String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)&gt; |
+| [authenticateUser](authenticate-user.md) | [jvm]<br>@PostMapping(value = ["/signin"])<br>fun [authenticateUser](authenticate-user.md)(@RequestBodyloginRequest: [LoginRequest](../../org.darkSolace.muse.securityModule.model/-login-request/index.md)): ResponseEntity&lt;*&gt;?<br>Checks a transmitted [LoginRequest](../../org.darkSolace.muse.securityModule.model/-login-request/index.md) for a valid username/password pair. Listens on /api/auth/signin. |
+| [registerUser](register-user.md) | [jvm]<br>@PostMapping(value = ["/signup"])<br>fun [registerUser](register-user.md)(@RequestBodysignUpRequest: [SignUpRequest](../../org.darkSolace.muse.securityModule.model/-sign-up-request/index.md)): ResponseEntity&lt;*&gt;<br>Checks a transmitted [SignUpRequest](../../org.darkSolace.muse.securityModule.model/-sign-up-request/index.md) and creates a user if possible. Listens on /api/auth/signup. |
 
 ## Properties
 
 | Name | Summary |
 |---|---|
-| [authenticationService](authentication-service.md) | [jvm]<br>@Autowired<br>lateinit var [authenticationService](authentication-service.md): [AuthenticationService](../../org.darkSolace.muse.securityModule.service/-authentication-service/index.md) |
+| [authenticationService](authentication-service.md) | [jvm]<br>val [authenticationService](authentication-service.md): [AuthenticationService](../../org.darkSolace.muse.securityModule.service/-authentication-service/index.md) |

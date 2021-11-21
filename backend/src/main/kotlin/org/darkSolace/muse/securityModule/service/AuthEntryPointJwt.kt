@@ -6,8 +6,18 @@ import org.springframework.stereotype.Component
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
+/**
+ * [Component] to handle unauthorised access to an endpoint
+ *
+ * @see [AuthenticationEntryPoint]
+ */
 @Component
 class AuthEntryPointJwt : AuthenticationEntryPoint {
+
+    /**
+     * Handles the request when an endpoint is accessed without authorisation.
+     * Leads to an 401 UNAUTHORIZED HTTP Status code.
+     */
     override fun commence(
         request: HttpServletRequest?,
         response: HttpServletResponse?,

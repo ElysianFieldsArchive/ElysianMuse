@@ -4,7 +4,4 @@
 # jwtUtils
 
 [jvm]\
-
-@Autowired
-
-lateinit var [jwtUtils](jwt-utils.md): [JwtUtils](../-jwt-utils/index.md)
+val [jwtUtils](jwt-utils.md): [JwtUtils](../-jwt-utils/index.md)

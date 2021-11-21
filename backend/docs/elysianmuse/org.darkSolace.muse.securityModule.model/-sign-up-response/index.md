@@ -6,6 +6,8 @@
 enum [SignUpResponse](index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html)&lt;[SignUpResponse](
 index.md)&gt;
 
+Enumeration containing all states of a [SignUpRequest](../-sign-up-request/index.md)
+
 ## Entries
 
 | | |

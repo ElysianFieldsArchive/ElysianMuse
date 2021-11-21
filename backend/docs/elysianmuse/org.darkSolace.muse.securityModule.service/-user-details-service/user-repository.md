@@ -4,8 +4,4 @@
 # userRepository
 
 [jvm]\
-
-@Autowired
-
-lateinit
-var [userRepository](user-repository.md): [UserRepository](../../org.darkSolace.muse.userModule.repository/-user-repository/index.md)
+val [userRepository](user-repository.md): [UserRepository](../../org.darkSolace.muse.userModule.repository/-user-repository/index.md)

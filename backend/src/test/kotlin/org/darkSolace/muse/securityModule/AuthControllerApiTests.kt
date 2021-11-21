@@ -2,7 +2,7 @@ package org.darkSolace.muse.securityModule
 
 import org.darkSolace.muse.DBClearer
 import org.darkSolace.muse.securityModule.model.JwtResponse
-import org.darkSolace.muse.securityModule.model.SignupRequest
+import org.darkSolace.muse.securityModule.model.SignUpRequest
 import org.darkSolace.muse.userModule.model.User
 import org.darkSolace.muse.userModule.service.UserRoleService
 import org.junit.jupiter.api.*
@@ -64,7 +64,7 @@ class AuthControllerApiTests {
         val url = generateUrl("/api/auth/signup")
         val response = restTemplate.postForEntity(
             url,
-            SignupRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
 
@@ -78,7 +78,7 @@ class AuthControllerApiTests {
         val url = generateUrl("/api/auth/signup")
         val response = restTemplate.postForEntity(
             url,
-            SignupRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
 
@@ -87,7 +87,7 @@ class AuthControllerApiTests {
 
         val secondResponse = restTemplate.postForEntity(
             url,
-            SignupRequest("test", "123", "test2@example.com"),
+            SignUpRequest("test", "123", "test2@example.com"),
             String::class.java
         )
 
@@ -101,7 +101,7 @@ class AuthControllerApiTests {
         val url = generateUrl("/api/auth/signup")
         val response = restTemplate.postForEntity(
             url,
-            SignupRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
@@ -109,7 +109,7 @@ class AuthControllerApiTests {
 
         val secondResponse = restTemplate.postForEntity(
             url,
-            SignupRequest("test2", "123", "test@example.com"),
+            SignUpRequest("test2", "123", "test@example.com"),
             String::class.java
         )
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, secondResponse.statusCode)
@@ -122,7 +122,7 @@ class AuthControllerApiTests {
         val url = generateUrl("/api/auth/signup")
         val response = restTemplate.postForEntity(
             url,
-            SignupRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
@@ -131,7 +131,7 @@ class AuthControllerApiTests {
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
             url2,
-            SignupRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123", "test@example.com"),
             JwtResponse::class.java
         )
         Assertions.assertEquals(HttpStatus.OK, secondResponse.statusCode)
@@ -146,7 +146,7 @@ class AuthControllerApiTests {
         val url = generateUrl("/api/auth/signup")
         val response = restTemplate.postForEntity(
             url,
-            SignupRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
@@ -155,7 +155,7 @@ class AuthControllerApiTests {
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
             url2,
-            SignupRequest("test", "1234", "test@example.com"),
+            SignUpRequest("test", "1234", "test@example.com"),
             String::class.java
         )
         Assertions.assertEquals(HttpStatus.UNAUTHORIZED, secondResponse.statusCode)
@@ -169,7 +169,7 @@ class AuthControllerApiTests {
         val url = generateUrl("/api/auth/signup")
         val response = restTemplate.postForEntity(
             url,
-            SignupRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
@@ -180,7 +180,7 @@ class AuthControllerApiTests {
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
             url2,
-            SignupRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
         Assertions.assertEquals(HttpStatus.UNAUTHORIZED, secondResponse.statusCode)

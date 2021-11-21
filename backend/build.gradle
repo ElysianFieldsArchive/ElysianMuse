@@ -85,10 +85,12 @@ jacocoTestReport {
 }
 
 task copyDocs(type: Copy,dependsOn: [dokkaGfm]) {
-    delete("${projectDir}/docs")
-    copy {
-        from "${buildDir}/dokka/gfm"
-        into "${projectDir}/docs"
+    doLast {
+        delete("${projectDir}/docs")
+        copy {
+            from "${buildDir}/dokka/gfm"
+            into "${projectDir}/docs"
+        }
     }
 }
 

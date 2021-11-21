@@ -5,6 +5,22 @@
 [jvm]\
 class [AuthTokenFilter](index.md) : OncePerRequestFilter
 
+Filter to check the provided authorization for validity
+
+## See also
+
+jvm
+
+| | |
+|---|---|
+| org.springframework.web.filter.OncePerRequestFilter |  |
+
+## Constructors
+
+| | |
+|---|---|
+| [AuthTokenFilter](-auth-token-filter.md) | [jvm]<br>fun [AuthTokenFilter](-auth-token-filter.md)() |
+
 ## Functions
 
 | Name | Summary |

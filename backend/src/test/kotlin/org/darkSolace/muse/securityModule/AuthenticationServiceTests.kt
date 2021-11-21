@@ -2,8 +2,8 @@ package org.darkSolace.muse.securityModule
 
 import org.darkSolace.muse.DBClearer
 import org.darkSolace.muse.securityModule.model.LoginRequest
+import org.darkSolace.muse.securityModule.model.SignUpRequest
 import org.darkSolace.muse.securityModule.model.SignUpResponse
-import org.darkSolace.muse.securityModule.model.SignupRequest
 import org.darkSolace.muse.securityModule.service.AuthenticationService
 import org.darkSolace.muse.userModule.model.User
 import org.darkSolace.muse.userModule.service.UserRoleService
@@ -57,7 +57,7 @@ class AuthenticationServiceTests {
     @Test
     @Order(1)
     fun testSignUp() {
-        val signupRequest = SignupRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
         Assert.assertEquals(SignUpResponse.OK, response)
     }
@@ -65,11 +65,11 @@ class AuthenticationServiceTests {
     @Test
     @Order(2)
     fun testSignUp_DuplicateUsername() {
-        val signupRequest = SignupRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
         Assert.assertEquals(SignUpResponse.OK, response)
 
-        val secondSignupRequest = SignupRequest("test", "123", "test2@example.com")
+        val secondSignupRequest = SignUpRequest("test", "123", "test2@example.com")
         val secondResponse = authService.signUpUser(secondSignupRequest)
         Assert.assertEquals(SignUpResponse.USERNAME_EXISTS, secondResponse)
     }
@@ -77,11 +77,11 @@ class AuthenticationServiceTests {
     @Test
     @Order(3)
     fun testSignUp_DuplicateEMail() {
-        val signupRequest = SignupRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
         Assert.assertEquals(SignUpResponse.OK, response)
 
-        val secondSignupRequest = SignupRequest("test2", "123", "test@example.com")
+        val secondSignupRequest = SignUpRequest("test2", "123", "test@example.com")
         val secondResponse = authService.signUpUser(secondSignupRequest)
         Assert.assertEquals(SignUpResponse.EMAIL_EXISTS, secondResponse)
     }
@@ -89,7 +89,7 @@ class AuthenticationServiceTests {
     @Test
     @Order(4)
     fun testSignIn() {
-        val signupRequest = SignupRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
         Assert.assertEquals(SignUpResponse.OK, response)
 
@@ -101,7 +101,7 @@ class AuthenticationServiceTests {
     @Test
     @Order(5)
     fun testSignIn_WrongPassword() {
-        val signupRequest = SignupRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
         Assert.assertEquals(SignUpResponse.OK, response)
 
@@ -113,7 +113,7 @@ class AuthenticationServiceTests {
     @Test
     @Order(6)
     fun testSignIn_SuspendedUser() {
-        val signupRequest = SignupRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
         Assert.assertEquals(SignUpResponse.OK, response)
         userRoleService.suspendUser(User(username = "test", password = "", email = "test@example.com"))

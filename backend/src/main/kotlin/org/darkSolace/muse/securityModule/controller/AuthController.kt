@@ -1,8 +1,8 @@
 package org.darkSolace.muse.securityModule.controller
 
 import org.darkSolace.muse.securityModule.model.LoginRequest
+import org.darkSolace.muse.securityModule.model.SignUpRequest
 import org.darkSolace.muse.securityModule.model.SignUpResponse
-import org.darkSolace.muse.securityModule.model.SignupRequest
 import org.darkSolace.muse.securityModule.service.AuthenticationService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -15,12 +15,17 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("api/auth")
-class AuthController {
-    @Autowired
-    lateinit var authenticationService: AuthenticationService
-
+class AuthController(@Autowired val authenticationService: AuthenticationService) {
+    /**
+     * Checks a transmitted [LoginRequest] for a valid username/password pair. Listens on /api/auth/signin.
+     *
+     * @sample `curl localhost:8080/api/auth/signin`
+     * @param loginRequest a [LoginRequest] containing username and password
+     * @return a [org.darkSolace.muse.securityModule.model.JwtResponse] containing
+     * a token or HTTP 401 is username or password are invalid
+     */
     @PostMapping("/signin")
-    fun authenticateUser(/*@Valid*/ @RequestBody loginRequest: LoginRequest): ResponseEntity<*>? {
+    fun authenticateUser(@RequestBody loginRequest: LoginRequest): ResponseEntity<*>? {
         val token = authenticationService.authenticate(loginRequest)
         return if (token == null) {
             ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Username or password wrong!")
@@ -29,8 +34,15 @@ class AuthController {
         }
     }
 
+    /**
+     * Checks a transmitted [SignUpRequest] and creates a user if possible. Listens on /api/auth/signup.
+     *
+     * @sample `curl localhost:8080/api/auth/signup`
+     * @param signUpRequest a [SignUpRequest] containing username, password and email address
+     * @return HTTP-Status 200 OK if user was created successfully or 400 BAD REQUEST if an error occurred
+     */
     @PostMapping("/signup")
-    fun registerUser(/*@Valid*/ @RequestBody signUpRequest: SignupRequest): ResponseEntity<String> {
+    fun registerUser(@RequestBody signUpRequest: SignUpRequest): ResponseEntity<*> {
         return when (authenticationService.signUpUser(signUpRequest)) {
             SignUpResponse.USERNAME_EXISTS -> {
                 ResponseEntity

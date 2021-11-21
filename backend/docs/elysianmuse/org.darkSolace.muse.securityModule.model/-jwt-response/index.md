@@ -6,8 +6,24 @@
 class [JwtResponse](index.md)(token: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?,
 id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?,
 username: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html),
-email: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html),
-name: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html))
+email: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html))
+
+[JwtResponse](index.md) class containing the token, user id, username and email. Used as after a successful login to
+transmit all required data.
+
+## See also
+
+jvm
+
+| | |
+|---|---|
+| [org.darkSolace.muse.securityModule.controller.AuthController](../../org.darkSolace.muse.securityModule.controller/-auth-controller/authenticate-user.md) |  |
+
+## Constructors
+
+| | |
+|---|---|
+| [JwtResponse](-jwt-response.md) | [jvm]<br>fun [JwtResponse](-jwt-response.md)(token: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?, id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?, username: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), email: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)) |
 
 ## Properties
 
@@ -15,6 +31,5 @@ name: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index
 |---|---|
 | [email](email.md) | [jvm]<br>val [email](email.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [id](id.md) | [jvm]<br>val [id](id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? |
-| [name](name.md) | [jvm]<br>val [name](name.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [token](token.md) | [jvm]<br>val [token](token.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? |
 | [username](username.md) | [jvm]<br>val [username](username.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |

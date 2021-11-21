@@ -4,8 +4,4 @@
 # authenticationService
 
 [jvm]\
-
-@Autowired
-
-lateinit
-var [authenticationService](authentication-service.md): [AuthenticationService](../../org.darkSolace.muse.securityModule.service/-authentication-service/index.md)
+val [authenticationService](authentication-service.md): [AuthenticationService](../../org.darkSolace.muse.securityModule.service/-authentication-service/index.md)

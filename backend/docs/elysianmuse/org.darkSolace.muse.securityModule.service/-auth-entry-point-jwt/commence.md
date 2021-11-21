@@ -6,3 +6,5 @@
 [jvm]\
 open override fun [commence](commence.md)(request: HttpServletRequest?, response: HttpServletResponse?, authException:
 AuthenticationException?)
+
+Handles the request when an endpoint is accessed without authorisation. Leads to an 401 UNAUTHORIZED HTTP Status code.

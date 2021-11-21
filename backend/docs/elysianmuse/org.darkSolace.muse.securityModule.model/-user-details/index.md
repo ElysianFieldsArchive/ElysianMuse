@@ -5,12 +5,20 @@
 [jvm]\
 class [UserDetails](index.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md)) : UserDetails
 
+UserDetails model to pass required information to
+the [org.darkSolace.muse.securityModule.service.AuthTokenFilter](../../org.darkSolace.muse.securityModule.service/-auth-token-filter/index.md)
+
+## Constructors
+
+| | |
+|---|---|
+| [UserDetails](-user-details.md) | [jvm]<br>fun [UserDetails](-user-details.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md)) |
+
 ## Functions
 
 | Name | Summary |
 |---|---|
 | [getAuthorities](get-authorities.md) | [jvm]<br>open override fun [getAuthorities](get-authorities.md)(): [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html)&lt;GrantedAuthority&gt; |
-| [getEmail](get-email.md) | [jvm]<br>fun [getEmail](get-email.md)(): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [getPassword](get-password.md) | [jvm]<br>open override fun [getPassword](get-password.md)(): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [getUsername](get-username.md) | [jvm]<br>open override fun [getUsername](get-username.md)(): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [isAccountNonExpired](is-account-non-expired.md) | [jvm]<br>open override fun [isAccountNonExpired](is-account-non-expired.md)(): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) |

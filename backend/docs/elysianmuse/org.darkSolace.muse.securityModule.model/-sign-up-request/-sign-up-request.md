@@ -1,10 +1,10 @@
-//[elysianmuse](../../../index.md)/[org.darkSolace.muse.securityModule.model](../index.md)/[SignupRequest](index.md)
-/[SignupRequest](-signup-request.md)
+//[elysianmuse](../../../index.md)/[org.darkSolace.muse.securityModule.model](../index.md)/[SignUpRequest](index.md)
+/[SignUpRequest](-sign-up-request.md)
 
-# SignupRequest
+# SignUpRequest
 
 [jvm]\
-fun [SignupRequest](-signup-request.md)(
+fun [SignUpRequest](-sign-up-request.md)(
 username: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html),
 password: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html),
 email: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html))

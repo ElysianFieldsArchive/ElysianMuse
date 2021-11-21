@@ -11,13 +11,22 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 
+/**
+ * Filter to check the provided authorization for validity
+ *
+ * @see [OncePerRequestFilter]
+ */
 class AuthTokenFilter : OncePerRequestFilter() {
     @Autowired
     lateinit var jwtUtils: JwtUtils
-
     @Autowired
     lateinit var userDetailsService: UserDetailsService
 
+    /**
+     * Checks and stores the authentication for a request
+     *
+     * @see [OncePerRequestFilter.doFilterInternal]
+     */
     override fun doFilterInternal(
         request: HttpServletRequest,
         response: HttpServletResponse,
@@ -45,6 +54,12 @@ class AuthTokenFilter : OncePerRequestFilter() {
         filterChain.doFilter(request, response)
     }
 
+    /**
+     * Extracts the JWT from a [HttpServletRequest]
+     *
+     * @param request the [HttpServletRequest] containing the authentication as a "Bearer"-Header
+     * @return the extracted JWT or `null` if authentication is missing
+     */
     private fun parseJwt(request: HttpServletRequest): String? {
         val authHeader = request.getHeader("Authorization")
 

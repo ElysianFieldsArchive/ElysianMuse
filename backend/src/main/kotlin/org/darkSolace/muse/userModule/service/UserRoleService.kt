@@ -19,7 +19,7 @@ class UserRoleService(@Autowired val userRepository: UserRepository) {
      * Suspends the provided [User] and persists it in the database
      *
      * @param user the [User] to be suspended
-     * @return the suspended [User] or null if the [User] was not found
+     * @return the suspended [User] or `null` if the [User] was not found
      */
     @Transactional
     fun suspendUser(user: User): User? {
@@ -31,7 +31,7 @@ class UserRoleService(@Autowired val userRepository: UserRepository) {
      *
      * @param user the [User] to modify
      * @param role the new [Role] of this [User]
-     * @return the modified [User] or null if the [User] was not found
+     * @return the modified [User] or `null` if the [User] was not found
      */
     @Transactional
     fun changeRole(user: User, role: Role): User? {

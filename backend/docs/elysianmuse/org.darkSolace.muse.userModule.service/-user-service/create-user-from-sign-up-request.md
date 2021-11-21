@@ -5,9 +5,9 @@
 
 [jvm]\
 fun [createUserFromSignUpRequest](create-user-from-sign-up-request.md)(
-signUpRequest: [SignupRequest](../../org.darkSolace.muse.securityModule.model/-signup-request/index.md))
+signUpRequest: [SignUpRequest](../../org.darkSolace.muse.securityModule.model/-sign-up-request/index.md))
 
-Creates a user from a [SignupRequest](../../org.darkSolace.muse.securityModule.model/-signup-request/index.md)
+Creates a user from a [SignUpRequest](../../org.darkSolace.muse.securityModule.model/-sign-up-request/index.md)
 
 ## Parameters
 
@@ -15,4 +15,4 @@ jvm
 
 | | |
 |---|---|
-| signUpRequest | The [SignupRequest](../../org.darkSolace.muse.securityModule.model/-signup-request/index.md) containing all required information |
+| signUpRequest | The [SignUpRequest](../../org.darkSolace.muse.securityModule.model/-sign-up-request/index.md) containing all required information |

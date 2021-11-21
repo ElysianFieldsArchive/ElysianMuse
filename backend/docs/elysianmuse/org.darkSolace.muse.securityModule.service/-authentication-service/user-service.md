@@ -4,8 +4,4 @@
 # userService
 
 [jvm]\
-
-@Autowired
-
-lateinit
-var [userService](user-service.md): [UserService](../../org.darkSolace.muse.userModule.service/-user-service/index.md)
+val [userService](user-service.md): [UserService](../../org.darkSolace.muse.userModule.service/-user-service/index.md)

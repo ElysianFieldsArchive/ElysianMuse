@@ -6,4 +6,4 @@
 
 | Name | Summary |
 |---|---|
-| [AuthController](-auth-controller/index.md) | [jvm]<br>@RestController<br>@RequestMapping(value = ["api/auth"])<br>class [AuthController](-auth-controller/index.md) |
+| [AuthController](-auth-controller/index.md) | [jvm]<br>@RestController<br>@RequestMapping(value = ["api/auth"])<br>class [AuthController](-auth-controller/index.md)(@AutowiredauthenticationService: [AuthenticationService](../org.darkSolace.muse.securityModule.service/-authentication-service/index.md)) |

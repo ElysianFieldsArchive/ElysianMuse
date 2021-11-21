@@ -13,25 +13,25 @@ import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
 
+/**
+ * [Service] to handle everything in regard to authentication.
+ */
 @Service
-class AuthenticationService {
+class AuthenticationService(
+    @Autowired val authenticationManager: AuthenticationManager,
+    @Autowired val userRepository: UserRepository,
+    @Autowired val userService: UserService,
+    @Autowired val jwtUtils: JwtUtils
+) {
     private val logger = LoggerFactory.getLogger(this::class.simpleName)
 
-    @Autowired
-    lateinit var authenticationManager: AuthenticationManager
-
-    @Autowired
-    lateinit var userRepository: UserRepository
-
-    @Autowired
-    lateinit var userService: UserService
-
-    @Autowired
-    lateinit var jwtUtils: JwtUtils
-
     /**
+     * Tries to authenticate a user.
      *
      * TODO: Distinguish between wrong credentials and suspended users
+     *
+     * @param loginRequest [LoginRequest] containing username and password
+     * @return [JwtResponse] containing the token or `null` if authentication failed
      */
     fun authenticate(loginRequest: LoginRequest): JwtResponse? {
         try {
@@ -46,7 +46,6 @@ class AuthenticationService {
                 jwt,
                 userDetails.user.id,
                 userDetails.username,
-                userDetails.getEmail(),
                 role.name
             )
         } catch (e: BadCredentialsException) {
@@ -55,7 +54,13 @@ class AuthenticationService {
         }
     }
 
-    fun signUpUser(signUpRequest: SignupRequest): SignUpResponse {
+    /**
+     * Creates a user with information provided via a [SignUpRequest]
+     *
+     * @param signUpRequest [SignUpRequest] containing username, password and email
+     * @return [SignUpResponse] containing the signup status
+     */
+    fun signUpUser(signUpRequest: SignUpRequest): SignUpResponse {
         return when {
             userRepository.existsByUsername(signUpRequest.username) ->
                 SignUpResponse.USERNAME_EXISTS

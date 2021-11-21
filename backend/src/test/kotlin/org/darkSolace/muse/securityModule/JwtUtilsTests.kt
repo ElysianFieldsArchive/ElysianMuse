@@ -7,7 +7,7 @@ import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
 import org.darkSolace.muse.DBClearer
-import org.darkSolace.muse.securityModule.model.SignupRequest
+import org.darkSolace.muse.securityModule.model.SignUpRequest
 import org.darkSolace.muse.securityModule.service.AuthenticationService
 import org.darkSolace.muse.securityModule.service.JwtUtils
 import org.junit.jupiter.api.*
@@ -73,7 +73,7 @@ internal class JwtUtilsTests {
 
     @Test
     fun generateJwtToken() {
-        authService.signUpUser(SignupRequest("test", "123", "test@example.com"))
+        authService.signUpUser(SignUpRequest("test", "123", "test@example.com"))
         val authentication: Authentication = authenticationManager.authenticate(
             UsernamePasswordAuthenticationToken("test", "123")
         )
@@ -84,7 +84,7 @@ internal class JwtUtilsTests {
 
     @Test
     fun getUserNameFromJwtToken() {
-        authService.signUpUser(SignupRequest("test", "123", "test@example.com"))
+        authService.signUpUser(SignUpRequest("test", "123", "test@example.com"))
         val authentication: Authentication = authenticationManager.authenticate(
             UsernamePasswordAuthenticationToken("test", "123")
         )
@@ -95,7 +95,7 @@ internal class JwtUtilsTests {
 
     @Test
     fun validateJwtToken() {
-        authService.signUpUser(SignupRequest("test", "123", "test@example.com"))
+        authService.signUpUser(SignUpRequest("test", "123", "test@example.com"))
         val authentication: Authentication = authenticationManager.authenticate(
             UsernamePasswordAuthenticationToken("test", "123")
         )
@@ -107,7 +107,7 @@ internal class JwtUtilsTests {
 
     @Test
     fun validateJwtToken_invalid() {
-        authService.signUpUser(SignupRequest("test", "123", "test@example.com"))
+        authService.signUpUser(SignUpRequest("test", "123", "test@example.com"))
         val authentication: Authentication = authenticationManager.authenticate(
             UsernamePasswordAuthenticationToken("test", "123")
         )
