@@ -19,7 +19,8 @@ class AuthController(@Autowired val authenticationService: AuthenticationService
     /**
      * Checks a transmitted [LoginRequest] for a valid username/password pair. Listens on /api/auth/signin.
      *
-     * @sample `curl localhost:8080/api/auth/signin`
+     * @sample `curl -X POST -H "Content-Type: application/json" -d '{ "username": "test", "password": "123" }'
+     *          172.22.128.1:8000/api/auth/signin`
      * @param loginRequest a [LoginRequest] containing username and password
      * @return a [org.darkSolace.muse.securityModule.model.JwtResponse] containing
      * a token or HTTP 401 is username or password are invalid
@@ -37,7 +38,9 @@ class AuthController(@Autowired val authenticationService: AuthenticationService
     /**
      * Checks a transmitted [SignUpRequest] and creates a user if possible. Listens on /api/auth/signup.
      *
-     * @sample `curl localhost:8080/api/auth/signup`
+     * @sample `curl -X POST -H "Content-Type: application/json" -d
+     *          '{ "username": "test", "password": "123", "email": "test@example.com" }'
+     *          localhost:8000/api/auth/signup`
      * @param signUpRequest a [SignUpRequest] containing username, password and email address
      * @return HTTP-Status 200 OK if user was created successfully or 400 BAD REQUEST if an error occurred
      */

@@ -6,4 +6,4 @@ package org.darkSolace.muse.securityModule.model
  *
  * @see [org.darkSolace.muse.securityModule.controller.AuthController.authenticateUser]
  */
-class JwtResponse(val token: String?, val id: Long?, val username: String, val email: String)
+class JwtResponse(val token: String?, val id: Long?, val username: String, val role: String)
