@@ -41,7 +41,7 @@ interface UserRepository : CrudRepository<User, Long> {
      * @param username The username to check
      * @return [Boolean] weather the [User] already exists
      */
-    fun existsByUsername(username: String): Boolean
+    fun existsByUsernameIgnoreCase(username: String): Boolean
 
     /**
      * Checks if an eMail-Address is already in use by a [User]
@@ -49,5 +49,5 @@ interface UserRepository : CrudRepository<User, Long> {
      * @param email The email-address to check
      * @return [Boolean] weather the email-address is already in use
      */
-    fun existsByEmail(email: String): Boolean
+    fun existsByEmailIgnoreCase(email: String): Boolean
 }

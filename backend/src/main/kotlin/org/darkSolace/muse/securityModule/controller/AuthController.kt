@@ -7,6 +7,7 @@ import org.darkSolace.muse.securityModule.service.AuthenticationService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.security.authentication.InternalAuthenticationServiceException
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -20,18 +21,23 @@ class AuthController(@Autowired val authenticationService: AuthenticationService
      * Checks a transmitted [LoginRequest] for a valid username/password pair. Listens on /api/auth/signin.
      *
      * @sample `curl -X POST -H "Content-Type: application/json" -d '{ "username": "test", "password": "123" }'
-     *          172.22.128.1:8000/api/auth/signin`
+     *          localhost:8000/api/auth/signin`
      * @param loginRequest a [LoginRequest] containing username and password
      * @return a [org.darkSolace.muse.securityModule.model.JwtResponse] containing
      * a token or HTTP 401 is username or password are invalid
      */
     @PostMapping("/signin")
     fun authenticateUser(@RequestBody loginRequest: LoginRequest): ResponseEntity<*>? {
-        val token = authenticationService.authenticate(loginRequest)
-        return if (token == null) {
-            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Username or password wrong!")
-        } else {
-            ResponseEntity.ok().body(token)
+        return try {
+            val token = authenticationService.authenticate(loginRequest)
+            if (token == null) {
+                ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unknown username or wrong password!")
+            } else {
+                ResponseEntity.ok().body(token)
+            }
+        } catch (_: InternalAuthenticationServiceException) {
+
+            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unknown username or wrong password!")
         }
     }
 

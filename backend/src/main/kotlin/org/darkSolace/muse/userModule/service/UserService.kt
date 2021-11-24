@@ -28,7 +28,14 @@ class UserService(
      * Creates and persists a [User] in the database
      * Password is hashed in the process
      */
-    fun createUser(user: User): User {
+    fun createUser(user: User): User? {
+        //check if user already exists
+        if (userRepository.existsByUsernameIgnoreCase(user.username) ||
+            userRepository.existsByEmailIgnoreCase(user.email)
+        ) {
+            return null
+        }
+
         //hash the password before saving the user
         user.password = BCrypt.hashpw(user.password, user.salt)
 

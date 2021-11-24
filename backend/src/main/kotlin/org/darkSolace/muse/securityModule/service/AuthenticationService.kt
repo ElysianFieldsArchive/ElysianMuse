@@ -34,7 +34,7 @@ class AuthenticationService(
      * @return [JwtResponse] containing the token or `null` if authentication failed
      */
     fun authenticate(loginRequest: LoginRequest): JwtResponse? {
-        try {
+        return try {
             val authentication: Authentication = authenticationManager.authenticate(
                 UsernamePasswordAuthenticationToken(loginRequest.username, loginRequest.password)
             )
@@ -50,7 +50,7 @@ class AuthenticationService(
             )
         } catch (e: BadCredentialsException) {
             logger.error("Cannot set user authentication: {}", e)
-            return null
+            null
         }
     }
 
@@ -62,9 +62,9 @@ class AuthenticationService(
      */
     fun signUpUser(signUpRequest: SignUpRequest): SignUpResponse {
         return when {
-            userRepository.existsByUsername(signUpRequest.username) ->
+            userRepository.existsByUsernameIgnoreCase(signUpRequest.username) ->
                 SignUpResponse.USERNAME_EXISTS
-            userRepository.existsByEmail(signUpRequest.email) ->
+            userRepository.existsByEmailIgnoreCase(signUpRequest.email) ->
                 SignUpResponse.EMAIL_EXISTS
             else -> {
                 userService.createUserFromSignUpRequest(signUpRequest)

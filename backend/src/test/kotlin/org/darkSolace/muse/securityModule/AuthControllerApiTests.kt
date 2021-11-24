@@ -159,7 +159,7 @@ class AuthControllerApiTests {
             String::class.java
         )
         Assertions.assertEquals(HttpStatus.UNAUTHORIZED, secondResponse.statusCode)
-        Assertions.assertEquals("Username or password wrong!", secondResponse.body)
+        Assertions.assertEquals("Unknown username or wrong password!", secondResponse.body)
 
     }
 
@@ -184,5 +184,19 @@ class AuthControllerApiTests {
             String::class.java
         )
         Assertions.assertEquals(HttpStatus.UNAUTHORIZED, secondResponse.statusCode)
+    }
+
+    @Test
+    @Order(7)
+    fun testSignIn_UnknownUser() {
+        // no user created, trying to sign in with unknown user
+        val url = generateUrl("/api/auth/signin")
+        val response = restTemplate.postForEntity(
+            url,
+            SignUpRequest("test", "123", "test@example.com"),
+            String::class.java
+        )
+        Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.statusCode)
+        Assertions.assertEquals("Unknown username or wrong password!", response.body)
     }
 }

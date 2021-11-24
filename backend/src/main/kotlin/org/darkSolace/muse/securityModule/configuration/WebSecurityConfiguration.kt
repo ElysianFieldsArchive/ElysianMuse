@@ -49,7 +49,7 @@ class WebSecurityConfiguration(
     fun passwordEncoder() = BCryptPasswordEncoder()
 
     /**
-     * The actual [WebSecurityConfiguration]. Defimes [AuthEntryPointJwt] as handler for unauthorized requests
+     * The actual [WebSecurityConfiguration]. Defines [AuthEntryPointJwt] as handler for unauthorized requests
      * and allows access to all API endpoints.
      *
      * Access to API endpoints is configured in each RestController via `@PreAuthorize`

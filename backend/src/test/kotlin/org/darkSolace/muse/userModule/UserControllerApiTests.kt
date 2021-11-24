@@ -63,7 +63,7 @@ class UserControllerApiTests {
     fun getUserById() {
         val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
 
-        val url = generateUrl("/api/user/${user.id}")
+        val url = generateUrl("/api/user/${user?.id}")
         val response = restTemplate.getForEntity(url, User::class.java)
 
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
