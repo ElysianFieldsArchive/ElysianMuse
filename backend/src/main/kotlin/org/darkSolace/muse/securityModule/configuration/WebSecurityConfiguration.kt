@@ -28,6 +28,9 @@ class WebSecurityConfiguration(
     @Autowired val unauthorizedHandler: AuthEntryPointJwt
 ) : WebSecurityConfigurerAdapter() {
 
+    @Autowired
+    lateinit var authTokenFilter: AuthTokenFilter
+
     /**
      * Configures the [AuthenticationManager], via [AuthenticationManagerBuilder],
      * to use [UserDetailsService] and [BCryptPasswordEncoder]
@@ -65,6 +68,6 @@ class WebSecurityConfiguration(
             .antMatchers("/api/**").permitAll()
             .anyRequest().authenticated()
 
-        http.addFilterBefore(AuthTokenFilter(), UsernamePasswordAuthenticationFilter::class.java)
+        http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter::class.java)
     }
 }

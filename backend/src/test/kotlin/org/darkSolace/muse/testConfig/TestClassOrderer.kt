@@ -20,8 +20,9 @@ class TestClassOrderer: ClassOrderer {
             "UserDetailsServiceTests" -> 7
 
             //API Tests
-            "UserControllerApiTests" -> 97
-            "AuthControllerApiTests" -> 98
+            "UserControllerApiTests" -> 96
+            "AuthControllerApiTests" -> 97
+            "AuthControllerAccessTests" -> 98
             else -> 99
         }
     }
