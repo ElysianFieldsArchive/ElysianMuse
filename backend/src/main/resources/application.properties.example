@@ -10,4 +10,4 @@ spring.datasource.username=username
 spring.datasource.password=password
 spring.devtools.add-properties=false
 #log4j CVE-2021-44228
-log4j2.formatMsgNoLookups=
+log4j2.formatMsgNoLookups=true
