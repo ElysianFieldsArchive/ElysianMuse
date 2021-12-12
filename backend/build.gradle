@@ -11,8 +11,8 @@ plugins {
 
 group = 'org.darkSolace'
 version = '0.0.1-SNAPSHOT'
-def spring_version = '2.5.6'
-def kotlin_version = '1.5.31'
+def spring_version = '2.6.1'
+def kotlin_version = '1.6.0'
 
 configurations {
     compileOnly {
@@ -28,17 +28,18 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:${spring_version}"
     implementation "org.springframework.boot:spring-boot-starter-security:${spring_version}"
     implementation "org.springframework.boot:spring-boot-starter-web:${spring_version}"
+    implementation "org.apache.logging.log4j:log4j-bom:2.15.0"
     developmentOnly "org.springframework.boot:spring-boot-devtools:${spring_version}"
     runtimeOnly "org.postgresql:postgresql:42.3.1"
     runtimeOnly "org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${spring_version}"
     testImplementation "org.springframework.boot:spring-boot-starter-test:${spring_version}"
-    testImplementation "org.junit.jupiter:junit-jupiter:5.8.1"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.1"
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:5.8.1"
-    testImplementation "org.junit.jupiter:junit-jupiter-params:5.8.1"
-    testImplementation "org.junit.platform:junit-platform-commons:1.8.1"
-    testImplementation "org.junit.platform:junit-platform-engine:1.8.1"
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+    testImplementation 'org.junit.platform:junit-platform-commons:1.8.2'
+    testImplementation 'org.junit.platform:junit-platform-engine:1.8.2'
     testImplementation "org.springframework.security:spring-security-test:5.5.1"
     testImplementation 'org.testcontainers:junit-jupiter:1.16.2'
     testImplementation 'org.testcontainers:postgresql:1.16.2'
@@ -80,7 +81,7 @@ jacocoTestReport {
     }
 }
 
-task copyDocs(type: Copy,dependsOn: [dokkaGfm]) {
+task copyDocs(type: Copy, dependsOn: [dokkaGfm]) {
     delete("${projectDir}/docs")
     copy {
         from "${buildDir}/dokka/gfm"

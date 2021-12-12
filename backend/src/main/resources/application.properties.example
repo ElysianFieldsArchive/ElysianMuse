@@ -8,3 +8,6 @@ spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 spring.datasource.url=jdbc:postgresql://<localhost/domain/IP>:<port>/<databasename>
 spring.datasource.username=username
 spring.datasource.password=password
+spring.devtools.add-properties=false
+#log4j CVE-2021-44228
+log4j2.formatMsgNoLookups=
