@@ -1,13 +1,15 @@
 plugins {
-    id 'org.springframework.boot' version '2.5.6'
+    id 'org.springframework.boot' version '2.6.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'org.jetbrains.kotlin.jvm' version '1.5.31'
-    id 'org.jetbrains.kotlin.plugin.spring' version '1.5.31'
-    id 'org.jetbrains.kotlin.plugin.jpa' version '1.5.31'
-    id 'io.gitlab.arturbosch.detekt' version '1.18.1'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.0'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.6.0'
+    id 'org.jetbrains.kotlin.plugin.jpa' version '1.6.0'
+    id 'io.gitlab.arturbosch.detekt' version '1.19.0'
     id 'jacoco'
     id 'org.jetbrains.dokka' version '1.5.31'
 }
+
+ext['log4j2.version'] = '2.15.0'
 
 group = 'org.darkSolace'
 version = '0.0.1-SNAPSHOT'
@@ -28,7 +30,6 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:${spring_version}"
     implementation "org.springframework.boot:spring-boot-starter-security:${spring_version}"
     implementation "org.springframework.boot:spring-boot-starter-web:${spring_version}"
-    implementation "org.apache.logging.log4j:log4j-bom:2.15.0"
     developmentOnly "org.springframework.boot:spring-boot-devtools:${spring_version}"
     runtimeOnly "org.postgresql:postgresql:42.3.1"
     runtimeOnly "org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}"
@@ -63,10 +64,12 @@ detekt {
     buildUponDefaultConfig = true
     allRules = false
     ignoreFailures = true
+}
 
+tasks.withType(io.gitlab.arturbosch.detekt.Detekt).configureEach {
     reports {
-        html.enabled = true // observe findings in your browser with structure and code snippets
-        xml.enabled = true // checkstyle like format mainly for integrations like Jenkins
+        html.required.set(true) // observe findings in your browser with structure and code snippets
+        xml.required.set(true) // checkstyle like format mainly for integrations like Jenkins
     }
 }
 
