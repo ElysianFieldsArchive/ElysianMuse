@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.InternalAuthenticationServiceException
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.authority.SimpleGrantedAuthority
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -33,10 +36,20 @@ class AuthController(@Autowired val authenticationService: AuthenticationService
             if (token == null) {
                 ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unknown username or wrong password!")
             } else {
-                ResponseEntity.ok().body(token)
+                //valid sign in, but check if user is suspended
+                val authentication =
+                    SecurityContextHolder.getContext().authentication as UsernamePasswordAuthenticationToken?
+                if (authentication != null &&
+                    authentication.authorities.contains(SimpleGrantedAuthority("SUSPENDED"))
+                ) {
+                    ResponseEntity.status(HttpStatus.TEMPORARY_REDIRECT)
+                        .header("Location", "/suspended/${loginRequest.username}")
+                        .body("User is suspended")
+                } else {
+                    ResponseEntity.ok().body(token)
+                }
             }
         } catch (_: InternalAuthenticationServiceException) {
-
             ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unknown username or wrong password!")
         }
     }

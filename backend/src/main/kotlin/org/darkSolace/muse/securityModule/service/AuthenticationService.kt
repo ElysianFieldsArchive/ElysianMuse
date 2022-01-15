@@ -42,6 +42,8 @@ class AuthenticationService(
             val jwt = jwtUtils.generateJwtToken(authentication)
             val userDetails = authentication.principal as UserDetails
             val role: Role = Role.valueOf(userDetails.authorities.first().authority)
+            // update last login
+            userService.updateLastLogin(userDetails.user)
             return JwtResponse(
                 jwt,
                 userDetails.user.id,

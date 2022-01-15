@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse
 class AuthTokenFilter : OncePerRequestFilter() {
     @Autowired
     lateinit var jwtUtils: JwtUtils
+
     @Autowired
     lateinit var userDetailsService: UserDetailsService
 

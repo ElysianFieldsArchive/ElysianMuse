@@ -10,6 +10,7 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.security.crypto.bcrypt.BCrypt
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.util.*
 
 /**
  * Service class for [User] related tasks.
@@ -169,5 +170,10 @@ class UserService(
         )
 
         createUser(user)
+    }
+
+    fun updateLastLogin(user: User) {
+        user.lastLogInDate = Date()
+        userRepository.save(user)
     }
 }

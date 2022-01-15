@@ -183,7 +183,9 @@ class AuthControllerApiTests {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
-        Assertions.assertEquals(HttpStatus.UNAUTHORIZED, secondResponse.statusCode)
+        Assertions.assertEquals(HttpStatus.TEMPORARY_REDIRECT, secondResponse.statusCode)
+        Assertions.assertNotNull(secondResponse.headers["Location"])
+        Assertions.assertEquals("User is suspended", secondResponse.body)
     }
 
     @Test

@@ -1,6 +1,5 @@
 package org.darkSolace.muse.securityModule.model
 
-import org.darkSolace.muse.userModule.model.Role
 import org.darkSolace.muse.userModule.model.User
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
@@ -19,11 +18,11 @@ class UserDetails(val user: User) : UserDetails {
 
     override fun getUsername() = user.username
 
-    override fun isAccountNonExpired() = user.role != Role.SUSPENDED
+    override fun isAccountNonExpired() = true
 
-    override fun isAccountNonLocked() = user.role != Role.SUSPENDED
+    override fun isAccountNonLocked() = true
 
-    override fun isCredentialsNonExpired() = user.role != Role.SUSPENDED
+    override fun isCredentialsNonExpired() = true
 
-    override fun isEnabled() = user.role != Role.SUSPENDED
+    override fun isEnabled() = true
 }
