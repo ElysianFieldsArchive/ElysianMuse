@@ -46,5 +46,6 @@ Configuration class to configure authentication via JWT
 
 | Name | Summary |
 |---|---|
+| [authTokenFilter](auth-token-filter.md) | [jvm]<br>@Autowired<br>lateinit var [authTokenFilter](auth-token-filter.md): [AuthTokenFilter](../../org.darkSolace.muse.securityModule.service/-auth-token-filter/index.md) |
 | [unauthorizedHandler](unauthorized-handler.md) | [jvm]<br>val [unauthorizedHandler](unauthorized-handler.md): [AuthEntryPointJwt](../../org.darkSolace.muse.securityModule.service/-auth-entry-point-jwt/index.md) |
 | [userDetailsService](user-details-service.md) | [jvm]<br>val [userDetailsService](user-details-service.md): [UserDetailsService](../../org.darkSolace.muse.securityModule.service/-user-details-service/index.md) |
