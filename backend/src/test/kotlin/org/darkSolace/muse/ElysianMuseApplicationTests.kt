@@ -56,4 +56,12 @@ class ElysianMuseApplicationTests {
         Assertions.assertTrue(result is Int)
         Assertions.assertEquals(1, (result as Int))
     }
+
+    @Test
+    @Order(3)
+    fun testSecretCheck() {
+        //should not fail as secret is set long enough
+        secretCheck()
+        //if secretCheck doesn't exit pass
+    }
 }

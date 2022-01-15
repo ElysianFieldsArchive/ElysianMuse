@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.Hibernate
 import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
+import org.springframework.security.crypto.bcrypt.BCrypt
 import java.util.*
 import javax.persistence.*
 
@@ -21,6 +22,8 @@ data class User(
     val username: String,
     @JsonIgnore
     var password: String,
+    @JsonIgnore
+    var salt: String = BCrypt.gensalt(),
     var email: String,
     var realName: String? = null,
     @Temporal(TemporalType.TIMESTAMP)

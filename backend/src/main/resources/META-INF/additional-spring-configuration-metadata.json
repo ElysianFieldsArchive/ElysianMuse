@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "muse.app.jwtExpirationMs",
+      "type": "java.lang.String",
+      "description": "Validity of a JWT Token in milliseconds."
+    },
+    {
+      "name": "muse.app.jwtSecret",
+      "type": "java.lang.String",
+      "description": "The secret key used for JWT tokens - must be over 512 bits (64 characters)."
+    }
+  ]
+}

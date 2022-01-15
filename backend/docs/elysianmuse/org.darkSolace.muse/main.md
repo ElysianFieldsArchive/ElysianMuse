@@ -4,3 +4,5 @@
 
 [jvm]\
 fun [main](main.md)()
+
+Starts Elysian Muse

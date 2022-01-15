@@ -8,3 +8,5 @@ spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 spring.datasource.url=jdbc:postgresql://<localhost/domain/IP>:<port>/<databasename>
 spring.datasource.username=username
 spring.datasource.password=password
+muse.app.jwtSecret=512ByteLongSecret
+muse.app.jwtExpirationMs=86400000  #24h hours

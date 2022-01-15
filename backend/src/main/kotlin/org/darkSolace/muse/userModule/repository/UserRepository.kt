@@ -34,4 +34,20 @@ interface UserRepository : CrudRepository<User, Long> {
      * @return a [List] of [User]s having the required [UserTag]
      */
     fun findAllByUserTags(tag: UserTag): List<User>
+
+    /**
+     * Checks if a [User] with a given username already exists
+     *
+     * @param username The username to check
+     * @return [Boolean] weather the [User] already exists
+     */
+    fun existsByUsernameIgnoreCase(username: String): Boolean
+
+    /**
+     * Checks if an eMail-Address is already in use by a [User]
+     *
+     * @param email The email-address to check
+     * @return [Boolean] weather the email-address is already in use
+     */
+    fun existsByEmailIgnoreCase(email: String): Boolean
 }
