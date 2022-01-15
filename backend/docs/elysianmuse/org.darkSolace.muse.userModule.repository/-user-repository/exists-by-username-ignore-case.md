@@ -1,10 +1,10 @@
 //[elysianmuse](../../../index.md)/[org.darkSolace.muse.userModule.repository](../index.md)/[UserRepository](index.md)
-/[existsByUsername](exists-by-username.md)
+/[existsByUsernameIgnoreCase](exists-by-username-ignore-case.md)
 
-# existsByUsername
+# existsByUsernameIgnoreCase
 
 [jvm]\
-abstract fun [existsByUsername](exists-by-username.md)(
+abstract fun [existsByUsernameIgnoreCase](exists-by-username-ignore-case.md)(
 username: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
 
 Checks if a [User](../../org.darkSolace.muse.userModule.model/-user/index.md) with a given username already exists

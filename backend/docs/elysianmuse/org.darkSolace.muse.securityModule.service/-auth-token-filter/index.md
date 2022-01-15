@@ -3,6 +3,8 @@
 # AuthTokenFilter
 
 [jvm]\
+@Component
+
 class [AuthTokenFilter](index.md) : OncePerRequestFilter
 
 Filter to check the provided authorization for validity

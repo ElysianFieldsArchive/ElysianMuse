@@ -1,18 +1,19 @@
 plugins {
-    id 'org.springframework.boot' version '2.5.6'
+    id 'org.springframework.boot' version '2.6.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'org.jetbrains.kotlin.jvm' version '1.6.0'
-    id 'org.jetbrains.kotlin.plugin.spring' version '1.6.0'
-    id 'org.jetbrains.kotlin.plugin.jpa' version '1.6.0'
-    id 'io.gitlab.arturbosch.detekt' version '1.18.1'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.6.10'
+    id 'org.jetbrains.kotlin.plugin.jpa' version '1.6.10'
+    id 'io.gitlab.arturbosch.detekt' version '1.19.0'
     id 'jacoco'
     id 'org.jetbrains.dokka' version '1.5.31'
 }
 
 group = 'org.darkSolace'
 version = '0.0.1-SNAPSHOT'
-def spring_version = '2.5.6'
-def kotlin_version = '1.6.0'
+def spring_version = '2.6.2'
+def kotlin_version = '1.6.10'
+ext['log4j2.version'] = '2.17.1'
 
 configurations {
     compileOnly {
@@ -36,17 +37,17 @@ dependencies {
     runtimeOnly "io.jsonwebtoken:jjwt-jackson:0.11.2"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${spring_version}"
     testImplementation "org.springframework.boot:spring-boot-starter-test:${spring_version}"
-    testImplementation "org.junit.jupiter:junit-jupiter:5.8.1"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.1"
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:5.8.1"
-    testImplementation "org.junit.jupiter:junit-jupiter-params:5.8.1"
-    testImplementation "org.junit.platform:junit-platform-commons:1.8.1"
-    testImplementation "org.junit.platform:junit-platform-engine:1.8.1"
+    testImplementation "org.junit.jupiter:junit-jupiter:5.8.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:5.8.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:5.8.2"
+    testImplementation "org.junit.platform:junit-platform-commons:1.8.2"
+    testImplementation "org.junit.platform:junit-platform-engine:1.8.2"
     testImplementation "org.springframework.security:spring-security-test:5.5.1"
     testImplementation "org.testcontainers:junit-jupiter:1.16.2"
     testImplementation "org.testcontainers:postgresql:1.16.2"
     testImplementation "org.apache.httpcomponents:httpclient:4.5.13"
-    dokkaHtmlPlugin "org.jetbrains.dokka:kotlin-as-java-plugin:1.5.31"
+    dokkaHtmlPlugin "org.jetbrains.dokka:kotlin-as-java-plugin:1.6.0"
 }
 
 test {
@@ -66,7 +67,9 @@ detekt {
     buildUponDefaultConfig = true
     allRules = false
     ignoreFailures = true
+}
 
+tasks.withType(io.gitlab.arturbosch.detekt.Detekt).configureEach {
     reports {
         html.enabled = true // observe findings in your browser with structure and code snippets
         xml.enabled = true // checkstyle like format mainly for integrations like Jenkins
@@ -84,16 +87,14 @@ jacocoTestReport {
     }
 }
 
-task copyDocs(type: Copy,dependsOn: [dokkaGfm]) {
-    doLast {
-        delete("${projectDir}/docs")
-        copy {
-            from "${buildDir}/dokka/gfm"
-            into "${projectDir}/docs"
-        }
+task copyDocs(type: Copy, dependsOn: [dokkaGfm]) {
+    delete("${projectDir}/docs")
+    copy {
+        from "${buildDir}/dokka/gfm"
+        into "${projectDir}/docs"
     }
 }
 
 test.finalizedBy(jacocoTestReport)
-bootJar.finalizedBy(copyDocs)
+test.finalizedBy(copyDocs)
 
