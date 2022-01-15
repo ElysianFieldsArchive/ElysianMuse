@@ -7,7 +7,7 @@ enum [FontFamily](index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdli
 
 Enumeration of supported font families
 
-Currently just a placeholder
+Currently, just a placeholder
 
 ## Entries
 

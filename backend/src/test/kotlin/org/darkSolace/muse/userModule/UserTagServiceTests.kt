@@ -62,7 +62,7 @@ class UserTagServiceTests {
                 email = "test14@example.com",
                 userTags = mutableSetOf()
             )
-        )
+        ) ?: fail("user is null")
 
         // check if tag is applied
         userTagService.addTagToUser(user, UserTag.BETA)
@@ -132,7 +132,7 @@ class UserTagServiceTests {
                 email = "test15@example.com",
                 userTags = mutableSetOf(UserTag.BETA, UserTag.ARTIST)
             )
-        )
+        ) ?: fail("user is null")
 
         //check if user is created correctly
         Assertions.assertEquals(2, user.userTags.count())
@@ -162,7 +162,7 @@ class UserTagServiceTests {
                 email = "test915@example.com",
                 userTags = mutableSetOf(UserTag.BETA, UserTag.ARTIST)
             )
-        )
+        ) ?: fail("user is null")
         val userByUsername = User(username = "testUser915", password = "", email = "")
 
         //check if user is created correctly

@@ -21,7 +21,7 @@ class UserRestController(@Autowired val userService: UserService) {
      *
      * @sample `curl localhost:8080/api/user/5`
      * @param id the user id
-     * @return the retrieved [User] or null
+     * @return the retrieved [User] or `null`
      */
     @GetMapping("/{id}")
     fun getUserById(@PathVariable id: Long): User? {

@@ -9,5 +9,5 @@ spring.datasource.url=jdbc:postgresql://<localhost/domain/IP>:<port>/<databasena
 spring.datasource.username=username
 spring.datasource.password=password
 spring.devtools.add-properties=false
-#log4j CVE-2021-44228
-log4j2.formatMsgNoLookups=true
+muse.app.jwtSecret=512ByteLongSecret
+muse.app.jwtExpirationMs=86400000  #24h hours

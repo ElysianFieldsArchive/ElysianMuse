@@ -1,6 +1,5 @@
 package org.darkSolace.muse.userModule.service
 
-import org.darkSolace.muse.userModule.model.Role
 import org.darkSolace.muse.userModule.model.User
 import org.darkSolace.muse.userModule.model.UserTag
 import org.darkSolace.muse.userModule.repository.UserRepository
@@ -21,7 +20,7 @@ class UserTagService(@Autowired val userRepository: UserRepository) {
      *
      * @param user the [User] to be modified
      * @param tag the [UserTag] to be added
-     * @return the modified [User] or null if [User] does not exist
+     * @return the modified [User] or `null` if [User] does not exist
      */
     @Transactional
     fun addTagToUser(user: User, tag: UserTag): User? {
@@ -53,7 +52,7 @@ class UserTagService(@Autowired val userRepository: UserRepository) {
      *
      * @param user the [User] to be modified
      * @param tag the [UserTag] to be removed
-     * @return the modified [User] or null if [User] does not exist
+     * @return the modified [User] or `null` if [User] does not exist
      */
     @Transactional
     fun removeTagFromUser(user: User, tag: UserTag): User? {

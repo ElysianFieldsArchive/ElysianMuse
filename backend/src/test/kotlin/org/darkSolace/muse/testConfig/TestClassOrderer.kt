@@ -10,11 +10,19 @@ class TestClassOrderer: ClassOrderer {
     }
 
     private fun getClassOrder(classDescriptor: ClassDescriptor): Int {
-        return when(classDescriptor.displayName) {
+        return when (classDescriptor.displayName) {
             "ElysianMuseApplicationTests" -> 1
             "UserServiceTests" -> 2
             "UserTagServiceTests" -> 3
             "UserRoleServiceTests" -> 4
+            "AuthenticationServiceTests" -> 5
+            "JwtUtilsTests" -> 6
+            "UserDetailsServiceTests" -> 7
+
+            //API Tests
+            "UserControllerApiTests" -> 96
+            "AuthControllerApiTests" -> 97
+            "AuthControllerAccessTests" -> 98
             else -> 99
         }
     }
