@@ -63,8 +63,8 @@ class UserRestController(@Autowired val userService: UserService, @Autowired val
 
     /**
      * Suspends a user identified by its id. Listens on /api/user/{id} for POST requests.
-     * You need the [org.darkSolace.muse.userModule.model.Role.ADMINISTRATOR] or [org.darkSolace.muse.userModule.model.Role.MODERATOR]
-     * role to access this endpoint.
+     * You need the [org.darkSolace.muse.userModule.model.Role.ADMINISTRATOR] or
+     * [org.darkSolace.muse.userModule.model.Role.MODERATOR] role to access this endpoint.
      *
      * @sample `curl -X POST -H "Authorization: [...]" localhost:8080/api/user/suspend/5`
      * @param id the user id
@@ -95,8 +95,8 @@ class UserRestController(@Autowired val userService: UserService, @Autowired val
 
     /**
      * Retrieves the suspension history for a given user, identified by its id.
-     * You need the [org.darkSolace.muse.userModule.model.Role.ADMINISTRATOR] or [org.darkSolace.muse.userModule.model.Role.MODERATOR]
-     * role to access this endpoint.
+     * You need the [org.darkSolace.muse.userModule.model.Role.ADMINISTRATOR] or
+     * [org.darkSolace.muse.userModule.model.Role.MODERATOR] role to access this endpoint.
      *
      * @sample `curl -X POST -H "Authorization: [...]" localhost:8080/api/user/suspend/history/5`
      * @param id the user id

@@ -9,5 +9,4 @@ interface SuspensionHistoryRepository : CrudRepository<SuspensionHistoryEntry, L
     fun getByUserAndAcceptedDateIsNull(user: User): SuspensionHistoryEntry?
     fun getByConfirmationCode(confirmationCode: String): SuspensionHistoryEntry?
     fun findAllByUserOrderBySuspendedDate(user: User): List<SuspensionHistoryEntry>
-
 }

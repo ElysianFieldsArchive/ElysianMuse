@@ -41,9 +41,9 @@ class AuthenticationService(
             SecurityContextHolder.getContext().authentication = authentication
             val jwt = jwtUtils.generateJwtToken(authentication)
             val userDetails = authentication.principal as UserDetails
+            if (userDetails.user == null) throw BadCredentialsException("Invalid user")
             val role: Role = Role.valueOf(userDetails.authorities.first().authority)
             // update last login
-            if (userDetails.user == null) return null
             userService.updateLastLogin(userDetails.user)
             return JwtResponse(
                 jwt,
