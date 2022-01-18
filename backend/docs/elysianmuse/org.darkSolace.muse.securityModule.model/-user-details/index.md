@@ -3,7 +3,7 @@
 # UserDetails
 
 [jvm]\
-class [UserDetails](index.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md)) : UserDetails
+class [UserDetails](index.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?) : UserDetails
 
 UserDetails model to pass required information to
 the [org.darkSolace.muse.securityModule.service.AuthTokenFilter](../../org.darkSolace.muse.securityModule.service/-auth-token-filter/index.md)
@@ -12,7 +12,7 @@ the [org.darkSolace.muse.securityModule.service.AuthTokenFilter](../../org.darkS
 
 | | |
 |---|---|
-| [UserDetails](-user-details.md) | [jvm]<br>fun [UserDetails](-user-details.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md)) |
+| [UserDetails](-user-details.md) | [jvm]<br>fun [UserDetails](-user-details.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?) |
 
 ## Functions
 
@@ -30,4 +30,4 @@ the [org.darkSolace.muse.securityModule.service.AuthTokenFilter](../../org.darkS
 
 | Name | Summary |
 |---|---|
-| [user](user.md) | [jvm]<br>val [user](user.md): [User](../../org.darkSolace.muse.userModule.model/-user/index.md) |
+| [user](user.md) | [jvm]<br>val [user](user.md): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)? |

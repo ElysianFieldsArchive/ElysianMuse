@@ -35,7 +35,7 @@ data class User(
     var birthday: Date? = null,
     var validatedAuthor: Boolean = false,
     var onProbation: Boolean = false,
-    @OneToOne
+    @OneToOne(orphanRemoval = true)
     @Cascade(CascadeType.ALL)
     var userSettings: UserSettings = UserSettings(),
     @ElementCollection(fetch = FetchType.EAGER)
@@ -63,5 +63,18 @@ data class User(
                 "realName = $realName, signUpDate = $signUpDate, lastLogInDate = $lastLogInDate, bio = $bio, " +
                 "birthday = $birthday, validatedAuthor = $validatedAuthor, onProbation = $onProbation, " +
                 "userSettings = $userSettings, userTags = $userTags, avatar = $avatar, roles = $role)"
+    }
+
+    fun toPublicUser(): User {
+        val user = User(id, username, "", "", "")
+        user.role = role
+
+        when {
+            userSettings.emailVisible -> user.email = email
+            userSettings.birthdayVisible -> user.birthday = birthday
+            userSettings.realNameVisible -> user.realName = realName
+        }
+
+        return user
     }
 }

@@ -130,6 +130,16 @@ class UserService(
     }
 
     /**
+     * Deletes a [User] from the database
+     *
+     * @param id of the [User] to be deleted
+     */
+    fun deleteUser(id: Long) {
+        val user = userRepository.findByIdOrNull(id) ?: return
+        deleteUser(user)
+    }
+
+    /**
      * Replaces the [UserSettings] of a given [User] and persists it
      *
      * @param user the [User] to be modified
@@ -162,14 +172,14 @@ class UserService(
      *
      * @param signUpRequest The [SignUpRequest] containing all required information
      */
-    fun createUserFromSignUpRequest(signUpRequest: SignUpRequest) {
+    fun createUserFromSignUpRequest(signUpRequest: SignUpRequest): User? {
         val user = User(
             username = signUpRequest.username,
             password = signUpRequest.password,
             email = signUpRequest.email
         )
 
-        createUser(user)
+        return createUser(user)
     }
 
     fun updateLastLogin(user: User) {

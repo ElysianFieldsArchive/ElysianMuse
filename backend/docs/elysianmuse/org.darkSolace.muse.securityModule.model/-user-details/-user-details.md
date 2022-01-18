@@ -4,4 +4,4 @@
 # UserDetails
 
 [jvm]\
-fun [UserDetails](-user-details.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md))
+fun [UserDetails](-user-details.md)(user: [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?)

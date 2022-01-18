@@ -201,4 +201,18 @@ class AuthControllerApiTests {
         Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.statusCode)
         Assertions.assertEquals("Unknown username or wrong password!", response.body)
     }
+
+    @Test
+    @Order(8)
+    fun testSignIn_UnknownUserEmptyPassword() {
+        // no user created, trying to sign in with unknown user
+        val url = generateUrl("/api/auth/signin")
+        val response = restTemplate.postForEntity(
+            url,
+            SignUpRequest("test", "", "test@example.com"),
+            String::class.java
+        )
+        Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.statusCode)
+        Assertions.assertEquals("Unknown username or wrong password!", response.body)
+    }
 }

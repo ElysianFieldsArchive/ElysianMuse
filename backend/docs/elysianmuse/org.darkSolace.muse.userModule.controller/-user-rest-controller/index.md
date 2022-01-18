@@ -7,7 +7,9 @@
 
 @RequestMapping(value = ["/api/user"])
 
-class [UserRestController](index.md)(@AutowireduserService: [UserService](../../org.darkSolace.muse.userModule.service/-user-service/index.md))
+class [UserRestController](index.md)(
+@AutowireduserService: [UserService](../../org.darkSolace.muse.userModule.service/-user-service/index.md),
+@AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.userModule.service/-user-role-service/index.md))
 
 RestController defining endpoints regarding all user activity Subject to change
 
@@ -15,17 +17,22 @@ RestController defining endpoints regarding all user activity Subject to change
 
 | | |
 |---|---|
-| [UserRestController](-user-rest-controller.md) | [jvm]<br>fun [UserRestController](-user-rest-controller.md)(@AutowireduserService: [UserService](../../org.darkSolace.muse.userModule.service/-user-service/index.md)) |
+| [UserRestController](-user-rest-controller.md) | [jvm]<br>fun [UserRestController](-user-rest-controller.md)(@AutowireduserService: [UserService](../../org.darkSolace.muse.userModule.service/-user-service/index.md), @AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.userModule.service/-user-role-service/index.md)) |
 
 ## Functions
 
 | Name | Summary |
 |---|---|
-| [getAllUsers](get-all-users.md) | [jvm]<br>@GetMapping(value = ["/all"])<br>fun [getAllUsers](get-all-users.md)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[User](../../org.darkSolace.muse.userModule.model/-user/index.md)&gt;<br>Retrieves all users. Listens on /api/user/all. |
-| [getUserById](get-user-by-id.md) | [jvm]<br>@GetMapping(value = ["/{id}"])<br>fun [getUserById](get-user-by-id.md)(@PathVariableid: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?<br>Retrieves a user by its id. Listens on /api/user/{id}. |
+| [confirmSuspension](confirm-suspension.md) | [jvm]<br>@PostMapping(value = ["/suspend/confirm/{confirmationCode}"])<br>fun [confirmSuspension](confirm-suspension.md)(@PathVariableconfirmationCode: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)): ResponseEntity&lt;*&gt;<br>Confirms a [SuspensionHistoryEntry](../../org.darkSolace.muse.userModule.model/-suspension-history-entry/index.md), identified by its confirmation code. |
+| [deleteUserById](delete-user-by-id.md) | [jvm]<br>@DeleteMapping(value = ["/{id}"])<br>@PreAuthorize(value = "hasAuthority('ADMINISTRATOR')")<br>fun [deleteUserById](delete-user-by-id.md)(@PathVariableid: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html))<br>Deletes a user identified by its id. Listens on /api/user/{id} for DELETE requests. You need the [org.darkSolace.muse.userModule.model.Role.ADMINISTRATOR](../../org.darkSolace.muse.userModule.model/-role/-a-d-m-i-n-i-s-t-r-a-t-o-r/index.md) role to access this endpoint. |
+| [getAllUsers](get-all-users.md) | [jvm]<br>@GetMapping(value = ["/all"])<br>fun [getAllUsers](get-all-users.md)(authentication: Authentication?): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[User](../../org.darkSolace.muse.userModule.model/-user/index.md)&gt;<br>Retrieves all users. Listens on /api/user/all. |
+| [getSuspensionHistory](get-suspension-history.md) | [jvm]<br>@GetMapping(value = ["/suspend/history/{id}"])<br>@PreAuthorize(value = "hasAnyAuthority('ADMINISTRATION', 'MODERATOR')")<br>fun [getSuspensionHistory](get-suspension-history.md)(@PathVariableid: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[SuspensionHistoryEntry](../../org.darkSolace.muse.userModule.model/-suspension-history-entry/index.md)&gt;<br>Retrieves the suspension history for a given user, identified by its id. You need the [org.darkSolace.muse.userModule.model.Role.ADMINISTRATOR](../../org.darkSolace.muse.userModule.model/-role/-a-d-m-i-n-i-s-t-r-a-t-o-r/index.md) or [org.darkSolace.muse.userModule.model.Role.MODERATOR](../../org.darkSolace.muse.userModule.model/-role/-m-o-d-e-r-a-t-o-r/index.md) role to access this endpoint. |
+| [getUserById](get-user-by-id.md) | [jvm]<br>@GetMapping(value = ["/{id}"])<br>fun [getUserById](get-user-by-id.md)(@PathVariableid: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html), authentication: Authentication?): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?<br>Retrieves a user by its id. Listens on /api/user/{id}. |
+| [suspendUserById](suspend-user-by-id.md) | [jvm]<br>@PostMapping(value = ["/suspend/{id}"])<br>@PreAuthorize(value = "hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')")<br>fun [suspendUserById](suspend-user-by-id.md)(@PathVariableid: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)): ResponseEntity&lt;*&gt;<br>Suspends a user identified by its id. Listens on /api/user/{id} for POST requests. You need the [org.darkSolace.muse.userModule.model.Role.ADMINISTRATOR](../../org.darkSolace.muse.userModule.model/-role/-a-d-m-i-n-i-s-t-r-a-t-o-r/index.md) or [org.darkSolace.muse.userModule.model.Role.MODERATOR](../../org.darkSolace.muse.userModule.model/-role/-m-o-d-e-r-a-t-o-r/index.md) role to access this endpoint. |
 
 ## Properties
 
 | Name | Summary |
 |---|---|
+| [userRoleService](user-role-service.md) | [jvm]<br>val [userRoleService](user-role-service.md): [UserRoleService](../../org.darkSolace.muse.userModule.service/-user-role-service/index.md) |
 | [userService](user-service.md) | [jvm]<br>val [userService](user-service.md): [UserService](../../org.darkSolace.muse.userModule.service/-user-service/index.md) |

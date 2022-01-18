@@ -9,7 +9,9 @@
 @RequestMapping(value = ["api/auth"])
 
 class [AuthController](index.md)(
-@AutowiredauthenticationService: [AuthenticationService](../../org.darkSolace.muse.securityModule.service/-authentication-service/index.md))
+@AutowiredauthenticationService: [AuthenticationService](../../org.darkSolace.muse.securityModule.service/-authentication-service/index.md)
+,
+@AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.userModule.service/-user-role-service/index.md))
 
 ## Functions
 
@@ -23,3 +25,4 @@ class [AuthController](index.md)(
 | Name | Summary |
 |---|---|
 | [authenticationService](authentication-service.md) | [jvm]<br>val [authenticationService](authentication-service.md): [AuthenticationService](../../org.darkSolace.muse.securityModule.service/-authentication-service/index.md) |
+| [userRoleService](user-role-service.md) | [jvm]<br>val [userRoleService](user-role-service.md): [UserRoleService](../../org.darkSolace.muse.userModule.service/-user-role-service/index.md) |

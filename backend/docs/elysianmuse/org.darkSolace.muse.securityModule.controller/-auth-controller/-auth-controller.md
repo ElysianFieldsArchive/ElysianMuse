@@ -5,4 +5,6 @@
 
 [jvm]\
 fun [AuthController](-auth-controller.md)(
-@AutowiredauthenticationService: [AuthenticationService](../../org.darkSolace.muse.securityModule.service/-authentication-service/index.md))
+@AutowiredauthenticationService: [AuthenticationService](../../org.darkSolace.muse.securityModule.service/-authentication-service/index.md)
+,
+@AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.userModule.service/-user-role-service/index.md))

@@ -4,4 +4,4 @@
 # user
 
 [jvm]\
-val [user](user.md): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)
+val [user](user.md): [User](../../org.darkSolace.muse.userModule.model/-user/index.md)?

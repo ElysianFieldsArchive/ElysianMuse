@@ -19,6 +19,9 @@ class ElysianMuseApplicationTests {
     @Autowired
     lateinit var em: EntityManager
 
+    @Autowired
+    lateinit var dbClearer: DBClearer
+
     companion object {
         @Container
         private val postgresqlContainer: PostgreSQLContainer<*> =
@@ -35,6 +38,11 @@ class ElysianMuseApplicationTests {
             registry.add("spring.datasource.password", postgresqlContainer::getPassword)
             registry.add("spring.datasource.username", postgresqlContainer::getUsername)
         }
+    }
+
+    @BeforeEach
+    fun clearDB() {
+        dbClearer.clearAll()
     }
 
     /**
