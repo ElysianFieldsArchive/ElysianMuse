@@ -10,6 +10,10 @@ signUpRequest: [SignUpRequest](../../org.darkSolace.muse.securityModule.model/-s
 
 Creates a user from a [SignUpRequest](../../org.darkSolace.muse.securityModule.model/-sign-up-request/index.md)
 
+#### Return
+
+the created [User](../../org.darkSolace.muse.userModule.model/-user/index.md)
+
 ## Parameters
 
 jvm

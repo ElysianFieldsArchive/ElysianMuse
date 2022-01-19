@@ -171,6 +171,7 @@ class UserService(
      * Creates a user from a [SignUpRequest]
      *
      * @param signUpRequest The [SignUpRequest] containing all required information
+     * @return the created [User]
      */
     fun createUserFromSignUpRequest(signUpRequest: SignUpRequest): User? {
         val user = User(
@@ -182,6 +183,11 @@ class UserService(
         return createUser(user)
     }
 
+    /**
+     * Updates the lastLogInDate timestamp of a given user.
+     *
+     * @param user the [User] to update
+     */
     fun updateLastLogin(user: User) {
         user.lastLogInDate = Date()
         userRepository.save(user)

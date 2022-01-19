@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.core.Authentication
+import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.web.bind.annotation.*
 
 /**
@@ -56,9 +57,19 @@ class UserRestController(@Autowired val userService: UserService, @Autowired val
      * @param id the user id
      */
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMINISTRATOR')")
-    fun deleteUserById(@PathVariable id: Long) {
-        userService.deleteUser(id)
+    @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
+    fun deleteUserById(@PathVariable id: Long, authentication: Authentication?) {
+        if ((authentication?.principal as UserDetails?)?.user?.id == id) {
+            // user trys deletes himself (can be of role MEMBER, MODERATOR or ADMINISTRATOR)
+            userService.deleteUser(id)
+        } else
+            if ((authentication?.principal as UserDetails?)
+                    ?.authorities
+                    ?.contains(SimpleGrantedAuthority("ADMINISTRATOR")) == true
+            ) {
+                // user is deleted by an ADMINISTRATOR
+                userService.deleteUser(id)
+            }
     }
 
     /**
@@ -105,5 +116,19 @@ class UserRestController(@Autowired val userService: UserService, @Autowired val
     @PreAuthorize("hasAnyAuthority('ADMINISTRATION', 'MODERATOR')")
     fun getSuspensionHistory(@PathVariable id: Long): List<SuspensionHistoryEntry> {
         return userRoleService.getSuspensionHistory(id)
+    }
+
+    /**
+     * Retrieves all currently suspended users
+     * You need the [org.darkSolace.muse.userModule.model.Role.ADMINISTRATOR] or
+     * [org.darkSolace.muse.userModule.model.Role.MODERATOR] role to access this endpoint.
+     *
+     * @sample `curl -H "Authorization: [...]" localhost:8080/api/user/suspend/all`
+     * @return List of the suspended [User]s
+     */
+    @GetMapping("/suspend/all")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRATION', 'MODERATOR')")
+    fun getAllCurrentlySuspended(): List<User> {
+        return userRoleService.getAllCurrentlySuspendedUsers()
     }
 }
