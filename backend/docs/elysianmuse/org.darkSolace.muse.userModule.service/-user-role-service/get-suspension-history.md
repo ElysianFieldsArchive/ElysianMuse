@@ -8,7 +8,7 @@ fun [getSuspensionHistory](get-suspension-history.md)(
 id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[SuspensionHistoryEntry](
 ../../org.darkSolace.muse.userModule.model/-suspension-history-entry/index.md)&gt;
 
-Retrieves the suspention history of a given user, identified by its id.
+Retrieves the suspension history of a given user, identified by its id.
 
 #### Return
 

@@ -320,4 +320,119 @@ class UserControllerApiTests {
 
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, confirmation.statusCode)
     }
+
+    @Test
+    @Order(11)
+    fun deleteUser_ownUserMember() {
+        //generate user to delete
+        //create user and sign in
+        var url = generateUrl("/api/auth/signup")
+        restTemplate.postForEntity(
+            url,
+            SignUpRequest("test", "123", "test@example.com"),
+            String::class.java
+        )
+
+        url = generateUrl("/api/auth/signin")
+        val signInResponse = restTemplate.postForEntity(
+            url,
+            SignUpRequest("test", "123", "test@example.com"),
+            JwtResponse::class.java
+        )
+
+        val userId = signInResponse.body.id
+        var user = userService.getById(userId ?: -1)
+        Assertions.assertNotNull(user)
+
+        //delete user via api
+        url = generateUrl("/api/user/$userId")
+        val headers = HttpHeaders().apply {
+            add("Authorization", "Bearer ${signInResponse?.body?.token}")
+        }
+        val response =
+            restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), ResponseEntity::class.java)
+
+        Assertions.assertEquals(HttpStatus.OK, response.statusCode)
+
+        user = userService.getById(userId ?: -1)
+        Assertions.assertNull(user)
+    }
+
+    @Test
+    @Order(12)
+    fun deleteUser_otherUserAdmin() {
+        //generate user to delete
+        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        var user = userService.createUserFromSignUpRequest(signUpRequest)
+
+        //generate admin to perform deletion
+        //create user and sign in
+        var url = generateUrl("/api/auth/signup")
+        restTemplate.postForEntity(
+            url,
+            SignUpRequest("test2", "123", "test2@example.com"),
+            String::class.java
+        )
+
+        userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
+
+        url = generateUrl("/api/auth/signin")
+        val signInResponse = restTemplate.postForEntity(
+            url,
+            SignUpRequest("test2", "123", "test2@example.com"),
+            JwtResponse::class.java
+        )
+
+        //delete user via api
+        url = generateUrl("/api/user/${user?.id}")
+        val headers = HttpHeaders().apply {
+            add("Authorization", "Bearer ${signInResponse?.body?.token}")
+        }
+        val response =
+            restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), HttpStatus::class.java)
+
+        Assertions.assertEquals(HttpStatus.OK, response.statusCode)
+
+        user = userService.getById(user?.id ?: -1)
+        Assertions.assertNull(user)
+    }
+
+    @Test
+    @Order(13)
+    fun deleteUser_otherUserModerator() {
+        //generate user to delete
+        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        var user = userService.createUserFromSignUpRequest(signUpRequest)
+
+        //generate admin to perform deletion
+        //create user and sign in
+        var url = generateUrl("/api/auth/signup")
+        restTemplate.postForEntity(
+            url,
+            SignUpRequest("test2", "123", "test2@example.com"),
+            String::class.java
+        )
+
+        userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.MODERATOR)
+
+        url = generateUrl("/api/auth/signin")
+        val signInResponse = restTemplate.postForEntity(
+            url,
+            SignUpRequest("test2", "123", "test2@example.com"),
+            JwtResponse::class.java
+        )
+
+        //try to delete user via api
+        url = generateUrl("/api/user/${user?.id}")
+        val headers = HttpHeaders().apply {
+            add("Authorization", "Bearer ${signInResponse?.body?.token}")
+        }
+        val response =
+            restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), HttpStatus::class.java)
+
+        Assertions.assertEquals(HttpStatus.OK, response.statusCode)
+
+        user = userService.getById(user?.id ?: -1)
+        Assertions.assertNotNull(user)
+    }
 }

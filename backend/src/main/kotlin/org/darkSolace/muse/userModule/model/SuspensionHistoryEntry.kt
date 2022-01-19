@@ -14,6 +14,7 @@ class SuspensionHistoryEntry(
     val suspendedDate: Date = Date(),
     val confirmationCode: String = UUID.randomUUID().toString(),
     @Temporal(TemporalType.TIMESTAMP)
-    var acceptedDate: Date? = null
+    var acceptedDate: Date? = null,
+    var confirmationDetails: String? = null
 )
 

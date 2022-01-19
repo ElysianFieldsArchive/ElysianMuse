@@ -108,7 +108,7 @@ class UserRoleService(
     }
 
     /**
-     * Retrieves the suspention history of a given user, identified by its id.
+     * Retrieves the suspension history of a given user, identified by its id.
      *
      * @param id id of the user
      * @return List of [SuspensionHistoryEntry]s
@@ -127,4 +127,16 @@ class UserRoleService(
     fun getSuspensionHistory(user: User): List<SuspensionHistoryEntry> {
         return suspensionHistoryRepository.findAllByUserOrderBySuspendedDate(user)
     }
+
+    /**
+     * Retrieves all currently suspended users
+     *
+     * @return List of currently suspended [User]s
+     */
+    fun getAllCurrentlySuspendedUsers(): List<User> =
+        suspensionHistoryRepository.findAll()
+            .filter { it.acceptedDate == null }
+            .map { it.user }
+            .distinct()
+
 }
