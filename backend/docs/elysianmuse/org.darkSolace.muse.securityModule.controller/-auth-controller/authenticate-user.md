@@ -17,7 +17,7 @@ username/password pair. Listens on /api/auth/signin.
 #### Return
 
 a [org.darkSolace.muse.securityModule.model.JwtResponse](../../org.darkSolace.muse.securityModule.model/-jwt-response/index.md)
-containing a token or HTTP 401 is username or password are invalid
+containing a token, HTTP 401 is username or password are invalid, or HTTP 301 is user is suspended
 
 ## Samples
 

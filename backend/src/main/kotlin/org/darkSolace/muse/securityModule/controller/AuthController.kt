@@ -4,6 +4,7 @@ import org.darkSolace.muse.securityModule.model.LoginRequest
 import org.darkSolace.muse.securityModule.model.SignUpRequest
 import org.darkSolace.muse.securityModule.model.SignUpResponse
 import org.darkSolace.muse.securityModule.service.AuthenticationService
+import org.darkSolace.muse.userModule.service.UserRoleService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -19,7 +20,10 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("api/auth")
-class AuthController(@Autowired val authenticationService: AuthenticationService) {
+class AuthController(
+    @Autowired val authenticationService: AuthenticationService,
+    @Autowired val userRoleService: UserRoleService
+) {
     /**
      * Checks a transmitted [LoginRequest] for a valid username/password pair. Listens on /api/auth/signin.
      *
@@ -27,7 +31,7 @@ class AuthController(@Autowired val authenticationService: AuthenticationService
      *          localhost:8000/api/auth/signin`
      * @param loginRequest a [LoginRequest] containing username and password
      * @return a [org.darkSolace.muse.securityModule.model.JwtResponse] containing
-     * a token or HTTP 401 is username or password are invalid
+     * a token, HTTP 401 is username or password are invalid, or HTTP 301 is user is suspended
      */
     @PostMapping("/signin")
     fun authenticateUser(@RequestBody loginRequest: LoginRequest): ResponseEntity<*>? {
@@ -42,8 +46,9 @@ class AuthController(@Autowired val authenticationService: AuthenticationService
                 if (authentication != null &&
                     authentication.authorities.contains(SimpleGrantedAuthority("SUSPENDED"))
                 ) {
+                    val confirmationCode = userRoleService.suspensionCodeForUsername(loginRequest.username)
                     ResponseEntity.status(HttpStatus.TEMPORARY_REDIRECT)
-                        .header("Location", "/suspended/${loginRequest.username}")
+                        .header("Location", "/suspend/confirm/$confirmationCode")
                         .body("User is suspended")
                 } else {
                     ResponseEntity.ok().body(token)
