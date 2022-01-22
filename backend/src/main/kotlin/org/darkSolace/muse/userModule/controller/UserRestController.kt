@@ -55,10 +55,11 @@ class UserRestController(@Autowired val userService: UserService, @Autowired val
      *
      * @sample `curl -X DELETE -H "Authorization: [...]" localhost:8080/api/user/5`
      * @param id the user id
+     * @return HTTP 200 on success, HTTP 401 otherwise
      */
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
-    fun deleteUserById(@PathVariable id: Long, authentication: Authentication?) {
+    fun deleteUserById(@PathVariable id: Long, authentication: Authentication?): ResponseEntity<*> {
         if ((authentication?.principal as UserDetails?)?.user?.id == id) {
             // user trys deletes himself (can be of role MEMBER, MODERATOR or ADMINISTRATOR)
             userService.deleteUser(id)
@@ -69,7 +70,11 @@ class UserRestController(@Autowired val userService: UserService, @Autowired val
             ) {
                 // user is deleted by an ADMINISTRATOR
                 userService.deleteUser(id)
+            } else {
+                return ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
             }
+
+        return ResponseEntity<Unit>(HttpStatus.OK)
     }
 
     /**

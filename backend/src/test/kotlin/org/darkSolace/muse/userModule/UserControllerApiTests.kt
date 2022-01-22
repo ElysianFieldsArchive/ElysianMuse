@@ -350,7 +350,7 @@ class UserControllerApiTests {
             add("Authorization", "Bearer ${signInResponse?.body?.token}")
         }
         val response =
-            restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), ResponseEntity::class.java)
+            restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), Unit::class.java)
 
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
 
@@ -389,7 +389,7 @@ class UserControllerApiTests {
             add("Authorization", "Bearer ${signInResponse?.body?.token}")
         }
         val response =
-            restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), HttpStatus::class.java)
+            restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), Unit::class.java)
 
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
 
@@ -428,11 +428,110 @@ class UserControllerApiTests {
             add("Authorization", "Bearer ${signInResponse?.body?.token}")
         }
         val response =
-            restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), HttpStatus::class.java)
+            restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), Unit::class.java)
 
-        Assertions.assertEquals(HttpStatus.OK, response.statusCode)
+        Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.statusCode)
 
         user = userService.getById(user?.id ?: -1)
         Assertions.assertNotNull(user)
+    }
+
+    @Test
+    @Order(14)
+    fun deleteUser_otherUserMember() {
+        //generate user to delete
+        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        var user = userService.createUserFromSignUpRequest(signUpRequest)
+
+        //generate admin to perform deletion
+        //create user and sign in
+        var url = generateUrl("/api/auth/signup")
+        restTemplate.postForEntity(
+            url,
+            SignUpRequest("test2", "123", "test2@example.com"),
+            String::class.java
+        )
+
+        url = generateUrl("/api/auth/signin")
+        val signInResponse = restTemplate.postForEntity(
+            url,
+            SignUpRequest("test2", "123", "test2@example.com"),
+            JwtResponse::class.java
+        )
+
+        //try to delete user via api
+        url = generateUrl("/api/user/${user?.id}")
+        val headers = HttpHeaders().apply {
+            add("Authorization", "Bearer ${signInResponse?.body?.token}")
+        }
+        val response =
+            restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), Unit::class.java)
+
+        Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.statusCode)
+
+        user = userService.getById(user?.id ?: -1)
+        Assertions.assertNotNull(user)
+    }
+
+    @Test
+    @Order(15)
+    fun deleteUser_unknownUserAdmin() {
+        //generate admin to perform deletion
+        //create user and sign in
+        var url = generateUrl("/api/auth/signup")
+        restTemplate.postForEntity(
+            url,
+            SignUpRequest("test2", "123", "test2@example.com"),
+            String::class.java
+        )
+
+        userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
+
+        url = generateUrl("/api/auth/signin")
+        val signInResponse = restTemplate.postForEntity(
+            url,
+            SignUpRequest("test2", "123", "test2@example.com"),
+            JwtResponse::class.java
+        )
+
+        //try to delete user via api
+        url = generateUrl("/api/user/4711")
+        val headers = HttpHeaders().apply {
+            add("Authorization", "Bearer ${signInResponse?.body?.token}")
+        }
+        val response =
+            restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), Unit::class.java)
+
+        Assertions.assertEquals(HttpStatus.OK, response.statusCode)
+    }
+
+    @Test
+    @Order(16)
+    fun deleteUser_unknownUserMember() {
+        //generate admin to perform deletion
+        //create user and sign in
+        var url = generateUrl("/api/auth/signup")
+        restTemplate.postForEntity(
+            url,
+            SignUpRequest("test2", "123", "test2@example.com"),
+            String::class.java
+        )
+
+        url = generateUrl("/api/auth/signin")
+        val signInResponse = restTemplate.postForEntity(
+            url,
+            SignUpRequest("test2", "123", "test2@example.com"),
+            JwtResponse::class.java
+        )
+
+        //try to delete user via api
+        url = generateUrl("/api/user/4711")
+        val headers = HttpHeaders().apply {
+            add("Authorization", "Bearer ${signInResponse?.body?.token}")
+        }
+        val response =
+            restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), Unit::class.java)
+
+        Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.statusCode)
     }
 }

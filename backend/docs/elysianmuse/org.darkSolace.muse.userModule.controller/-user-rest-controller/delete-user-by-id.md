@@ -11,7 +11,7 @@
 
 fun [deleteUserById](delete-user-by-id.md)(
 @PathVariableid: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html), authentication:
-Authentication?)
+Authentication?): ResponseEntity&lt;*&gt;
 
 Deletes a user identified by its id. Listens on /api/user/{id} for DELETE requests. You need
 the [org.darkSolace.muse.userModule.model.Role.ADMINISTRATOR](../../org.darkSolace.muse.userModule.model/-role/-a-d-m-i-n-i-s-t-r-a-t-o-r/index.md)
