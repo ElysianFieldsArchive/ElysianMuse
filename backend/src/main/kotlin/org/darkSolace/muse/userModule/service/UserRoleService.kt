@@ -119,7 +119,7 @@ class UserRoleService(
     }
 
     /**
-     * Retrieves the suspention history of a given user.
+     * Retrieves the suspension history of a given user.
      *
      * @param user the user
      * @return List of [SuspensionHistoryEntry]s
