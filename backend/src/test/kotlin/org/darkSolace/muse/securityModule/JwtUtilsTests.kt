@@ -6,30 +6,21 @@ import ch.qos.logback.core.read.ListAppender
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
-import org.darkSolace.muse.DBClearer
 import org.darkSolace.muse.securityModule.model.SignUpRequest
 import org.darkSolace.muse.securityModule.service.AuthenticationService
 import org.darkSolace.muse.securityModule.service.JwtUtils
-import org.junit.jupiter.api.*
+import org.darkSolace.muse.testUtil.TestBase
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
-import org.springframework.test.context.DynamicPropertyRegistry
-import org.springframework.test.context.DynamicPropertySource
-import org.testcontainers.containers.PostgreSQLContainer
-import org.testcontainers.junit.jupiter.Container
-import org.testcontainers.junit.jupiter.Testcontainers
 import java.util.*
 
-
-@SpringBootTest
-@Testcontainers
-@TestMethodOrder(MethodOrderer.OrderAnnotation::class)
-internal class JwtUtilsTests {
+class JwtUtilsTests : TestBase() {
     @Autowired
     lateinit var authenticationManager: AuthenticationManager
 
@@ -39,37 +30,11 @@ internal class JwtUtilsTests {
     @Autowired
     lateinit var jwtUtils: JwtUtils
 
-    @Autowired
-    lateinit var dbClearer: DBClearer
-
     @Value("\${muse.app.jwtSecret}")
     private val jwtSecret: String? = null
 
     @Value("\${muse.app.jwtExpirationMs}")
     private val jwtExpirationMs = 0
-
-    companion object {
-        @Container
-        private val postgresqlContainer: PostgreSQLContainer<*> =
-            PostgreSQLContainer<Nothing>("postgres:14.0-alpine").apply {
-                withDatabaseName("foo")
-                withUsername("foo")
-                withPassword("secret")
-            }
-
-        @JvmStatic
-        @DynamicPropertySource
-        fun properties(registry: DynamicPropertyRegistry) {
-            registry.add("spring.datasource.url", postgresqlContainer::getJdbcUrl)
-            registry.add("spring.datasource.password", postgresqlContainer::getPassword)
-            registry.add("spring.datasource.username", postgresqlContainer::getUsername)
-        }
-    }
-
-    @BeforeEach
-    fun clearDB() {
-        dbClearer.clearAll()
-    }
 
     @Test
     fun generateJwtToken() {

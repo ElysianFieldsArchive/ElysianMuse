@@ -1,4 +1,4 @@
-package org.darkSolace.muse
+package org.darkSolace.muse.testUtil
 
 import org.darkSolace.muse.userModule.repository.AvatarRepository
 import org.darkSolace.muse.userModule.repository.SuspensionHistoryRepository

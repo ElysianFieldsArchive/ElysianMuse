@@ -17,6 +17,10 @@ Deletes a user identified by its id. Listens on /api/user/{id} for DELETE reques
 the [org.darkSolace.muse.userModule.model.Role.ADMINISTRATOR](../../org.darkSolace.muse.userModule.model/-role/-a-d-m-i-n-i-s-t-r-a-t-o-r/index.md)
 role to access this endpoint.
 
+#### Return
+
+HTTP 200 on success, HTTP 401 otherwise
+
 ## Samples
 
 ## Parameters
