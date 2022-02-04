@@ -1,62 +1,23 @@
 package org.darkSolace.muse.securityModule
 
-import org.darkSolace.muse.DBClearer
 import org.darkSolace.muse.securityModule.model.JwtResponse
 import org.darkSolace.muse.securityModule.model.SignUpRequest
+import org.darkSolace.muse.testUtil.TestBase
 import org.darkSolace.muse.userModule.model.User
 import org.darkSolace.muse.userModule.service.UserRoleService
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Order
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
-import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.http.HttpStatus
-import org.springframework.test.context.DynamicPropertyRegistry
-import org.springframework.test.context.DynamicPropertySource
-import org.testcontainers.containers.PostgreSQLContainer
-import org.testcontainers.junit.jupiter.Container
-import org.testcontainers.junit.jupiter.Testcontainers
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Testcontainers
-@TestMethodOrder(MethodOrderer.OrderAnnotation::class)
-class AuthControllerApiTests {
+class AuthControllerApiTests : TestBase() {
     @Autowired
     private lateinit var userRoleService: UserRoleService
 
     @Autowired
     private lateinit var restTemplate: TestRestTemplate
-
-    @LocalServerPort
-    private lateinit var port: String
-
-    @Autowired
-    private lateinit var dbClearer: DBClearer
-
-    companion object {
-        @Container
-        private val postgresqlContainer: PostgreSQLContainer<*> =
-            PostgreSQLContainer<Nothing>("postgres:14.0-alpine").apply {
-                withDatabaseName("foo")
-                withUsername("foo")
-                withPassword("secret")
-            }
-
-        @JvmStatic
-        @DynamicPropertySource
-        fun properties(registry: DynamicPropertyRegistry) {
-            registry.add("spring.datasource.url", postgresqlContainer::getJdbcUrl)
-            registry.add("spring.datasource.password", postgresqlContainer::getPassword)
-            registry.add("spring.datasource.username", postgresqlContainer::getUsername)
-        }
-    }
-
-    @BeforeEach
-    fun clearDB() {
-        dbClearer.clearAll()
-    }
-
-    private fun generateUrl(path: String): String = "http://localhost:$port$path"
 
     @Test
     @Order(1)

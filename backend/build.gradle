@@ -2,7 +2,7 @@ import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id 'org.springframework.boot' version '2.6.2'
+    id 'org.springframework.boot' version '2.6.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'org.jetbrains.kotlin.jvm' version '1.6.10'
     id 'org.jetbrains.kotlin.plugin.spring' version '1.6.10'
@@ -14,9 +14,9 @@ plugins {
 
 group = 'org.darkSolace'
 version = '0.0.1-SNAPSHOT'
-def spring_version = '2.6.2'
+def spring_version = '2.6.3'
 def kotlin_version = '1.6.10'
-ext['log4j2.version'] = '2.17.1'
+def junit_version = '5.8.2'
 
 configurations {
     compileOnly {
@@ -40,10 +40,10 @@ dependencies {
     runtimeOnly "io.jsonwebtoken:jjwt-jackson:0.11.2"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${spring_version}"
     testImplementation "org.springframework.boot:spring-boot-starter-test:${spring_version}"
-    testImplementation "org.junit.jupiter:junit-jupiter:5.8.2"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.2"
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:5.8.2"
-    testImplementation "org.junit.jupiter:junit-jupiter-params:5.8.2"
+    testImplementation "org.junit.jupiter:junit-jupiter:${junit_version}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junit_version}"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${junit_version}"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:${junit_version}"
     testImplementation "org.junit.platform:junit-platform-commons:1.8.2"
     testImplementation "org.junit.platform:junit-platform-engine:1.8.2"
     testImplementation "org.springframework.security:spring-security-test:5.5.1"
@@ -74,8 +74,8 @@ detekt {
 
 tasks.withType(Detekt).configureEach {
     reports {
-        html.enabled = true // observe findings in your browser with structure and code snippets
-        xml.enabled = true // checkstyle like format mainly for integrations like Jenkins
+        html.required = true // observe findings in your browser with structure and code snippets
+        xml.required = true // checkstyle like format mainly for integrations like Jenkins
     }
 }
 
@@ -85,8 +85,8 @@ jacoco {
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        csv.enabled false
+        xml.required = true
+        csv.required = false
     }
 }
 

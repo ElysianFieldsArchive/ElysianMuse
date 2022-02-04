@@ -1,10 +1,10 @@
-package org.darkSolace.muse.testConfig
+package org.darkSolace.muse.testUtil
 
 import org.junit.jupiter.api.ClassDescriptor
 import org.junit.jupiter.api.ClassOrderer
 import org.junit.jupiter.api.ClassOrdererContext
 
-class TestClassOrderer: ClassOrderer {
+class TestClassOrderer : ClassOrderer {
     override fun orderClasses(context: ClassOrdererContext?) {
         context?.classDescriptors?.sortBy { getClassOrder(it) }
     }

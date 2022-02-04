@@ -1,49 +1,14 @@
 package org.darkSolace.muse
 
+import org.darkSolace.muse.testUtil.TestBase
 import org.junit.jupiter.api.*
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.DynamicPropertyRegistry
-import org.springframework.test.context.DynamicPropertySource
-import org.testcontainers.containers.PostgreSQLContainer
-import org.testcontainers.junit.jupiter.Container
-import org.testcontainers.junit.jupiter.Testcontainers
 import javax.persistence.EntityManager
 
-
-@SpringBootTest
-@Testcontainers
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
-class ElysianMuseApplicationTests {
-
+class ElysianMuseApplicationTests : TestBase() {
     @Autowired
     lateinit var em: EntityManager
-
-    @Autowired
-    lateinit var dbClearer: DBClearer
-
-    companion object {
-        @Container
-        private val postgresqlContainer: PostgreSQLContainer<*> =
-            PostgreSQLContainer<Nothing>("postgres:14.0-alpine").apply {
-                withDatabaseName("foo")
-                withUsername("foo")
-                withPassword("secret")
-            }
-
-        @JvmStatic
-        @DynamicPropertySource
-        fun properties(registry: DynamicPropertyRegistry) {
-            registry.add("spring.datasource.url", postgresqlContainer::getJdbcUrl)
-            registry.add("spring.datasource.password", postgresqlContainer::getPassword)
-            registry.add("spring.datasource.username", postgresqlContainer::getUsername)
-        }
-    }
-
-    @BeforeEach
-    fun clearDB() {
-        dbClearer.clearAll()
-    }
 
     /**
      * Checks if Spring Boot is starting without issues

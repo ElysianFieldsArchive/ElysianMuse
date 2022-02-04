@@ -1,55 +1,20 @@
 package org.darkSolace.muse.securityModule
 
-import org.darkSolace.muse.DBClearer
 import org.darkSolace.muse.securityModule.model.UserDetails
 import org.darkSolace.muse.securityModule.service.UserDetailsService
+import org.darkSolace.muse.testUtil.TestBase
 import org.darkSolace.muse.userModule.model.User
 import org.darkSolace.muse.userModule.service.UserService
 import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.DynamicPropertyRegistry
-import org.springframework.test.context.DynamicPropertySource
-import org.testcontainers.containers.PostgreSQLContainer
-import org.testcontainers.junit.jupiter.Container
-import org.testcontainers.junit.jupiter.Testcontainers
 
-@SpringBootTest
-@Testcontainers
-class UserDetailsServiceTests {
+class UserDetailsServiceTests : TestBase() {
     @Autowired
     lateinit var userDetailsService: UserDetailsService
 
     @Autowired
     lateinit var userService: UserService
-
-    @Autowired
-    lateinit var dbClearer: DBClearer
-
-    companion object {
-        @Container
-        private val postgresqlContainer: PostgreSQLContainer<*> =
-            PostgreSQLContainer<Nothing>("postgres:14.0-alpine").apply {
-                withDatabaseName("foo")
-                withUsername("foo")
-                withPassword("secret")
-            }
-
-        @JvmStatic
-        @DynamicPropertySource
-        fun properties(registry: DynamicPropertyRegistry) {
-            registry.add("spring.datasource.url", postgresqlContainer::getJdbcUrl)
-            registry.add("spring.datasource.password", postgresqlContainer::getPassword)
-            registry.add("spring.datasource.username", postgresqlContainer::getUsername)
-        }
-    }
-
-    @BeforeEach
-    fun clearDB() {
-        dbClearer.clearAll()
-    }
 
     @Test
     fun loadUserDetailsByUsername() {

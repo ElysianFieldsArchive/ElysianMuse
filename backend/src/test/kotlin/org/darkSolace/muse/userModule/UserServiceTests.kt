@@ -1,53 +1,23 @@
 package org.darkSolace.muse.userModule
 
-import org.darkSolace.muse.DBClearer
+import org.darkSolace.muse.testUtil.TestBase
 import org.darkSolace.muse.userModule.model.*
 import org.darkSolace.muse.userModule.repository.UserRepository
 import org.darkSolace.muse.userModule.service.UserService
 import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.DynamicPropertyRegistry
-import org.springframework.test.context.DynamicPropertySource
-import org.testcontainers.containers.PostgreSQLContainer
-import org.testcontainers.junit.jupiter.Container
-import org.testcontainers.junit.jupiter.Testcontainers
 import org.testcontainers.shaded.org.hamcrest.MatcherAssert
 import org.testcontainers.shaded.org.hamcrest.Matchers
 import java.util.*
 
-@SpringBootTest
-@Testcontainers
-class UserServiceTests {
+class UserServiceTests : TestBase() {
     @Autowired
     lateinit var userService: UserService
 
     @Autowired
     lateinit var userRepository: UserRepository
-
-    @Autowired
-    lateinit var dbClearer: DBClearer
-
-    companion object {
-        @Container
-        private val postgresqlContainer: PostgreSQLContainer<*> =
-            PostgreSQLContainer<Nothing>("postgres:14.0-alpine").apply {
-                withDatabaseName("foo")
-                withUsername("foo")
-                withPassword("secret")
-            }
-
-        @JvmStatic
-        @DynamicPropertySource
-        fun properties(registry: DynamicPropertyRegistry) {
-            registry.add("spring.datasource.url", postgresqlContainer::getJdbcUrl)
-            registry.add("spring.datasource.password", postgresqlContainer::getPassword)
-            registry.add("spring.datasource.username", postgresqlContainer::getUsername)
-        }
-    }
 
     // RegExHelpers
     val defaultUserSettings =
@@ -55,11 +25,6 @@ class UserServiceTests {
                 "realNameVisible = false, maxRating = PARENTAL_GUIDANCE_13, shareButtonsVisible = true, " +
                 "showEntireStories = false, selectedFontFamily = SANS, storyBannersVisible = true, " +
                 "selectedFontSize = MEDIUM\\)"
-
-    @BeforeEach
-    fun clearDB() {
-        dbClearer.clearAll()
-    }
 
     @Test
     fun createUserTest() {
