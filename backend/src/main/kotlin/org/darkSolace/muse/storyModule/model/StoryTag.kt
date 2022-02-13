@@ -8,7 +8,7 @@ import javax.persistence.Id
  * Placeholder for a story tag class
  */
 @Entity
-data class StoryTag (
+data class StoryTag(
     @Id
     var id: Long? = null,
     val tagName: String

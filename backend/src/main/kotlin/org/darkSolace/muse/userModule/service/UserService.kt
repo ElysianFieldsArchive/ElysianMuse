@@ -1,6 +1,7 @@
 package org.darkSolace.muse.userModule.service
 
 import org.darkSolace.muse.securityModule.model.SignUpRequest
+import org.darkSolace.muse.statisticsModule.repository.LastSeenRepository
 import org.darkSolace.muse.userModule.model.*
 import org.darkSolace.muse.userModule.repository.AvatarRepository
 import org.darkSolace.muse.userModule.repository.UserRepository
@@ -22,7 +23,8 @@ import java.util.*
 class UserService(
     @Autowired val userRepository: UserRepository,
     @Autowired val avatarRepository: AvatarRepository,
-    @Autowired val userSettingsRepository: UserSettingsRepository
+    @Autowired val userSettingsRepository: UserSettingsRepository,
+    @Autowired val lastSeenRepository: LastSeenRepository
 ) {
 
     /**
@@ -81,7 +83,6 @@ class UserService(
      * @param id the ID as [Long]
      * @return the found [User] or `null`
      */
-    @Transactional
     fun getById(id: Long) = userRepository.findByIdOrNull(id)
 
     /**
@@ -126,6 +127,7 @@ class UserService(
                 user
             }
 
+        lastSeenRepository.deleteByUser(deletedUser)
         userRepository.delete(deletedUser)
     }
 
@@ -134,6 +136,7 @@ class UserService(
      *
      * @param id of the [User] to be deleted
      */
+    @Transactional
     fun deleteUser(id: Long) {
         val user = userRepository.findByIdOrNull(id) ?: return
         deleteUser(user)

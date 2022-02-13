@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Component
 import java.util.*
+import javax.servlet.http.HttpServletRequest
 
 /**
  * Utility [Component] for tasks related to JWT
@@ -76,5 +77,20 @@ class JwtUtils {
             logger.error("JWT claims string is empty: {}", e.message)
         }
         return false
+    }
+
+    /**
+     * Extracts the JWT from a [HttpServletRequest]
+     *
+     * @param request the [HttpServletRequest] containing the authentication as a "Bearer"-Header
+     * @return the extracted JWT or `null` if authentication is missing
+     */
+    fun parseJwt(request: HttpServletRequest): String? {
+        val authHeader = request.getHeader("Authorization")
+
+        return if (!authHeader.isNullOrBlank() && authHeader.startsWith("Bearer ")) {
+            authHeader.removePrefix("Bearer ")
+        } else
+            null
     }
 }

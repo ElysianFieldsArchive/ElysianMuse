@@ -6,7 +6,7 @@
 
 | Name | Summary |
 |---|---|
-| [ElysianMuseApplication](-elysian-muse-application/index.md) | [jvm]<br>@SpringBootApplication<br>class [ElysianMuseApplication](-elysian-muse-application/index.md) |
+| [ElysianMuseApplication](-elysian-muse-application/index.md) | [jvm]<br>@SpringBootApplication<br>@EnableScheduling<br>class [ElysianMuseApplication](-elysian-muse-application/index.md) |
 
 ## Functions
 

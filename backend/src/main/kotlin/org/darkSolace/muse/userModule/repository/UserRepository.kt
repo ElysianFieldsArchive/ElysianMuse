@@ -15,7 +15,7 @@ interface UserRepository : CrudRepository<User, Long> {
      * Retrieves a user with given [username] from the database.
      *
      * @param username the username to look up the [User]
-     * @return The [User] or null
+     * @return The [User] or `null`
      */
     fun findByUsername(username: String): User?
 

@@ -173,7 +173,7 @@ class UserControllerApiTests : TestBase() {
             add("Authorization", "Bearer ${signInResponse?.body?.token}")
         }
         val response =
-            restTemplate.exchange(url, HttpMethod.POST, HttpEntity<HttpHeaders>(headers), HttpStatus::class.java)
+            restTemplate.exchange(url, HttpMethod.POST, HttpEntity<HttpHeaders>(headers), String::class.java)
 
         Assertions.assertEquals(HttpStatus.FORBIDDEN, response.statusCode)
 

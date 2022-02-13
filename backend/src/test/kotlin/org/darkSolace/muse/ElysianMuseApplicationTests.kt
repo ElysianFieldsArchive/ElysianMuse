@@ -1,11 +1,12 @@
 package org.darkSolace.muse
 
 import org.darkSolace.muse.testUtil.TestBase
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Order
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import javax.persistence.EntityManager
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 class ElysianMuseApplicationTests : TestBase() {
     @Autowired
     lateinit var em: EntityManager
@@ -35,6 +36,6 @@ class ElysianMuseApplicationTests : TestBase() {
     fun testSecretCheck() {
         //should not fail as secret is set long enough
         secretCheck()
-        //if secretCheck doesn't exit pass
+        //if secretCheck succeeds without an error, the test is considered passed
     }
 }
