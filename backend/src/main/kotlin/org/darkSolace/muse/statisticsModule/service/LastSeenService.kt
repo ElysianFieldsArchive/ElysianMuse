@@ -129,12 +129,14 @@ class LastSeenService(
         return lastSeenRepository.findByUser(user)
     }
 
-    /**
-     * Helper to convert a String, representing a whole number of minutes, into milliseconds
-     *
-     * @return number of milliseconds for the given value
-     */
-    private fun String.minutesToMilliSeconds(): Long {
-        return this.toInt() * 60 * 1000L
-    }
 }
+
+private const val SECONDS_PER_MINUTE = 60L
+private const val MILLIS_PER_SECOND = 1000L
+
+/**
+ * Helper to convert a String, representing a whole number of minutes, into milliseconds
+ *
+ * @return number of milliseconds for the given value
+ */
+private fun String.minutesToMilliSeconds() = this.toInt() * SECONDS_PER_MINUTE * MILLIS_PER_SECOND
