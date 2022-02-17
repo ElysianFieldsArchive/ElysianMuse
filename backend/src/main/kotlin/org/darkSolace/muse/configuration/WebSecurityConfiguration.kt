@@ -1,9 +1,9 @@
 package org.darkSolace.muse.configuration
 
-import org.darkSolace.muse.securityModule.service.AuthEntryPointJwt
-import org.darkSolace.muse.securityModule.service.AuthTokenFilter
-import org.darkSolace.muse.securityModule.service.UserDetailsService
-import org.darkSolace.muse.statisticsModule.service.LastSeenFilter
+import org.darkSolace.muse.security.service.AuthEntryPointJwt
+import org.darkSolace.muse.security.service.AuthTokenFilter
+import org.darkSolace.muse.security.service.UserDetailsService
+import org.darkSolace.muse.statistics.service.LastSeenFilter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
