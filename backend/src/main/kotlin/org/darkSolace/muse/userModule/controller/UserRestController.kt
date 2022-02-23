@@ -3,8 +3,10 @@ package org.darkSolace.muse.userModule.controller
 import org.darkSolace.muse.securityModule.model.UserDetails
 import org.darkSolace.muse.userModule.model.SuspensionHistoryEntry
 import org.darkSolace.muse.userModule.model.User
+import org.darkSolace.muse.userModule.model.UserTag
 import org.darkSolace.muse.userModule.service.UserRoleService
 import org.darkSolace.muse.userModule.service.UserService
+import org.darkSolace.muse.userModule.service.UserTagService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -19,7 +21,11 @@ import org.springframework.web.bind.annotation.*
  */
 @RestController
 @RequestMapping("/api/user")
-class UserRestController(@Autowired val userService: UserService, @Autowired val userRoleService: UserRoleService) {
+class UserRestController(
+    @Autowired val userService: UserService,
+    @Autowired val userRoleService: UserRoleService,
+    @Autowired val userTagService: UserTagService,
+) {
     /**
      * Retrieves a user by its id. Listens on /api/user/{id}.
      *
@@ -135,5 +141,82 @@ class UserRestController(@Autowired val userService: UserService, @Autowired val
     @PreAuthorize("hasAnyAuthority('ADMINISTRATION', 'MODERATOR')")
     fun getAllCurrentlySuspended(): List<User> {
         return userRoleService.getAllCurrentlySuspendedUsers()
+    }
+
+    /**
+     * Adds a [UserTag] to a [User].
+     * A [User] can add [UserTag]s to itself.
+     * To add tags to a different user either the [org.darkSolace.muse.userModule.model.Role] of
+     * [org.darkSolace.muse.userModule.model.Role.ADMINISTRATOR] or
+     * [org.darkSolace.muse.userModule.model.Role.MODERATOR] is required.
+     *
+     * @sample `curl -X PUT -H "Authorization: [...]" localhost:8080/api/user/5/ARTIST`
+     * @param user the id of the [User] to add a [UserTag] to
+     * @param tag the [UserTag] to add
+     */
+    @PutMapping("/{user}/tag/{tag}")
+    fun addTagToUser(
+        @PathVariable user: User?,
+        @PathVariable tag: UserTag,
+        authentication: Authentication?
+    ): ResponseEntity<Unit> {
+        if (user == null) return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+        val userDetails = (authentication?.principal as UserDetails?)
+        return if (userDetails?.user == user) {
+            // user trys deletes himself (can be of role MEMBER, MODERATOR or ADMINISTRATOR)
+            userTagService.addTagToUser(user, tag)
+            ResponseEntity<Unit>(HttpStatus.OK)
+        } else
+            if (userDetails
+                    ?.authorities
+                    ?.contains(SimpleGrantedAuthority("ADMINISTRATOR")) == true ||
+                userDetails
+                    ?.authorities
+                    ?.contains(SimpleGrantedAuthority("MODERATOR")) == true
+            ) {
+                // tag is added by an ADMIN or MOD
+                userTagService.addTagToUser(user, tag)
+                ResponseEntity<Unit>(HttpStatus.OK)
+            } else {
+                ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
+            }
+    }
+
+    /**
+     * Removes a [UserTag] from a [User].
+     * A [User] can remove [UserTag]s from itself.
+     * To remove tags from a different user either the [org.darkSolace.muse.userModule.model.Role] of
+     * [org.darkSolace.muse.userModule.model.Role.ADMINISTRATOR] or
+     * [org.darkSolace.muse.userModule.model.Role.MODERATOR] is required.
+     *
+     * @sample `curl -X DELETE -H "Authorization: [...]" localhost:8080/api/user/5/ARTIST`
+     * @param user the id of the [User] to remove a [UserTag] from
+     * @param tag the [UserTag] to remove
+     */
+    @DeleteMapping("/{user}/tag/{tag}")
+    fun removeTagFromUser(
+        @PathVariable user: User?,
+        @PathVariable tag: UserTag,
+        authentication: Authentication?
+    ): ResponseEntity<Unit> {
+        if (user == null) return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+        val userDetails = (authentication?.principal as UserDetails?)
+        if (userDetails?.user == user) {
+            // user trys deletes himself (can be of role MEMBER, MODERATOR or ADMINISTRATOR)
+            userTagService.removeTagFromUser(user, tag)
+        } else
+            if (userDetails
+                    ?.authorities
+                    ?.contains(SimpleGrantedAuthority("ADMINISTRATOR")) == true ||
+                userDetails
+                    ?.authorities
+                    ?.contains(SimpleGrantedAuthority("MODERATOR")) == true
+            ) {
+                // user is deleted by an ADMINISTRATOR
+                userTagService.removeTagFromUser(user, tag)
+            } else {
+                return ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
+            }
+        return ResponseEntity<Unit>(HttpStatus.OK)
     }
 }
