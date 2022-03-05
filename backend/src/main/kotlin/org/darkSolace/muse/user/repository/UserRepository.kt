@@ -33,7 +33,7 @@ interface UserRepository : CrudRepository<User, Long> {
      * @param userTags the required [UserTag]s
      * @return a [List] of [User]s having the required [UserTag]
      */
-    fun findAllByUserTags(userTags: Set<UserTag>): List<User>
+    fun findAllByUserTags(userTags: UserTag): List<User>
 
     /**
      * Checks if a [User] with a given username already exists

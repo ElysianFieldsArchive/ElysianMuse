@@ -6,7 +6,7 @@
 
 @PostMapping(value = ["/signup"])
 
-fun [registerUser](register-user.md)(@RequestBodysignUpRequest: [SignUpRequest](../../org.darkSolace.muse.security.model/-sign-up-request/index.md)): ResponseEntity&lt;*&gt;
+fun [registerUser](register-user.md)(@RequestBodysignUpRequest: [SignUpRequest](../../org.darkSolace.muse.security.model/-sign-up-request/index.md)): ResponseEntity&lt;[String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)&gt;
 
 Checks a transmitted [SignUpRequest](../../org.darkSolace.muse.security.model/-sign-up-request/index.md) and creates a user if possible. Listens on /api/auth/signup.
 

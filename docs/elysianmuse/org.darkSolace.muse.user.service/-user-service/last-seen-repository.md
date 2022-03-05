@@ -3,4 +3,4 @@
 # lastSeenRepository
 
 [jvm]\
-val [lastSeenRepository](last-seen-repository.md): [LastSeenRepository](../../org.darkSolace.muse.statistics.repository/-last-seen-repository/index.md)
+val [lastSeenRepository](last-seen-repository.md): [LastSeenRepository](../../org.darkSolace.muse.lastSeen.repository/-last-seen-repository/index.md)

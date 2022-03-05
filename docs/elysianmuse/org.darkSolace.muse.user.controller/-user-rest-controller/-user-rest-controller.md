@@ -3,4 +3,4 @@
 # UserRestController
 
 [jvm]\
-fun [UserRestController](-user-rest-controller.md)(@AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md), @AutowireduserTagService: [UserTagService](../../org.darkSolace.muse.user.service/-user-tag-service/index.md))
+fun [UserRestController](-user-rest-controller.md)(@AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md), @AutowireduserTagService: [UserTagService](../../org.darkSolace.muse.user.service/-user-tag-service/index.md), @AutowiredsuspensionService: [SuspenstionService](../../org.darkSolace.muse.user.service/-suspenstion-service/index.md))

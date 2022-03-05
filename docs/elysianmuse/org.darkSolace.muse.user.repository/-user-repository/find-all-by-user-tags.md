@@ -3,7 +3,7 @@
 # findAllByUserTags
 
 [jvm]\
-abstract fun [findAllByUserTags](find-all-by-user-tags.md)(tag: [UserTag](../../org.darkSolace.muse.user.model/-user-tag/index.md)): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt;
+abstract fun [findAllByUserTags](find-all-by-user-tags.md)(userTags: [UserTag](../../org.darkSolace.muse.user.model/-user-tag/index.md)): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt;
 
 Retrieves all [User](../../org.darkSolace.muse.user.model/-user/index.md)s with a given [UserTag](../../org.darkSolace.muse.user.model/-user-tag/index.md) from the database.
 
@@ -17,4 +17,4 @@ jvm
 
 | | |
 |---|---|
-| tag | the required [UserTag](../../org.darkSolace.muse.user.model/-user-tag/index.md) |
+| userTags | the required [UserTag](../../org.darkSolace.muse.user.model/-user-tag/index.md)s |

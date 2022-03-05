@@ -4,6 +4,7 @@ import org.darkSolace.muse.security.model.LoginRequest
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.security.model.SignUpResponse
 import org.darkSolace.muse.security.service.AuthenticationService
+import org.darkSolace.muse.user.service.SuspenstionService
 import org.darkSolace.muse.user.service.UserRoleService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -22,7 +23,8 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("api/auth")
 class AuthController(
     @Autowired val authenticationService: AuthenticationService,
-    @Autowired val userRoleService: UserRoleService
+    @Autowired val userRoleService: UserRoleService,
+    @Autowired val suspensionService: SuspenstionService
 ) {
     /**
      * Checks a transmitted [LoginRequest] for a valid username/password pair. Listens on /api/auth/signin.
@@ -34,7 +36,7 @@ class AuthController(
      * a token, HTTP 401 is username or password are invalid, or HTTP 301 is user is suspended
      */
     @PostMapping("/signin")
-    fun authenticateUser(@RequestBody loginRequest: LoginRequest): ResponseEntity<*>? {
+    fun authenticateUser(@RequestBody loginRequest: LoginRequest): ResponseEntity<*> {
         return try {
             val token = authenticationService.authenticate(loginRequest)
             if (token == null) {
@@ -46,7 +48,7 @@ class AuthController(
                 if (authentication != null &&
                     authentication.authorities.contains(SimpleGrantedAuthority("SUSPENDED"))
                 ) {
-                    val confirmationCode = userRoleService.suspensionCodeForUsername(loginRequest.username)
+                    val confirmationCode = suspensionService.suspensionCodeForUsername(loginRequest.username)
                     ResponseEntity.status(HttpStatus.TEMPORARY_REDIRECT)
                         .header("Location", "/suspend/confirm/$confirmationCode")
                         .body("User is suspended")
@@ -69,7 +71,7 @@ class AuthController(
      * @return HTTP-Status 200 OK if user was created successfully or 400 BAD REQUEST if an error occurred
      */
     @PostMapping("/signup")
-    fun registerUser(@RequestBody signUpRequest: SignUpRequest): ResponseEntity<*> {
+    fun registerUser(@RequestBody signUpRequest: SignUpRequest): ResponseEntity<String> {
         return when (authenticationService.signUpUser(signUpRequest)) {
             SignUpResponse.USERNAME_EXISTS -> {
                 ResponseEntity

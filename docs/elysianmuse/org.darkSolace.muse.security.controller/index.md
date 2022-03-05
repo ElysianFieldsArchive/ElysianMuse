@@ -6,4 +6,4 @@
 
 | Name | Summary |
 |---|---|
-| [AuthController](-auth-controller/index.md) | [jvm]<br>@RestController<br>@RequestMapping(value = ["api/auth"])<br>class [AuthController](-auth-controller/index.md)(@AutowiredauthenticationService: [AuthenticationService](../org.darkSolace.muse.security.service/-authentication-service/index.md), @AutowireduserRoleService: [UserRoleService](../org.darkSolace.muse.user.service/-user-role-service/index.md)) |
+| [AuthController](-auth-controller/index.md) | [jvm]<br>@RestController<br>@RequestMapping(value = ["api/auth"])<br>class [AuthController](-auth-controller/index.md)(@AutowiredauthenticationService: [AuthenticationService](../org.darkSolace.muse.security.service/-authentication-service/index.md), @AutowireduserRoleService: [UserRoleService](../org.darkSolace.muse.user.service/-user-role-service/index.md), @AutowiredsuspensionService: [SuspenstionService](../org.darkSolace.muse.user.service/-suspenstion-service/index.md)) |

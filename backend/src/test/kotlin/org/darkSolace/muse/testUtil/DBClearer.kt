@@ -1,6 +1,6 @@
 package org.darkSolace.muse.testUtil
 
-import org.darkSolace.muse.statistics.repository.LastSeenRepository
+import org.darkSolace.muse.lastSeen.repository.LastSeenRepository
 import org.darkSolace.muse.user.repository.AvatarRepository
 import org.darkSolace.muse.user.repository.SuspensionHistoryRepository
 import org.darkSolace.muse.user.repository.UserRepository

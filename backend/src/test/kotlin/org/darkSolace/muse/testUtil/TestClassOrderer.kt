@@ -10,7 +10,15 @@ class TestClassOrderer : ClassOrderer {
     }
 
     private fun getClassOrder(classDescriptor: ClassDescriptor): Int {
-        return when (classDescriptor.displayName) {
+        // run api tests after service tests
+        return when {
+            classDescriptor.displayName.endsWith("ApiTests") -> getApiTestOrder(classDescriptor.displayName)
+            else -> getServiceTestOrder(classDescriptor.displayName)
+        }
+    }
+
+    private fun getServiceTestOrder(name: String): Int {
+        return when (name) {
             "ElysianMuseApplicationTests" -> 1
             "UserServiceTests" -> 2
             "UserTagServiceTests" -> 3
@@ -19,8 +27,12 @@ class TestClassOrderer : ClassOrderer {
             "JwtUtilsTests" -> 6
             "UserDetailsServiceTests" -> 7
             "LastSeenServiceTests" -> 8
+            else -> 50
+        }
+    }
 
-            //API Tests
+    private fun getApiTestOrder(name: String): Int {
+        return when (name) {
             "LastSeenApiTests" -> 95
             "UserControllerApiTests" -> 96
             "AuthControllerApiTests" -> 97

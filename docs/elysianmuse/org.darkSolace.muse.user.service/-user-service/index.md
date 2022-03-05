@@ -5,7 +5,7 @@
 [jvm]\
 @Service
 
-class [UserService](index.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowiredavatarRepository: [AvatarRepository](../../org.darkSolace.muse.user.repository/-avatar-repository/index.md), @AutowireduserSettingsRepository: [UserSettingsRepository](../../org.darkSolace.muse.user.repository/-user-settings-repository/index.md), @AutowiredlastSeenRepository: [LastSeenRepository](../../org.darkSolace.muse.statistics.repository/-last-seen-repository/index.md))
+class [UserService](index.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowireduserSettingsRepository: [UserSettingsRepository](../../org.darkSolace.muse.user.repository/-user-settings-repository/index.md), @AutowiredlastSeenRepository: [LastSeenRepository](../../org.darkSolace.muse.lastSeen.repository/-last-seen-repository/index.md))
 
 Service class for [User](../../org.darkSolace.muse.user.model/-user/index.md) related tasks.
 
@@ -22,13 +22,12 @@ jvm
 
 | | |
 |---|---|
-| [UserService](-user-service.md) | [jvm]<br>fun [UserService](-user-service.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowiredavatarRepository: [AvatarRepository](../../org.darkSolace.muse.user.repository/-avatar-repository/index.md), @AutowireduserSettingsRepository: [UserSettingsRepository](../../org.darkSolace.muse.user.repository/-user-settings-repository/index.md), @AutowiredlastSeenRepository: [LastSeenRepository](../../org.darkSolace.muse.statistics.repository/-last-seen-repository/index.md)) |
+| [UserService](-user-service.md) | [jvm]<br>fun [UserService](-user-service.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowireduserSettingsRepository: [UserSettingsRepository](../../org.darkSolace.muse.user.repository/-user-settings-repository/index.md), @AutowiredlastSeenRepository: [LastSeenRepository](../../org.darkSolace.muse.lastSeen.repository/-last-seen-repository/index.md)) |
 
 ## Functions
 
 | Name | Summary |
 |---|---|
-| [changeAvatar](change-avatar.md) | [jvm]<br>@Transactional<br>fun [changeAvatar](change-avatar.md)(user: [User](../../org.darkSolace.muse.user.model/-user/index.md), avatar: [Avatar](../../org.darkSolace.muse.user.model/-avatar/index.md)): [User](../../org.darkSolace.muse.user.model/-user/index.md)?<br>Changes the [Avatar](../../org.darkSolace.muse.user.model/-avatar/index.md) for the specified [User](../../org.darkSolace.muse.user.model/-user/index.md) and persists it in the database. |
 | [createUser](create-user.md) | [jvm]<br>fun [createUser](create-user.md)(user: [User](../../org.darkSolace.muse.user.model/-user/index.md)): [User](../../org.darkSolace.muse.user.model/-user/index.md)?<br>Creates and persists a [User](../../org.darkSolace.muse.user.model/-user/index.md) in the database Password is hashed in the process |
 | [createUserFromSignUpRequest](create-user-from-sign-up-request.md) | [jvm]<br>fun [createUserFromSignUpRequest](create-user-from-sign-up-request.md)(signUpRequest: [SignUpRequest](../../org.darkSolace.muse.security.model/-sign-up-request/index.md)): [User](../../org.darkSolace.muse.user.model/-user/index.md)?<br>Creates a user from a [SignUpRequest](../../org.darkSolace.muse.security.model/-sign-up-request/index.md) |
 | [deleteUser](delete-user.md) | [jvm]<br>@Transactional<br>fun [deleteUser](delete-user.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html))<br>@Transactional<br>fun [deleteUser](delete-user.md)(user: [User](../../org.darkSolace.muse.user.model/-user/index.md))<br>Deletes a [User](../../org.darkSolace.muse.user.model/-user/index.md) from the database |
@@ -43,7 +42,6 @@ jvm
 
 | Name | Summary |
 |---|---|
-| [avatarRepository](avatar-repository.md) | [jvm]<br>val [avatarRepository](avatar-repository.md): [AvatarRepository](../../org.darkSolace.muse.user.repository/-avatar-repository/index.md) |
-| [lastSeenRepository](last-seen-repository.md) | [jvm]<br>val [lastSeenRepository](last-seen-repository.md): [LastSeenRepository](../../org.darkSolace.muse.statistics.repository/-last-seen-repository/index.md) |
+| [lastSeenRepository](last-seen-repository.md) | [jvm]<br>val [lastSeenRepository](last-seen-repository.md): [LastSeenRepository](../../org.darkSolace.muse.lastSeen.repository/-last-seen-repository/index.md) |
 | [userRepository](user-repository.md) | [jvm]<br>val [userRepository](user-repository.md): [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md) |
 | [userSettingsRepository](user-settings-repository.md) | [jvm]<br>val [userSettingsRepository](user-settings-repository.md): [UserSettingsRepository](../../org.darkSolace.muse.user.repository/-user-settings-repository/index.md) |

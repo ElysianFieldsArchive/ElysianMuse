@@ -3,6 +3,7 @@ package org.darkSolace.muse.user
 import org.darkSolace.muse.testUtil.TestBase
 import org.darkSolace.muse.user.model.*
 import org.darkSolace.muse.user.repository.UserRepository
+import org.darkSolace.muse.user.service.AvatarService
 import org.darkSolace.muse.user.service.UserService
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -18,6 +19,9 @@ class UserServiceTests : TestBase() {
 
     @Autowired
     lateinit var userRepository: UserRepository
+
+    @Autowired
+    lateinit var avatarService: AvatarService
 
     // RegExHelpers
     val defaultUserSettings =
@@ -126,13 +130,13 @@ class UserServiceTests : TestBase() {
         Assertions.assertNull(user.avatar)
 
         //set an avatar and save avatarId
-        userService.changeAvatar(user, Avatar(null, byteArrayOf(0, 1, 2, 3)))
+        avatarService.changeAvatar(user, Avatar(null, byteArrayOf(0, 1, 2, 3)))
         val avatarId = user.avatar?.id
         Assertions.assertNotNull(user.avatar?.id)
         Assertions.assertArrayEquals(byteArrayOf(0, 1, 2, 3), user.avatar?.avatarBlob)
 
         // change the avatar, check if blob changed but id stayed the same
-        userService.changeAvatar(user, Avatar(null, byteArrayOf(3, 4, 5, 6)))
+        avatarService.changeAvatar(user, Avatar(null, byteArrayOf(3, 4, 5, 6)))
         Assertions.assertArrayEquals(byteArrayOf(3, 4, 5, 6), user.avatar?.avatarBlob)
         Assertions.assertEquals(avatarId, user.avatar?.id)
     }
@@ -146,13 +150,15 @@ class UserServiceTests : TestBase() {
         val userByUsername = User(username = "testUser95", password = "", email = "")
 
         //set an avatar and save avatarId
-        user = userService.changeAvatar(userByUsername, Avatar(null, byteArrayOf(0, 1, 2, 3))) ?: fail("User was null")
+        user = avatarService.changeAvatar(userByUsername, Avatar(null, byteArrayOf(0, 1, 2, 3)))
+            ?: fail("User was null")
         val avatarId = user.avatar?.id
         Assertions.assertNotNull(user.avatar?.id)
         Assertions.assertArrayEquals(byteArrayOf(0, 1, 2, 3), user.avatar?.avatarBlob)
 
         // change the avatar, check if blob changed but id stayed the same
-        user = userService.changeAvatar(userByUsername, Avatar(null, byteArrayOf(3, 4, 5, 6))) ?: fail("User was null")
+        user = avatarService.changeAvatar(userByUsername, Avatar(null, byteArrayOf(3, 4, 5, 6)))
+            ?: fail("User was null")
         Assertions.assertArrayEquals(byteArrayOf(3, 4, 5, 6), user.avatar?.avatarBlob)
         Assertions.assertEquals(avatarId, user.avatar?.id)
     }
@@ -163,7 +169,7 @@ class UserServiceTests : TestBase() {
         val unknownUser = User(username = "notKnown", password = "", email = "")
 
         //assert return null
-        val user = userService.changeAvatar(unknownUser, Avatar(avatarBlob = byteArrayOf(1, 2, 3, 4)))
+        val user = avatarService.changeAvatar(unknownUser, Avatar(avatarBlob = byteArrayOf(1, 2, 3, 4)))
         Assertions.assertNull(user)
     }
 

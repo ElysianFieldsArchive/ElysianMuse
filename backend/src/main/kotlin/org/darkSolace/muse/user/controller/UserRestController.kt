@@ -5,6 +5,7 @@ import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.model.SuspensionHistoryEntry
 import org.darkSolace.muse.user.model.User
 import org.darkSolace.muse.user.model.UserTag
+import org.darkSolace.muse.user.service.SuspenstionService
 import org.darkSolace.muse.user.service.UserRoleService
 import org.darkSolace.muse.user.service.UserService
 import org.darkSolace.muse.user.service.UserTagService
@@ -25,7 +26,8 @@ import org.springframework.web.bind.annotation.*
 class UserRestController(
     @Autowired val userService: UserService,
     @Autowired val userRoleService: UserRoleService,
-    @Autowired val userTagService: UserTagService
+    @Autowired val userTagService: UserTagService,
+    @Autowired val suspensionService: SuspenstionService
 ) {
     /**
      * Retrieves a user by its id. Listens on /api/user/{id}.
@@ -69,9 +71,10 @@ class UserRestController(
     fun deleteUser(@PathVariable user: User?, authentication: Authentication?): ResponseEntity<Unit> {
         if (user == null) return ResponseEntity<Unit>(HttpStatus.OK)
 
-        if ((authentication?.principal as UserDetails?)?.user?.id == user.id) {
+        return if ((authentication?.principal as UserDetails?)?.user?.id == user.id) {
             // user trys deletes himself (can be of role MEMBER, MODERATOR or ADMINISTRATOR)
             userService.deleteUser(user)
+            ResponseEntity<Unit>(HttpStatus.OK)
         } else
             if ((authentication?.principal as UserDetails?)
                     ?.authorities
@@ -79,11 +82,10 @@ class UserRestController(
             ) {
                 // user is deleted by an ADMINISTRATOR
                 userService.deleteUser(user)
+                ResponseEntity<Unit>(HttpStatus.OK)
             } else {
-                return ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
+                ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
             }
-
-        return ResponseEntity<Unit>(HttpStatus.OK)
     }
 
     /**
@@ -115,7 +117,7 @@ class UserRestController(
      */
     @PostMapping("/suspend/confirm/{confirmationCode}")
     fun confirmSuspension(@PathVariable confirmationCode: String): ResponseEntity<Unit> {
-        val success = userRoleService.confirmSuspension(confirmationCode)
+        val success = suspensionService.confirmSuspension(confirmationCode)
         return if (success)
             ResponseEntity<Unit>(HttpStatus.OK)
         else
@@ -134,7 +136,7 @@ class UserRestController(
     @GetMapping("/suspend/history/{user}")
     @PreAuthorize("hasAnyAuthority('ADMINISTRATION', 'MODERATOR')")
     fun getSuspensionHistory(@PathVariable user: User): List<SuspensionHistoryEntry> {
-        return userRoleService.getSuspensionHistory(user)
+        return suspensionService.getSuspensionHistory(user)
     }
 
     /**
@@ -148,7 +150,7 @@ class UserRestController(
     @GetMapping("/suspend/all")
     @PreAuthorize("hasAnyAuthority('ADMINISTRATION', 'MODERATOR')")
     fun getAllCurrentlySuspended(): List<User> {
-        return userRoleService.getAllCurrentlySuspendedUsers()
+        return suspensionService.getAllCurrentlySuspendedUsers()
     }
 
     /**
@@ -209,9 +211,10 @@ class UserRestController(
     ): ResponseEntity<Unit> {
         if (user == null) return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
         val userDetails = (authentication?.principal as UserDetails?)
-        if (userDetails?.user == user) {
+        return if (userDetails?.user == user) {
             // user trys deletes himself (can be of role MEMBER, MODERATOR or ADMINISTRATOR)
             userTagService.removeTagFromUser(user, tag)
+            ResponseEntity<Unit>(HttpStatus.OK)
         } else
             if (userDetails
                     ?.authorities
@@ -222,9 +225,9 @@ class UserRestController(
             ) {
                 // user is deleted by an ADMINISTRATOR
                 userTagService.removeTagFromUser(user, tag)
+                ResponseEntity<Unit>(HttpStatus.OK)
             } else {
-                return ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
+                ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
             }
-        return ResponseEntity<Unit>(HttpStatus.OK)
     }
 }

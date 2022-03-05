@@ -7,7 +7,7 @@
 
 @RequestMapping(value = ["/api/user"])
 
-class [UserRestController](index.md)(@AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md), @AutowireduserTagService: [UserTagService](../../org.darkSolace.muse.user.service/-user-tag-service/index.md))
+class [UserRestController](index.md)(@AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md), @AutowireduserTagService: [UserTagService](../../org.darkSolace.muse.user.service/-user-tag-service/index.md), @AutowiredsuspensionService: [SuspenstionService](../../org.darkSolace.muse.user.service/-suspenstion-service/index.md))
 
 RestController defining endpoints regarding all user activity Subject to change
 
@@ -15,7 +15,7 @@ RestController defining endpoints regarding all user activity Subject to change
 
 | | |
 |---|---|
-| [UserRestController](-user-rest-controller.md) | [jvm]<br>fun [UserRestController](-user-rest-controller.md)(@AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md), @AutowireduserTagService: [UserTagService](../../org.darkSolace.muse.user.service/-user-tag-service/index.md)) |
+| [UserRestController](-user-rest-controller.md) | [jvm]<br>fun [UserRestController](-user-rest-controller.md)(@AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md), @AutowireduserTagService: [UserTagService](../../org.darkSolace.muse.user.service/-user-tag-service/index.md), @AutowiredsuspensionService: [SuspenstionService](../../org.darkSolace.muse.user.service/-suspenstion-service/index.md)) |
 
 ## Functions
 
@@ -35,6 +35,7 @@ RestController defining endpoints regarding all user activity Subject to change
 
 | Name | Summary |
 |---|---|
+| [suspensionService](suspension-service.md) | [jvm]<br>val [suspensionService](suspension-service.md): [SuspenstionService](../../org.darkSolace.muse.user.service/-suspenstion-service/index.md) |
 | [userRoleService](user-role-service.md) | [jvm]<br>val [userRoleService](user-role-service.md): [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md) |
 | [userService](user-service.md) | [jvm]<br>val [userService](user-service.md): [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md) |
 | [userTagService](user-tag-service.md) | [jvm]<br>val [userTagService](user-tag-service.md): [UserTagService](../../org.darkSolace.muse.user.service/-user-tag-service/index.md) |

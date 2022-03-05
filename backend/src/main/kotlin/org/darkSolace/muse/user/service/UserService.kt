@@ -1,9 +1,11 @@
 package org.darkSolace.muse.user.service
 
+import org.darkSolace.muse.lastSeen.repository.LastSeenRepository
 import org.darkSolace.muse.security.model.SignUpRequest
-import org.darkSolace.muse.statistics.repository.LastSeenRepository
-import org.darkSolace.muse.user.model.*
-import org.darkSolace.muse.user.repository.AvatarRepository
+import org.darkSolace.muse.user.model.Role
+import org.darkSolace.muse.user.model.User
+import org.darkSolace.muse.user.model.UserSettings
+import org.darkSolace.muse.user.model.UserTag
 import org.darkSolace.muse.user.repository.UserRepository
 import org.darkSolace.muse.user.repository.UserSettingsRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,7 +24,6 @@ import java.util.*
 @Service
 class UserService(
     @Autowired val userRepository: UserRepository,
-    @Autowired val avatarRepository: AvatarRepository,
     @Autowired val userSettingsRepository: UserSettingsRepository,
     @Autowired val lastSeenRepository: LastSeenRepository
 ) {
@@ -44,37 +45,6 @@ class UserService(
 
         userRepository.save(user)
         return user
-    }
-
-    /**
-     * Changes the [Avatar] for the specified [User] and persists it in the database.
-     *
-     * @param user the [User] to modify
-     * @param avatar the new [Avatar]
-     * @return the modified [User] or `null` if the [User] was not found
-     */
-    @Transactional
-    fun changeAvatar(user: User, avatar: Avatar): User? {
-        val changedUser =
-            if (user.id == null) {
-                userRepository.findByUsername(user.username)
-            } else {
-                user
-            }
-        if (changedUser == null)
-            return null
-
-        // just changes the avatar blob if an avatar already exists
-        if (changedUser.avatar == null) {
-            avatarRepository.save(avatar)
-            changedUser.avatar = avatar
-            userRepository.save(changedUser)
-        } else {
-            changedUser.avatar?.avatarBlob = avatar.avatarBlob
-            userRepository.save(changedUser)
-        }
-
-        return changedUser
     }
 
     /**
@@ -106,7 +76,7 @@ class UserService(
      * @param tag the [UserTag] to filter by
      * @return a [List] of all [User]s with the given [UserTag]- might be empty if no [User]s exist with this [UserTag]
      */
-    fun getAllWithUserTag(tag: UserTag) = userRepository.findAllByUserTags(setOf(tag))
+    fun getAllWithUserTag(tag: UserTag) = userRepository.findAllByUserTags(tag)
 
     /**
      * Deletes a [User] from the database

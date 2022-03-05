@@ -6,4 +6,4 @@
 
 @Autowired
 
-lateinit var [lastSeenFilter](last-seen-filter.md): [LastSeenFilter](../../org.darkSolace.muse.statistics.service/-last-seen-filter/index.md)
+lateinit var [lastSeenFilter](last-seen-filter.md): [LastSeenFilter](../../org.darkSolace.muse.lastSeen.service/-last-seen-filter/index.md)
