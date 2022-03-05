@@ -323,6 +323,20 @@ class UserServiceTests : TestBase() {
     }
 
     @Test
+    fun deleteUserById() {
+        // create test user
+        val user = userService.createUser(User(username = "testUser16", password = "123", email = "test16@example.com"))
+            ?: fail("user is null")
+        val count = userRepository.count()
+        Assertions.assertTrue(userService.getAll().contains(user))
+
+        userService.deleteUser(user.id ?: -1)
+
+        Assertions.assertEquals(count - 1, userRepository.count())
+        Assertions.assertFalse(userService.getAll().contains(user))
+    }
+
+    @Test
     fun deleteUserByUserName() {
         // create test user
         val user =

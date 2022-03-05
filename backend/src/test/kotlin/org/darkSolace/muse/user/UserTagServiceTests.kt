@@ -86,6 +86,16 @@ class UserTagServiceTests : TestBase() {
     }
 
     @Test
+    fun addTagToUserUnknownUser() {
+        //try to remove tag from unknown user
+        val result = userTagService.addTagToUser(
+            User(username = "unknown", password = "123", email = "test@example.com"),
+            UserTag.BETA
+        )
+        Assertions.assertNull(result)
+    }
+
+    @Test
     fun removeTagFromUser() {
         //create test user with tags BETA and ARTIST
         val user = userService.createUser(
@@ -144,5 +154,15 @@ class UserTagServiceTests : TestBase() {
         Assertions.assertEquals(1, user.userTags.count())
         Assertions.assertFalse(user.userTags.contains(UserTag.BETA))
         Assertions.assertTrue(user.userTags.contains(UserTag.ARTIST))
+    }
+
+    @Test
+    fun removeTagFromUserUnknownUser() {
+        //try to remove tag from unknown user
+        val result = userTagService.removeTagFromUser(
+            User(username = "unknown", password = "123", email = "test@example.com"),
+            UserTag.BETA
+        )
+        Assertions.assertNull(result)
     }
 }

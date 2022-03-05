@@ -33,6 +33,9 @@ class UserControllerApiTests : TestBase() {
 
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
         Assertions.assertEquals(user?.toPublicUser(), response.body)
+        Assertions.assertEquals(0, response.body?.email?.length)
+        Assertions.assertNull(response.body?.birthday)
+        Assertions.assertNull(response.body?.realName)
     }
 
     @Test
@@ -491,5 +494,32 @@ class UserControllerApiTests : TestBase() {
             restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), Unit::class.java)
 
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
+    }
+
+    @Test
+    @Order(1)
+    fun getUserById_publicUserPrivate() {
+        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
+        user?.birthday = Date()
+        user?.realName = "Tom"
+
+        val userSettings = user?.userSettings?.apply {
+            emailVisible = true
+            birthdayVisible = true
+            realNameVisible = true
+        }
+        if (user != null && userSettings != null) {
+            userService.updateUserSettings(user, userSettings)
+            userService.userRepository.save(user)
+        }
+
+        val url = generateUrl("/api/user/${user?.id}")
+        val response = restTemplate.getForEntity(url, User::class.java)
+
+        Assertions.assertEquals(HttpStatus.OK, response.statusCode)
+        Assertions.assertEquals(user?.toPublicUser(), response.body)
+        Assertions.assertEquals("test@example.com".length, response.body?.email?.length)
+        Assertions.assertNotNull(response.body?.birthday)
+        Assertions.assertNotNull(response.body?.realName)
     }
 }

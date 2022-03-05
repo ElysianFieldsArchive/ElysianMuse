@@ -69,11 +69,9 @@ data class User(
         val user = User(id, username, "", "", "")
         user.role = role
 
-        when {
-            userSettings.emailVisible -> user.email = email
-            userSettings.birthdayVisible -> user.birthday = birthday
-            userSettings.realNameVisible -> user.realName = realName
-        }
+        if (userSettings.emailVisible) user.email = email
+        if (userSettings.birthdayVisible) user.birthday = birthday
+        if (userSettings.realNameVisible) user.realName = realName
 
         return user
     }
