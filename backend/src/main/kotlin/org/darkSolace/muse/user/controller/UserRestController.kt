@@ -5,7 +5,7 @@ import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.model.SuspensionHistoryEntry
 import org.darkSolace.muse.user.model.User
 import org.darkSolace.muse.user.model.UserTag
-import org.darkSolace.muse.user.service.SuspenstionService
+import org.darkSolace.muse.user.service.SuspensionService
 import org.darkSolace.muse.user.service.UserRoleService
 import org.darkSolace.muse.user.service.UserService
 import org.darkSolace.muse.user.service.UserTagService
@@ -27,7 +27,7 @@ class UserRestController(
     @Autowired val userService: UserService,
     @Autowired val userRoleService: UserRoleService,
     @Autowired val userTagService: UserTagService,
-    @Autowired val suspensionService: SuspenstionService
+    @Autowired val suspensionService: SuspensionService
 ) {
     /**
      * Retrieves a user by its id. Listens on /api/user/{id}.
@@ -134,7 +134,7 @@ class UserRestController(
      * @return List of [SuspensionHistoryEntry]s
      */
     @GetMapping("/suspend/history/{user}")
-    @PreAuthorize("hasAnyAuthority('ADMINISTRATION', 'MODERATOR')")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')")
     fun getSuspensionHistory(@PathVariable user: User): List<SuspensionHistoryEntry> {
         return suspensionService.getSuspensionHistory(user)
     }

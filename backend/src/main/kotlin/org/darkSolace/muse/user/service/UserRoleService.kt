@@ -29,7 +29,12 @@ class UserRoleService(
      */
     @Transactional
     fun suspendUser(user: User): User? {
-        return changeRole(user, Role.SUSPENDED)
+        val userToSuspend = if (user.id == null) {
+            // trying to find user
+            userRepository.findByUsername(user.username)
+        } else
+            user
+        return suspendUser(userToSuspend?.id ?: -1)
     }
 
     /**

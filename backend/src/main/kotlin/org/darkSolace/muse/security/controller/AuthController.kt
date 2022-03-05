@@ -4,7 +4,7 @@ import org.darkSolace.muse.security.model.LoginRequest
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.security.model.SignUpResponse
 import org.darkSolace.muse.security.service.AuthenticationService
-import org.darkSolace.muse.user.service.SuspenstionService
+import org.darkSolace.muse.user.service.SuspensionService
 import org.darkSolace.muse.user.service.UserRoleService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController
 class AuthController(
     @Autowired val authenticationService: AuthenticationService,
     @Autowired val userRoleService: UserRoleService,
-    @Autowired val suspensionService: SuspenstionService
+    @Autowired val suspensionService: SuspensionService
 ) {
     /**
      * Checks a transmitted [LoginRequest] for a valid username/password pair. Listens on /api/auth/signin.

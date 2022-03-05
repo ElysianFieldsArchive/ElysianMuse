@@ -3,4 +3,4 @@
 # suspensionService
 
 [jvm]\
-val [suspensionService](suspension-service.md): [SuspenstionService](../../org.darkSolace.muse.user.service/-suspenstion-service/index.md)
+val [suspensionService](suspension-service.md): [SuspensionService](../../org.darkSolace.muse.user.service/-suspension-service/index.md)

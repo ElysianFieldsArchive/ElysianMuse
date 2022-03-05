@@ -7,7 +7,7 @@
 
 @RequestMapping(value = ["api/auth"])
 
-class [AuthController](index.md)(@AutowiredauthenticationService: [AuthenticationService](../../org.darkSolace.muse.security.service/-authentication-service/index.md), @AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md), @AutowiredsuspensionService: [SuspenstionService](../../org.darkSolace.muse.user.service/-suspenstion-service/index.md))
+class [AuthController](index.md)(@AutowiredauthenticationService: [AuthenticationService](../../org.darkSolace.muse.security.service/-authentication-service/index.md), @AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md), @AutowiredsuspensionService: [SuspensionService](../../org.darkSolace.muse.user.service/-suspension-service/index.md))
 
 ## Functions
 
@@ -21,5 +21,5 @@ class [AuthController](index.md)(@AutowiredauthenticationService: [Authenticatio
 | Name | Summary |
 |---|---|
 | [authenticationService](authentication-service.md) | [jvm]<br>val [authenticationService](authentication-service.md): [AuthenticationService](../../org.darkSolace.muse.security.service/-authentication-service/index.md) |
-| [suspensionService](suspension-service.md) | [jvm]<br>val [suspensionService](suspension-service.md): [SuspenstionService](../../org.darkSolace.muse.user.service/-suspenstion-service/index.md) |
+| [suspensionService](suspension-service.md) | [jvm]<br>val [suspensionService](suspension-service.md): [SuspensionService](../../org.darkSolace.muse.user.service/-suspension-service/index.md) |
 | [userRoleService](user-role-service.md) | [jvm]<br>val [userRoleService](user-role-service.md): [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md) |
