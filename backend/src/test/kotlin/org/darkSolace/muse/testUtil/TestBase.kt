@@ -13,7 +13,7 @@ import org.testcontainers.junit.jupiter.Container
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
-abstract class TestBase {
+class TestBase {
     @LocalServerPort
     private lateinit var port: String
 

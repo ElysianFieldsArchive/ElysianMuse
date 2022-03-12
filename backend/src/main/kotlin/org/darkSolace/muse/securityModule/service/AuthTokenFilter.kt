@@ -36,7 +36,7 @@ class AuthTokenFilter : OncePerRequestFilter() {
         filterChain: FilterChain
     ) {
         try {
-            val jwt = parseJwt(request)
+            val jwt = jwtUtils.parseJwt(request)
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
                 val username = jwtUtils.getUserNameFromJwtToken(jwt)
 
@@ -55,20 +55,5 @@ class AuthTokenFilter : OncePerRequestFilter() {
         }
 
         filterChain.doFilter(request, response)
-    }
-
-    /**
-     * Extracts the JWT from a [HttpServletRequest]
-     *
-     * @param request the [HttpServletRequest] containing the authentication as a "Bearer"-Header
-     * @return the extracted JWT or `null` if authentication is missing
-     */
-    private fun parseJwt(request: HttpServletRequest): String? {
-        val authHeader = request.getHeader("Authorization")
-
-        return if (!authHeader.isNullOrBlank() && authHeader.startsWith("Bearer ")) {
-            authHeader.removePrefix("Bearer ")
-        } else
-            null
     }
 }

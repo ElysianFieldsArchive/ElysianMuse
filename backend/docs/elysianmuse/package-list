@@ -1,5 +1,13 @@
 $dokka.format:gfm-v1
 $dokka.linkExtension:md
+$dokka.location:org.darkSolace.muse.configuration////PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/index.md
+$dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration///PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/index.md
+$dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/WebSecurityConfiguration/#org.darkSolace.muse.securityModule.service.UserDetailsService#org.darkSolace.muse.securityModule.service.AuthEntryPointJwt/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/-web-security-configuration.md
+$dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/authTokenFilter/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/auth-token-filter.md
+$dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/lastSeenFilter/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/last-seen-filter.md
+$dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/passwordEncoder/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/password-encoder.md
+$dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/unauthorizedHandler/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/unauthorized-handler.md
+$dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/userDetailsService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/user-details-service.md
 $dokka.location:org.darkSolace.muse.layoutModule.model////PointingToDeclaration/elysianmuse/org.darkSolace.muse.layoutModule.model/index.md
 $dokka.location:org.darkSolace.muse.layoutModule.model/FontFamily.SANS///PointingToDeclaration/elysianmuse/org.darkSolace.muse.layoutModule.model/-font-family/-s-a-n-s/index.md
 $dokka.location:org.darkSolace.muse.layoutModule.model/FontFamily.SERIF///PointingToDeclaration/elysianmuse/org.darkSolace.muse.layoutModule.model/-font-family/-s-e-r-i-f/index.md
@@ -11,13 +19,6 @@ $dokka.location:org.darkSolace.muse.layoutModule.model/FontSize///PointingToDecl
 $dokka.location:org.darkSolace.muse.layoutModule.model/Layout///PointingToDeclaration/elysianmuse/org.darkSolace.muse.layoutModule.model/-layout/index.md
 $dokka.location:org.darkSolace.muse.layoutModule.model/Layout/Layout/#kotlin.Long?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.layoutModule.model/-layout/-layout.md
 $dokka.location:org.darkSolace.muse.layoutModule.model/Layout/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.layoutModule.model/-layout/id.md
-$dokka.location:org.darkSolace.muse.securityModule.configuration////PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.configuration/index.md
-$dokka.location:org.darkSolace.muse.securityModule.configuration/WebSecurityConfiguration///PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.configuration/-web-security-configuration/index.md
-$dokka.location:org.darkSolace.muse.securityModule.configuration/WebSecurityConfiguration/WebSecurityConfiguration/#org.darkSolace.muse.securityModule.service.UserDetailsService#org.darkSolace.muse.securityModule.service.AuthEntryPointJwt/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.configuration/-web-security-configuration/-web-security-configuration.md
-$dokka.location:org.darkSolace.muse.securityModule.configuration/WebSecurityConfiguration/authTokenFilter/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.configuration/-web-security-configuration/auth-token-filter.md
-$dokka.location:org.darkSolace.muse.securityModule.configuration/WebSecurityConfiguration/passwordEncoder/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.configuration/-web-security-configuration/password-encoder.md
-$dokka.location:org.darkSolace.muse.securityModule.configuration/WebSecurityConfiguration/unauthorizedHandler/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.configuration/-web-security-configuration/unauthorized-handler.md
-$dokka.location:org.darkSolace.muse.securityModule.configuration/WebSecurityConfiguration/userDetailsService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.configuration/-web-security-configuration/user-details-service.md
 $dokka.location:org.darkSolace.muse.securityModule.controller////PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.controller/index.md
 $dokka.location:org.darkSolace.muse.securityModule.controller/AuthController///PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.controller/-auth-controller/index.md
 $dokka.location:org.darkSolace.muse.securityModule.controller/AuthController/AuthController/#org.darkSolace.muse.securityModule.service.AuthenticationService#org.darkSolace.muse.userModule.service.UserRoleService/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.controller/-auth-controller/-auth-controller.md
@@ -75,11 +76,47 @@ $dokka.location:org.darkSolace.muse.securityModule.service/JwtUtils///PointingTo
 $dokka.location:org.darkSolace.muse.securityModule.service/JwtUtils/JwtUtils/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.service/-jwt-utils/-jwt-utils.md
 $dokka.location:org.darkSolace.muse.securityModule.service/JwtUtils/generateJwtToken/#org.springframework.security.core.Authentication/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.service/-jwt-utils/generate-jwt-token.md
 $dokka.location:org.darkSolace.muse.securityModule.service/JwtUtils/getUserNameFromJwtToken/#kotlin.String?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.service/-jwt-utils/get-user-name-from-jwt-token.md
+$dokka.location:org.darkSolace.muse.securityModule.service/JwtUtils/parseJwt/#javax.servlet.http.HttpServletRequest/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.service/-jwt-utils/parse-jwt.md
 $dokka.location:org.darkSolace.muse.securityModule.service/JwtUtils/validateJwtToken/#kotlin.String?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.service/-jwt-utils/validate-jwt-token.md
 $dokka.location:org.darkSolace.muse.securityModule.service/UserDetailsService///PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.service/-user-details-service/index.md
 $dokka.location:org.darkSolace.muse.securityModule.service/UserDetailsService/UserDetailsService/#org.darkSolace.muse.userModule.repository.UserRepository/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.service/-user-details-service/-user-details-service.md
 $dokka.location:org.darkSolace.muse.securityModule.service/UserDetailsService/loadUserByUsername/#kotlin.String?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.service/-user-details-service/load-user-by-username.md
 $dokka.location:org.darkSolace.muse.securityModule.service/UserDetailsService/userRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.securityModule.service/-user-details-service/user-repository.md
+$dokka.location:org.darkSolace.muse.statisticsModule.controller////PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.controller/index.md
+$dokka.location:org.darkSolace.muse.statisticsModule.controller/StatisticsController///PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.controller/-statistics-controller/index.md
+$dokka.location:org.darkSolace.muse.statisticsModule.controller/StatisticsController/StatisticsController/#org.darkSolace.muse.statisticsModule.service.LastSeenService/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.controller/-statistics-controller/-statistics-controller.md
+$dokka.location:org.darkSolace.muse.statisticsModule.controller/StatisticsController/getOnlineUsers/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.controller/-statistics-controller/get-online-users.md
+$dokka.location:org.darkSolace.muse.statisticsModule.controller/StatisticsController/getOnlineUsersCount/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.controller/-statistics-controller/get-online-users-count.md
+$dokka.location:org.darkSolace.muse.statisticsModule.controller/StatisticsController/lastSeenService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.controller/-statistics-controller/last-seen-service.md
+$dokka.location:org.darkSolace.muse.statisticsModule.model////PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.model/index.md
+$dokka.location:org.darkSolace.muse.statisticsModule.model/LastSeenEntry///PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.model/-last-seen-entry/index.md
+$dokka.location:org.darkSolace.muse.statisticsModule.model/LastSeenEntry/LastSeenEntry/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.model/-last-seen-entry/-last-seen-entry.md
+$dokka.location:org.darkSolace.muse.statisticsModule.model/LastSeenEntry/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.model/-last-seen-entry/id.md
+$dokka.location:org.darkSolace.muse.statisticsModule.model/LastSeenEntry/jSession/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.model/-last-seen-entry/j-session.md
+$dokka.location:org.darkSolace.muse.statisticsModule.model/LastSeenEntry/lastSeen/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.model/-last-seen-entry/last-seen.md
+$dokka.location:org.darkSolace.muse.statisticsModule.model/LastSeenEntry/user/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.model/-last-seen-entry/user.md
+$dokka.location:org.darkSolace.muse.statisticsModule.repository////PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.repository/index.md
+$dokka.location:org.darkSolace.muse.statisticsModule.repository/LastSeenRepository///PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.repository/-last-seen-repository/index.md
+$dokka.location:org.darkSolace.muse.statisticsModule.repository/LastSeenRepository/deleteByUser/#org.darkSolace.muse.userModule.model.User/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.repository/-last-seen-repository/delete-by-user.md
+$dokka.location:org.darkSolace.muse.statisticsModule.repository/LastSeenRepository/findAllByLastSeenBefore/#java.util.Date/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.repository/-last-seen-repository/find-all-by-last-seen-before.md
+$dokka.location:org.darkSolace.muse.statisticsModule.repository/LastSeenRepository/findByUser/#org.darkSolace.muse.userModule.model.User/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.repository/-last-seen-repository/find-by-user.md
+$dokka.location:org.darkSolace.muse.statisticsModule.repository/LastSeenRepository/findByjSession/#kotlin.String?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.repository/-last-seen-repository/find-byj-session.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service////PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/index.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenFilter///PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-filter/index.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenFilter/LastSeenFilter/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-filter/-last-seen-filter.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenFilter/jwtUtils/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-filter/jwt-utils.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenFilter/lastSeenService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-filter/last-seen-service.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenService///PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-service/index.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenService/LastSeenService/#org.darkSolace.muse.userModule.repository.UserRepository#org.darkSolace.muse.statisticsModule.repository.LastSeenRepository#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-service/-last-seen-service.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenService/getBySession/#kotlin.String?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-service/get-by-session.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenService/getByUsername/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-service/get-by-username.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenService/getOnlineUserCount/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-service/get-online-user-count.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenService/getOnlineUsers/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-service/get-online-users.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenService/lastSeenRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-service/last-seen-repository.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenService/prune/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-service/prune.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenService/sessionTimeInMinutes/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-service/session-time-in-minutes.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenService/updateLastSeen/#kotlin.String?#kotlin.String?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-service/update-last-seen.md
+$dokka.location:org.darkSolace.muse.statisticsModule.service/LastSeenService/userRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.statisticsModule.service/-last-seen-service/user-repository.md
 $dokka.location:org.darkSolace.muse.storyModule.model////PointingToDeclaration/elysianmuse/org.darkSolace.muse.storyModule.model/index.md
 $dokka.location:org.darkSolace.muse.storyModule.model/Rating.ADULT_ONLY///PointingToDeclaration/elysianmuse/org.darkSolace.muse.storyModule.model/-rating/-a-d-u-l-t_-o-n-l-y/index.md
 $dokka.location:org.darkSolace.muse.storyModule.model/Rating.GENERAL_AUDIENCE///PointingToDeclaration/elysianmuse/org.darkSolace.muse.storyModule.model/-rating/-g-e-n-e-r-a-l_-a-u-d-i-e-n-c-e/index.md
@@ -97,16 +134,19 @@ $dokka.location:org.darkSolace.muse.storyModule.model/StoryTag/tagName/#/Pointin
 $dokka.location:org.darkSolace.muse.storyModule.model/StoryTag/toString/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.storyModule.model/-story-tag/to-string.md
 $dokka.location:org.darkSolace.muse.userModule.controller////PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/index.md
 $dokka.location:org.darkSolace.muse.userModule.controller/UserRestController///PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/index.md
-$dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/UserRestController/#org.darkSolace.muse.userModule.service.UserService#org.darkSolace.muse.userModule.service.UserRoleService/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/-user-rest-controller.md
+$dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/UserRestController/#org.darkSolace.muse.userModule.service.UserService#org.darkSolace.muse.userModule.service.UserRoleService#org.darkSolace.muse.userModule.service.UserTagService/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/-user-rest-controller.md
+$dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/addTagToUser/#org.darkSolace.muse.userModule.model.User?#org.darkSolace.muse.userModule.model.UserTag#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/add-tag-to-user.md
 $dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/confirmSuspension/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/confirm-suspension.md
 $dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/deleteUserById/#kotlin.Long#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/delete-user-by-id.md
 $dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/getAllCurrentlySuspended/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/get-all-currently-suspended.md
 $dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/getAllUsers/#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/get-all-users.md
 $dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/getSuspensionHistory/#kotlin.Long/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/get-suspension-history.md
 $dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/getUserById/#kotlin.Long#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/get-user-by-id.md
+$dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/removeTagFromUser/#org.darkSolace.muse.userModule.model.User?#org.darkSolace.muse.userModule.model.UserTag#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/remove-tag-from-user.md
 $dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/suspendUserById/#kotlin.Long/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/suspend-user-by-id.md
 $dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/userRoleService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/user-role-service.md
 $dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/userService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/user-service.md
+$dokka.location:org.darkSolace.muse.userModule.controller/UserRestController/userTagService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.controller/-user-rest-controller/user-tag-service.md
 $dokka.location:org.darkSolace.muse.userModule.model////PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.model/index.md
 $dokka.location:org.darkSolace.muse.userModule.model/Avatar///PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.model/-avatar/index.md
 $dokka.location:org.darkSolace.muse.userModule.model/Avatar/Avatar/#kotlin.Long?#kotlin.ByteArray?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.model/-avatar/-avatar.md
@@ -201,7 +241,7 @@ $dokka.location:org.darkSolace.muse.userModule.service/UserRoleService/suspensio
 $dokka.location:org.darkSolace.muse.userModule.service/UserRoleService/suspensionHistoryRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-role-service/suspension-history-repository.md
 $dokka.location:org.darkSolace.muse.userModule.service/UserRoleService/userRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-role-service/user-repository.md
 $dokka.location:org.darkSolace.muse.userModule.service/UserService///PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-service/index.md
-$dokka.location:org.darkSolace.muse.userModule.service/UserService/UserService/#org.darkSolace.muse.userModule.repository.UserRepository#org.darkSolace.muse.userModule.repository.AvatarRepository#org.darkSolace.muse.userModule.repository.UserSettingsRepository/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-service/-user-service.md
+$dokka.location:org.darkSolace.muse.userModule.service/UserService/UserService/#org.darkSolace.muse.userModule.repository.UserRepository#org.darkSolace.muse.userModule.repository.AvatarRepository#org.darkSolace.muse.userModule.repository.UserSettingsRepository#org.darkSolace.muse.statisticsModule.repository.LastSeenRepository/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-service/-user-service.md
 $dokka.location:org.darkSolace.muse.userModule.service/UserService/avatarRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-service/avatar-repository.md
 $dokka.location:org.darkSolace.muse.userModule.service/UserService/changeAvatar/#org.darkSolace.muse.userModule.model.User#org.darkSolace.muse.userModule.model.Avatar/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-service/change-avatar.md
 $dokka.location:org.darkSolace.muse.userModule.service/UserService/createUser/#org.darkSolace.muse.userModule.model.User/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-service/create-user.md
@@ -212,6 +252,7 @@ $dokka.location:org.darkSolace.muse.userModule.service/UserService/getAll/#/Poin
 $dokka.location:org.darkSolace.muse.userModule.service/UserService/getAllWithRole/#org.darkSolace.muse.userModule.model.Role/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-service/get-all-with-role.md
 $dokka.location:org.darkSolace.muse.userModule.service/UserService/getAllWithUserTag/#org.darkSolace.muse.userModule.model.UserTag/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-service/get-all-with-user-tag.md
 $dokka.location:org.darkSolace.muse.userModule.service/UserService/getById/#kotlin.Long/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-service/get-by-id.md
+$dokka.location:org.darkSolace.muse.userModule.service/UserService/lastSeenRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-service/last-seen-repository.md
 $dokka.location:org.darkSolace.muse.userModule.service/UserService/updateLastLogin/#org.darkSolace.muse.userModule.model.User/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-service/update-last-login.md
 $dokka.location:org.darkSolace.muse.userModule.service/UserService/updateUserSettings/#org.darkSolace.muse.userModule.model.User#org.darkSolace.muse.userModule.model.UserSettings/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-service/update-user-settings.md
 $dokka.location:org.darkSolace.muse.userModule.service/UserService/userRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.userModule.service/-user-service/user-repository.md
@@ -229,11 +270,15 @@ $dokka.location:org.darkSolace.muse//secretCheck/#/PointingToDeclaration/elysia
 $dokka.location:org.darkSolace.muse/ElysianMuseApplication///PointingToDeclaration/elysianmuse/org.darkSolace.muse/-elysian-muse-application/index.md
 $dokka.location:org.darkSolace.muse/ElysianMuseApplication/ElysianMuseApplication/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse/-elysian-muse-application/-elysian-muse-application.md
 org.darkSolace.muse
+org.darkSolace.muse.configuration
 org.darkSolace.muse.layoutModule.model
-org.darkSolace.muse.securityModule.configuration
 org.darkSolace.muse.securityModule.controller
 org.darkSolace.muse.securityModule.model
 org.darkSolace.muse.securityModule.service
+org.darkSolace.muse.statisticsModule.controller
+org.darkSolace.muse.statisticsModule.model
+org.darkSolace.muse.statisticsModule.repository
+org.darkSolace.muse.statisticsModule.service
 org.darkSolace.muse.storyModule.model
 org.darkSolace.muse.userModule.controller
 org.darkSolace.muse.userModule.model

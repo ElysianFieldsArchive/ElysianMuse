@@ -18,8 +18,10 @@ class TestClassOrderer : ClassOrderer {
             "AuthenticationServiceTests" -> 5
             "JwtUtilsTests" -> 6
             "UserDetailsServiceTests" -> 7
+            "LastSeenServiceTests" -> 8
 
             //API Tests
+            "LastSeenApiTests" -> 95
             "UserControllerApiTests" -> 96
             "AuthControllerApiTests" -> 97
             "AuthControllerAccessTests" -> 98

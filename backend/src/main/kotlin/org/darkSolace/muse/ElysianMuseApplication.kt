@@ -2,9 +2,11 @@ package org.darkSolace.muse
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.scheduling.annotation.EnableScheduling
 
 
 @SpringBootApplication
+@EnableScheduling
 class ElysianMuseApplication
 
 const val MINIMUM_KEY_LENGTH = 64

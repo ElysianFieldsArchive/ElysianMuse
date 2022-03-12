@@ -30,7 +30,7 @@ class UserTagService(@Autowired val userRepository: UserRepository) {
             } else {
                 user
             }
-        if(changedUser == null)
+        if (changedUser == null)
             return null
 
         changedUser.userTags.add(tag)
@@ -62,7 +62,7 @@ class UserTagService(@Autowired val userRepository: UserRepository) {
             } else {
                 user
             }
-        if(changedUser == null)
+        if (changedUser == null)
             return null
 
         changedUser.userTags.remove(tag)

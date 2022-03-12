@@ -5,4 +5,6 @@
 [jvm]\
 @SpringBootApplication
 
+@EnableScheduling
+
 class [ElysianMuseApplication](index.md)

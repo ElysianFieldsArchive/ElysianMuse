@@ -1,8 +1,9 @@
-package org.darkSolace.muse.securityModule.configuration
+package org.darkSolace.muse.configuration
 
 import org.darkSolace.muse.securityModule.service.AuthEntryPointJwt
 import org.darkSolace.muse.securityModule.service.AuthTokenFilter
 import org.darkSolace.muse.securityModule.service.UserDetailsService
+import org.darkSolace.muse.statisticsModule.service.LastSeenFilter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -30,6 +31,9 @@ class WebSecurityConfiguration(
 
     @Autowired
     lateinit var authTokenFilter: AuthTokenFilter
+
+    @Autowired
+    lateinit var lastSeenFilter: LastSeenFilter
 
     /**
      * Configures the [AuthenticationManager], via [AuthenticationManagerBuilder],
@@ -62,12 +66,13 @@ class WebSecurityConfiguration(
 
         http.cors().and().csrf().disable()
             .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).and()
             .authorizeRequests()
             //allow access to all api endpoints, permissions handled in the controller
             .antMatchers("/api/**").permitAll()
             .anyRequest().authenticated()
 
         http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter::class.java)
+        http.addFilterAfter(lastSeenFilter, UsernamePasswordAuthenticationFilter::class.java)
     }
 }
