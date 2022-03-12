@@ -1,7 +1,0 @@
-//[elysianmuse](../../../index.md)/[org.darkSolace.muse.security.model](../index.md)/[JwtResponse](index.md)
-/[username](username.md)
-
-# username
-
-[jvm]\
-val [username](username.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)
