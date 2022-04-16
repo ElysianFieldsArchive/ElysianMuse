@@ -51,8 +51,8 @@ class TestBase {
         mailerSettingsService.updateMailerSettings(
             MailerSettings(
                 null,
-                greenMail.host,
-                greenMail.firstMappedPort,
+                "localhost",
+                3025,
                 "test",
                 "testPassword",
                 fromAddress = "sender@example.org"
@@ -73,7 +73,7 @@ class TestBase {
             }
 
         @Container
-        val greenMail = GenericContainer<Nothing>(DockerImageName.parse("greenmail/standalone:1.6.1")).apply {
+        val greenMail = GenericContainer<Nothing>(DockerImageName.parse("greenmail/standalone:1.6.8")).apply {
             waitingFor(Wait.forLogMessage(".*Starting GreenMail standalone.*", 1))
             withEnv(
                 "GREENMAIL_OPTS",
@@ -81,13 +81,14 @@ class TestBase {
             )
             withExposedPorts(3025)
             withReuse(true)
+
         }.also {
             it.start()
         }
 
         @RegisterExtension
         val greenMailExtension: GreenMailExtension =
-            GreenMailExtension(ServerSetup(greenMail.firstMappedPort, greenMail.host, "smtp"))
+            GreenMailExtension(ServerSetup(3025, "localhost", "smtp"))
                 .withConfiguration(GreenMailConfiguration.aConfig().withUser("test", "testPassword"))
                 .withPerMethodLifecycle(false)
 
