@@ -1,6 +1,7 @@
 package org.darkSolace.muse.testUtil
 
 import org.darkSolace.muse.lastSeen.repository.LastSeenRepository
+import org.darkSolace.muse.mail.repository.MailQueueRepository
 import org.darkSolace.muse.user.repository.AvatarRepository
 import org.darkSolace.muse.user.repository.SuspensionHistoryRepository
 import org.darkSolace.muse.user.repository.UserRepository
@@ -19,9 +20,12 @@ class DBClearer(
     @Autowired
     val suspensionHistoryRepository: SuspensionHistoryRepository,
     @Autowired
-    val lastSeenRepository: LastSeenRepository
+    val lastSeenRepository: LastSeenRepository,
+    @Autowired
+    val mailQueueRepository: MailQueueRepository,
 ) {
     fun clearAll() {
+        mailQueueRepository.deleteAll()
         lastSeenRepository.deleteAll()
         suspensionHistoryRepository.deleteAll()
         userRepository.deleteAll()

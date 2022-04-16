@@ -1,6 +1,7 @@
 package org.darkSolace.muse.user.service
 
 import org.darkSolace.muse.lastSeen.repository.LastSeenRepository
+import org.darkSolace.muse.mail.service.MailService
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.model.User
@@ -25,7 +26,8 @@ import java.util.*
 class UserService(
     @Autowired val userRepository: UserRepository,
     @Autowired val userSettingsRepository: UserSettingsRepository,
-    @Autowired val lastSeenRepository: LastSeenRepository
+    @Autowired val lastSeenRepository: LastSeenRepository,
+    @Autowired val mailService: MailService,
 ) {
 
     /**
@@ -43,7 +45,13 @@ class UserService(
         //hash the password before saving the user
         user.password = BCrypt.hashpw(user.password, user.salt)
 
+        //generate email confirmation string
+        user.emailConfirmationCode = UUID.randomUUID().toString()
+
         userRepository.save(user)
+
+        //user saved - send confirmation email
+        mailService.sendEMailConfirmationMail(user)
         return user
     }
 
@@ -164,5 +172,31 @@ class UserService(
     fun updateLastLogin(user: User) {
         user.lastLogInDate = Date()
         userRepository.save(user)
+    }
+
+    /**
+     * Marks the email of the given user as validated and cleans up all data regarding the (previously outstanding)
+     * validation
+     *
+     * TODO: Clean up validation
+     *
+     * @param user the [User] to update
+     */
+    fun markEMailAsValid(user: User) {
+        user.emailConfirmed = true
+        userRepository.save(user)
+    }
+
+    /**
+     * Marks the email of the given user, identified by its username, as validated and cleans up all data regarding
+     * the (previously outstanding) validation.
+     *
+     * @param username the username of the [User] to update
+     */
+    fun markEMailAsValid(username: String) {
+        val user = userRepository.findByUsername(username)
+        if (user != null) {
+            markEMailAsValid(user)
+        }
     }
 }

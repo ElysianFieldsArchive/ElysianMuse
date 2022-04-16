@@ -1,5 +1,6 @@
 package org.darkSolace.muse.security
 
+import org.darkSolace.muse.security.model.JwtResponse
 import org.darkSolace.muse.security.model.LoginRequest
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.security.model.SignUpResponse
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.authentication.BadCredentialsException
 
 class AuthenticationServiceTests : TestBase() {
     @Autowired
@@ -60,6 +62,7 @@ class AuthenticationServiceTests : TestBase() {
     fun testSignIn() {
         val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
+        userService.markEMailAsValid("test")
         Assertions.assertEquals(SignUpResponse.OK, response)
 
         val loginRequest = LoginRequest("test", "123")
@@ -72,11 +75,16 @@ class AuthenticationServiceTests : TestBase() {
     fun testSignIn_WrongPassword() {
         val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
+        userService.markEMailAsValid("test")
         Assertions.assertEquals(SignUpResponse.OK, response)
 
         val loginRequest = LoginRequest("test", "1234")
-        val jwtToken = authService.authenticate(loginRequest)
+        var jwtToken: JwtResponse? = null
+        Assertions.assertThrows(BadCredentialsException::class.java) {
+            jwtToken = authService.authenticate(loginRequest)
+        }
         Assertions.assertNull(jwtToken)
+
     }
 
     @Test
@@ -84,9 +92,10 @@ class AuthenticationServiceTests : TestBase() {
     fun testSignIn_SuspendedUser() {
         val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
+        userService.markEMailAsValid("test")
         Assertions.assertEquals(SignUpResponse.OK, response)
-        userRoleService.suspendUser(User(username = "test", password = "", email = "test@example.com"))
 
+        userRoleService.suspendUser(User(username = "test", password = "", email = "test@example.com"))
         val jwtResponse = authService.authenticate(LoginRequest("test", "123"))
         Assertions.assertEquals("SUSPENDED", jwtResponse?.role)
     }
@@ -96,6 +105,7 @@ class AuthenticationServiceTests : TestBase() {
     fun testSignIn_UpdateLoginDate() {
         val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
+        userService.markEMailAsValid("test")
         Assertions.assertEquals(SignUpResponse.OK, response)
 
         var user = userService.userRepository.findByUsername("test")

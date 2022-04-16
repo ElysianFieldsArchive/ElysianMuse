@@ -1,10 +1,10 @@
 package org.darkSolace.muse.security.service
 
+import org.darkSolace.muse.security.exception.EMailNotValidatedException
 import org.darkSolace.muse.security.model.*
 import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.repository.UserRepository
 import org.darkSolace.muse.user.service.UserService
-import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.BadCredentialsException
@@ -23,8 +23,6 @@ class AuthenticationService(
     @Autowired val userService: UserService,
     @Autowired val jwtUtils: JwtUtils
 ) {
-    private val logger = LoggerFactory.getLogger(this::class.simpleName)
-
     /**
      * Tries to authenticate a user.
      *
@@ -32,29 +30,27 @@ class AuthenticationService(
      *
      * @param loginRequest [LoginRequest] containing username and password
      * @return [JwtResponse] containing the token or `null` if authentication failed
+     * @throws BadCredentialsException
+     * @throws EMailNotValidatedException
      */
     fun authenticate(loginRequest: LoginRequest): JwtResponse? {
-        return try {
-            val authentication: Authentication = authenticationManager.authenticate(
-                UsernamePasswordAuthenticationToken(loginRequest.username, loginRequest.password)
-            )
-            SecurityContextHolder.getContext().authentication = authentication
-            val jwt = jwtUtils.generateJwtToken(authentication)
-            val userDetails = authentication.principal as UserDetails
-            if (userDetails.user == null) throw BadCredentialsException("Invalid user")
-            val role: Role = Role.valueOf(userDetails.authorities.first().authority)
-            // update last login
-            userService.updateLastLogin(userDetails.user)
-            return JwtResponse(
-                jwt,
-                userDetails.user.id,
-                userDetails.username,
-                role.name
-            )
-        } catch (e: BadCredentialsException) {
-            logger.error("Cannot set user authentication: {}", e)
-            null
-        }
+        val authentication: Authentication = authenticationManager.authenticate(
+            UsernamePasswordAuthenticationToken(loginRequest.username, loginRequest.password)
+        )
+        SecurityContextHolder.getContext().authentication = authentication
+        val jwt = jwtUtils.generateJwtToken(authentication)
+        val userDetails = authentication.principal as UserDetails
+        if (userDetails.user == null) throw BadCredentialsException("Invalid user")
+        if (!userDetails.user.emailConfirmed) throw EMailNotValidatedException("Email is not validated")
+        val role: Role = Role.valueOf(userDetails.authorities.first().authority)
+        // update last login
+        userService.updateLastLogin(userDetails.user)
+        return JwtResponse(
+            jwt,
+            userDetails.user.id,
+            userDetails.username,
+            role.name
+        )
     }
 
     /**

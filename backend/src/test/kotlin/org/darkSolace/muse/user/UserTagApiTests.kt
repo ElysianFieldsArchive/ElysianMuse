@@ -43,7 +43,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
-
+        userService.markEMailAsValid("test")
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
@@ -84,7 +84,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-
+        userService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -124,6 +124,7 @@ class UserTagApiTests : TestBase() {
             String::class.java
         )
 
+        userService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.MODERATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -162,6 +163,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
+        userService.markEMailAsValid("test2")
 
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
@@ -195,7 +197,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-
+        userService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -227,6 +229,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
+        userService.markEMailAsValid("test2")
 
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
@@ -257,7 +260,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
-
+        userService.markEMailAsValid("test")
 
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
@@ -305,7 +308,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-
+        userService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -347,7 +350,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-
+        userService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.MODERATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -389,6 +392,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
+        userService.markEMailAsValid("test2")
 
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
@@ -422,7 +426,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-
+        userService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -454,6 +458,8 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
+        userService.markEMailAsValid("test2")
+
 
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(

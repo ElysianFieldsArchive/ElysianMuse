@@ -44,6 +44,7 @@ class SuspensionServiceApiTests : TestBase() {
         val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
         val moderator = userService.createUser(User(username = "test2", password = "123", email = "test2@example.com"))
             ?: fail("Couldn't create moderator user")
+        userService.markEMailAsValid(moderator)
         userRoleService.changeRole(moderator, Role.MODERATOR)
         userRoleService.suspendUser(user?.id ?: -1)
 
@@ -79,6 +80,7 @@ class SuspensionServiceApiTests : TestBase() {
         val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
         val admin = userService.createUser(User(username = "test2", password = "123", email = "test2@example.com"))
             ?: fail("Couldn't create admin user")
+        userService.markEMailAsValid(admin)
         userRoleService.changeRole(admin, Role.ADMINISTRATOR)
         userRoleService.suspendUser(user?.id ?: -1)
 
@@ -105,7 +107,7 @@ class SuspensionServiceApiTests : TestBase() {
         Assertions.assertEquals(HttpStatus.OK, response?.statusCode)
         val suspensionHistory = response?.body
         Assertions.assertTrue(suspensionHistory?.isNotEmpty() ?: false)
-//        Assertions.assertEquals(1, suspensionHistory?.count { it.user == user })
+        Assertions.assertEquals(1, suspensionHistory?.count { it.user == user })
     }
 
     @Test
@@ -126,6 +128,7 @@ class SuspensionServiceApiTests : TestBase() {
         val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
         val moderator = userService.createUser(User(username = "test2", password = "123", email = "test2@example.com"))
             ?: fail("Couldn't create moderator user")
+        userService.markEMailAsValid(moderator)
         userRoleService.changeRole(moderator, Role.MODERATOR)
         userRoleService.suspendUser(user?.id ?: -1)
 
@@ -157,6 +160,7 @@ class SuspensionServiceApiTests : TestBase() {
         val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
         val admin = userService.createUser(User(username = "test2", password = "123", email = "test2@example.com"))
             ?: fail("Couldn't create admin user")
+        userService.markEMailAsValid(admin)
         userRoleService.changeRole(admin, Role.MODERATOR)
         userRoleService.suspendUser(user?.id ?: -1)
 

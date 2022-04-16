@@ -2,11 +2,11 @@ import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id "org.springframework.boot" version "2.6.3"
+    id "org.springframework.boot" version "2.6.6"
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
-    id "org.jetbrains.kotlin.jvm" version "1.6.10"
-    id "org.jetbrains.kotlin.plugin.spring" version "1.6.10"
-    id "org.jetbrains.kotlin.plugin.jpa" version "1.6.10"
+    id "org.jetbrains.kotlin.jvm" version "1.6.20"
+    id "org.jetbrains.kotlin.plugin.spring" version "1.6.20"
+    id "org.jetbrains.kotlin.plugin.jpa" version "1.6.20"
     id "io.gitlab.arturbosch.detekt" version "1.19.0"
     id "jacoco"
     id "org.jetbrains.dokka" version "1.5.31"
@@ -14,8 +14,8 @@ plugins {
 
 group = "org.darkSolace"
 version = "0.0.1-SNAPSHOT"
-def spring_version = "2.6.4"
-def kotlin_version = "1.6.10"
+def spring_version = "2.6.6"
+def kotlin_version = "1.6.20"
 def junit_version = "5.8.2"
 
 configurations {
@@ -32,6 +32,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:${spring_version}"
     implementation "org.springframework.boot:spring-boot-starter-security:${spring_version}"
     implementation "org.springframework.boot:spring-boot-starter-web:${spring_version}"
+    implementation "org.springframework.boot:spring-boot-starter-mail:${spring_version}"
     implementation "io.jsonwebtoken:jjwt-api:0.11.2"
     developmentOnly "org.springframework.boot:spring-boot-devtools:${spring_version}"
     runtimeOnly "org.postgresql:postgresql:42.3.3"
@@ -50,7 +51,8 @@ dependencies {
     testImplementation "org.testcontainers:junit-jupiter:1.16.3"
     testImplementation "org.testcontainers:postgresql:1.16.3"
     testImplementation "org.apache.httpcomponents:httpclient:4.5.13"
-    dokkaHtmlPlugin "org.jetbrains.dokka:kotlin-as-java-plugin:1.6.0"
+    testImplementation "com.icegreen:greenmail-junit5:1.6.8"
+    dokkaHtmlPlugin 'org.jetbrains.dokka:kotlin-as-java-plugin:1.6.10'
 }
 
 test {

@@ -112,12 +112,13 @@ class UserServiceTests : TestBase() {
         MatcherAssert.assertThat(
             userService.getById(user.id!!).toString(),
             Matchers.matchesPattern(
-                """User\(id = \d+, username = testUser2, """ +
-                        """email = test\d@example\.com, realName = Thomas Test, """ +
-                        """signUpDate = 202\d-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{0,3}, """ +
-                        """lastLogInDate = null, bio = Short Bio, birthday = 1980-01-01, """ +
-                        """validatedAuthor = false, onProbation = false, userSettings = $defaultUserSettings, """ +
-                        """userTags = \[BETA], avatar = Avatar\(id = \d+\), roles = MEMBER\)""".toPattern()
+                buildString {
+                    append("""User\(id = \d+ , username = testUser2 , email = test\d@example\.com , realName = Thomas Test , """)
+                    append("""signUpDate = 202\d-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{0,3} , lastLogInDate = null , """)
+                    append("""bio = Short Bio , birthday = 1980-01-01 , validatedAuthor = false , onProbation = false , """)
+                    append("""userSettings = $defaultUserSettings , userTags = \[BETA] , avatar = Avatar\(id = \d+\) , """)
+                    append("""role = MEMBER , emailConfirmed = false , emailConfirmationCode = null \)""")
+                }.toPattern()
             )
         )
     }
