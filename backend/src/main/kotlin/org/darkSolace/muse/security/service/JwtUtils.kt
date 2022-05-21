@@ -46,7 +46,7 @@ class JwtUtils {
      */
     fun getUserNameFromJwtToken(token: String?): String? {
         return Jwts.parserBuilder()
-            .setSigningKey(Base64.getEncoder().encodeToString(jwtSecret?.toByteArray()))
+            .setSigningKey(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()))
             .build()
             .parseClaimsJws(token)
             .body.subject
@@ -61,7 +61,7 @@ class JwtUtils {
     fun validateJwtToken(authToken: String?): Boolean {
         try {
             Jwts.parserBuilder()
-                .setSigningKey(Base64.getEncoder().encodeToString(jwtSecret?.toByteArray()))
+                .setSigningKey(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()))
                 .build()
                 .parseClaimsJws(authToken)
             return true
