@@ -1,5 +1,6 @@
 package org.darkSolace.muse.user
 
+import org.darkSolace.muse.mail.service.MailService
 import org.darkSolace.muse.security.model.JwtResponse
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.testUtil.TestBase
@@ -24,6 +25,9 @@ class SuspensionServiceApiTests : TestBase() {
     private lateinit var userService: UserService
 
     @Autowired
+    private lateinit var mailService: MailService
+
+    @Autowired
     private lateinit var userRoleService: UserRoleService
 
     @Test
@@ -44,7 +48,7 @@ class SuspensionServiceApiTests : TestBase() {
         val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
         val moderator = userService.createUser(User(username = "test2", password = "123", email = "test2@example.com"))
             ?: fail("Couldn't create moderator user")
-        userService.markEMailAsValid(moderator)
+        mailService.markEMailAsValid(moderator)
         userRoleService.changeRole(moderator, Role.MODERATOR)
         userRoleService.suspendUser(user?.id ?: -1)
 
@@ -80,7 +84,7 @@ class SuspensionServiceApiTests : TestBase() {
         val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
         val admin = userService.createUser(User(username = "test2", password = "123", email = "test2@example.com"))
             ?: fail("Couldn't create admin user")
-        userService.markEMailAsValid(admin)
+        mailService.markEMailAsValid(admin)
         userRoleService.changeRole(admin, Role.ADMINISTRATOR)
         userRoleService.suspendUser(user?.id ?: -1)
 
@@ -128,7 +132,7 @@ class SuspensionServiceApiTests : TestBase() {
         val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
         val moderator = userService.createUser(User(username = "test2", password = "123", email = "test2@example.com"))
             ?: fail("Couldn't create moderator user")
-        userService.markEMailAsValid(moderator)
+        mailService.markEMailAsValid(moderator)
         userRoleService.changeRole(moderator, Role.MODERATOR)
         userRoleService.suspendUser(user?.id ?: -1)
 
@@ -160,7 +164,7 @@ class SuspensionServiceApiTests : TestBase() {
         val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
         val admin = userService.createUser(User(username = "test2", password = "123", email = "test2@example.com"))
             ?: fail("Couldn't create admin user")
-        userService.markEMailAsValid(admin)
+        mailService.markEMailAsValid(admin)
         userRoleService.changeRole(admin, Role.MODERATOR)
         userRoleService.suspendUser(user?.id ?: -1)
 

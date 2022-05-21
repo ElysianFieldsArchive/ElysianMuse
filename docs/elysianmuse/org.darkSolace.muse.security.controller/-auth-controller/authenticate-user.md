@@ -4,7 +4,7 @@
 
 [jvm]\
 
-@PostMapping(value = ["/signin"])
+@PostMapping(value = [&quot;/signin&quot;])
 
 fun [authenticateUser](authenticate-user.md)(@RequestBodyloginRequest: [LoginRequest](../../org.darkSolace.muse.security.model/-login-request/index.md)): ResponseEntity&lt;*&gt;
 

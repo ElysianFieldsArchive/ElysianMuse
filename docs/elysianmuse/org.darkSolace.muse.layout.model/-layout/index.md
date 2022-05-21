@@ -5,7 +5,7 @@
 [jvm]\
 @Entity
 
-data class [Layout](index.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?)
+data class [Layout](index.md)(var id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null)
 
 Placeholder for a Layout class
 

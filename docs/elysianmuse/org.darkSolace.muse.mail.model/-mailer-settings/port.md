@@ -3,4 +3,7 @@
 # port
 
 [jvm]\
-val [port](port.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)
+
+@Min(value = 1)
+
+var [port](port.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)

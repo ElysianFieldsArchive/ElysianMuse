@@ -1,11 +1,11 @@
 package org.darkSolace.muse.security
 
+import org.darkSolace.muse.mail.service.MailService
 import org.darkSolace.muse.security.model.JwtResponse
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.testUtil.TestBase
 import org.darkSolace.muse.user.model.User
 import org.darkSolace.muse.user.service.UserRoleService
-import org.darkSolace.muse.user.service.UserService
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
@@ -18,7 +18,7 @@ class AuthControllerApiTests : TestBase() {
     private lateinit var userRoleService: UserRoleService
 
     @Autowired
-    private lateinit var userService: UserService
+    private lateinit var mailService: MailService
 
     @Autowired
     private lateinit var restTemplate: TestRestTemplate
@@ -92,7 +92,7 @@ class AuthControllerApiTests : TestBase() {
         )
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
         Assertions.assertEquals("User created successfully.", response.body)
-        userService.markEMailAsValid("test")
+        mailService.markEMailAsValid("test")
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
@@ -138,7 +138,7 @@ class AuthControllerApiTests : TestBase() {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
-        userService.markEMailAsValid("test")
+        mailService.markEMailAsValid("test")
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
         Assertions.assertEquals("User created successfully.", response.body)
 

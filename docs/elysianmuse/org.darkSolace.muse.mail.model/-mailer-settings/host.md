@@ -3,4 +3,7 @@
 # host
 
 [jvm]\
-val [host](host.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)
+
+@NotNull
+
+var [host](host.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)

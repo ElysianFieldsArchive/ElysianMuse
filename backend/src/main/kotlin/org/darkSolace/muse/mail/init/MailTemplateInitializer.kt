@@ -10,6 +10,9 @@ import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
 import org.springframework.stereotype.Component
 
+/**
+ * Generates build in [MailTemplate]s on startup, if they don't exist already.
+ */
 @Component
 class MailTemplateInitializer : ApplicationRunner {
     @Autowired
@@ -40,26 +43,28 @@ class MailTemplateInitializer : ApplicationRunner {
                 The <site_name>-Team
 
                 
-                If you didn't create an account no action is required and this email address will be removed from our database within one week.
+                If you didn't create an account no action is required and this email address will be 
+                removed from our database within one week.
             """.trimIndent()
             templateVars.addAll(
                 listOf(
                     MailTemplateVar(
                         templateVar = "user",
                         description = "The registered user (username) (Filled in automatically)",
-                        system_managed = true
+                        systemManaged = true
                     ),
                     MailTemplateVar(templateVar = "site_name", description = "The name of this Website"),
                     MailTemplateVar(templateVar = "site_url", description = "The URL of this Website"),
                     MailTemplateVar(
                         templateVar = "confirm_url",
                         description = "The link to be clicked to confirm the registration (Filled in automatically)",
-                        system_managed = true
+                        systemManaged = true
                     )
                 )
             )
             templateVarValues["site_name"] = "Elysian Muse"
             templateVarValues["site_url"] = "https://darksolace.org"
+            mailSubject = "Welcome to ${templateVarValues["site_url"]}"
         }
         mailTemplateRepository.save(template)
     }
@@ -79,15 +84,18 @@ class MailTemplateInitializer : ApplicationRunner {
                     MailTemplateVar(
                         templateVar = "user",
                         description = "The registered user (username) (Filled in automatically)",
-                        system_managed = true
+                        systemManaged = true
                     ),
                     MailTemplateVar(
                         templateVar = "reset_url",
                         description = "The link to reset the password (Filled in automatically)",
-                        system_managed = true
+                        systemManaged = true
                     )
                 )
             )
+            templateVarValues["site_name"] = "Elysian Muse"
+            templateVarValues["site_url"] = "https://darksolace.org"
+            mailSubject = "Reset Password for ${templateVarValues["site_url"]}"
         }
         mailTemplateRepository.save(template)
     }

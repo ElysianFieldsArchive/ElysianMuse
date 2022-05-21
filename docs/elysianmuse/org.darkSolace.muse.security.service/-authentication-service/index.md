@@ -5,7 +5,7 @@
 [jvm]\
 @Service
 
-class [AuthenticationService](index.md)(@AutowiredauthenticationManager: AuthenticationManager, @AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowiredjwtUtils: [JwtUtils](../-jwt-utils/index.md))
+class [AuthenticationService](index.md)(@Autowiredval authenticationManager: AuthenticationManager, @Autowiredval userRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @Autowiredval userService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @Autowiredval jwtUtils: [JwtUtils](../-jwt-utils/index.md))
 
 Service to handle everything in regard to authentication.
 

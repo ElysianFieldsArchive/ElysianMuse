@@ -5,7 +5,7 @@
 [jvm]\
 @Service
 
-class [UserDetailsService](index.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md)) : UserDetailsService
+class [UserDetailsService](index.md)(@Autowiredval userRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md)) : UserDetailsService
 
 Service to handle everything in regard to UserDetails.
 

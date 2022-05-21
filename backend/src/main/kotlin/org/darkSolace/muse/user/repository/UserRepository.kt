@@ -50,4 +50,20 @@ interface UserRepository : CrudRepository<User, Long> {
      * @return [Boolean] weather the email-address is already in use
      */
     fun existsByEmailIgnoreCase(email: String): Boolean
+
+    /**
+     * Retrieves a [User] by an email verifycation code
+     *
+     * @param code the email verifcation code
+     * @return the user which shall be verified or `null`
+     */
+    fun findByEmailConfirmationCode(code: String): User?
+
+    /**
+     * Retrieves a [User] identified by it email address
+     *
+     * @param email the email address
+     * @return a user or `null`
+     */
+    fun findByEmail(email: String): User?
 }

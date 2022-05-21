@@ -27,7 +27,7 @@ class UserRestController(
     @Autowired val userService: UserService,
     @Autowired val userRoleService: UserRoleService,
     @Autowired val userTagService: UserTagService,
-    @Autowired val suspensionService: SuspensionService
+    @Autowired val suspensionService: SuspensionService,
 ) {
     /**
      * Retrieves a user by its id. Listens on /api/user/{id}.
@@ -71,21 +71,16 @@ class UserRestController(
     fun deleteUser(@PathVariable user: User?, authentication: Authentication?): ResponseEntity<Unit> {
         if (user == null) return ResponseEntity<Unit>(HttpStatus.OK)
 
-        return if ((authentication?.principal as UserDetails?)?.user?.id == user.id) {
-            // user trys deletes himself (can be of role MEMBER, MODERATOR or ADMINISTRATOR)
+        return if ((authentication?.principal as UserDetails?)?.user?.id == user.id
+            || (authentication?.principal as UserDetails?)
+                ?.authorities
+                ?.contains(SimpleGrantedAuthority("ADMINISTRATOR")) == true
+        ) {
+            // user trys to delete himself or requesting user has role ADMIN
             userService.deleteUser(user)
             ResponseEntity<Unit>(HttpStatus.OK)
         } else
-            if ((authentication?.principal as UserDetails?)
-                    ?.authorities
-                    ?.contains(SimpleGrantedAuthority("ADMINISTRATOR")) == true
-            ) {
-                // user is deleted by an ADMINISTRATOR
-                userService.deleteUser(user)
-                ResponseEntity<Unit>(HttpStatus.OK)
-            } else {
-                ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
-            }
+            ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
     }
 
     /**
@@ -148,7 +143,7 @@ class UserRestController(
      * @return List of the suspended [User]s
      */
     @GetMapping("/suspend/all")
-    @PreAuthorize("hasAnyAuthority('ADMINISTRATION', 'MODERATOR')")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')")
     fun getAllCurrentlySuspended(): List<User> {
         return suspensionService.getAllCurrentlySuspendedUsers()
     }
@@ -172,24 +167,19 @@ class UserRestController(
     ): ResponseEntity<Unit> {
         if (user == null) return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
         val userDetails = (authentication?.principal as UserDetails?)
-        return if (userDetails?.user == user) {
-            // user trys deletes himself (can be of role MEMBER, MODERATOR or ADMINISTRATOR)
+        return if (userDetails?.user == user
+            || userDetails?.authorities?.any {
+                it in listOf(
+                    SimpleGrantedAuthority("ADMINISTRATOR"),
+                    SimpleGrantedAuthority("MODERATOR")
+                )
+            } == true
+        ) {
+            // user trys to delete himself or requesting user has role ADMIN or MOD
             userTagService.addTagToUser(user, tag)
             ResponseEntity<Unit>(HttpStatus.OK)
         } else
-            if (userDetails
-                    ?.authorities
-                    ?.contains(SimpleGrantedAuthority("ADMINISTRATOR")) == true ||
-                userDetails
-                    ?.authorities
-                    ?.contains(SimpleGrantedAuthority("MODERATOR")) == true
-            ) {
-                // tag is added by an ADMIN or MOD
-                userTagService.addTagToUser(user, tag)
-                ResponseEntity<Unit>(HttpStatus.OK)
-            } else {
-                ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
-            }
+            ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
     }
 
     /**
@@ -211,23 +201,18 @@ class UserRestController(
     ): ResponseEntity<Unit> {
         if (user == null) return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
         val userDetails = (authentication?.principal as UserDetails?)
-        return if (userDetails?.user == user) {
-            // user trys deletes himself (can be of role MEMBER, MODERATOR or ADMINISTRATOR)
+        return if (userDetails?.user == user
+            || userDetails?.authorities?.any {
+                it in listOf(
+                    SimpleGrantedAuthority("ADMINISTRATOR"),
+                    SimpleGrantedAuthority("MODERATOR")
+                )
+            } == true
+        ) {
+            // user trys to delete himself or requesting user has role ADMIN or MOD
             userTagService.removeTagFromUser(user, tag)
             ResponseEntity<Unit>(HttpStatus.OK)
         } else
-            if (userDetails
-                    ?.authorities
-                    ?.contains(SimpleGrantedAuthority("ADMINISTRATOR")) == true ||
-                userDetails
-                    ?.authorities
-                    ?.contains(SimpleGrantedAuthority("MODERATOR")) == true
-            ) {
-                // user is deleted by an ADMINISTRATOR
-                userTagService.removeTagFromUser(user, tag)
-                ResponseEntity<Unit>(HttpStatus.OK)
-            } else {
-                ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
-            }
+            ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
     }
 }

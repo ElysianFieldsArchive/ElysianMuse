@@ -5,7 +5,13 @@
 [jvm]\
 @Entity
 
-class [SuspensionHistoryEntry](index.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?, user: [User](../-user/index.md), suspendedDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html), confirmationCode: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), acceptedDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)?, confirmationDetails: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?)
+class [SuspensionHistoryEntry](index.md)(val id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?, val user: [User](../-user/index.md), val suspendedDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html) = Date(), val confirmationCode: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = UUID.randomUUID().toString(), var acceptedDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)? = null, var confirmationDetails: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null)
+
+## Constructors
+
+| | |
+|---|---|
+| [SuspensionHistoryEntry](-suspension-history-entry.md) | [jvm]<br>fun [SuspensionHistoryEntry](-suspension-history-entry.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?, user: [User](../-user/index.md), suspendedDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html) = Date(), confirmationCode: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = UUID.randomUUID().toString(), acceptedDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)? = null, confirmationDetails: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null) |
 
 ## Properties
 

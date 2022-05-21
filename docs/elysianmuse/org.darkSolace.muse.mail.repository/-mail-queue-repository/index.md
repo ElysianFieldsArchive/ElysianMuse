@@ -3,7 +3,9 @@
 # MailQueueRepository
 
 [jvm]\
-interface [MailQueueRepository](index.md) : CrudRepository&lt;[MailQueueEntry](../../org.darkSolace.muse.mail.model/-mail-queue-entry/index.md), [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)&gt;
+interface [MailQueueRepository](index.md) : CrudRepository&lt;[MailQueueEntry](../../org.darkSolace.muse.mail.model/-mail-queue-entry/index.md), [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)&gt; 
+
+CRUD repository for the [MailQueueEntry](../../org.darkSolace.muse.mail.model/-mail-queue-entry/index.md) entity
 
 ## Functions
 

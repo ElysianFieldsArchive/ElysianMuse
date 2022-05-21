@@ -4,7 +4,7 @@
 
 [jvm]\
 
-@PostMapping(value = ["/signup"])
+@PostMapping(value = [&quot;/signup&quot;])
 
 fun [registerUser](register-user.md)(@RequestBodysignUpRequest: [SignUpRequest](../../org.darkSolace.muse.security.model/-sign-up-request/index.md)): ResponseEntity&lt;[String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)&gt;
 

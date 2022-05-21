@@ -4,7 +4,7 @@
 
 [jvm]\
 
-@GetMapping(value = ["/{id}"])
+@GetMapping(value = [&quot;/{id}&quot;])
 
 fun [getUserById](get-user-by-id.md)(@PathVariableid: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html), authentication: Authentication?): [User](../../org.darkSolace.muse.user.model/-user/index.md)?
 

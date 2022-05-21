@@ -17,4 +17,4 @@ jvm
 
 | | |
 |---|---|
-| jSession | <ul><li>[String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) containing a session ID used to identify the [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md)</li></ul> |
+| jSession | -     [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) containing a session ID used to identify the [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md) |

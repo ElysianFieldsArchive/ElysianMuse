@@ -3,4 +3,4 @@
 # type
 
 [jvm]\
-val [type](type.md): [TemplateType](../-template-type/index.md)
+val [type](type.md): [TemplateType](../-template-type/index.md)? = null

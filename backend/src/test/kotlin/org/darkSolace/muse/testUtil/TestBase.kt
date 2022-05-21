@@ -3,7 +3,6 @@ package org.darkSolace.muse.testUtil
 import com.icegreen.greenmail.configuration.GreenMailConfiguration
 import com.icegreen.greenmail.junit5.GreenMailExtension
 import com.icegreen.greenmail.util.ServerSetup
-import org.darkSolace.muse.mail.model.MailerSettings
 import org.darkSolace.muse.mail.service.MailerSettingsService
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.MethodOrderer
@@ -11,7 +10,7 @@ import org.junit.jupiter.api.TestMethodOrder
 import org.junit.jupiter.api.extension.RegisterExtension
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
 import org.testcontainers.containers.GenericContainer
@@ -30,34 +29,13 @@ class TestBase {
     private lateinit var dbClearer: DBClearer
 
     @Autowired
-    private lateinit var mailerSettingsService: MailerSettingsService
-
-
-//    init {
-//        postgresqlContainer.start()
-//        greenMail.start()
-//
-//    }
+    lateinit var mailerSettingsService: MailerSettingsService
 
     fun generateUrl(path: String): String = "http://localhost:$port$path"
 
     @BeforeEach
     fun clearDB() {
         dbClearer.clearAll()
-    }
-
-    @BeforeEach
-    fun setupMail() {
-        mailerSettingsService.updateMailerSettings(
-            MailerSettings(
-                null,
-                "localhost",
-                3025,
-                "test",
-                "testPassword",
-                fromAddress = "sender@example.org"
-            )
-        )
     }
 
     companion object {

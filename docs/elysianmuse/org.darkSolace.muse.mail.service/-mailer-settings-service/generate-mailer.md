@@ -3,4 +3,4 @@
 # generateMailer
 
 [jvm]\
-fun [generateMailer](generate-mailer.md)(): JavaMailSender?
+fun [generateMailer](generate-mailer.md)(): JavaMailSender

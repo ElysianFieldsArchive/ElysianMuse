@@ -1,9 +1,14 @@
 package org.darkSolace.muse.mail.model
 
+import org.hibernate.Hibernate
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
+/**
+ * A [MailTemplateVar] can be used to create variable content within a [MailTemplate].
+ * [MailTemplateVar]s have to be specified as "<$templateVar>" within the template.
+ */
 @Entity
 data class MailTemplateVar(
     val templateVar: String,
@@ -11,5 +16,20 @@ data class MailTemplateVar(
     @Id
     @GeneratedValue
     val id: Long? = null,
-    val system_managed: Boolean = false
-)
+    val systemManaged: Boolean = false
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
+        other as MailTemplateVar
+
+        return id != null && id == other.id
+    }
+
+    override fun hashCode(): Int = javaClass.hashCode()
+
+    @Override
+    override fun toString(): String {
+        return this::class.simpleName + "(id = $id , templateVar = $templateVar , description = $description , systemManaged = $systemManaged )"
+    }
+}

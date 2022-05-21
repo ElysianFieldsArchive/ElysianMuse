@@ -28,6 +28,9 @@ class AuthController(
     @Autowired val userRoleService: UserRoleService,
     @Autowired val suspensionService: SuspensionService
 ) {
+    private final val usernamePasswordWrongMsg = "Unknown username or wrong password!"
+    private final val emailNotValidatedMsg = "Email is not validated!"
+
     /**
      * Checks a transmitted [LoginRequest] for a valid username/password pair. Listens on /api/auth/signin.
      *
@@ -42,7 +45,7 @@ class AuthController(
         return try {
             val token = authenticationService.authenticate(loginRequest)
             if (token == null) {
-                ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unknown username or wrong password!")
+                ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(usernamePasswordWrongMsg)
             } else {
                 //valid sign in, but check if user is suspended
                 val authentication =
@@ -59,11 +62,11 @@ class AuthController(
                 }
             }
         } catch (_: InternalAuthenticationServiceException) {
-            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unknown username or wrong password!")
+            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(usernamePasswordWrongMsg)
         } catch (_: BadCredentialsException) {
-            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unknown username or wrong password!")
+            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(usernamePasswordWrongMsg)
         } catch (_: EMailNotValidatedException) {
-            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Email is not validated!")
+            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(emailNotValidatedMsg)
         }
     }
 

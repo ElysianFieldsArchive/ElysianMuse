@@ -5,7 +5,9 @@
 [jvm]\
 @Repository
 
-interface [MailerSettingsRepository](index.md) : CrudRepository&lt;[MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-settings/index.md), [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)&gt;
+interface [MailerSettingsRepository](index.md) : CrudRepository&lt;[MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-settings/index.md), [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)&gt; 
+
+CRUD-Repository for the [MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-settings/index.md) entity
 
 ## Functions
 

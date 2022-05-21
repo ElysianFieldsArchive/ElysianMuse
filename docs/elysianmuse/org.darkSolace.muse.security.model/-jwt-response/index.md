@@ -3,7 +3,7 @@
 # JwtResponse
 
 [jvm]\
-class [JwtResponse](index.md)(token: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?, id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?, username: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), role: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html))
+class [JwtResponse](index.md)(val token: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?, val id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?, val username: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), val role: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html))
 
 [JwtResponse](index.md) class containing the token, user id, username and email. Used as after a successful login to transmit all required data.
 

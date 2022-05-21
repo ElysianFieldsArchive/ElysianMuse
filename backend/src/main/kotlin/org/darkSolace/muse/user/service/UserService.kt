@@ -6,7 +6,6 @@ import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.model.User
 import org.darkSolace.muse.user.model.UserSettings
-import org.darkSolace.muse.user.model.UserTag
 import org.darkSolace.muse.user.repository.UserRepository
 import org.darkSolace.muse.user.repository.UserSettingsRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -25,9 +24,9 @@ import java.util.*
 @Service
 class UserService(
     @Autowired val userRepository: UserRepository,
-    @Autowired val userSettingsRepository: UserSettingsRepository,
-    @Autowired val lastSeenRepository: LastSeenRepository,
-    @Autowired val mailService: MailService,
+    @Autowired private val userSettingsRepository: UserSettingsRepository,
+    @Autowired private val lastSeenRepository: LastSeenRepository,
+    @Autowired private val mailService: MailService,
 ) {
 
     /**
@@ -78,13 +77,6 @@ class UserService(
      */
     fun getAllWithRole(role: Role) = userRepository.findAllByRole(role)
 
-    /**
-     * Returns a [List] of all [User]s with a given [UserTag]
-     *
-     * @param tag the [UserTag] to filter by
-     * @return a [List] of all [User]s with the given [UserTag]- might be empty if no [User]s exist with this [UserTag]
-     */
-    fun getAllWithUserTag(tag: UserTag) = userRepository.findAllByUserTags(tag)
 
     /**
      * Deletes a [User] from the database
@@ -172,31 +164,5 @@ class UserService(
     fun updateLastLogin(user: User) {
         user.lastLogInDate = Date()
         userRepository.save(user)
-    }
-
-    /**
-     * Marks the email of the given user as validated and cleans up all data regarding the (previously outstanding)
-     * validation
-     *
-     * TODO: Clean up validation
-     *
-     * @param user the [User] to update
-     */
-    fun markEMailAsValid(user: User) {
-        user.emailConfirmed = true
-        userRepository.save(user)
-    }
-
-    /**
-     * Marks the email of the given user, identified by its username, as validated and cleans up all data regarding
-     * the (previously outstanding) validation.
-     *
-     * @param username the username of the [User] to update
-     */
-    fun markEMailAsValid(username: String) {
-        val user = userRepository.findByUsername(username)
-        if (user != null) {
-            markEMailAsValid(user)
-        }
     }
 }

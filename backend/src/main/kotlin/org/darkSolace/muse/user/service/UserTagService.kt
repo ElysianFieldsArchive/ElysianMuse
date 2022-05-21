@@ -69,4 +69,12 @@ class UserTagService(@Autowired val userRepository: UserRepository) {
         userRepository.save(changedUser)
         return changedUser
     }
+
+    /**
+     * Returns a [List] of all [User]s with a given [UserTag]
+     *
+     * @param tag the [UserTag] to filter by
+     * @return a [List] of all [User]s with the given [UserTag]- might be empty if no [User]s exist with this [UserTag]
+     */
+    fun getAllWithUserTag(tag: UserTag) = userRepository.findAllByUserTags(tag)
 }

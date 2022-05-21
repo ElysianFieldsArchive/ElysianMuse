@@ -5,7 +5,13 @@
 [jvm]\
 @Service
 
-class [AvatarService](index.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowiredavatarRepository: [AvatarRepository](../../org.darkSolace.muse.user.repository/-avatar-repository/index.md))
+class [AvatarService](index.md)(@Autowiredval userRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @Autowiredval avatarRepository: [AvatarRepository](../../org.darkSolace.muse.user.repository/-avatar-repository/index.md))
+
+## Constructors
+
+| | |
+|---|---|
+| [AvatarService](-avatar-service.md) | [jvm]<br>fun [AvatarService](-avatar-service.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowiredavatarRepository: [AvatarRepository](../../org.darkSolace.muse.user.repository/-avatar-repository/index.md)) |
 
 ## Functions
 

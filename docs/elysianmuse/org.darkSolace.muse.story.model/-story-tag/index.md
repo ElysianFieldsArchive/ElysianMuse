@@ -5,7 +5,7 @@
 [jvm]\
 @Entity
 
-data class [StoryTag](index.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?, tagName: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html))
+data class [StoryTag](index.md)(var id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null, val tagName: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html))
 
 Placeholder for a story tag class
 

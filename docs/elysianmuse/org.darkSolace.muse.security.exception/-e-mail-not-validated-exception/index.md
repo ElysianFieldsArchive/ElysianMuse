@@ -3,7 +3,15 @@
 # EMailNotValidatedException
 
 [jvm]\
-class [EMailNotValidatedException](index.md)(message: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)) : [Exception](https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html)
+class [EMailNotValidatedException](index.md)(message: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;) : [Exception](https://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html)
+
+Exception to be thrown if a user is trying to log in while its email address is not validated.
+
+## Constructors
+
+| | |
+|---|---|
+| [EMailNotValidatedException](-e-mail-not-validated-exception.md) | [jvm]<br>fun [EMailNotValidatedException](-e-mail-not-validated-exception.md)(message: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;) |
 
 ## Functions
 

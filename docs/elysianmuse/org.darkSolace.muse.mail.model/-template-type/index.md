@@ -3,14 +3,16 @@
 # TemplateType
 
 [jvm]\
-enum [TemplateType](index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html)&lt;[TemplateType](index.md)&gt;
+enum [TemplateType](index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html)&lt;[TemplateType](index.md)&gt; 
+
+Enum specifying default, system generated [MailTemplate](../-mail-template/index.md)s
 
 ## Entries
 
 | | |
 |---|---|
-| [FORGOT_PASSWORD](-f-o-r-g-o-t_-p-a-s-s-w-o-r-d/index.md) | [jvm]<br>[FORGOT_PASSWORD](-f-o-r-g-o-t_-p-a-s-s-w-o-r-d/index.md)("Password Reset", "Mail template to be sent to user if 'forgot password' is triggered.") |
-| [SIGN_UP_CONFIRMATION](-s-i-g-n_-u-p_-c-o-n-f-i-r-m-a-t-i-o-n/index.md) | [jvm]<br>[SIGN_UP_CONFIRMATION](-s-i-g-n_-u-p_-c-o-n-f-i-r-m-a-t-i-o-n/index.md)("Sign Up Mail Confirmation", "Mail template to be sent to a newly registered user to confirm their email address.") |
+| [FORGOT_PASSWORD](-f-o-r-g-o-t_-p-a-s-s-w-o-r-d/index.md) | [jvm]<br>[FORGOT_PASSWORD](-f-o-r-g-o-t_-p-a-s-s-w-o-r-d/index.md)(&quot;Password Reset&quot;, &quot;Mail template to be sent to user if 'forgot password' is triggered.&quot;) |
+| [SIGN_UP_CONFIRMATION](-s-i-g-n_-u-p_-c-o-n-f-i-r-m-a-t-i-o-n/index.md) | [jvm]<br>[SIGN_UP_CONFIRMATION](-s-i-g-n_-u-p_-c-o-n-f-i-r-m-a-t-i-o-n/index.md)(&quot;Sign Up Mail Confirmation&quot;, &quot;Mail template to be sent to a newly registered user to confirm their email address.&quot;) |
 
 ## Properties
 

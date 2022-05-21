@@ -5,10 +5,13 @@ import org.hibernate.annotations.CascadeType
 import javax.persistence.*
 import javax.persistence.Entity
 
+/**
+ * Model class representing a [MailTemplate] to be used to send out standardized emails.
+ * The template content can contain variables to be substituted during email creation.
+ */
 @Entity
 class MailTemplate(
-
-    val type: TemplateType
+    val type: TemplateType? = null
 ) {
     @Id
     @GeneratedValue

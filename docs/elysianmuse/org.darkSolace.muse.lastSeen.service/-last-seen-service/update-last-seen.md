@@ -13,5 +13,5 @@ jvm
 
 | | |
 |---|---|
-| username | <ul><li>the username to identify the [User](../../org.darkSolace.muse.user.model/-user/index.md)</li></ul> |
-| jSession | <ul><li>the session ID to identify a visitor</li></ul> |
+| username | -     the username to identify the [User](../../org.darkSolace.muse.user.model/-user/index.md) |
+| jSession | -     the session ID to identify a visitor |

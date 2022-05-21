@@ -17,4 +17,4 @@ jvm
 
 | | |
 |---|---|
-| request | the HttpServletRequest containing the authentication as a "Bearer"-Header |
+| request | the HttpServletRequest containing the authentication as a &quot;Bearer&quot;-Header |

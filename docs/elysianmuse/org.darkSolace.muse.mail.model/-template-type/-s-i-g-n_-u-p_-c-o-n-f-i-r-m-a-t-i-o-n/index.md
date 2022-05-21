@@ -3,7 +3,7 @@
 # SIGN_UP_CONFIRMATION
 
 [jvm]\
-[SIGN_UP_CONFIRMATION](index.md)("Sign Up Mail Confirmation", "Mail template to be sent to a newly registered user to confirm their email address.")
+[SIGN_UP_CONFIRMATION](index.md)(&quot;Sign Up Mail Confirmation&quot;, &quot;Mail template to be sent to a newly registered user to confirm their email address.&quot;)
 
 ## Properties
 

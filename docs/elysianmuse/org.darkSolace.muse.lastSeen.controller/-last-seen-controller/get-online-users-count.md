@@ -4,7 +4,7 @@
 
 [jvm]\
 
-@GetMapping(value = ["/online/count"])
+@GetMapping(value = [&quot;/online/count&quot;])
 
 fun [getOnlineUsersCount](get-online-users-count.md)(): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)
 

@@ -1,5 +1,6 @@
 package org.darkSolace.muse.security
 
+import org.darkSolace.muse.mail.service.MailService
 import org.darkSolace.muse.security.model.JwtResponse
 import org.darkSolace.muse.security.model.LoginRequest
 import org.darkSolace.muse.security.model.SignUpRequest
@@ -21,6 +22,9 @@ class AuthenticationServiceTests : TestBase() {
 
     @Autowired
     lateinit var userService: UserService
+
+    @Autowired
+    lateinit var mailService: MailService
 
     @Autowired
     lateinit var userRoleService: UserRoleService
@@ -62,7 +66,7 @@ class AuthenticationServiceTests : TestBase() {
     fun testSignIn() {
         val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
-        userService.markEMailAsValid("test")
+        mailService.markEMailAsValid("test")
         Assertions.assertEquals(SignUpResponse.OK, response)
 
         val loginRequest = LoginRequest("test", "123")
@@ -75,7 +79,7 @@ class AuthenticationServiceTests : TestBase() {
     fun testSignIn_WrongPassword() {
         val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
-        userService.markEMailAsValid("test")
+        mailService.markEMailAsValid("test")
         Assertions.assertEquals(SignUpResponse.OK, response)
 
         val loginRequest = LoginRequest("test", "1234")
@@ -92,7 +96,7 @@ class AuthenticationServiceTests : TestBase() {
     fun testSignIn_SuspendedUser() {
         val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
-        userService.markEMailAsValid("test")
+        mailService.markEMailAsValid("test")
         Assertions.assertEquals(SignUpResponse.OK, response)
 
         userRoleService.suspendUser(User(username = "test", password = "", email = "test@example.com"))
@@ -105,7 +109,7 @@ class AuthenticationServiceTests : TestBase() {
     fun testSignIn_UpdateLoginDate() {
         val signupRequest = SignUpRequest("test", "123", "test@example.com")
         val response = authService.signUpUser(signupRequest)
-        userService.markEMailAsValid("test")
+        mailService.markEMailAsValid("test")
         Assertions.assertEquals(SignUpResponse.OK, response)
 
         var user = userService.userRepository.findByUsername("test")

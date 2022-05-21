@@ -3,4 +3,7 @@
 # username
 
 [jvm]\
-val [username](username.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)
+
+@NotNull
+
+var [username](username.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)

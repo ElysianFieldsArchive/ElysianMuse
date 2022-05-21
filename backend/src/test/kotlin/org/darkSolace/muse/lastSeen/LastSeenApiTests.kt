@@ -1,12 +1,12 @@
 package org.darkSolace.muse.lastSeen
 
 import org.darkSolace.muse.lastSeen.service.LastSeenService
+import org.darkSolace.muse.mail.service.MailService
 import org.darkSolace.muse.security.model.LoginRequest
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.security.service.AuthenticationService
 import org.darkSolace.muse.testUtil.TestBase
 import org.darkSolace.muse.user.model.User
-import org.darkSolace.muse.user.service.UserService
 import org.hibernate.StaleStateException
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Order
@@ -29,7 +29,7 @@ class LastSeenApiTests : TestBase() {
     private lateinit var authService: AuthenticationService
 
     @Autowired
-    private lateinit var userService: UserService
+    private lateinit var mailService: MailService
 
     @Autowired
     private lateinit var lastSeenService: LastSeenService
@@ -49,7 +49,7 @@ class LastSeenApiTests : TestBase() {
         //generate user
         val signupRequest = SignUpRequest("test", "123", "test@example.com")
         authService.signUpUser(signupRequest)
-        userService.markEMailAsValid("test")
+        mailService.markEMailAsValid("test")
         val loginRequest = LoginRequest("test", "123")
         val jwtResponse = authService.authenticate(loginRequest)
 
@@ -134,7 +134,7 @@ class LastSeenApiTests : TestBase() {
         //generate user
         val signupRequest = SignUpRequest("test", "123", "test@example.com")
         authService.signUpUser(signupRequest)
-        userService.markEMailAsValid("test")
+        mailService.markEMailAsValid("test")
 
         val loginRequest = LoginRequest("test", "123")
         val jwtResponse = authService.authenticate(loginRequest)

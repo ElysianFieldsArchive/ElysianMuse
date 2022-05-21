@@ -3,7 +3,7 @@
 # FORGOT_PASSWORD
 
 [jvm]\
-[FORGOT_PASSWORD](index.md)("Password Reset", "Mail template to be sent to user if 'forgot password' is triggered.")
+[FORGOT_PASSWORD](index.md)(&quot;Password Reset&quot;, &quot;Mail template to be sent to user if 'forgot password' is triggered.&quot;)
 
 ## Properties
 

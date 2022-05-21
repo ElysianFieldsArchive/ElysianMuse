@@ -20,7 +20,7 @@ class TestClassOrderer : ClassOrderer {
     private fun getServiceTestOrder(name: String): Int {
         return when (name) {
             "ElysianMuseApplicationTests" -> 1
-            "MailServiceTest" -> 2
+            "MailServiceTests" -> 2
             "UserServiceTests" -> 3
             "UserTagServiceTests" -> 4
             "UserRoleServiceTests" -> 5
@@ -29,12 +29,15 @@ class TestClassOrderer : ClassOrderer {
             "UserDetailsServiceTests" -> 8
             "LastSeenServiceTests" -> 9
             "SuspensionServiceTests" -> 10
+            "UserPasswordServiceTests" -> 10
             else -> 50
         }
     }
 
     private fun getApiTestOrder(name: String): Int {
         return when (name) {
+            "MailApiTests" -> 92
+            "UserPasswordApiTests" -> 93
             "SuspensionServiceApiTests" -> 94
             "LastSeenApiTests" -> 95
             "UserControllerApiTests" -> 96

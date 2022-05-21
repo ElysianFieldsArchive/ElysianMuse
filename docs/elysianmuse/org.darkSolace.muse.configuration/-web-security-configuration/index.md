@@ -9,7 +9,7 @@
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 
-class [WebSecurityConfiguration](index.md)(@AutowireduserDetailsService: [UserDetailsService](../../org.darkSolace.muse.security.service/-user-details-service/index.md), @AutowiredunauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md)) : WebSecurityConfigurerAdapter
+class [WebSecurityConfiguration](index.md)(@Autowiredval userDetailsService: [UserDetailsService](../../org.darkSolace.muse.security.service/-user-details-service/index.md), @Autowiredval unauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md)) : WebSecurityConfigurerAdapter
 
 Configuration class to configure authentication via JWT
 

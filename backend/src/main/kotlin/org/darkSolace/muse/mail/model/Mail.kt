@@ -4,7 +4,13 @@ import org.darkSolace.muse.user.model.User
 import org.hibernate.Hibernate
 import javax.persistence.*
 
-
+/**
+ * This [Mail] class holds all information required to be sent via email.
+ * Mainly used by [MailQueueEntry] to be sent via the [org.darkSolace.muse.mail.service.MailService]
+ *
+ * @see MailQueueEntry
+ * @see org.darkSolace.muse.mail.service.MailService
+ */
 @Entity
 data class Mail(
     @Id

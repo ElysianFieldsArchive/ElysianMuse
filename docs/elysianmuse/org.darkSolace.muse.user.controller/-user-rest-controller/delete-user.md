@@ -4,9 +4,9 @@
 
 [jvm]\
 
-@DeleteMapping(value = ["/{user}"])
+@DeleteMapping(value = [&quot;/{user}&quot;])
 
-@PreAuthorize(value = "hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
+@PreAuthorize(value = &quot;hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')&quot;)
 
 fun [deleteUser](delete-user.md)(@PathVariableuser: [User](../../org.darkSolace.muse.user.model/-user/index.md)?, authentication: Authentication?): ResponseEntity&lt;[Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)&gt;
 

@@ -4,3 +4,25 @@
 
 [jvm]\
 abstract fun [findByType](find-by-type.md)(templateType: [TemplateType](../../org.darkSolace.muse.mail.model/-template-type/index.md)): [MailTemplate](../../org.darkSolace.muse.mail.model/-mail-template/index.md)
+
+Retrieves a [MailTemplate](../../org.darkSolace.muse.mail.model/-mail-template/index.md) idientified by its [TemplateType](../../org.darkSolace.muse.mail.model/-template-type/index.md)
+
+#### Return
+
+the mail template
+
+## See also
+
+jvm
+
+| | |
+|---|---|
+| [org.darkSolace.muse.mail.model.TemplateType](../../org.darkSolace.muse.mail.model/-template-type/index.md) |  |
+
+## Parameters
+
+jvm
+
+| | |
+|---|---|
+| templateType | the [TemplateType](../../org.darkSolace.muse.mail.model/-template-type/index.md) of the template to be retrieved |

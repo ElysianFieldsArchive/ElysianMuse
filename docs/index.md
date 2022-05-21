@@ -13,6 +13,8 @@
 | [org.darkSolace.muse.lastSeen.repository](elysianmuse/org.darkSolace.muse.lastSeen.repository/index.md) |
 | [org.darkSolace.muse.lastSeen.service](elysianmuse/org.darkSolace.muse.lastSeen.service/index.md) |
 | [org.darkSolace.muse.layout.model](elysianmuse/org.darkSolace.muse.layout.model/index.md) |
+| [org.darkSolace.muse.mail.controller](elysianmuse/org.darkSolace.muse.mail.controller/index.md) |
+| [org.darkSolace.muse.mail.exception](elysianmuse/org.darkSolace.muse.mail.exception/index.md) |
 | [org.darkSolace.muse.mail.init](elysianmuse/org.darkSolace.muse.mail.init/index.md) |
 | [org.darkSolace.muse.mail.model](elysianmuse/org.darkSolace.muse.mail.model/index.md) |
 | [org.darkSolace.muse.mail.repository](elysianmuse/org.darkSolace.muse.mail.repository/index.md) |

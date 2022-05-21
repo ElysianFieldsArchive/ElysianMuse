@@ -3,4 +3,4 @@
 # fromAddress
 
 [jvm]\
-val [fromAddress](from-address.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)
+var [fromAddress](from-address.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)

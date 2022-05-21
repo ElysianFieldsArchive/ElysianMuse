@@ -1,11 +1,13 @@
 package org.darkSolace.muse.user
 
+import org.darkSolace.muse.mail.service.MailService
 import org.darkSolace.muse.security.model.JwtResponse
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.testUtil.TestBase
 import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.model.User
 import org.darkSolace.muse.user.model.UserTag
+import org.darkSolace.muse.user.repository.UserRepository
 import org.darkSolace.muse.user.service.UserRoleService
 import org.darkSolace.muse.user.service.UserService
 import org.darkSolace.muse.user.service.UserTagService
@@ -27,10 +29,16 @@ class UserTagApiTests : TestBase() {
     private lateinit var userService: UserService
 
     @Autowired
+    private lateinit var mailService: MailService
+
+    @Autowired
     private lateinit var userRoleService: UserRoleService
 
     @Autowired
     private lateinit var userTagService: UserTagService
+
+    @Autowired
+    private lateinit var userRepository: UserRepository
 
     @Test
     @Order(1)
@@ -43,7 +51,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
-        userService.markEMailAsValid("test")
+        mailService.markEMailAsValid("test")
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
@@ -84,7 +92,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-        userService.markEMailAsValid("test2")
+        mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -124,7 +132,7 @@ class UserTagApiTests : TestBase() {
             String::class.java
         )
 
-        userService.markEMailAsValid("test2")
+        mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.MODERATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -163,7 +171,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-        userService.markEMailAsValid("test2")
+        mailService.markEMailAsValid("test2")
 
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
@@ -197,7 +205,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-        userService.markEMailAsValid("test2")
+        mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -229,7 +237,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-        userService.markEMailAsValid("test2")
+        mailService.markEMailAsValid("test2")
 
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
@@ -260,7 +268,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
-        userService.markEMailAsValid("test")
+        mailService.markEMailAsValid("test")
 
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
@@ -308,7 +316,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-        userService.markEMailAsValid("test2")
+        mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -350,7 +358,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-        userService.markEMailAsValid("test2")
+        mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.MODERATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -392,7 +400,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-        userService.markEMailAsValid("test2")
+        mailService.markEMailAsValid("test2")
 
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
@@ -426,7 +434,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-        userService.markEMailAsValid("test2")
+        mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -458,7 +466,7 @@ class UserTagApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-        userService.markEMailAsValid("test2")
+        mailService.markEMailAsValid("test2")
 
 
         url = generateUrl("/api/auth/signin")
@@ -477,6 +485,73 @@ class UserTagApiTests : TestBase() {
             restTemplate.exchange(url, HttpMethod.DELETE, HttpEntity<HttpHeaders>(headers), Unit::class.java)
 
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.statusCode)
+    }
+
+
+    @Test
+    fun getAllWithUserTags() {
+        // create test users
+        userService.createUser(
+            User(
+                username = "testUser18", password = "123", email = "test18@example.com",
+                userTags = mutableSetOf(UserTag.ARTIST)
+            )
+        )
+        userService.createUser(
+            User(
+                username = "testUser19", password = "123", email = "test19@example.com",
+                userTags = mutableSetOf(UserTag.ARTIST_INACTIVE)
+            )
+        )
+        userService.createUser(
+            User(
+                username = "testUser20", password = "123", email = "test20@example.com",
+                userTags = mutableSetOf(UserTag.BETA)
+            )
+        )
+        userService.createUser(
+            User(
+                username = "testUser21", password = "123", email = "test21@example.com",
+                userTags = mutableSetOf(UserTag.BETA_INACTIVE)
+            )
+        )
+        userService.createUser(
+            User(
+                username = "testUser22", password = "123", email = "test22@example.com",
+                userTags = mutableSetOf(UserTag.AUTHOR)
+            )
+        )
+        userService.createUser(
+            User(
+                username = "testUser23", password = "123", email = "test23@example.com",
+                userTags = mutableSetOf(UserTag.COMMENTER)
+            )
+        )
+        userService.createUser(
+            User(
+                username = "testUser24", password = "123", email = "test24@example.com",
+                userTags = mutableSetOf(UserTag.COMMENTER, UserTag.AUTHOR, UserTag.BETA_INACTIVE)
+            )
+        )
+        userService.createUser(User(username = "testUser25", password = "123", email = "test25@example.com"))
+
+        //collect values
+        val countWithoutTags = userRepository.findAll().count { it.userTags.isEmpty() }
+        val countBeta = userTagService.getAllWithUserTag(UserTag.BETA).count()
+        val countBetaInactive = userTagService.getAllWithUserTag(UserTag.BETA_INACTIVE).count()
+        val countArtist = userTagService.getAllWithUserTag(UserTag.ARTIST).count()
+        val countArtistInactive = userTagService.getAllWithUserTag(UserTag.ARTIST_INACTIVE).count()
+        val countCommenter = userTagService.getAllWithUserTag(UserTag.COMMENTER).count()
+        val countAuthor = userTagService.getAllWithUserTag(UserTag.AUTHOR).count()
+
+        //assertions
+        Assertions.assertEquals(1, countWithoutTags)
+        Assertions.assertEquals(1, countBeta)
+        Assertions.assertEquals(2, countBetaInactive)
+        Assertions.assertEquals(1, countArtist)
+        Assertions.assertEquals(1, countArtistInactive)
+        Assertions.assertEquals(2, countCommenter)
+        Assertions.assertEquals(2, countAuthor)
     }
 }
 
