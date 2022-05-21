@@ -18,14 +18,14 @@ class MailSettingInitializer(
     @Autowired private val mailerSettingsRepository: MailerSettingsRepository
 ) : ApplicationRunner {
     private val logger = LoggerFactory.getLogger(this::class.java)
-    private val port = 539
+    private val defaultPort = 539
 
     override fun run(args: ApplicationArguments?) {
         val settings = MailerSettings(
             null
         ).apply {
             host = "example.org"
-            port = port
+            port = defaultPort
             username = "exampleUser"
             password = "examplePassword"
             fromAddress = "muse@example.org"
