@@ -38,7 +38,7 @@ class SuspensionServiceApiTests : TestBase() {
         userRoleService.suspendUser(user?.id ?: -1)
 
         val url = generateUrl("/api/user/suspend/history/${user?.id}")
-        val response = restTemplate.getForEntity(url, Array<SuspensionHistoryEntry>::class.java)
+        val response = restTemplate.getForEntity(url, Unit::class.java)
         Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response?.statusCode)
     }
 
@@ -122,7 +122,7 @@ class SuspensionServiceApiTests : TestBase() {
         userRoleService.suspendUser(user?.id ?: -1)
 
         val url = generateUrl("/api/user/suspend/all")
-        val response = restTemplate.getForEntity(url, Array<User>::class.java)
+        val response = restTemplate.getForEntity(url, Unit::class.java)
         Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response?.statusCode)
     }
 

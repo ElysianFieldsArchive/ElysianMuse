@@ -14,3 +14,9 @@ class [ElysianMuseApplication](index.md)
 | | |
 |---|---|
 | [ElysianMuseApplication](-elysian-muse-application.md) | [jvm]<br>fun [ElysianMuseApplication](-elysian-muse-application.md)() |
+
+## Functions
+
+| Name | Summary |
+|---|---|
+| [passwordEncoder](password-encoder.md) | [jvm]<br>@Bean<br>fun [passwordEncoder](password-encoder.md)(): BCryptPasswordEncoder |
