@@ -1,13 +1,15 @@
 $dokka.format:gfm-v1
 $dokka.linkExtension:md
 $dokka.location:org.darkSolace.muse.configuration////PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/index.md
+$dokka.location:org.darkSolace.muse.configuration/AuthenticationConfiguration///PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-authentication-configuration/index.md
+$dokka.location:org.darkSolace.muse.configuration/AuthenticationConfiguration/AuthenticationConfiguration/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-authentication-configuration/-authentication-configuration.md
+$dokka.location:org.darkSolace.muse.configuration/AuthenticationConfiguration/authenticationManager/#org.springframework.security.config.annotation.web.builders.HttpSecurity/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-authentication-configuration/authentication-manager.md
 $dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration///PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/index.md
-$dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/WebSecurityConfiguration/#org.darkSolace.muse.security.service.UserDetailsService#org.darkSolace.muse.security.service.AuthEntryPointJwt/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/-web-security-configuration.md
+$dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/WebSecurityConfiguration/#org.darkSolace.muse.security.service.AuthEntryPointJwt/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/-web-security-configuration.md
 $dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/authTokenFilter/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/auth-token-filter.md
+$dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/filterChain/#org.springframework.security.config.annotation.web.builders.HttpSecurity/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/filter-chain.md
 $dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/lastSeenFilter/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/last-seen-filter.md
-$dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/passwordEncoder/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/password-encoder.md
 $dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/unauthorizedHandler/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/unauthorized-handler.md
-$dokka.location:org.darkSolace.muse.configuration/WebSecurityConfiguration/userDetailsService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.configuration/-web-security-configuration/user-details-service.md
 $dokka.location:org.darkSolace.muse.lastSeen.controller////PointingToDeclaration/elysianmuse/org.darkSolace.muse.lastSeen.controller/index.md
 $dokka.location:org.darkSolace.muse.lastSeen.controller/LastSeenController///PointingToDeclaration/elysianmuse/org.darkSolace.muse.lastSeen.controller/-last-seen-controller/index.md
 $dokka.location:org.darkSolace.muse.lastSeen.controller/LastSeenController/LastSeenController/#org.darkSolace.muse.lastSeen.service.LastSeenService/PointingToDeclaration/elysianmuse/org.darkSolace.muse.lastSeen.controller/-last-seen-controller/-last-seen-controller.md
@@ -97,9 +99,12 @@ $dokka.location:org.darkSolace.muse.mail.model/MailTemplate/type/#/PointingToDec
 $dokka.location:org.darkSolace.muse.mail.model/MailTemplateVar///PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-template-var/index.md
 $dokka.location:org.darkSolace.muse.mail.model/MailTemplateVar/MailTemplateVar/#kotlin.String#kotlin.String#kotlin.Long?#kotlin.Boolean/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-template-var/-mail-template-var.md
 $dokka.location:org.darkSolace.muse.mail.model/MailTemplateVar/description/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-template-var/description.md
+$dokka.location:org.darkSolace.muse.mail.model/MailTemplateVar/equals/#kotlin.Any?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-template-var/equals.md
+$dokka.location:org.darkSolace.muse.mail.model/MailTemplateVar/hashCode/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-template-var/hash-code.md
 $dokka.location:org.darkSolace.muse.mail.model/MailTemplateVar/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-template-var/id.md
 $dokka.location:org.darkSolace.muse.mail.model/MailTemplateVar/systemManaged/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-template-var/system-managed.md
 $dokka.location:org.darkSolace.muse.mail.model/MailTemplateVar/templateVar/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-template-var/template-var.md
+$dokka.location:org.darkSolace.muse.mail.model/MailTemplateVar/toString/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-template-var/to-string.md
 $dokka.location:org.darkSolace.muse.mail.model/MailerSettings///PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mailer-settings/index.md
 $dokka.location:org.darkSolace.muse.mail.model/MailerSettings/MailerSettings/#kotlin.Long?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mailer-settings/-mailer-settings.md
 $dokka.location:org.darkSolace.muse.mail.model/MailerSettings/auth/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mailer-settings/auth.md
@@ -394,6 +399,7 @@ $dokka.location:org.darkSolace.muse//main/#/PointingToDeclaration/elysianmuse/o
 $dokka.location:org.darkSolace.muse//secretCheck/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse/secret-check.md
 $dokka.location:org.darkSolace.muse/ElysianMuseApplication///PointingToDeclaration/elysianmuse/org.darkSolace.muse/-elysian-muse-application/index.md
 $dokka.location:org.darkSolace.muse/ElysianMuseApplication/ElysianMuseApplication/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse/-elysian-muse-application/-elysian-muse-application.md
+$dokka.location:org.darkSolace.muse/ElysianMuseApplication/passwordEncoder/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse/-elysian-muse-application/password-encoder.md
 org.darkSolace.muse
 org.darkSolace.muse.configuration
 org.darkSolace.muse.lastSeen.controller
