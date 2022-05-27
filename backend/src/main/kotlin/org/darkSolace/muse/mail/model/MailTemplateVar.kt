@@ -30,6 +30,7 @@ data class MailTemplateVar(
 
     @Override
     override fun toString(): String {
-        return this::class.simpleName + "(id = $id , templateVar = $templateVar , description = $description , systemManaged = $systemManaged )"
+        return this::class.simpleName + "(id = $id , templateVar = $templateVar , description = $description , " +
+                "systemManaged = $systemManaged )"
     }
 }

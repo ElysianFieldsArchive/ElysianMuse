@@ -27,7 +27,7 @@ data class UserSettings(
     var birthdayVisible: Boolean = false,
     var realNameVisible: Boolean = false,
     var maxRating: Rating = Rating.PARENTAL_GUIDANCE_13,
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     var showWarningForTags: MutableSet<StoryTag> = mutableSetOf(),
     var shareButtonsVisible: Boolean = true,
     var showEntireStories: Boolean = false,

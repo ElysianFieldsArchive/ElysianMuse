@@ -3,7 +3,4 @@
 # lastSeenFilter
 
 [jvm]\
-
-@Autowired
-
-lateinit var [lastSeenFilter](last-seen-filter.md): [LastSeenFilter](../../org.darkSolace.muse.lastSeen.service/-last-seen-filter/index.md)
+val [lastSeenFilter](last-seen-filter.md): [LastSeenFilter](../../org.darkSolace.muse.lastSeen.service/-last-seen-filter/index.md)

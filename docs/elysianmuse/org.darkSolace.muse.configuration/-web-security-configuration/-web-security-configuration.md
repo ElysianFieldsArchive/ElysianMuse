@@ -3,4 +3,4 @@
 # WebSecurityConfiguration
 
 [jvm]\
-fun [WebSecurityConfiguration](-web-security-configuration.md)(@AutowiredunauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md))
+fun [WebSecurityConfiguration](-web-security-configuration.md)(@AutowiredunauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md), @AutowiredauthTokenFilter: [AuthTokenFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md), @AutowiredlastSeenFilter: [LastSeenFilter](../../org.darkSolace.muse.lastSeen.service/-last-seen-filter/index.md))

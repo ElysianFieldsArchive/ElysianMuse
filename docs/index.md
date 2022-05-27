@@ -19,6 +19,10 @@
 | [org.darkSolace.muse.mail.model](elysianmuse/org.darkSolace.muse.mail.model/index.md) |
 | [org.darkSolace.muse.mail.repository](elysianmuse/org.darkSolace.muse.mail.repository/index.md) |
 | [org.darkSolace.muse.mail.service](elysianmuse/org.darkSolace.muse.mail.service/index.md) |
+| [org.darkSolace.muse.privMessages.controller](elysianmuse/org.darkSolace.muse.privMessages.controller/index.md) |
+| [org.darkSolace.muse.privMessages.model](elysianmuse/org.darkSolace.muse.privMessages.model/index.md) |
+| [org.darkSolace.muse.privMessages.repository](elysianmuse/org.darkSolace.muse.privMessages.repository/index.md) |
+| [org.darkSolace.muse.privMessages.service](elysianmuse/org.darkSolace.muse.privMessages.service/index.md) |
 | [org.darkSolace.muse.security.controller](elysianmuse/org.darkSolace.muse.security.controller/index.md) |
 | [org.darkSolace.muse.security.exception](elysianmuse/org.darkSolace.muse.security.exception/index.md) |
 | [org.darkSolace.muse.security.model](elysianmuse/org.darkSolace.muse.security.model/index.md) |

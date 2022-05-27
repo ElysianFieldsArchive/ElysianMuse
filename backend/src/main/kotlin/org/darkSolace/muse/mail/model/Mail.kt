@@ -21,7 +21,7 @@ data class Mail(
     val recipient: User,
     val subject: String,
 
-    @Column(length = 4096)
+    @Lob
     val content: String = ""
 ) {
     override fun equals(other: Any?): Boolean {
@@ -36,6 +36,6 @@ data class Mail(
 
     @Override
     override fun toString(): String {
-        return this::class.simpleName + "(id = $id , recipient = $recipient , content = $content )"
+        return this::class.simpleName + "(id = $id , recipient = $recipient , subject = $subject , content = $content )"
     }
 }

@@ -1,0 +1,27 @@
+//[elysianmuse](../../../index.md)/[org.darkSolace.muse.privMessages.model](../index.md)/[PrivateMessage](index.md)
+
+# PrivateMessage
+
+[jvm]\
+@Entity
+
+data class [PrivateMessage](index.md)(var id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null, var direction: [MessageDirection](../-message-direction/index.md) = MessageDirection.OUTGOING, var sender: [User](../../org.darkSolace.muse.user.model/-user/index.md)? = null, var recipient: [User](../../org.darkSolace.muse.user.model/-user/index.md)? = null, var subject: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;, var content: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;, var sentDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html) = Date(), var isRead: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false)
+
+## Constructors
+
+| | |
+|---|---|
+| [PrivateMessage](-private-message.md) | [jvm]<br>fun [PrivateMessage](-private-message.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null, direction: [MessageDirection](../-message-direction/index.md) = MessageDirection.OUTGOING, sender: [User](../../org.darkSolace.muse.user.model/-user/index.md)? = null, recipient: [User](../../org.darkSolace.muse.user.model/-user/index.md)? = null, subject: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;, content: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;, sentDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html) = Date(), isRead: [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false) |
+
+## Properties
+
+| Name | Summary |
+|---|---|
+| [content](content.md) | [jvm]<br>var [content](content.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
+| [direction](direction.md) | [jvm]<br>var [direction](direction.md): [MessageDirection](../-message-direction/index.md) |
+| [id](id.md) | [jvm]<br>var [id](id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null |
+| [isRead](is-read.md) | [jvm]<br>var [isRead](is-read.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false |
+| [recipient](recipient.md) | [jvm]<br>var [recipient](recipient.md): [User](../../org.darkSolace.muse.user.model/-user/index.md)? = null |
+| [sender](sender.md) | [jvm]<br>var [sender](sender.md): [User](../../org.darkSolace.muse.user.model/-user/index.md)? = null |
+| [sentDate](sent-date.md) | [jvm]<br>var [sentDate](sent-date.md): [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html) |
+| [subject](subject.md) | [jvm]<br>var [subject](subject.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
