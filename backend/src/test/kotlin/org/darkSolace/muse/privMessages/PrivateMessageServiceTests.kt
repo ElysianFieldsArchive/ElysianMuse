@@ -170,4 +170,45 @@ class PrivateMessageServiceTests : TestBase() {
 
         Assertions.assertEquals(0, privateMessageService.getReceivedMessagesForUser(recipient).count())
     }
+
+    @Test
+    @Order(6)
+    fun deleteMessageWithReply() {
+        val sender = userService.createUser(User(null, "test", "", email = "test@example.org"))
+            ?: fail("Couldn't create sender")
+        val recipient = userService.createUser(User(null, "test2", "", email = "test2@example.org"))
+            ?: fail("Couldn't create recipient")
+
+        val originalMessage = PrivateMessage(null).apply {
+            this.sender = sender
+            this.recipient = recipient
+            this.subject = "Test private message"
+            this.content = "Test private message content"
+        }
+
+
+
+        privateMessageService.sendMessage(originalMessage)
+
+        val messages = privateMessageService.getReceivedMessagesForUser(recipient)
+        val fetchedMessage = messages.first() //getting the original message
+        Assertions.assertEquals(1, messages.count())
+
+        val replyMessage = PrivateMessage(null).apply {
+            this.sender = recipient
+            this.recipient = sender
+            this.subject = "Reply Test private message"
+            this.content = "Reply Test private message content"
+            this.inReplyTo = fetchedMessage
+        }
+        privateMessageService.sendMessage(replyMessage)
+
+
+        privateMessageService.deleteMessage(fetchedMessage)
+        Assertions.assertEquals(0, privateMessageService.getReceivedMessagesForUser(recipient).count())
+
+        val repliedMessage = privateMessageService.getSentMessagesByUser(recipient).first()
+
+        Assertions.assertNull(repliedMessage.inReplyTo)
+    }
 }

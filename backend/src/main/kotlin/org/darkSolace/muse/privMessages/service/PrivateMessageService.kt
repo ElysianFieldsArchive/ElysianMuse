@@ -30,6 +30,12 @@ class PrivateMessageService(@Autowired val privateMessageRepository: PrivateMess
     fun getNumberOfUnreadMessages(user: User) = privateMessageRepository.countByRecipientAndIsReadIsFalse(user)
 
     fun deleteMessage(message: PrivateMessage) {
+        //find replies to this message to break the link
+        privateMessageRepository.findAllByInReplyTo(message).forEach { childMessage ->
+            childMessage.inReplyTo = null
+            privateMessageRepository.save(childMessage)
+        }
+
         privateMessageRepository.delete(message)
     }
 }

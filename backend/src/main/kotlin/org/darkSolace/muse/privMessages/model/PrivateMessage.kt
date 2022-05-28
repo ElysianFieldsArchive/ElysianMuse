@@ -28,7 +28,10 @@ data class PrivateMessage(
     @Temporal(TemporalType.TIMESTAMP)
     var sentDate: Date = Date(),
 
-    var isRead: Boolean = false
+    var isRead: Boolean = false,
+
+    @OneToOne(fetch = FetchType.EAGER)
+    var inReplyTo: PrivateMessage? = null,
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

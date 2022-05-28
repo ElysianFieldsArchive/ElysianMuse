@@ -13,4 +13,7 @@ interface PrivateMessageRepository : CrudRepository<PrivateMessage, Long> {
     @Transactional
     fun findAllBySenderAndDirection(sender: User, direction: MessageDirection): List<PrivateMessage>
     fun countByRecipientAndIsReadIsFalse(recipient: User): Long
+
+    @Transactional
+    fun findAllByInReplyTo(reply: PrivateMessage): List<PrivateMessage>
 }
