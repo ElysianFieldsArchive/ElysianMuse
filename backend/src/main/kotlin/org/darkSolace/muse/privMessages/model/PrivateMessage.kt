@@ -30,7 +30,7 @@ data class PrivateMessage(
 
     var isRead: Boolean = false,
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     var inReplyTo: PrivateMessage? = null,
 ) {
     override fun equals(other: Any?): Boolean {

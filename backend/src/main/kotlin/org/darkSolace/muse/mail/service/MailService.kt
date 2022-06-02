@@ -119,13 +119,13 @@ class MailService(
      * @param mail the [Mail] to be enqueued
      */
     fun enqueueMail(mail: Mail) {
-        val message = SimpleMailMessage().apply {
+        /*val message = SimpleMailMessage().apply {
             from = mailerSettingsService.getSenderAddress()
             setTo(mail.recipient.email)
             subject = mail.subject
             text = mail.content
-        }
-        val mailQueueEntry = MailQueueEntry(null, message)
+        }*/
+        val mailQueueEntry = MailQueueEntry(null, mail)
         mailQueueRepository.save(mailQueueEntry)
     }
 
@@ -187,16 +187,26 @@ class MailService(
             mailQueueRepository.deleteAll(enqueuedMails)
 
             if (enqueuedMails.isEmpty()) return
-            val mails = enqueuedMails.mapNotNull { it.mail }
+            val mailToSimpleMailMap = enqueuedMails.mapNotNull { mailQueueEntry ->
+                val message = SimpleMailMessage().apply {
+                    from = mailerSettingsService.getSenderAddress()
+                    setTo(mailQueueEntry.mail?.recipient?.email ?: "")
+                    subject = mailQueueEntry.mail?.subject
+                    text = mailQueueEntry.mail?.content
+                }
+                mailQueueEntry.mail to message
+            }.toMap()
             try {
-                mailerSettingsService.getMailer().send(*mails.toTypedArray())
+                val mailsToBeSent = mailToSimpleMailMap.values.toTypedArray()
+                mailerSettingsService.getMailer().send(*mailsToBeSent)
             } catch (mailEx: MailSendException) {
                 println("Something went wrong sending mails")
                 mailEx.failedMessages.values.forEach { it.printStackTrace() }
-                val failed = mailEx.failedMessages.keys as Set<SimpleMailMessage>
+                val failed = mailEx.failedMessages.keys
 
                 //requeue failed mails
-                val failedMailQueueEntries = enqueuedMails.filter { it.mail in failed }
+                val failedMails = mailToSimpleMailMap.filter { it.value in failed }
+                val failedMailQueueEntries = enqueuedMails.filter { it.mail in failedMails }
                 mailQueueRepository.saveAll(failedMailQueueEntries)
             }
         }

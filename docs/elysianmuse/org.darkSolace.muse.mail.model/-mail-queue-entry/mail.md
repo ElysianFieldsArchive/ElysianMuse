@@ -3,4 +3,4 @@
 # mail
 
 [jvm]\
-val [mail](mail.md): SimpleMailMessage? = null
+val [mail](mail.md): [Mail](../-mail/index.md)? = null

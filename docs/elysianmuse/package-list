@@ -84,7 +84,7 @@ $dokka.location:org.darkSolace.muse.mail.model/Mail/recipient/#/PointingToDeclar
 $dokka.location:org.darkSolace.muse.mail.model/Mail/subject/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail/subject.md
 $dokka.location:org.darkSolace.muse.mail.model/Mail/toString/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail/to-string.md
 $dokka.location:org.darkSolace.muse.mail.model/MailQueueEntry///PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-queue-entry/index.md
-$dokka.location:org.darkSolace.muse.mail.model/MailQueueEntry/MailQueueEntry/#kotlin.Long?#org.springframework.mail.SimpleMailMessage?#java.util.Date/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-queue-entry/-mail-queue-entry.md
+$dokka.location:org.darkSolace.muse.mail.model/MailQueueEntry/MailQueueEntry/#kotlin.Long?#org.darkSolace.muse.mail.model.Mail?#java.util.Date/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-queue-entry/-mail-queue-entry.md
 $dokka.location:org.darkSolace.muse.mail.model/MailQueueEntry/enqueueDate/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-queue-entry/enqueue-date.md
 $dokka.location:org.darkSolace.muse.mail.model/MailQueueEntry/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-queue-entry/id.md
 $dokka.location:org.darkSolace.muse.mail.model/MailQueueEntry/mail/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-mail-queue-entry/mail.md
@@ -125,6 +125,7 @@ $dokka.location:org.darkSolace.muse.mail.model/TemplateType///PointingToDeclarat
 $dokka.location:org.darkSolace.muse.mail.model/TemplateType/description/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-template-type/description.md
 $dokka.location:org.darkSolace.muse.mail.repository////PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.repository/index.md
 $dokka.location:org.darkSolace.muse.mail.repository/MailQueueRepository///PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.repository/-mail-queue-repository/index.md
+$dokka.location:org.darkSolace.muse.mail.repository/MailQueueRepository/deleteAllByMail_Recipient/#org.darkSolace.muse.user.model.User/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.repository/-mail-queue-repository/delete-all-by-mail_-recipient.md
 $dokka.location:org.darkSolace.muse.mail.repository/MailTemplateRepository///PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.repository/-mail-template-repository/index.md
 $dokka.location:org.darkSolace.muse.mail.repository/MailTemplateRepository/findByType/#org.darkSolace.muse.mail.model.TemplateType/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.repository/-mail-template-repository/find-by-type.md
 $dokka.location:org.darkSolace.muse.mail.repository/MailerSettingsRepository///PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.repository/-mailer-settings-repository/index.md
@@ -420,7 +421,7 @@ $dokka.location:org.darkSolace.muse.user.service/UserRoleService/suspendUser/#or
 $dokka.location:org.darkSolace.muse.user.service/UserRoleService/suspensionHistoryRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.service/-user-role-service/suspension-history-repository.md
 $dokka.location:org.darkSolace.muse.user.service/UserRoleService/userRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.service/-user-role-service/user-repository.md
 $dokka.location:org.darkSolace.muse.user.service/UserService///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.service/-user-service/index.md
-$dokka.location:org.darkSolace.muse.user.service/UserService/UserService/#org.darkSolace.muse.user.repository.UserRepository#org.darkSolace.muse.user.repository.UserSettingsRepository#org.darkSolace.muse.lastSeen.repository.LastSeenRepository#org.darkSolace.muse.mail.service.MailService/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.service/-user-service/-user-service.md
+$dokka.location:org.darkSolace.muse.user.service/UserService/UserService/#org.darkSolace.muse.user.repository.UserRepository#org.darkSolace.muse.user.repository.UserSettingsRepository#org.darkSolace.muse.lastSeen.repository.LastSeenRepository#org.darkSolace.muse.mail.service.MailService#org.darkSolace.muse.mail.repository.MailQueueRepository/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.service/-user-service/-user-service.md
 $dokka.location:org.darkSolace.muse.user.service/UserService/createUser/#org.darkSolace.muse.user.model.User/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.service/-user-service/create-user.md
 $dokka.location:org.darkSolace.muse.user.service/UserService/createUserFromSignUpRequest/#org.darkSolace.muse.security.model.SignUpRequest/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.service/-user-service/create-user-from-sign-up-request.md
 $dokka.location:org.darkSolace.muse.user.service/UserService/deleteUser/#kotlin.Long/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.service/-user-service/delete-user.md

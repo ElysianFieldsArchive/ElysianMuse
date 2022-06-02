@@ -45,7 +45,7 @@ class UserPasswordServiceTests : TestBase() {
         Assertions.assertNotNull(passwordResetRequest)
         Assertions.assertNotNull(resetMail)
         Assertions.assertTrue(resetMail.mail?.subject?.startsWith("Reset Password for") ?: false)
-        Assertions.assertEquals(user.email, resetMail.mail?.to?.first())
+        Assertions.assertEquals(user.email, resetMail.mail?.recipient?.email)
     }
 
     @Test
