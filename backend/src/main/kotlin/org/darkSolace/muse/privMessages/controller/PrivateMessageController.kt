@@ -7,6 +7,7 @@ import org.darkSolace.muse.privMessages.service.PrivateMessageService
 import org.darkSolace.muse.security.model.UserDetails
 import org.darkSolace.muse.user.model.User
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.Authentication
@@ -49,8 +50,8 @@ class PrivateMessageController(
 
     @PostMapping("/read/{id}")
     fun markMessageAsRead(@PathVariable id: Long, authentication: Authentication?): ResponseEntity<Unit> {
-        val m = privateMessageRepository.findById(id)
-        val message = if (m.isPresent) m.get() else return ResponseEntity(HttpStatus.BAD_REQUEST)
+        val message =
+            privateMessageRepository.findByIdOrNull(id) ?: return ResponseEntity(HttpStatus.BAD_REQUEST)
 
         val userDetails = authentication?.principal as UserDetails?
         val user = userDetails?.user
