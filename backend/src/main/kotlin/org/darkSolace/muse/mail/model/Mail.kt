@@ -21,7 +21,7 @@ data class Mail(
     val recipient: User,
     val subject: String,
 
-    @Lob
+    @Column(length = 32000)
     val content: String = ""
 ) {
     override fun equals(other: Any?): Boolean {
