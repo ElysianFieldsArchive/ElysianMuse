@@ -5,6 +5,9 @@ import org.hibernate.Hibernate
 import java.util.*
 import javax.persistence.*
 
+/**
+ * This [PrivateMessage] class holds all information used for direct communication between [User]s.
+ */
 @Entity
 data class PrivateMessage(
     @Id

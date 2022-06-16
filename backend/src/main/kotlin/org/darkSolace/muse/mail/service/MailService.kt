@@ -178,6 +178,9 @@ class MailService(
         return "$protocol://$site/api/mail/reset/$code"
     }
 
+    /**
+     * Scheduler to send enqueued mails.
+     */
     @Scheduled(cron = "*/10 * * * * *")
     fun sendMails() {
         if (mailEnabled) {
@@ -235,6 +238,12 @@ class MailService(
         markEMailAsValid(user)
     }
 
+    /**
+     * Marks an email address as confirmed if the provided verification-code is valid
+     *
+     * @param code the code to be checked
+     * @return true or false depending on the success of marking an email address as confirmed
+     */
     fun confirmEMailByCode(code: String): Boolean {
         val user = userRepository.findByEmailConfirmationCode(code) ?: return false
         markEMailAsValid(user)
