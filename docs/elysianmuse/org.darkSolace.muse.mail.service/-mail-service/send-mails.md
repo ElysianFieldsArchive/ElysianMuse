@@ -7,3 +7,5 @@
 @Scheduled(cron = &quot;*/10 * * * * *&quot;)
 
 fun [sendMails](send-mails.md)()
+
+Scheduler to send enqueued mails.

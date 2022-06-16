@@ -116,10 +116,16 @@ class PrivateMessageController(
      * @param authentication the authentication used for this request, to verify the right user is logged in
      */
     @DeleteMapping("/{message}")
-    fun deleteMessage(@PathVariable message: PrivateMessage, authentication: Authentication?) {
+    fun deleteMessage(@PathVariable message: PrivateMessage, authentication: Authentication?): ResponseEntity<Unit> {
         val userDetails = authentication?.principal as UserDetails?
-        if (userDetails?.user in arrayOf(message.sender, message.recipient)) {
+        val user = userDetails?.user
+        val receiverAllowed = message.direction == MessageDirection.INCOMING && user == message.recipient
+        val senderAllowed = message.direction == MessageDirection.OUTGOING && user == message.sender
+        return if (receiverAllowed || senderAllowed) {
             privateMessageService.deleteMessage(message)
+            ResponseEntity.ok().build()
+        } else {
+            ResponseEntity(HttpStatus.UNAUTHORIZED)
         }
     }
 

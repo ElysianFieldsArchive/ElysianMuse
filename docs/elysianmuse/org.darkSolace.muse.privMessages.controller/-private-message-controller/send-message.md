@@ -7,3 +7,20 @@
 @PostMapping(value = [&quot;/send&quot;])
 
 fun [sendMessage](send-message.md)(@RequestBodymessage: [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md), authentication: Authentication?): ResponseEntity&lt;[Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)&gt;
+
+Sends a message to another user
+
+#### Return
+
+HTTP OK or UNAUTHORIZED, depending on the requests success
+
+## Samples
+
+## Parameters
+
+jvm
+
+| | |
+|---|---|
+| message | the private message to be sent, passed as the request body |
+| authentication | the authentication used for this request, to verify the right user is logged in |

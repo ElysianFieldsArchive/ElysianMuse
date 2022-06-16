@@ -510,4 +510,107 @@ class PrivateMessageApiTests : TestBase() {
 
         Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.statusCode)
     }
+
+    @Test
+    @Order(11)
+    fun deletePrivateMessage() {
+        val recipient = userService.createUser(User(null, "recipient", "", email = "recipient@example.org"))
+            ?: fail("Couldn't create sender")
+        //create user and sign in
+        val url = generateUrl("/api/auth/signup")
+        restTemplate.postForEntity(
+            url,
+            SignUpRequest("test", "123", "test@example.com"),
+            String::class.java
+        )
+        mailService.markEMailAsValid("test")
+
+        val url2 = generateUrl("/api/auth/signin")
+        val signInResponse = restTemplate.postForEntity(
+            url2,
+            SignUpRequest("test", "123", "test@example.com"),
+            JwtResponse::class.java
+        )
+
+        val sender = userService.getById(signInResponse?.body?.id ?: fail("Couldn't retrieve sender"))
+            ?: fail("Couldn't retrieve sender")
+
+        val headers = HttpHeaders().apply {
+            add("Authorization", "Bearer ${signInResponse.body?.token}")
+        }
+
+        Assertions.assertEquals(0, privateMessageService.getNumberOfUnreadMessages(recipient))
+
+        val message = PrivateMessage(null, MessageDirection.OUTGOING, sender, recipient, "Test subject", "Test Content")
+        val url3 = generateUrl("/api/message/send")
+        val response = restTemplate.exchange(
+            url3,
+            HttpMethod.POST,
+            HttpEntity(message, headers),
+            Unit::class.java
+        )
+
+        Assertions.assertEquals(HttpStatus.OK, response.statusCode)
+        Assertions.assertEquals(1, privateMessageService.getNumberOfUnreadMessages(recipient))
+
+        val sentMessage = privateMessageService.getSentMessagesByUser(sender)
+        val url4 = generateUrl("/api/message/${sentMessage.first().id}")
+        val deleteResponse =
+            restTemplate.exchange(url4, HttpMethod.DELETE, HttpEntity(null, headers), Unit::class.java)
+
+        Assertions.assertEquals(HttpStatus.OK, deleteResponse.statusCode)
+        Assertions.assertTrue(privateMessageService.getSentMessagesByUser(sender).isEmpty())
+    }
+
+    @Test
+    @Order(12)
+    fun deletePrivateMessage_differentUser() {
+        val recipient = userService.createUser(User(null, "recipient", "", email = "recipient@example.org"))
+            ?: fail("Couldn't create sender")
+        //create user and sign in
+        val url = generateUrl("/api/auth/signup")
+        restTemplate.postForEntity(
+            url,
+            SignUpRequest("test", "123", "test@example.com"),
+            String::class.java
+        )
+        mailService.markEMailAsValid("test")
+
+        val url2 = generateUrl("/api/auth/signin")
+        val signInResponse = restTemplate.postForEntity(
+            url2,
+            SignUpRequest("test", "123", "test@example.com"),
+            JwtResponse::class.java
+        )
+
+        val sender = userService.getById(signInResponse?.body?.id ?: fail("Couldn't retrieve sender"))
+            ?: fail("Couldn't retrieve sender")
+
+        val headers = HttpHeaders().apply {
+            add("Authorization", "Bearer ${signInResponse.body?.token}")
+        }
+
+        Assertions.assertEquals(0, privateMessageService.getNumberOfUnreadMessages(recipient))
+
+        val message = PrivateMessage(null, MessageDirection.OUTGOING, sender, recipient, "Test subject", "Test Content")
+        val url3 = generateUrl("/api/message/send")
+        val response = restTemplate.exchange(
+            url3,
+            HttpMethod.POST,
+            HttpEntity(message, headers),
+            Unit::class.java
+        )
+
+        Assertions.assertEquals(HttpStatus.OK, response.statusCode)
+        Assertions.assertEquals(1, privateMessageService.getNumberOfUnreadMessages(recipient))
+
+        //try to delete received message from another user
+        val sentMessage = privateMessageService.getReceivedMessagesForUser(recipient)
+        val url4 = generateUrl("/api/message/${sentMessage.first().id}")
+        val deleteResponse =
+            restTemplate.exchange(url4, HttpMethod.DELETE, HttpEntity(null, headers), Unit::class.java)
+
+        Assertions.assertEquals(HttpStatus.UNAUTHORIZED, deleteResponse.statusCode)
+        Assertions.assertTrue(privateMessageService.getNumberOfUnreadMessages(recipient) != 0L)
+    }
 }

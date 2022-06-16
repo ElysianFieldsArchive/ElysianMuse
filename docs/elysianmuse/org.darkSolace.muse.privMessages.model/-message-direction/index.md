@@ -3,7 +3,9 @@
 # MessageDirection
 
 [jvm]\
-enum [MessageDirection](index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html)&lt;[MessageDirection](index.md)&gt;
+enum [MessageDirection](index.md) : [Enum](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html)&lt;[MessageDirection](index.md)&gt; 
+
+Enumeration indication if a [PrivateMessage](../-private-message/index.md) was sent or received.
 
 ## Entries
 
