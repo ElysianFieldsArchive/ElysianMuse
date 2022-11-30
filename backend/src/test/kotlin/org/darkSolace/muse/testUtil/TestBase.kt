@@ -58,6 +58,7 @@ class TestBase {
                 "-Dgreenmail.smtp.hostname=0.0.0.0 -Dgreenmail.smtp.port=3025 -Dgreenmail.users=test:testPassword"
             )
             withExposedPorts(3025)
+            portBindings = listOf("0.0.0.0:3025:3025")
             withReuse(true)
 
         }.also {
