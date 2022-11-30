@@ -186,8 +186,6 @@ class PrivateMessageServiceTests : TestBase() {
             this.content = "Test private message content"
         }
 
-
-
         privateMessageService.sendMessage(originalMessage)
 
         val messages = privateMessageService.getReceivedMessagesForUser(recipient)

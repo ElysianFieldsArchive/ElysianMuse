@@ -1,7 +1,7 @@
 package org.darkSolace.muse.user.model
 
+import jakarta.persistence.*
 import java.util.*
-import javax.persistence.*
 
 @Entity
 class SuspensionHistoryEntry(

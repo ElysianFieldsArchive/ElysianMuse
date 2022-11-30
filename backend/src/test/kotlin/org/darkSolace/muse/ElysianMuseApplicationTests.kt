@@ -1,11 +1,11 @@
 package org.darkSolace.muse
 
+import jakarta.persistence.EntityManager
 import org.darkSolace.muse.testUtil.TestBase
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import javax.persistence.EntityManager
 
 class ElysianMuseApplicationTests : TestBase() {
     @Autowired

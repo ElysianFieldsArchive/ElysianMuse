@@ -41,7 +41,7 @@ class TestBase {
     companion object {
         @Container
         val postgresqlContainer: PostgreSQLContainer<*> =
-            PostgreSQLContainer<Nothing>("postgres:14.0-alpine").apply {
+            PostgreSQLContainer<Nothing>("postgres:15.1-alpine").apply {
                 withDatabaseName("foo")
                 withUsername("foo")
                 withPassword("secret")
@@ -51,11 +51,11 @@ class TestBase {
             }
 
         @Container
-        val greenMail = GenericContainer<Nothing>(DockerImageName.parse("greenmail/standalone:1.6.8")).apply {
+        val greenMail = GenericContainer<Nothing>(DockerImageName.parse("greenmail/standalone:1.6.11")).apply {
             waitingFor(Wait.forLogMessage(".*Starting GreenMail standalone.*", 1))
             withEnv(
                 "GREENMAIL_OPTS",
-                "-Dgreenmail.setup.test.smtp -Dgreenmail.hostname=0.0.0.0 -Dgreenmail.users=test:testPassword"
+                "-Dgreenmail.smtp.hostname=0.0.0.0 -Dgreenmail.smtp.port=3025 -Dgreenmail.users=test:testPassword"
             )
             withExposedPorts(3025)
             withReuse(true)
@@ -66,7 +66,7 @@ class TestBase {
 
         @RegisterExtension
         val greenMailExtension: GreenMailExtension =
-            GreenMailExtension(ServerSetup(3025, "localhost", "smtp"))
+            GreenMailExtension(ServerSetup(greenMail.getMappedPort(3025), greenMail.host, "smtp"))
                 .withConfiguration(GreenMailConfiguration.aConfig().withUser("test", "testPassword"))
                 .withPerMethodLifecycle(false)
 

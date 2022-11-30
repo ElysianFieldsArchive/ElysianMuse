@@ -1,9 +1,9 @@
 package org.darkSolace.muse.mail.model
 
+import jakarta.persistence.*
 import org.hibernate.annotations.*
 import org.hibernate.annotations.CascadeType
-import javax.persistence.*
-import javax.persistence.Entity
+
 
 /**
  * Model class representing a [MailTemplate] to be used to send out standardized emails.
@@ -26,6 +26,6 @@ class MailTemplate(
     @Fetch(FetchMode.JOIN)
     val templateVars: MutableSet<MailTemplateVar> = mutableSetOf()
 
-    @Type(type = "java.util.HashMap")
+    @ElementCollection(fetch = FetchType.EAGER)
     val templateVarValues: MutableMap<String, String> = mutableMapOf()
 }

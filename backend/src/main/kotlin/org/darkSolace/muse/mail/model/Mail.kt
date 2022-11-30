@@ -1,8 +1,8 @@
 package org.darkSolace.muse.mail.model
 
+import jakarta.persistence.*
 import org.darkSolace.muse.user.model.User
 import org.hibernate.Hibernate
-import javax.persistence.*
 
 /**
  * This [Mail] class holds all information required to be sent via email.

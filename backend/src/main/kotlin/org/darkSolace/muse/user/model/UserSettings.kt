@@ -1,12 +1,12 @@
 package org.darkSolace.muse.user.model
 
+import jakarta.persistence.*
 import org.darkSolace.muse.layout.model.FontFamily
 import org.darkSolace.muse.layout.model.FontSize
 import org.darkSolace.muse.layout.model.Layout
 import org.darkSolace.muse.story.model.Rating
 import org.darkSolace.muse.story.model.StoryTag
 import org.hibernate.Hibernate
-import javax.persistence.*
 
 /**
  * The [UserSettings] model class, is part of a [User].

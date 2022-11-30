@@ -26,8 +26,8 @@ class TestInit : ApplicationRunner {
         mailService.mailEnabled = false
         mailerSettingsService.updateMailerSettings(
             MailerSettings().apply {
-                host = "localhost"
-                port = 3025
+                host = TestBase.greenMail.host
+                port = TestBase.greenMail.getMappedPort(3025)
                 username = "test"
                 password = "testPassword"
                 fromAddress = "sender@example.org"

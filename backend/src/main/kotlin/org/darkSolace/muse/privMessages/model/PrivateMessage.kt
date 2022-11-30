@@ -1,9 +1,10 @@
 package org.darkSolace.muse.privMessages.model
 
+import com.fasterxml.jackson.annotation.JsonIdentityReference
+import jakarta.persistence.*
 import org.darkSolace.muse.user.model.User
 import org.hibernate.Hibernate
 import java.util.*
-import javax.persistence.*
 
 /**
  * This [PrivateMessage] class holds all information used for direct communication between [User]s.
@@ -34,6 +35,7 @@ data class PrivateMessage(
     var isRead: Boolean = false,
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JsonIdentityReference
     var inReplyTo: PrivateMessage? = null,
 ) {
     override fun equals(other: Any?): Boolean {

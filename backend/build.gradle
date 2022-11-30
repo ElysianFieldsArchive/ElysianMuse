@@ -2,26 +2,22 @@ import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id "org.springframework.boot" version "2.7.0"
-    id "io.spring.dependency-management" version "1.0.11.RELEASE"
-    id "org.jetbrains.kotlin.jvm" version "1.6.21"
-    id "org.jetbrains.kotlin.plugin.spring" version "1.6.21"
-    id "org.jetbrains.kotlin.plugin.jpa" version "1.6.21"
+    id "org.springframework.boot" version "3.0.0"
+    id "io.spring.dependency-management" version "1.1.0"
+    id "org.jetbrains.kotlin.jvm" version "1.7.21"
+    id "org.jetbrains.kotlin.plugin.spring" version "1.7.21"
+    id "org.jetbrains.kotlin.plugin.jpa" version "1.7.21"
     id "io.gitlab.arturbosch.detekt" version "1.20.0"
     id "jacoco"
     id "org.jetbrains.dokka" version "1.6.21"
+    id "maven-publish"
 }
 
 apply plugin: "io.spring.dependency-management"
+apply plugin: "maven-publish"
 
 group = "org.darkSolace"
 version = "0.0.1-SNAPSHOT"
-
-//configurations {
-//    compileOnly {
-//        extendsFrom annotationProcessor
-//    }
-//}
 
 repositories {
     mavenCentral()
@@ -34,7 +30,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-mail"
     implementation "org.springframework.boot:spring-boot-starter-validation"
     implementation "io.jsonwebtoken:jjwt-api:0.11.5"
-    implementation "org.springdoc:springdoc-openapi-ui:1.6.8"
+    implementation "org.springdoc:springdoc-openapi-ui:1.6.13"
 
     runtimeOnly "org.postgresql:postgresql"
     runtimeOnly "org.jetbrains.kotlin:kotlin-reflect"
@@ -51,11 +47,11 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-params"
     testImplementation "org.junit.platform:junit-platform-commons"
     testImplementation "org.junit.platform:junit-platform-engine"
-    testImplementation "org.testcontainers:junit-jupiter:1.17.1"
-    testImplementation "org.testcontainers:postgresql:1.17.1"
-    testImplementation "org.apache.httpcomponents:httpclient"
-    testImplementation "com.icegreen:greenmail-junit5:1.6.9"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1"
+    testImplementation "org.testcontainers:junit-jupiter:1.17.6"
+    testImplementation "org.testcontainers:postgresql:1.17.6"
+    testImplementation "org.apache.httpcomponents.client5:httpclient5"
+    testImplementation "com.icegreen:greenmail-junit5:2.0.0-alpha-2"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test"
     dokkaHtmlPlugin "org.jetbrains.dokka:kotlin-as-java-plugin"
 }
 
@@ -64,12 +60,15 @@ test {
 }
 
 tasks.withType(KotlinCompile).configureEach {
-    kotlinOptions { jvmTarget = "11" }
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjsr305=strict']
+        jvmTarget = "17"
+    }
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 detekt {
@@ -106,4 +105,3 @@ task copyDocs(type: Copy, dependsOn: [dokkaGfm]) {
 
 test.finalizedBy(jacocoTestReport)
 test.finalizedBy(copyDocs)
-

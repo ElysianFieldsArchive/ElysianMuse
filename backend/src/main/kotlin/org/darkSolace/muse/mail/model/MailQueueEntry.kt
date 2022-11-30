@@ -1,9 +1,9 @@
 package org.darkSolace.muse.mail.model
 
+import jakarta.persistence.*
 import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
 import java.util.*
-import javax.persistence.*
 
 /**
  * Represents a queued email to be sent at the next scheduled opportunity

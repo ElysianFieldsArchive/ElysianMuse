@@ -1,9 +1,9 @@
 package org.darkSolace.muse.mail.model
 
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.Id
 import org.hibernate.Hibernate
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
 
 /**
  * A [MailTemplateVar] can be used to create variable content within a [MailTemplate].
