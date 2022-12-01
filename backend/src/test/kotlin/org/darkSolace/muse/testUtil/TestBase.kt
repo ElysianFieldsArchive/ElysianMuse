@@ -67,9 +67,19 @@ class TestBase {
 
         @RegisterExtension
         val greenMailExtension: GreenMailExtension =
-            GreenMailExtension(ServerSetup(greenMail.getMappedPort(3025), greenMail.host, "smtp"))
+            GreenMailExtension(
+                ServerSetup.verbose(
+                    arrayOf(
+                        ServerSetup(
+                            greenMail.getMappedPort(3025),
+                            greenMail.host,
+                            "smtp"
+                        )
+                    )
+                )
+            )
                 .withConfiguration(GreenMailConfiguration.aConfig().withUser("test", "testPassword"))
-                .withPerMethodLifecycle(false)
+                .withPerMethodLifecycle(false).
 
         @JvmStatic
         @DynamicPropertySource
