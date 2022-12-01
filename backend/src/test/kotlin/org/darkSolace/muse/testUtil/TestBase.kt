@@ -79,7 +79,7 @@ class TestBase {
                 )
             )
                 .withConfiguration(GreenMailConfiguration.aConfig().withUser("test", "testPassword"))
-                .withPerMethodLifecycle(false).
+                .withPerMethodLifecycle(false)
 
         @JvmStatic
         @DynamicPropertySource
