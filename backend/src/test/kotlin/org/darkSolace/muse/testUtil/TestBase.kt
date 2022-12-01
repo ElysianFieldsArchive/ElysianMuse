@@ -55,7 +55,7 @@ class TestBase {
             waitingFor(Wait.forLogMessage(".*Starting GreenMail standalone.*", 1))
             withEnv(
                 "GREENMAIL_OPTS",
-                "-Dgreenmail.smtp.hostname=0.0.0.0 -Dgreenmail.smtp.port=3025 -Dgreenmail.users=test:testPassword"
+                "-Dgreenmail.smtp.hostname=0.0.0.0 -Dgreenmail.smtp.port=3025 -Dgreenmail.users=test:testPassword -Dgreenmail.verbose"
             )
             withExposedPorts(3025)
             portBindings = listOf("0.0.0.0:3025:3025")
