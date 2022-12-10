@@ -73,7 +73,7 @@ class TestBase {
                             greenMail.getMappedPort(3025) ?: 3025,
                             greenMail.host,
                             "smtp"
-                        )
+                        ).also { it.serverStartupTimeout = 10_000 } //set timeout to 10s
                     )
                 )
             )
