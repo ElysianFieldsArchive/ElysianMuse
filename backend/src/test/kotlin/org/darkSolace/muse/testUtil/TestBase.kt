@@ -13,11 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
-import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.PostgreSQLContainer
-import org.testcontainers.containers.wait.strategy.Wait
 import org.testcontainers.junit.jupiter.Container
-import org.testcontainers.utility.DockerImageName
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
@@ -50,25 +47,12 @@ class TestBase {
                 it.start()
             }
 
-        @Container
-        val greenMail = GenericContainer<Nothing>(DockerImageName.parse("greenmail/standalone:2.0.0-alpha-2")).apply {
-            waitingFor(Wait.forLogMessage(".*Starting GreenMail standalone.*", 1))
-            withEnv(
-                "GREENMAIL_OPTS",
-                "-Dgreenmail.setup.test.smtp -Dgreenmail.smtp.hostname=0.0.0.0 -Dgreenmail.users=test:testPassword -Dgreenmail.verbose"
-            )
-            withExposedPorts(3025)
-            withReuse(true)
-        }.also {
-            it.start()
-        }
-
         @RegisterExtension
         val greenMailExtension: GreenMailExtension =
             GreenMailExtension(
                 ServerSetup(
-                    greenMail.getMappedPort(3025) ?: 3025,
-                    greenMail.host,
+                    3025,
+                    "localhost",
                     "smtp"
                 ).also { it.serverStartupTimeout = 10_000 } //set timeout to 10s
             )
