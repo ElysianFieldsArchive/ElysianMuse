@@ -60,7 +60,6 @@ class TestBase {
             withExposedPorts(3025)
             portBindings = listOf("0.0.0.0:3025:3025")
             withReuse(true)
-
         }.also {
             it.start()
         }
@@ -71,7 +70,7 @@ class TestBase {
                 ServerSetup.verbose(
                     arrayOf(
                         ServerSetup(
-                            greenMail.getMappedPort(3025),
+                            greenMail.getMappedPort(3025) ?: 3025,
                             greenMail.host,
                             "smtp"
                         )
