@@ -51,14 +51,13 @@ class TestBase {
             }
 
         @Container
-        val greenMail = GenericContainer<Nothing>(DockerImageName.parse("greenmail/standalone:1.6.11")).apply {
+        val greenMail = GenericContainer<Nothing>(DockerImageName.parse("greenmail/standalone:2.0.0-alpha-2")).apply {
             waitingFor(Wait.forLogMessage(".*Starting GreenMail standalone.*", 1))
             withEnv(
                 "GREENMAIL_OPTS",
                 "-Dgreenmail.setup.test.smtp -Dgreenmail.smtp.hostname=0.0.0.0 -Dgreenmail.users=test:testPassword -Dgreenmail.verbose"
             )
             withExposedPorts(3025)
-//            portBindings = listOf("0.0.0.0:3025:3025")
             withReuse(true)
         }.also {
             it.start()
@@ -67,18 +66,15 @@ class TestBase {
         @RegisterExtension
         val greenMailExtension: GreenMailExtension =
             GreenMailExtension(
-                ServerSetup.verbose(
-                    arrayOf(
-                        ServerSetup(
-                            greenMail.getMappedPort(3025) ?: 3025,
-                            greenMail.host,
-                            "smtp"
-                        ).also { it.serverStartupTimeout = 10_000 } //set timeout to 10s
-                    )
-                )
+                ServerSetup(
+                    greenMail.getMappedPort(3025) ?: 3025,
+                    greenMail.host,
+                    "smtp"
+                ).also { it.serverStartupTimeout = 10_000 } //set timeout to 10s
             )
                 .withConfiguration(GreenMailConfiguration.aConfig().withUser("test", "testPassword"))
                 .withPerMethodLifecycle(false)
+
 
         @JvmStatic
         @DynamicPropertySource
