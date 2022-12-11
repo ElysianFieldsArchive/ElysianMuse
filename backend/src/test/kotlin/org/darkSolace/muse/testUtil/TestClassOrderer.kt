@@ -30,12 +30,14 @@ class TestClassOrderer : ClassOrderer {
             "LastSeenServiceTests" -> 9
             "SuspensionServiceTests" -> 10
             "UserPasswordServiceTests" -> 10
+            "PrivateMessageServiceTests" -> 11
             else -> 50
         }
     }
 
     private fun getApiTestOrder(name: String): Int {
         return when (name) {
+            "PrivateMessageApiTests" -> 91
             "MailApiTests" -> 92
             "UserPasswordApiTests" -> 93
             "SuspensionServiceApiTests" -> 94

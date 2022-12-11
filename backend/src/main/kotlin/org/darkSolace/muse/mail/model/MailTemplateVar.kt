@@ -1,9 +1,9 @@
 package org.darkSolace.muse.mail.model
 
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.Id
 import org.hibernate.Hibernate
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
 
 /**
  * A [MailTemplateVar] can be used to create variable content within a [MailTemplate].
@@ -30,6 +30,7 @@ data class MailTemplateVar(
 
     @Override
     override fun toString(): String {
-        return this::class.simpleName + "(id = $id , templateVar = $templateVar , description = $description , systemManaged = $systemManaged )"
+        return this::class.simpleName + "(id = $id , templateVar = $templateVar , description = $description , " +
+                "systemManaged = $systemManaged )"
     }
 }

@@ -194,7 +194,6 @@ class AuthControllerApiTests : TestBase() {
         )
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
         Assertions.assertEquals("User created successfully.", response.body)
-
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
             url2,

@@ -13,11 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
-import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.PostgreSQLContainer
-import org.testcontainers.containers.wait.strategy.Wait
 import org.testcontainers.junit.jupiter.Container
-import org.testcontainers.utility.DockerImageName
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
@@ -41,7 +38,7 @@ class TestBase {
     companion object {
         @Container
         val postgresqlContainer: PostgreSQLContainer<*> =
-            PostgreSQLContainer<Nothing>("postgres:14.0-alpine").apply {
+            PostgreSQLContainer<Nothing>("postgres:15.1-alpine").apply {
                 withDatabaseName("foo")
                 withUsername("foo")
                 withPassword("secret")
@@ -50,25 +47,18 @@ class TestBase {
                 it.start()
             }
 
-        @Container
-        val greenMail = GenericContainer<Nothing>(DockerImageName.parse("greenmail/standalone:1.6.8")).apply {
-            waitingFor(Wait.forLogMessage(".*Starting GreenMail standalone.*", 1))
-            withEnv(
-                "GREENMAIL_OPTS",
-                "-Dgreenmail.setup.test.smtp -Dgreenmail.hostname=0.0.0.0 -Dgreenmail.users=test:testPassword"
-            )
-            withExposedPorts(3025)
-            withReuse(true)
-
-        }.also {
-            it.start()
-        }
-
         @RegisterExtension
         val greenMailExtension: GreenMailExtension =
-            GreenMailExtension(ServerSetup(3025, "localhost", "smtp"))
+            GreenMailExtension(
+                ServerSetup(
+                    3025,
+                    "localhost",
+                    "smtp"
+                ).also { it.serverStartupTimeout = 10_000 } //set timeout to 10s
+            )
                 .withConfiguration(GreenMailConfiguration.aConfig().withUser("test", "testPassword"))
                 .withPerMethodLifecycle(false)
+
 
         @JvmStatic
         @DynamicPropertySource

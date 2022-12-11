@@ -3,4 +3,4 @@
 # AuthenticationConfiguration
 
 [jvm]\
-fun [AuthenticationConfiguration](-authentication-configuration.md)()
+fun [AuthenticationConfiguration](-authentication-configuration.md)(@AutowireduserDetailsService: [UserDetailsService](../../org.darkSolace.muse.security.service/-user-details-service/index.md), @AutowiredpasswordEncoder: BCryptPasswordEncoder)

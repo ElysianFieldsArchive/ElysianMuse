@@ -1,6 +1,7 @@
 package org.darkSolace.muse.user.service
 
 import org.darkSolace.muse.lastSeen.repository.LastSeenRepository
+import org.darkSolace.muse.mail.repository.MailQueueRepository
 import org.darkSolace.muse.mail.service.MailService
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.user.model.Role
@@ -27,6 +28,7 @@ class UserService(
     @Autowired private val userSettingsRepository: UserSettingsRepository,
     @Autowired private val lastSeenRepository: LastSeenRepository,
     @Autowired private val mailService: MailService,
+    @Autowired private val mailQueueRepository: MailQueueRepository,
 ) {
 
     /**
@@ -97,6 +99,7 @@ class UserService(
                 user
             }
 
+        mailQueueRepository.deleteAllByMail_Recipient(deletedUser)
         lastSeenRepository.deleteByUser(deletedUser)
         userRepository.delete(deletedUser)
     }

@@ -3,7 +3,4 @@
 # authTokenFilter
 
 [jvm]\
-
-@Autowired
-
-lateinit var [authTokenFilter](auth-token-filter.md): [AuthTokenFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md)
+val [authTokenFilter](auth-token-filter.md): [AuthTokenFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md)

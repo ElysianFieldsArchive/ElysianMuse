@@ -1,12 +1,12 @@
 package org.darkSolace.muse.user.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import jakarta.persistence.*
 import org.hibernate.Hibernate
 import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
 import org.springframework.security.crypto.bcrypt.BCrypt
 import java.util.*
-import javax.persistence.*
 
 /**
  * The [User] model class

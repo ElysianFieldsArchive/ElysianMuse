@@ -100,7 +100,7 @@ class MailServiceTests : TestBase() {
         val mails = greenMailExtension.getReceivedMessagesForDomain("example.org")
         Assertions.assertEquals(0, mails.size)
         Assertions.assertEquals(1, mailQueueRepository.count())
-        Assertions.assertTrue(mailQueueRepository.findAll().first().mail?.to?.any { it == "test@example.org" } ?: false)
+        Assertions.assertTrue(mailQueueRepository.findAll().first().mail?.recipient?.email == "test@example.org")
     }
 
     @Test

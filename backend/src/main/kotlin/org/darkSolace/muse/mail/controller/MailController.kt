@@ -1,5 +1,6 @@
 package org.darkSolace.muse.mail.controller
 
+import jakarta.validation.Valid
 import org.darkSolace.muse.mail.model.MailerSettings
 import org.darkSolace.muse.mail.service.MailService
 import org.darkSolace.muse.mail.service.MailerSettingsService
@@ -8,7 +9,6 @@ import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
-import javax.validation.Valid
 
 /**
  * RestController defining endpoints regarding mail settings and user email confirmation

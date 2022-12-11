@@ -1,8 +1,8 @@
 package org.darkSolace.muse.mail.model
 
+import jakarta.persistence.*
 import org.darkSolace.muse.user.model.User
 import org.hibernate.Hibernate
-import javax.persistence.*
 
 /**
  * This [Mail] class holds all information required to be sent via email.
@@ -21,7 +21,7 @@ data class Mail(
     val recipient: User,
     val subject: String,
 
-    @Column(length = 4096)
+    @Column(length = 32000)
     val content: String = ""
 ) {
     override fun equals(other: Any?): Boolean {
@@ -36,6 +36,6 @@ data class Mail(
 
     @Override
     override fun toString(): String {
-        return this::class.simpleName + "(id = $id , recipient = $recipient , content = $content )"
+        return this::class.simpleName + "(id = $id , recipient = $recipient , subject = $subject , content = $content )"
     }
 }

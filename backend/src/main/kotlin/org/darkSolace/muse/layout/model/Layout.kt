@@ -1,7 +1,7 @@
 package org.darkSolace.muse.layout.model
 
-import javax.persistence.Entity
-import javax.persistence.Id
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
 
 /**
  * Placeholder for a Layout class

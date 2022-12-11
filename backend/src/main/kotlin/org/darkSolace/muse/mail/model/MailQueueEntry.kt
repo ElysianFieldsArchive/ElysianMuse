@@ -1,8 +1,9 @@
 package org.darkSolace.muse.mail.model
 
-import org.springframework.mail.SimpleMailMessage
+import jakarta.persistence.*
+import org.hibernate.annotations.Cascade
+import org.hibernate.annotations.CascadeType
 import java.util.*
-import javax.persistence.*
 
 /**
  * Represents a queued email to be sent at the next scheduled opportunity
@@ -13,7 +14,9 @@ class MailQueueEntry(
     @GeneratedValue
     val id: Long? = null,
 
-    val mail: SimpleMailMessage? = null,
+    @OneToOne
+    @Cascade(CascadeType.ALL)
+    val mail: Mail? = null,
 
     @Temporal(TemporalType.TIMESTAMP)
     val enqueueDate: Date = Date(),

@@ -1,12 +1,12 @@
 package org.darkSolace.muse.lastSeen.service
 
+import jakarta.servlet.FilterChain
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
 import org.darkSolace.muse.security.service.JwtUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
-import javax.servlet.FilterChain
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
 
 /**
  * Filter to create or update [org.darkSolace.muse.lastSeen.model.LastSeenEntry] for each request

@@ -1,12 +1,12 @@
 package org.darkSolace.muse.mail.model
 
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.Id
+import jakarta.validation.constraints.Min
+import jakarta.validation.constraints.NotNull
 import org.hibernate.Hibernate
 import org.springframework.validation.annotation.Validated
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.validation.constraints.Min
-import javax.validation.constraints.NotNull
 
 /**
  * Holds the settings for a smtp server to be used to send emails

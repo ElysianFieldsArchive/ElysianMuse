@@ -1,5 +1,6 @@
 package org.darkSolace.muse.mail.service
 
+import jakarta.validation.Valid
 import org.darkSolace.muse.mail.model.MailerSettings
 import org.darkSolace.muse.mail.repository.MailerSettingsRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -7,7 +8,6 @@ import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.mail.javamail.JavaMailSenderImpl
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import javax.validation.Valid
 
 /**
  * Service class for [MailerSettings] related tasks. Also holds the current [JavaMailSender] to be used to send EMails.
@@ -26,6 +26,7 @@ class MailerSettingsService {
     private fun generateMailer(): JavaMailSender {
         val mailSettings = mailerSettingsRepository.findAll()
         val settings = mailSettings.first()
+//        val mailer = JavaMailSenderImpl()
         val mailer = JavaMailSenderImpl().apply {
             host = settings.host
             port = settings.port

@@ -6,7 +6,7 @@ import org.darkSolace.muse.security.service.AuthTokenFilter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableMethodSecurity(prePostEnabled = true)
 class WebSecurityConfiguration(
     @Autowired val unauthorizedHandler: AuthEntryPointJwt,
     @Autowired val authTokenFilter: AuthTokenFilter,
@@ -30,9 +30,10 @@ class WebSecurityConfiguration(
         http.cors().and().csrf().disable()
             .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).and()
-            .authorizeRequests()
-            .antMatchers("/**").permitAll()
-            .anyRequest().authenticated()
+            .authorizeHttpRequests {
+                it.requestMatchers("/**").permitAll()
+                it.anyRequest().authenticated()
+            }
 
         http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter::class.java)
         http.addFilterAfter(lastSeenFilter, UsernamePasswordAuthenticationFilter::class.java)
