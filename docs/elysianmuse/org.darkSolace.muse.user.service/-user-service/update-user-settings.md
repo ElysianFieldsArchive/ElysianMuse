@@ -12,9 +12,9 @@ Replaces the [UserSettings](../../org.darkSolace.muse.user.model/-user-settings/
 
 #### Return
 
-the modified [User](../../org.darkSolace.muse.user.model/-user/index.md) or null if the [User](../../org.darkSolace.muse.user.model/-user/index.md) does not exist
+the modified [User](../../org.darkSolace.muse.user.model/-user/index.md) or `null` if the [User](../../org.darkSolace.muse.user.model/-user/index.md) does not exist
 
-## Parameters
+#### Parameters
 
 jvm
 

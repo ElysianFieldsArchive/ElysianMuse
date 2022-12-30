@@ -11,7 +11,7 @@ Marks an email address as confirmed if the provided verification-code is valid
 
 true or false depending on the success of marking an email address as confirmed
 
-## Parameters
+#### Parameters
 
 jvm
 

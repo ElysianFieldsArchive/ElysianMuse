@@ -16,4 +16,4 @@ Retrieves all currently suspended users You need the [org.darkSolace.muse.user.m
 
 List of the suspended [User](../../org.darkSolace.muse.user.model/-user/index.md)s
 
-## Samples
+#### Samples

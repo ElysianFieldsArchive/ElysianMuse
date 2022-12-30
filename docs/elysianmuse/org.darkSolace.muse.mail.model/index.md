@@ -1,6 +1,6 @@
 //[elysianmuse](../../index.md)/[org.darkSolace.muse.mail.model](index.md)
 
-# Package org.darkSolace.muse.mail.model
+# Package-level declarations
 
 ## Types
 

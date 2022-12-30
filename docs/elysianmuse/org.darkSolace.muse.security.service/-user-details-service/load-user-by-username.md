@@ -11,7 +11,7 @@ Loads a [org.darkSolace.muse.user.model.User](../../org.darkSolace.muse.user.mod
 
 the created UserDetails
 
-## Parameters
+#### Parameters
 
 jvm
 

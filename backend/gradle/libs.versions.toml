@@ -25,6 +25,7 @@ kotlin = "1.7.21"
 jjwt-api = "io.jsonwebtoken:jjwt-api:0.11.5"
 
 springdoc-openapi-ui = "org.springdoc:springdoc-openapi-ui:1.6.13"
+##                                                     ⬆ :1.6.14"
 
 junit-platform-commons = { module = "org.junit.platform:junit-platform-commons" }
 

@@ -11,7 +11,7 @@ Retrieves the suspension history of a given user, identified by its id.
 
 List of [SuspensionHistoryEntry](../../org.darkSolace.muse.user.model/-suspension-history-entry/index.md)s
 
-## Parameters
+#### Parameters
 
 jvm
 
@@ -28,7 +28,7 @@ Retrieves the suspension history of a given user.
 
 List of [SuspensionHistoryEntry](../../org.darkSolace.muse.user.model/-suspension-history-entry/index.md)s
 
-## Parameters
+#### Parameters
 
 jvm
 

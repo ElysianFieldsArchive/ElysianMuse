@@ -87,7 +87,7 @@ class UserService(
      *
      * TODO: deal with created content by this user
      *  * assign stories and chapters to orphan accounts
-     *  * replace username in private messages and comments
+     *  * replace username in private messages and comments and
      *  * other occurrences where a user might be involved
      */
     @Transactional

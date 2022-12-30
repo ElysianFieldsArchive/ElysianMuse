@@ -14,7 +14,7 @@ Retrieves all messages in reply to a given [PrivateMessage](../../org.darkSolace
 
 a [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) of [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md)s in reply to the given [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md)
 
-## Parameters
+#### Parameters
 
 jvm
 

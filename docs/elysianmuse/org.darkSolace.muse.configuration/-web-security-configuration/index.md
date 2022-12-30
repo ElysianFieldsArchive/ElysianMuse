@@ -7,7 +7,7 @@
 
 @EnableWebSecurity
 
-@EnableMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 
 class [WebSecurityConfiguration](index.md)(@Autowiredval unauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md), @Autowiredval authTokenFilter: [AuthTokenFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md), @Autowiredval lastSeenFilter: [LastSeenFilter](../../org.darkSolace.muse.lastSeen.service/-last-seen-filter/index.md))
 

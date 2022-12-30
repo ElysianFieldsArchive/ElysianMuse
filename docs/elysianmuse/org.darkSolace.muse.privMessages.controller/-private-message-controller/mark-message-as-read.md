@@ -14,9 +14,9 @@ Marks a private message as read
 
 HTTP OK or UNAUTHORIZED, depending on the requests success
 
-## Samples
+#### Samples
 
-## Parameters
+#### Parameters
 
 jvm
 

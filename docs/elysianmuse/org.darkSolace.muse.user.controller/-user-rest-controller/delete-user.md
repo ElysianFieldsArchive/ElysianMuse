@@ -16,9 +16,9 @@ Deletes a user identified by its id. Listens on /api/user/{id} for DELETE reques
 
 HTTP 200 on success, HTTP 401 otherwise
 
-## Samples
+#### Samples
 
-## Parameters
+#### Parameters
 
 jvm
 

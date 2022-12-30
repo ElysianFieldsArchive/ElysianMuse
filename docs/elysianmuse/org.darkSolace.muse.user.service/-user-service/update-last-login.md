@@ -7,7 +7,7 @@ fun [updateLastLogin](update-last-login.md)(user: [User](../../org.darkSolace.mu
 
 Updates the lastLogInDate timestamp of a given user.
 
-## Parameters
+#### Parameters
 
 jvm
 

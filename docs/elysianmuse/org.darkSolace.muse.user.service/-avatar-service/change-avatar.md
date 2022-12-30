@@ -12,9 +12,9 @@ Changes the [Avatar](../../org.darkSolace.muse.user.model/-avatar/index.md) for 
 
 #### Return
 
-the modified [User](../../org.darkSolace.muse.user.model/-user/index.md) or null if the [User](../../org.darkSolace.muse.user.model/-user/index.md) was not found
+the modified [User](../../org.darkSolace.muse.user.model/-user/index.md) or `null` if the [User](../../org.darkSolace.muse.user.model/-user/index.md) was not found
 
-## Parameters
+#### Parameters
 
 jvm
 

@@ -11,7 +11,7 @@ Returns a [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections
 
 a [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) of all [User](../../org.darkSolace.muse.user.model/-user/index.md)s with the given [Role](../../org.darkSolace.muse.user.model/-role/index.md)- might be empty if no [User](../../org.darkSolace.muse.user.model/-user/index.md)s exist with this [Role](../../org.darkSolace.muse.user.model/-role/index.md)
 
-## Parameters
+#### Parameters
 
 jvm
 

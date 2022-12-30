@@ -7,7 +7,7 @@ fun [markEMailAsValid](mark-e-mail-as-valid.md)(user: [User](../../org.darkSolac
 
 Marks the email of the given user as validated and cleans up all data regarding the (previously outstanding) validation
 
-## Parameters
+#### Parameters
 
 jvm
 
@@ -20,7 +20,7 @@ fun [markEMailAsValid](mark-e-mail-as-valid.md)(username: [String](https://kotli
 
 Marks the email of the given user as validated and cleans up all data regarding the (previously outstanding) validation
 
-## Parameters
+#### Parameters
 
 jvm
 

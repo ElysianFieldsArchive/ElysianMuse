@@ -9,9 +9,9 @@ Retrieves a [User](../../org.darkSolace.muse.user.model/-user/index.md) by an em
 
 #### Return
 
-the user which shall be verified or null
+the user which shall be verified or `null`
 
-## Parameters
+#### Parameters
 
 jvm
 

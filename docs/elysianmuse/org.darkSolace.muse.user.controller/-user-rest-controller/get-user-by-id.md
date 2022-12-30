@@ -12,11 +12,11 @@ Retrieves a user by its id. Listens on /api/user/{id}.
 
 #### Return
 
-the retrieved [User](../../org.darkSolace.muse.user.model/-user/index.md) or null
+the retrieved [User](../../org.darkSolace.muse.user.model/-user/index.md) or `null`
 
-## Samples
+#### Samples
 
-## Parameters
+#### Parameters
 
 jvm
 

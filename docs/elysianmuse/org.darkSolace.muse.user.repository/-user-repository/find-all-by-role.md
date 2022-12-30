@@ -11,7 +11,7 @@ Retrieves all [User](../../org.darkSolace.muse.user.model/-user/index.md)s with 
 
 a [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) of [User](../../org.darkSolace.muse.user.model/-user/index.md)s having the required [Role](../../org.darkSolace.muse.user.model/-role/index.md)
 
-## Parameters
+#### Parameters
 
 jvm
 

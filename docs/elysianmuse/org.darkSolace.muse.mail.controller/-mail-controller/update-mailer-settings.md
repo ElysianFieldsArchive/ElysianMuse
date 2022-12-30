@@ -16,4 +16,4 @@ Updates the [MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-settin
 
 Expects a [MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-settings/index.md) object as JSON as the request body
 
-## Samples
+#### Samples

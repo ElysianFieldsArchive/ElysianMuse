@@ -1,6 +1,6 @@
 //[elysianmuse](../../index.md)/[org.darkSolace.muse.privMessages.controller](index.md)
 
-# Package org.darkSolace.muse.privMessages.controller
+# Package-level declarations
 
 ## Types
 

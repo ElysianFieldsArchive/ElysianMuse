@@ -9,13 +9,13 @@ class [UserDetailsService](index.md)(@Autowiredval userRepository: [UserReposito
 
 Service to handle everything in regard to UserDetails.
 
-## See also
+#### See also
 
 jvm
 
-| | |
-|---|---|
-| org.springframework.security.core.userdetails.UserDetailsService |  |
+| |
+|---|
+| UserDetailsService |
 
 ## Constructors
 

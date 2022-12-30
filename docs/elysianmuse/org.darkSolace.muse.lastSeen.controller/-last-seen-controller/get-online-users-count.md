@@ -14,4 +14,4 @@ Retrieves number of currently active visitors (logged-in users and visitors)
 
 number of currently active visitors
 
-## Samples
+#### Samples

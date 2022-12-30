@@ -10,9 +10,9 @@ fun [removeTagFromUser](remove-tag-from-user.md)(@PathVariableuser: [User](../..
 
 Removes a [UserTag](../../org.darkSolace.muse.user.model/-user-tag/index.md) from a [User](../../org.darkSolace.muse.user.model/-user/index.md). A [User](../../org.darkSolace.muse.user.model/-user/index.md) can remove [UserTag](../../org.darkSolace.muse.user.model/-user-tag/index.md)s from itself. To remove tags from a different user either the [org.darkSolace.muse.user.model.Role](../../org.darkSolace.muse.user.model/-role/index.md) of [org.darkSolace.muse.user.model.Role.ADMINISTRATOR](../../org.darkSolace.muse.user.model/-role/-a-d-m-i-n-i-s-t-r-a-t-o-r/index.md) or [org.darkSolace.muse.user.model.Role.MODERATOR](../../org.darkSolace.muse.user.model/-role/-m-o-d-e-r-a-t-o-r/index.md) is required.
 
-## Samples
+#### Samples
 
-## Parameters
+#### Parameters
 
 jvm
 

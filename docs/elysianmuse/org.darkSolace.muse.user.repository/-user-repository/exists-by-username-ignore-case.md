@@ -11,7 +11,7 @@ Checks if a [User](../../org.darkSolace.muse.user.model/-user/index.md) with a g
 
 [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) weather the [User](../../org.darkSolace.muse.user.model/-user/index.md) already exists
 
-## Parameters
+#### Parameters
 
 jvm
 

@@ -7,15 +7,15 @@ abstract fun [deleteByUser](delete-by-user.md)(deletedUser: [User](../../org.dar
 
 Deletes a [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md) for a given [User](../../org.darkSolace.muse.user.model/-user/index.md)
 
-## See also
+#### See also
 
 jvm
 
-| | |
-|---|---|
-| [org.darkSolace.muse.user.service.UserService](../../org.darkSolace.muse.user.service/-user-service/delete-user.md) |  |
+| |
+|---|
+| [UserService.deleteUser](../../org.darkSolace.muse.user.service/-user-service/delete-user.md) |
 
-## Parameters
+#### Parameters
 
 jvm
 

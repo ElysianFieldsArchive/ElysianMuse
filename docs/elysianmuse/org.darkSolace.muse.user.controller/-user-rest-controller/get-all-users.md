@@ -14,4 +14,4 @@ Retrieves all users. Listens on /api/user/all.
 
 a List of [User](../../org.darkSolace.muse.user.model/-user/index.md)s - might be empty
 
-## Samples
+#### Samples

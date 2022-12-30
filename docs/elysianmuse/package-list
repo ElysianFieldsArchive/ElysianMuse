@@ -49,10 +49,14 @@ $dokka.location:org.darkSolace.muse.layout.model////PointingToDeclaration/elysi
 $dokka.location:org.darkSolace.muse.layout.model/FontFamily.SANS///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.layout.model/-font-family/-s-a-n-s/index.md
 $dokka.location:org.darkSolace.muse.layout.model/FontFamily.SERIF///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.layout.model/-font-family/-s-e-r-i-f/index.md
 $dokka.location:org.darkSolace.muse.layout.model/FontFamily///PointingToDeclaration/elysianmuse/org.darkSolace.muse.layout.model/-font-family/index.md
+$dokka.location:org.darkSolace.muse.layout.model/FontFamily/valueOf/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.layout.model/-font-family/value-of.md
+$dokka.location:org.darkSolace.muse.layout.model/FontFamily/values/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.layout.model/-font-family/values.md
 $dokka.location:org.darkSolace.muse.layout.model/FontSize.LARGE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.layout.model/-font-size/-l-a-r-g-e/index.md
 $dokka.location:org.darkSolace.muse.layout.model/FontSize.MEDIUM///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.layout.model/-font-size/-m-e-d-i-u-m/index.md
 $dokka.location:org.darkSolace.muse.layout.model/FontSize.SMALL///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.layout.model/-font-size/-s-m-a-l-l/index.md
 $dokka.location:org.darkSolace.muse.layout.model/FontSize///PointingToDeclaration/elysianmuse/org.darkSolace.muse.layout.model/-font-size/index.md
+$dokka.location:org.darkSolace.muse.layout.model/FontSize/valueOf/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.layout.model/-font-size/value-of.md
+$dokka.location:org.darkSolace.muse.layout.model/FontSize/values/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.layout.model/-font-size/values.md
 $dokka.location:org.darkSolace.muse.layout.model/Layout///PointingToDeclaration/elysianmuse/org.darkSolace.muse.layout.model/-layout/index.md
 $dokka.location:org.darkSolace.muse.layout.model/Layout/Layout/#kotlin.Long?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.layout.model/-layout/-layout.md
 $dokka.location:org.darkSolace.muse.layout.model/Layout/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.layout.model/-layout/id.md
@@ -123,6 +127,8 @@ $dokka.location:org.darkSolace.muse.mail.model/TemplateType.FORGOT_PASSWORD///Po
 $dokka.location:org.darkSolace.muse.mail.model/TemplateType.SIGN_UP_CONFIRMATION///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.mail.model/-template-type/-s-i-g-n_-u-p_-c-o-n-f-i-r-m-a-t-i-o-n/index.md
 $dokka.location:org.darkSolace.muse.mail.model/TemplateType///PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-template-type/index.md
 $dokka.location:org.darkSolace.muse.mail.model/TemplateType/description/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-template-type/description.md
+$dokka.location:org.darkSolace.muse.mail.model/TemplateType/valueOf/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-template-type/value-of.md
+$dokka.location:org.darkSolace.muse.mail.model/TemplateType/values/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.model/-template-type/values.md
 $dokka.location:org.darkSolace.muse.mail.repository////PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.repository/index.md
 $dokka.location:org.darkSolace.muse.mail.repository/MailQueueRepository///PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.repository/-mail-queue-repository/index.md
 $dokka.location:org.darkSolace.muse.mail.repository/MailQueueRepository/deleteAllByMail_Recipient/#org.darkSolace.muse.user.model.User/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.repository/-mail-queue-repository/delete-all-by-mail_-recipient.md
@@ -163,6 +169,8 @@ $dokka.location:org.darkSolace.muse.privMessages.model////PointingToDeclaration/
 $dokka.location:org.darkSolace.muse.privMessages.model/MessageDirection.INCOMING///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.privMessages.model/-message-direction/-i-n-c-o-m-i-n-g/index.md
 $dokka.location:org.darkSolace.muse.privMessages.model/MessageDirection.OUTGOING///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.privMessages.model/-message-direction/-o-u-t-g-o-i-n-g/index.md
 $dokka.location:org.darkSolace.muse.privMessages.model/MessageDirection///PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model/-message-direction/index.md
+$dokka.location:org.darkSolace.muse.privMessages.model/MessageDirection/valueOf/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model/-message-direction/value-of.md
+$dokka.location:org.darkSolace.muse.privMessages.model/MessageDirection/values/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model/-message-direction/values.md
 $dokka.location:org.darkSolace.muse.privMessages.model/PrivateMessage///PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model/-private-message/index.md
 $dokka.location:org.darkSolace.muse.privMessages.model/PrivateMessage/PrivateMessage/#kotlin.Long?#org.darkSolace.muse.privMessages.model.MessageDirection#org.darkSolace.muse.user.model.User?#org.darkSolace.muse.user.model.User?#kotlin.String#kotlin.String#java.util.Date#kotlin.Boolean#org.darkSolace.muse.privMessages.model.PrivateMessage?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model/-private-message/-private-message.md
 $dokka.location:org.darkSolace.muse.privMessages.model/PrivateMessage/content/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model/-private-message/content.md
@@ -224,6 +232,8 @@ $dokka.location:org.darkSolace.muse.security.model/SignUpResponse.EMAIL_EXISTS//
 $dokka.location:org.darkSolace.muse.security.model/SignUpResponse.OK///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.security.model/-sign-up-response/-o-k/index.md
 $dokka.location:org.darkSolace.muse.security.model/SignUpResponse.USERNAME_EXISTS///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.security.model/-sign-up-response/-u-s-e-r-n-a-m-e_-e-x-i-s-t-s/index.md
 $dokka.location:org.darkSolace.muse.security.model/SignUpResponse///PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/-sign-up-response/index.md
+$dokka.location:org.darkSolace.muse.security.model/SignUpResponse/valueOf/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/-sign-up-response/value-of.md
+$dokka.location:org.darkSolace.muse.security.model/SignUpResponse/values/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/-sign-up-response/values.md
 $dokka.location:org.darkSolace.muse.security.model/UserDetails///PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/-user-details/index.md
 $dokka.location:org.darkSolace.muse.security.model/UserDetails/UserDetails/#org.darkSolace.muse.user.model.User?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/-user-details/-user-details.md
 $dokka.location:org.darkSolace.muse.security.model/UserDetails/getAuthorities/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/-user-details/get-authorities.md
@@ -237,7 +247,7 @@ $dokka.location:org.darkSolace.muse.security.model/UserDetails/user/#/PointingTo
 $dokka.location:org.darkSolace.muse.security.service////PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/index.md
 $dokka.location:org.darkSolace.muse.security.service/AuthEntryPointJwt///PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md
 $dokka.location:org.darkSolace.muse.security.service/AuthEntryPointJwt/AuthEntryPointJwt/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-auth-entry-point-jwt/-auth-entry-point-jwt.md
-$dokka.location:org.darkSolace.muse.security.service/AuthEntryPointJwt/commence/#jakarta.servlet.http.HttpServletRequest?#jakarta.servlet.http.HttpServletResponse?#org.springframework.security.core.AuthenticationException?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-auth-entry-point-jwt/commence.md
+$dokka.location:org.darkSolace.muse.security.service/AuthEntryPointJwt/commence/#javax.servlet.http.HttpServletRequest?#javax.servlet.http.HttpServletResponse?#org.springframework.security.core.AuthenticationException?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-auth-entry-point-jwt/commence.md
 $dokka.location:org.darkSolace.muse.security.service/AuthTokenFilter///PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-auth-token-filter/index.md
 $dokka.location:org.darkSolace.muse.security.service/AuthTokenFilter/AuthTokenFilter/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-auth-token-filter/-auth-token-filter.md
 $dokka.location:org.darkSolace.muse.security.service/AuthTokenFilter/jwtUtils/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-auth-token-filter/jwt-utils.md
@@ -254,7 +264,7 @@ $dokka.location:org.darkSolace.muse.security.service/JwtUtils///PointingToDeclar
 $dokka.location:org.darkSolace.muse.security.service/JwtUtils/JwtUtils/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-jwt-utils/-jwt-utils.md
 $dokka.location:org.darkSolace.muse.security.service/JwtUtils/generateJwtToken/#org.springframework.security.core.Authentication/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-jwt-utils/generate-jwt-token.md
 $dokka.location:org.darkSolace.muse.security.service/JwtUtils/getUserNameFromJwtToken/#kotlin.String?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-jwt-utils/get-user-name-from-jwt-token.md
-$dokka.location:org.darkSolace.muse.security.service/JwtUtils/parseJwt/#jakarta.servlet.http.HttpServletRequest/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-jwt-utils/parse-jwt.md
+$dokka.location:org.darkSolace.muse.security.service/JwtUtils/parseJwt/#javax.servlet.http.HttpServletRequest/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-jwt-utils/parse-jwt.md
 $dokka.location:org.darkSolace.muse.security.service/JwtUtils/validateJwtToken/#kotlin.String?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-jwt-utils/validate-jwt-token.md
 $dokka.location:org.darkSolace.muse.security.service/UserDetailsService///PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-user-details-service/index.md
 $dokka.location:org.darkSolace.muse.security.service/UserDetailsService/UserDetailsService/#org.darkSolace.muse.user.repository.UserRepository/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-user-details-service/-user-details-service.md
@@ -268,6 +278,8 @@ $dokka.location:org.darkSolace.muse.story.model/Rating.PARENTAL_GUIDANCE///Point
 $dokka.location:org.darkSolace.muse.story.model/Rating.PARENTAL_GUIDANCE_13///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.story.model/-rating/-p-a-r-e-n-t-a-l_-g-u-i-d-a-n-c-e_13/index.md
 $dokka.location:org.darkSolace.muse.story.model/Rating.RESTRICTED///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.story.model/-rating/-r-e-s-t-r-i-c-t-e-d/index.md
 $dokka.location:org.darkSolace.muse.story.model/Rating///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/-rating/index.md
+$dokka.location:org.darkSolace.muse.story.model/Rating/valueOf/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/-rating/value-of.md
+$dokka.location:org.darkSolace.muse.story.model/Rating/values/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/-rating/values.md
 $dokka.location:org.darkSolace.muse.story.model/StoryTag///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/-story-tag/index.md
 $dokka.location:org.darkSolace.muse.story.model/StoryTag/StoryTag/#kotlin.Long?#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/-story-tag/-story-tag.md
 $dokka.location:org.darkSolace.muse.story.model/StoryTag/equals/#kotlin.Any?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/-story-tag/equals.md
@@ -315,6 +327,8 @@ $dokka.location:org.darkSolace.muse.user.model/Role.MEMBER///PointingToDeclarati
 $dokka.location:org.darkSolace.muse.user.model/Role.MODERATOR///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.user.model/-role/-m-o-d-e-r-a-t-o-r/index.md
 $dokka.location:org.darkSolace.muse.user.model/Role.SUSPENDED///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.user.model/-role/-s-u-s-p-e-n-d-e-d/index.md
 $dokka.location:org.darkSolace.muse.user.model/Role///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model/-role/index.md
+$dokka.location:org.darkSolace.muse.user.model/Role/valueOf/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model/-role/value-of.md
+$dokka.location:org.darkSolace.muse.user.model/Role/values/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model/-role/values.md
 $dokka.location:org.darkSolace.muse.user.model/SuspensionHistoryEntry///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model/-suspension-history-entry/index.md
 $dokka.location:org.darkSolace.muse.user.model/SuspensionHistoryEntry/SuspensionHistoryEntry/#kotlin.Long?#org.darkSolace.muse.user.model.User#java.util.Date#kotlin.String#java.util.Date?#kotlin.String?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model/-suspension-history-entry/-suspension-history-entry.md
 $dokka.location:org.darkSolace.muse.user.model/SuspensionHistoryEntry/acceptedDate/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model/-suspension-history-entry/accepted-date.md
@@ -371,6 +385,8 @@ $dokka.location:org.darkSolace.muse.user.model/UserTag.BETA///PointingToDeclarat
 $dokka.location:org.darkSolace.muse.user.model/UserTag.BETA_INACTIVE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.user.model/-user-tag/-b-e-t-a_-i-n-a-c-t-i-v-e/index.md
 $dokka.location:org.darkSolace.muse.user.model/UserTag.COMMENTER///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.user.model/-user-tag/-c-o-m-m-e-n-t-e-r/index.md
 $dokka.location:org.darkSolace.muse.user.model/UserTag///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model/-user-tag/index.md
+$dokka.location:org.darkSolace.muse.user.model/UserTag/valueOf/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model/-user-tag/value-of.md
+$dokka.location:org.darkSolace.muse.user.model/UserTag/values/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model/-user-tag/values.md
 $dokka.location:org.darkSolace.muse.user.repository////PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.repository/index.md
 $dokka.location:org.darkSolace.muse.user.repository/AvatarRepository///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.repository/-avatar-repository/index.md
 $dokka.location:org.darkSolace.muse.user.repository/PasswordResetRequestRepository///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.repository/-password-reset-request-repository/index.md

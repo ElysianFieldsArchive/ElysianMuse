@@ -9,13 +9,13 @@ class [UserRoleService](index.md)(@Autowiredval userRepository: [UserRepository]
 
 Service class for [Role](../../org.darkSolace.muse.user.model/-role/index.md) related tasks when working with [User](../../org.darkSolace.muse.user.model/-user/index.md)s.
 
-## See also
+#### See also
 
 jvm
 
-| | |
-|---|---|
-| [org.darkSolace.muse.user.service.UserService](../-user-service/index.md) |  |
+| |
+|---|
+| [UserService](../-user-service/index.md) |
 
 ## Constructors
 

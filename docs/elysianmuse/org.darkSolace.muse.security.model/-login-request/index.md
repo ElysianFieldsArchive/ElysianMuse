@@ -7,13 +7,13 @@ data class [LoginRequest](index.md)(val username: [String](https://kotlinlang.or
 
 [LoginRequest](index.md) model containing username and password used to sign in
 
-## See also
+#### See also
 
 jvm
 
-| | |
-|---|---|
-| [org.darkSolace.muse.security.controller.AuthController](../../org.darkSolace.muse.security.controller/-auth-controller/authenticate-user.md) |  |
+| |
+|---|
+| [AuthController.authenticateUser](../../org.darkSolace.muse.security.controller/-auth-controller/authenticate-user.md) |
 
 ## Constructors
 

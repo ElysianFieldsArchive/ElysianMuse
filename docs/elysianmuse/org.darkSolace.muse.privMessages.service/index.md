@@ -1,6 +1,6 @@
 //[elysianmuse](../../index.md)/[org.darkSolace.muse.privMessages.service](index.md)
 
-# Package org.darkSolace.muse.privMessages.service
+# Package-level declarations
 
 ## Types
 

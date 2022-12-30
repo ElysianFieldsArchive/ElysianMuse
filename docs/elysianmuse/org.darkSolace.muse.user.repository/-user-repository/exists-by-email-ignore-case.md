@@ -11,7 +11,7 @@ Checks if an eMail-Address is already in use by a [User](../../org.darkSolace.mu
 
 [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) weather the email-address is already in use
 
-## Parameters
+#### Parameters
 
 jvm
 
