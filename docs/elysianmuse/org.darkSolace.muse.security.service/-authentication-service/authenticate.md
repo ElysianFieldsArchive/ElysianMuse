@@ -11,8 +11,7 @@ TODO: Distinguish between wrong credentials and suspended users
 
 #### Return
 
-[JwtResponse](../../org.darkSolace.muse.security.model/-jwt-response/index.md) containing the token or `null` if
-authentication failed
+[JwtResponse](../../org.darkSolace.muse.security.model/-jwt-response/index.md) containing the token or `null` if authentication failed
 
 #### Parameters
 
@@ -24,7 +23,7 @@ jvm
 
 #### Throws
 
-|                                                                                                                     |
-|---------------------------------------------------------------------------------------------------------------------|
-| BadCredentialsException                                                                                             |
+| |
+|---|
+| BadCredentialsException |
 | [EMailNotValidatedException](../../org.darkSolace.muse.security.exception/-e-mail-not-validated-exception/index.md) |

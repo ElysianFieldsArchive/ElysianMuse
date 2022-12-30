@@ -13,8 +13,8 @@ Service class for [UserTag](../../org.darkSolace.muse.user.model/-user-tag/index
 
 jvm
 
-|                                          |
-|------------------------------------------|
+| |
+|---|
 | [UserService](../-user-service/index.md) |
 
 ## Constructors

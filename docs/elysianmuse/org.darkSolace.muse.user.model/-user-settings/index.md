@@ -15,8 +15,8 @@ Holds user configurations, e.g. which values should be visible on the user profi
 
 jvm
 
-|                           |
-|---------------------------|
+| |
+|---|
 | [User](../-user/index.md) |
 
 ## Constructors

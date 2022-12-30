@@ -22,6 +22,6 @@ jvm
 
 #### Throws
 
-|                                                                                            |                         |
-|--------------------------------------------------------------------------------------------|-------------------------|
+| | |
+|---|---|
 | [TemplateException](../../org.darkSolace.muse.mail.exception/-template-exception/index.md) | if the site url is null |

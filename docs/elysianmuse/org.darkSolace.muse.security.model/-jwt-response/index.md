@@ -11,8 +11,8 @@ class [JwtResponse](index.md)(val token: [String](https://kotlinlang.org/api/lat
 
 jvm
 
-|                                                                                                                        |
-|------------------------------------------------------------------------------------------------------------------------|
+| |
+|---|
 | [AuthController.authenticateUser](../../org.darkSolace.muse.security.controller/-auth-controller/authenticate-user.md) |
 
 ## Constructors

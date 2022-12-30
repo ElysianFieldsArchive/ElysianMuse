@@ -13,9 +13,9 @@ This [Mail](index.md) class holds all information required to be sent via email.
 
 jvm
 
-|                                                                              |
-|------------------------------------------------------------------------------|
-| [MailQueueEntry](../-mail-queue-entry/index.md)                              |
+| |
+|---|
+| [MailQueueEntry](../-mail-queue-entry/index.md) |
 | [MailService](../../org.darkSolace.muse.mail.service/-mail-service/index.md) |
 
 ## Constructors

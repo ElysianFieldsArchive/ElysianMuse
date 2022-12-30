@@ -11,8 +11,8 @@ data class [SignUpRequest](index.md)(val username: [String](https://kotlinlang.o
 
 jvm
 
-|                                                                                               |
-|-----------------------------------------------------------------------------------------------|
+| |
+|---|
 | [UserService.createUser](../../org.darkSolace.muse.user.service/-user-service/create-user.md) |
 
 ## Constructors

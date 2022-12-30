@@ -13,8 +13,8 @@ Service class for [Role](../../org.darkSolace.muse.user.model/-role/index.md) re
 
 jvm
 
-|                                          |
-|------------------------------------------|
+| |
+|---|
 | [UserService](../-user-service/index.md) |
 
 ## Constructors

@@ -15,8 +15,8 @@ Holds the settings for a smtp server to be used to send emails
 
 jvm
 
-|                                                                              |
-|------------------------------------------------------------------------------|
+| |
+|---|
 | [MailService](../../org.darkSolace.muse.mail.service/-mail-service/index.md) |
 
 ## Constructors

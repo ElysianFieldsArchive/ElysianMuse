@@ -9,8 +9,7 @@ Retrieves a [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-
 
 #### Return
 
-the [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md) for the
-specified [User](../../org.darkSolace.muse.user.model/-user/index.md) or `null`
+the [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md) for the specified [User](../../org.darkSolace.muse.user.model/-user/index.md) or `null`
 
 #### Parameters
 

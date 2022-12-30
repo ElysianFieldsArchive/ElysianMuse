@@ -13,8 +13,8 @@ Service to handle everything in regard to UserDetails.
 
 jvm
 
-|                    |
-|--------------------|
+| |
+|---|
 | UserDetailsService |
 
 ## Constructors

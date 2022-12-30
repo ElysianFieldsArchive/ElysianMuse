@@ -11,8 +11,8 @@ Deletes a [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-en
 
 jvm
 
-|                                                                                               |
-|-----------------------------------------------------------------------------------------------|
+| |
+|---|
 | [UserService.deleteUser](../../org.darkSolace.muse.user.service/-user-service/delete-user.md) |
 
 #### Parameters

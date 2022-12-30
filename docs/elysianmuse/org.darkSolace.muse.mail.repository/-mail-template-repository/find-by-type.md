@@ -15,8 +15,8 @@ the mail template
 
 jvm
 
-|                                                                              |
-|------------------------------------------------------------------------------|
+| |
+|---|
 | [TemplateType](../../org.darkSolace.muse.mail.model/-template-type/index.md) |
 
 #### Parameters

@@ -11,8 +11,8 @@ data class [LoginRequest](index.md)(val username: [String](https://kotlinlang.or
 
 jvm
 
-|                                                                                                                        |
-|------------------------------------------------------------------------------------------------------------------------|
+| |
+|---|
 | [AuthController.authenticateUser](../../org.darkSolace.muse.security.controller/-auth-controller/authenticate-user.md) |
 
 ## Constructors

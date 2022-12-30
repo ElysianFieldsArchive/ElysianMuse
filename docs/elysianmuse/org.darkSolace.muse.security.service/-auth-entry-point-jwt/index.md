@@ -13,8 +13,8 @@ Component to handle unauthorised access to an endpoint
 
 jvm
 
-|                          |
-|--------------------------|
+| |
+|---|
 | AuthenticationEntryPoint |
 
 ## Constructors
