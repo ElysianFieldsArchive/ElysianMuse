@@ -7,7 +7,7 @@
 
 @EnableWebSecurity
 
-@EnableMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 
 class [WebSecurityConfiguration](index.md)(@Autowiredval
 unauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md),
