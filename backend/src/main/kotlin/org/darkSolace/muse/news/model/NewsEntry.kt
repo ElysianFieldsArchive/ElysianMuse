@@ -19,7 +19,7 @@ class NewsEntry {
     var content: String = ""
 
     @Temporal(TemporalType.TIMESTAMP)
-    val creationDate: Date = Date()
+    var creationDate: Date = Date()
 
     @OneToMany
     var newsComments : MutableList<NewsComment> = mutableListOf()

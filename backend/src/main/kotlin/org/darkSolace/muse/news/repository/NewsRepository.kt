@@ -4,5 +4,5 @@ import org.darkSolace.muse.news.model.NewsEntry
 import org.springframework.data.repository.CrudRepository
 
 interface NewsRepository : CrudRepository<NewsEntry, Long> {
-    fun findTopByOrderByCreationDateDesc(top: Int): List<NewsEntry>
+    fun findByOrderByCreationDateDesc(): List<NewsEntry>
 }

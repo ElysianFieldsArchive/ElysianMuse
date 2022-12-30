@@ -140,8 +140,8 @@ class MailServiceTests : TestBase() {
         mailService.mailEnabled = true
         //resend mails
         runBlocking {
-            delay(5_000)
             mailService.sendMails()
+            delay(5_000)
 
             mails = greenMailExtension.getReceivedMessagesForDomain("example.org")
             greenMailExtension.receivedMessages
