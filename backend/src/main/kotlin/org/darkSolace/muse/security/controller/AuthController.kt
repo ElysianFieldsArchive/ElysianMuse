@@ -1,6 +1,7 @@
 package org.darkSolace.muse.security.controller
 
 import org.darkSolace.muse.security.exception.EMailNotValidatedException
+import org.darkSolace.muse.security.model.AuthMessages
 import org.darkSolace.muse.security.model.LoginRequest
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.security.model.SignUpResponse
@@ -28,9 +29,6 @@ class AuthController(
     @Autowired val userRoleService: UserRoleService,
     @Autowired val suspensionService: SuspensionService
 ) {
-    private final val usernamePasswordWrongMsg = "Unknown username or wrong password!"
-    private final val emailNotValidatedMsg = "Email is not validated!"
-
     /**
      * Checks a transmitted [LoginRequest] for a valid username/password pair. Listens on /api/auth/signin.
      *
@@ -45,7 +43,7 @@ class AuthController(
         return try {
             val token = authenticationService.authenticate(loginRequest)
             if (token == null) {
-                ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(usernamePasswordWrongMsg)
+                ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(AuthMessages.ERROR_USERNAME_PASSWORD_WRONG.message)
             } else {
                 //valid sign in, but check if user is suspended
                 val authentication =
@@ -62,11 +60,11 @@ class AuthController(
                 }
             }
         } catch (_: InternalAuthenticationServiceException) {
-            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(usernamePasswordWrongMsg)
+            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(AuthMessages.ERROR_USERNAME_PASSWORD_WRONG.message)
         } catch (_: BadCredentialsException) {
-            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(usernamePasswordWrongMsg)
+            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(AuthMessages.ERROR_USERNAME_PASSWORD_WRONG.message)
         } catch (_: EMailNotValidatedException) {
-            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(emailNotValidatedMsg)
+            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(AuthMessages.ERROR_EMAIL_NOT_VALIDATED.message)
         }
     }
 
@@ -85,14 +83,16 @@ class AuthController(
             SignUpResponse.USERNAME_EXISTS -> {
                 ResponseEntity
                     .badRequest()
-                    .body("Error: Username is already in use!")
+                    .body(AuthMessages.ERROR_USERNAME_IN_USE.message)
             }
+
             SignUpResponse.EMAIL_EXISTS -> {
                 ResponseEntity
                     .badRequest()
-                    .body("Error: Email is already in use!")
+                    .body(AuthMessages.ERROR_EMAIL_IN_USE.message)
             }
-            SignUpResponse.OK -> ResponseEntity.ok("User created successfully.")
+
+            SignUpResponse.OK -> ResponseEntity.ok(AuthMessages.SUCCESS_USER_CREATE.message)
         }
     }
 }

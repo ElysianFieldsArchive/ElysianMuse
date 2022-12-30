@@ -11,7 +11,7 @@ Retrieves all [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-see
 
 List of all [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md)s older than the provided timeout [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)
 
-## Parameters
+#### Parameters
 
 jvm
 

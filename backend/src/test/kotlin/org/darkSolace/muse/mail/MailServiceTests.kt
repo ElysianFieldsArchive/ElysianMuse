@@ -127,7 +127,7 @@ class MailServiceTests : TestBase() {
         mailService.enqueueMail(mail)
 
         runBlocking {
-            delay(5_000)
+            delay(3_000)
         }
 
         var mails = greenMailExtension.getReceivedMessagesForDomain("example.org")
@@ -140,14 +140,14 @@ class MailServiceTests : TestBase() {
         mailService.mailEnabled = true
         //resend mails
         runBlocking {
-            delay(3_000)
+            delay(5_000)
             mailService.sendMails()
-            delay(10_000)
-        }
 
-        mails = greenMailExtension.getReceivedMessagesForDomain("example.org")
-        Assertions.assertEquals(1, mails.size)
-        Assertions.assertEquals(0, mailQueueRepository.count())
+            mails = greenMailExtension.getReceivedMessagesForDomain("example.org")
+            greenMailExtension.receivedMessages
+            Assertions.assertEquals(1, mails.size)
+            Assertions.assertEquals(0, mailQueueRepository.count())
+        }
     }
 
     @Test

@@ -10,9 +10,9 @@ fun [deleteMessage](delete-message.md)(@PathVariablemessage: [PrivateMessage](..
 
 Deletes a private message
 
-## Samples
+#### Samples
 
-## Parameters
+#### Parameters
 
 jvm
 

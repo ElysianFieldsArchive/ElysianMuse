@@ -2,6 +2,7 @@ package org.darkSolace.muse.lastSeen.controller
 
 import org.darkSolace.muse.lastSeen.service.LastSeenService
 import org.darkSolace.muse.user.model.User
+import org.darkSolace.muse.user.model.dto.UserIdNameDTO
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -19,7 +20,7 @@ class LastSeenController(@Autowired val lastSeenService: LastSeenService) {
      * @return list of active logged-in users
      */
     @GetMapping("/online")
-    fun getOnlineUsers(): List<User> = lastSeenService.getOnlineUsers()
+    fun getOnlineUsers(): List<UserIdNameDTO> = UserIdNameDTO.fromList(lastSeenService.getOnlineUsers())
 
     /**
      * Retrieves number of currently active visitors (logged-in users and visitors)

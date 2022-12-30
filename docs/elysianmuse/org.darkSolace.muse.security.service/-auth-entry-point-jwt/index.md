@@ -9,13 +9,13 @@ class [AuthEntryPointJwt](index.md) : AuthenticationEntryPoint
 
 Component to handle unauthorised access to an endpoint
 
-## See also
+#### See also
 
 jvm
 
-| | |
-|---|---|
-| org.springframework.security.web.AuthenticationEntryPoint |  |
+|                          |
+|--------------------------|
+| AuthenticationEntryPoint |
 
 ## Constructors
 

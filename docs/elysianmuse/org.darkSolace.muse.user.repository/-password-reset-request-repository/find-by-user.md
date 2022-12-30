@@ -9,9 +9,9 @@ Retrieves a [PasswordResetRequest](../../org.darkSolace.muse.user.model/-passwor
 
 #### Return
 
-the [PasswordResetRequest](../../org.darkSolace.muse.user.model/-password-reset-request/index.md) or null
+the [PasswordResetRequest](../../org.darkSolace.muse.user.model/-password-reset-request/index.md) or `null`
 
-## Parameters
+#### Parameters
 
 jvm
 

@@ -11,13 +11,13 @@ The [UserSettings](index.md) model class, is part of a [User](../-user/index.md)
 
 Holds user configurations, e.g. which values should be visible on the user profile as well as default content filter/warning settings.
 
-## See also
+#### See also
 
 jvm
 
-| | |
-|---|---|
-| [org.darkSolace.muse.user.model.User](../-user/index.md) |  |
+|                           |
+|---------------------------|
+| [User](../-user/index.md) |
 
 ## Constructors
 

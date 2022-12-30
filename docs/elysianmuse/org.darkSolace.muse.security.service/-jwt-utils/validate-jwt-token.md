@@ -11,7 +11,7 @@ Validates a token for validity
 
 true if token is valid, else false
 
-## Parameters
+#### Parameters
 
 jvm
 

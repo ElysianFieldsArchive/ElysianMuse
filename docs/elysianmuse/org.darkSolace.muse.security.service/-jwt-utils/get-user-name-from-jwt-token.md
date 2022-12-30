@@ -9,9 +9,9 @@ Extracts a username from a JWT token
 
 #### Return
 
-the username encoded in the token, or null if no username is found
+the username encoded in the token, or `null` if no username is found
 
-## Parameters
+#### Parameters
 
 jvm
 

@@ -9,14 +9,14 @@ data class [Mail](index.md)(var id: [Long](https://kotlinlang.org/api/latest/jvm
 
 This [Mail](index.md) class holds all information required to be sent via email. Mainly used by [MailQueueEntry](../-mail-queue-entry/index.md) to be sent via the [org.darkSolace.muse.mail.service.MailService](../../org.darkSolace.muse.mail.service/-mail-service/index.md)
 
-## See also
+#### See also
 
 jvm
 
-| | |
-|---|---|
-| [org.darkSolace.muse.mail.model.MailQueueEntry](../-mail-queue-entry/index.md) |  |
-| [org.darkSolace.muse.mail.service.MailService](../../org.darkSolace.muse.mail.service/-mail-service/index.md) |  |
+|                                                                              |
+|------------------------------------------------------------------------------|
+| [MailQueueEntry](../-mail-queue-entry/index.md)                              |
+| [MailService](../../org.darkSolace.muse.mail.service/-mail-service/index.md) |
 
 ## Constructors
 

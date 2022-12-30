@@ -13,8 +13,9 @@ plugins {
 
 refreshVersions {
     rejectVersionIf {
-        candidate.stabilityLevel.isLessStableThan(current.stabilityLevel)
+        candidate.stabilityLevel != StabilityLevel.Stable
     }
+
 }
 
 rootProject.name = 'elysianmuse'

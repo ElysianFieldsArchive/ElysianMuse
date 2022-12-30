@@ -11,7 +11,7 @@ Confirms the acceptance of a [SuspensionHistoryEntry](../../org.darkSolace.muse.
 
 boolean if the acceptance was successful
 
-## Parameters
+#### Parameters
 
 jvm
 

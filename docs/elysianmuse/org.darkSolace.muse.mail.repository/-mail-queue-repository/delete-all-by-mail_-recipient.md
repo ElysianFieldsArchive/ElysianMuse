@@ -7,7 +7,7 @@ abstract fun [deleteAllByMail_Recipient](delete-all-by-mail_-recipient.md)(recip
 
 Deletes all mails enqueued be sent to the specified [User](../../org.darkSolace.muse.user.model/-user/index.md)
 
-## Parameters
+#### Parameters
 
 jvm
 

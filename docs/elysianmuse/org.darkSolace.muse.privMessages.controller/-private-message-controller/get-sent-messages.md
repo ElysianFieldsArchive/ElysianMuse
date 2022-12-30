@@ -14,9 +14,9 @@ Retrieves all sent private messages for the specified user. Only accessible for 
 
 list of private messages or HTTP 401 Unauthorized if messages for a different user are retrieved
 
-## Samples
+#### Samples
 
-## Parameters
+#### Parameters
 
 jvm
 

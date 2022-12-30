@@ -10,7 +10,7 @@ fun [deleteUser](delete-user.md)(user: [User](../../org.darkSolace.muse.user.mod
 
 Deletes a [User](../../org.darkSolace.muse.user.model/-user/index.md) from the database
 
-## Parameters
+#### Parameters
 
 jvm
 
@@ -26,7 +26,7 @@ fun [deleteUser](delete-user.md)(id: [Long](https://kotlinlang.org/api/latest/jv
 
 Deletes a [User](../../org.darkSolace.muse.user.model/-user/index.md) from the database
 
-## Parameters
+#### Parameters
 
 jvm
 

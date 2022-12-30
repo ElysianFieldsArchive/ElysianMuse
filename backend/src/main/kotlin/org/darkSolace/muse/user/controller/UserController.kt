@@ -5,6 +5,8 @@ import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.model.SuspensionHistoryEntry
 import org.darkSolace.muse.user.model.User
 import org.darkSolace.muse.user.model.UserTag
+import org.darkSolace.muse.user.model.dto.SuspensionHistoryEntryDTO
+import org.darkSolace.muse.user.model.dto.UserIdNameDTO
 import org.darkSolace.muse.user.service.SuspensionService
 import org.darkSolace.muse.user.service.UserRoleService
 import org.darkSolace.muse.user.service.UserService
@@ -23,7 +25,7 @@ import org.springframework.web.bind.annotation.*
  */
 @RestController
 @RequestMapping("/api/user")
-class UserRestController(
+class UserController(
     @Autowired val userService: UserService,
     @Autowired val userRoleService: UserRoleService,
     @Autowired val userTagService: UserTagService,
@@ -48,15 +50,11 @@ class UserRestController(
      * Retrieves all users. Listens on /api/user/all.
      *
      * @sample `curl localhost:8080/api/user/all`
-     * @return a List of [User]s - might be empty
+     * @return a List of [User]s (Username and Id) - might be empty
      */
     @GetMapping("/all")
-    fun getAllUsers(authentication: Authentication?): List<User> =
-        userService.getAll()
-            .map { user ->
-                if ((authentication?.principal as UserDetails?)?.user?.id == user.id) user
-                else user.toPublicUser()
-            }
+    fun getAllUsers(authentication: Authentication?): List<UserIdNameDTO> =
+        userService.getAll().map { user -> UserIdNameDTO(user) }
 
     /**
      * Deletes a user identified by its id. Listens on /api/user/{id} for DELETE requests.
@@ -130,8 +128,8 @@ class UserRestController(
      */
     @GetMapping("/suspend/history/{user}")
     @PreAuthorize("hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')")
-    fun getSuspensionHistory(@PathVariable user: User): List<SuspensionHistoryEntry> {
-        return suspensionService.getSuspensionHistory(user)
+    fun getSuspensionHistory(@PathVariable user: User): List<SuspensionHistoryEntryDTO> {
+        return SuspensionHistoryEntryDTO.fromList(suspensionService.getSuspensionHistory(user))
     }
 
     /**
@@ -144,8 +142,8 @@ class UserRestController(
      */
     @GetMapping("/suspend/all")
     @PreAuthorize("hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')")
-    fun getAllCurrentlySuspended(): List<User> {
-        return suspensionService.getAllCurrentlySuspendedUsers()
+    fun getAllCurrentlySuspended(): List<UserIdNameDTO> {
+        return UserIdNameDTO.fromList(suspensionService.getAllCurrentlySuspendedUsers())
     }
 
     /**

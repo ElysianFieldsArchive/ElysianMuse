@@ -11,15 +11,15 @@ Retrieves a [MailTemplate](../../org.darkSolace.muse.mail.model/-mail-template/i
 
 the mail template
 
-## See also
+#### See also
 
 jvm
 
-| | |
-|---|---|
-| [org.darkSolace.muse.mail.model.TemplateType](../../org.darkSolace.muse.mail.model/-template-type/index.md) |  |
+|                                                                              |
+|------------------------------------------------------------------------------|
+| [TemplateType](../../org.darkSolace.muse.mail.model/-template-type/index.md) |
 
-## Parameters
+#### Parameters
 
 jvm
 

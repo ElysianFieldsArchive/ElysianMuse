@@ -7,7 +7,7 @@ fun [markMessageAsRead](mark-message-as-read.md)(message: [PrivateMessage](../..
 
 Maks a [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md) as read
 
-## Parameters
+#### Parameters
 
 jvm
 

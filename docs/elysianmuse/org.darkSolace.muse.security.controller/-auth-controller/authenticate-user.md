@@ -14,9 +14,9 @@ Checks a transmitted [LoginRequest](../../org.darkSolace.muse.security.model/-lo
 
 a [org.darkSolace.muse.security.model.JwtResponse](../../org.darkSolace.muse.security.model/-jwt-response/index.md) containing a token, HTTP 401 is username or password are invalid, or HTTP 301 is user is suspended
 
-## Samples
+#### Samples
 
-## Parameters
+#### Parameters
 
 jvm
 

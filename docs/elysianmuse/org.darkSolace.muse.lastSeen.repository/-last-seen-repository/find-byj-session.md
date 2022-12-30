@@ -9,9 +9,10 @@ Retrieves a [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-
 
 #### Return
 
-the [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md) for the specified session ID or null if no [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md) was found
+the [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md) for the specified session ID
+or `null` if no [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md) was found
 
-## Parameters
+#### Parameters
 
 jvm
 

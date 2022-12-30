@@ -11,7 +11,7 @@ Generates a signed JWT token
 
 the JWT token
 
-## Parameters
+#### Parameters
 
 jvm
 

@@ -11,7 +11,7 @@ Creates a user with information provided via a [SignUpRequest](../../org.darkSol
 
 [SignUpResponse](../../org.darkSolace.muse.security.model/-sign-up-response/index.md) containing the signup status
 
-## Parameters
+#### Parameters
 
 jvm
 

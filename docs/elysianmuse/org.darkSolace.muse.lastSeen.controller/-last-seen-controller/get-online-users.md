@@ -14,4 +14,4 @@ Retrieves all public profiles of currently active logged-in [User](../../org.dar
 
 list of active logged-in users
 
-## Samples
+#### Samples

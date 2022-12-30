@@ -11,7 +11,7 @@ Generates a confirm-url used to verify an email address.
 
 the email confirm url
 
-## Parameters
+#### Parameters
 
 jvm
 
@@ -20,8 +20,8 @@ jvm
 | user | the user for which the confirm-url is created |
 | siteUrl | the base url of the current site |
 
-## Throws
+#### Throws
 
-| | |
-|---|---|
-| [org.darkSolace.muse.mail.exception.TemplateException](../../org.darkSolace.muse.mail.exception/-template-exception/index.md) | if the site url is null |
+|                                                                                            |                         |
+|--------------------------------------------------------------------------------------------|-------------------------|
+| [TemplateException](../../org.darkSolace.muse.mail.exception/-template-exception/index.md) | if the site url is null |

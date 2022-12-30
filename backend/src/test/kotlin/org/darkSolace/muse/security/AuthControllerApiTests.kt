@@ -1,6 +1,7 @@
 package org.darkSolace.muse.security
 
 import org.darkSolace.muse.mail.service.MailService
+import org.darkSolace.muse.security.model.AuthMessages
 import org.darkSolace.muse.security.model.JwtResponse
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.testUtil.TestBase
@@ -57,7 +58,7 @@ class AuthControllerApiTests : TestBase() {
         )
 
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, secondResponse.statusCode)
-        Assertions.assertEquals("Error: Username is already in use!", secondResponse.body)
+        Assertions.assertEquals(AuthMessages.ERROR_USERNAME_IN_USE.message, secondResponse.body)
     }
 
     @Test
@@ -70,7 +71,7 @@ class AuthControllerApiTests : TestBase() {
             String::class.java
         )
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
-        Assertions.assertEquals("User created successfully.", response.body)
+        Assertions.assertEquals(AuthMessages.SUCCESS_USER_CREATE.message, response.body)
 
         val secondResponse = restTemplate.postForEntity(
             url,
@@ -78,7 +79,7 @@ class AuthControllerApiTests : TestBase() {
             String::class.java
         )
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, secondResponse.statusCode)
-        Assertions.assertEquals("Error: Email is already in use!", secondResponse.body)
+        Assertions.assertEquals(AuthMessages.ERROR_EMAIL_IN_USE.message, secondResponse.body)
     }
 
     @Test

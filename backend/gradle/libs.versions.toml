@@ -6,47 +6,47 @@ org-springframework-boot = { id = "org.springframework.boot", version = "3.0.0" 
 
 io-spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.0" }
 
-org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "1.7.21" }
+org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "1.7.22" }
 
-org-jetbrains-kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version = "1.7.21" }
+org-jetbrains-kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version = "1.7.22" }
 
-org-jetbrains-kotlin-plugin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version = "1.7.21" }
+org-jetbrains-kotlin-plugin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version = "1.7.22" }
 
-io-gitlab-arturbosch-detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.20.0" }
+io-gitlab-arturbosch-detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.22.0" }
 
-org-jetbrains-dokka = { id = "org.jetbrains.dokka", version = "1.6.21" }
+org-jetbrains-dokka = { id = "org.jetbrains.dokka", version = "1.7.20" }
 
 [versions]
 
-kotlin = "1.7.21"
+kotlin = "1.7.22"
 
 [libraries]
 
-jjwt-api = "io.jsonwebtoken:jjwt-api:0.11.5"
+jjwt-api = "io.jsonwebtoken:jjwt-api:_"
 
-springdoc-openapi-ui = "org.springdoc:springdoc-openapi-ui:1.6.13"
+springdoc-openapi-ui = "org.springdoc:springdoc-openapi-ui:_"
 
 junit-platform-commons = { module = "org.junit.platform:junit-platform-commons" }
 
 junit-platform-engine = { module = "org.junit.platform:junit-platform-engine" }
 
-junit-jupiter = "org.testcontainers:junit-jupiter:1.17.6"
+junit-jupiter = "org.testcontainers:junit-jupiter:_"
 
-org-testcontainers-postgresql = "org.testcontainers:postgresql:1.17.6"
+org-testcontainers-postgresql = "org.testcontainers:postgresql:_"
 
 httpclient5 = { module = "org.apache.httpcomponents.client5:httpclient5" }
 
-greenmail-junit5 = "com.icegreen:greenmail-junit5:2.0.0-alpha-2"
+greenmail-junit5 = "com.icegreen:greenmail-junit5:_"
 
 org-postgresql-postgresql = { module = "org.postgresql:postgresql" }
 
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect" }
 
-jjwt-impl = "io.jsonwebtoken:jjwt-impl:0.11.5"
+jjwt-impl = "io.jsonwebtoken:jjwt-impl:_"
 
-jjwt-jackson = "io.jsonwebtoken:jjwt-jackson:0.11.5"
+jjwt-jackson = "io.jsonwebtoken:jjwt-jackson:_"
 
-dokka-base = "org.jetbrains.dokka:dokka-base:1.6.21"
+dokka-base = "org.jetbrains.dokka:dokka-base:_"
 
 kotlin-as-java-plugin = { module = "org.jetbrains.dokka:kotlin-as-java-plugin" }
 
@@ -55,3 +55,5 @@ kotlin-scripting-compiler-embeddable = { group = "org.jetbrains.kotlin", name = 
 kotlin-allopen = { group = "org.jetbrains.kotlin", name = "kotlin-allopen", version.ref = "kotlin" }
 
 kotlin-noarg = { group = "org.jetbrains.kotlin", name = "kotlin-noarg", version.ref = "kotlin" }
+
+dokka-analysis = "org.jetbrains.dokka:dokka-analysis:_"

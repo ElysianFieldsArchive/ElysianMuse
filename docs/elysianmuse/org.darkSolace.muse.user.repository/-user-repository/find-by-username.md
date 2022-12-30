@@ -9,9 +9,9 @@ Retrieves a user with given [username](find-by-username.md) from the database.
 
 #### Return
 
-The [User](../../org.darkSolace.muse.user.model/-user/index.md) or null
+The [User](../../org.darkSolace.muse.user.model/-user/index.md) or `null`
 
-## Parameters
+#### Parameters
 
 jvm
 

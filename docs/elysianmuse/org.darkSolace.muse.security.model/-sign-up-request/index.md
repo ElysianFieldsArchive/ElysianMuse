@@ -7,13 +7,13 @@ data class [SignUpRequest](index.md)(val username: [String](https://kotlinlang.o
 
 [SignUpRequest](index.md) model containing username, password and email to create a new user account
 
-## See also
+#### See also
 
 jvm
 
-| | |
-|---|---|
-| [org.darkSolace.muse.user.service.UserService](../../org.darkSolace.muse.user.service/-user-service/create-user.md) |  |
+|                                                                                               |
+|-----------------------------------------------------------------------------------------------|
+| [UserService.createUser](../../org.darkSolace.muse.user.service/-user-service/create-user.md) |
 
 ## Constructors
 

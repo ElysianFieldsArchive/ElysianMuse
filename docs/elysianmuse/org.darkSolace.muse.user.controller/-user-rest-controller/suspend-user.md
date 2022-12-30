@@ -16,9 +16,9 @@ Suspends a user identified by its id. Listens on /api/user/{id} for POST request
 
 HTTP 200 or 400
 
-## Samples
+#### Samples
 
-## Parameters
+#### Parameters
 
 jvm
 

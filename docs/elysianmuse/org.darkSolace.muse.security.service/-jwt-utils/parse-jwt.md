@@ -9,9 +9,9 @@ Extracts the JWT from a HttpServletRequest
 
 #### Return
 
-the extracted JWT or null if authentication is missing
+the extracted JWT or `null` if authentication is missing
 
-## Parameters
+#### Parameters
 
 jvm
 

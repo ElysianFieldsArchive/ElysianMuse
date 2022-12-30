@@ -7,7 +7,7 @@ fun [updateLastSeen](update-last-seen.md)(username: [String](https://kotlinlang.
 
 Updates a [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md), identified either by username (if the user is logged-in) or by session ID
 
-## Parameters
+#### Parameters
 
 jvm
 

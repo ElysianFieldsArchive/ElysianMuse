@@ -11,9 +11,10 @@ TODO: Distinguish between wrong credentials and suspended users
 
 #### Return
 
-[JwtResponse](../../org.darkSolace.muse.security.model/-jwt-response/index.md) containing the token or null if authentication failed
+[JwtResponse](../../org.darkSolace.muse.security.model/-jwt-response/index.md) containing the token or `null` if
+authentication failed
 
-## Parameters
+#### Parameters
 
 jvm
 
@@ -21,9 +22,9 @@ jvm
 |---|---|
 | loginRequest | [LoginRequest](../../org.darkSolace.muse.security.model/-login-request/index.md) containing username and password |
 
-## Throws
+#### Throws
 
-| | |
-|---|---|
-| org.springframework.security.authentication.BadCredentialsException |  |
-| [org.darkSolace.muse.security.exception.EMailNotValidatedException](../../org.darkSolace.muse.security.exception/-e-mail-not-validated-exception/index.md) |  |
+|                                                                                                                     |
+|---------------------------------------------------------------------------------------------------------------------|
+| BadCredentialsException                                                                                             |
+| [EMailNotValidatedException](../../org.darkSolace.muse.security.exception/-e-mail-not-validated-exception/index.md) |

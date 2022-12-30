@@ -7,7 +7,7 @@ fun [deleteMessage](delete-message.md)(message: [PrivateMessage](../../org.darkS
 
 Deletes a [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md)
 
-## Parameters
+#### Parameters
 
 jvm
 

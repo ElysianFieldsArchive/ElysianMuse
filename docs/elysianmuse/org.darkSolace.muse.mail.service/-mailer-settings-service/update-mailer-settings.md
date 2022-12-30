@@ -10,7 +10,7 @@ fun [updateMailerSettings](update-mailer-settings.md)(@ValidnewSettings: [Mailer
 
 Updates the [MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-settings/index.md) and generates a new JavaMailSender to be used to send mails after the update
 
-## Parameters
+#### Parameters
 
 jvm
 

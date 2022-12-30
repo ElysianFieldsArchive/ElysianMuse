@@ -14,7 +14,7 @@ Request a password reset for a user, identified either by email or username
 
 HTTP 200 (OK) on success, 400 (BAD REQUEST) otherwise
 
-## Parameters
+#### Parameters
 
 jvm
 

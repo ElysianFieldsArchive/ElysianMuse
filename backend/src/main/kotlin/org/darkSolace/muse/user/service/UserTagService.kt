@@ -76,5 +76,5 @@ class UserTagService(@Autowired val userRepository: UserRepository) {
      * @param tag the [UserTag] to filter by
      * @return a [List] of all [User]s with the given [UserTag]- might be empty if no [User]s exist with this [UserTag]
      */
-    fun getAllWithUserTag(tag: UserTag) = userRepository.findAllByUserTags(tag)
+    fun getAllWithUserTag(tag: UserTag) = userRepository.findAllByUserTagsContains(tag)
 }

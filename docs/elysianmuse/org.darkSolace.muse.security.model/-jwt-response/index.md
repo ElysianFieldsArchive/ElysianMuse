@@ -7,13 +7,13 @@ class [JwtResponse](index.md)(val token: [String](https://kotlinlang.org/api/lat
 
 [JwtResponse](index.md) class containing the token, user id, username and email. Used as after a successful login to transmit all required data.
 
-## See also
+#### See also
 
 jvm
 
-| | |
-|---|---|
-| [org.darkSolace.muse.security.controller.AuthController](../../org.darkSolace.muse.security.controller/-auth-controller/authenticate-user.md) |  |
+|                                                                                                                        |
+|------------------------------------------------------------------------------------------------------------------------|
+| [AuthController.authenticateUser](../../org.darkSolace.muse.security.controller/-auth-controller/authenticate-user.md) |
 
 ## Constructors
 

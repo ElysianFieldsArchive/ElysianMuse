@@ -1,6 +1,6 @@
 //[elysianmuse](../../index.md)/[org.darkSolace.muse.security.controller](index.md)
 
-# Package org.darkSolace.muse.security.controller
+# Package-level declarations
 
 ## Types
 

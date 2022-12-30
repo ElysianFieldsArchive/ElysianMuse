@@ -1,6 +1,6 @@
 //[elysianmuse](../../index.md)/[org.darkSolace.muse.story.model](index.md)
 
-# Package org.darkSolace.muse.story.model
+# Package-level declarations
 
 ## Types
 

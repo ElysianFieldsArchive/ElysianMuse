@@ -1,6 +1,6 @@
 //[elysianmuse](../../index.md)/[org.darkSolace.muse.lastSeen.controller](index.md)
 
-# Package org.darkSolace.muse.lastSeen.controller
+# Package-level declarations
 
 ## Types
 

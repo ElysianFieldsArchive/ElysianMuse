@@ -11,13 +11,13 @@ data class [MailerSettings](index.md)(var id: [Long](https://kotlinlang.org/api/
 
 Holds the settings for a smtp server to be used to send emails
 
-## See also
+#### See also
 
 jvm
 
-| | |
-|---|---|
-| [org.darkSolace.muse.mail.service.MailService](../../org.darkSolace.muse.mail.service/-mail-service/index.md) |  |
+|                                                                              |
+|------------------------------------------------------------------------------|
+| [MailService](../../org.darkSolace.muse.mail.service/-mail-service/index.md) |
 
 ## Constructors
 
