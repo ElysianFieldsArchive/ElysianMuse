@@ -21,6 +21,6 @@ class NewsEntry {
     @Temporal(TemporalType.TIMESTAMP)
     var creationDate: Date = Date()
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     var newsComments : MutableList<NewsComment> = mutableListOf()
 }

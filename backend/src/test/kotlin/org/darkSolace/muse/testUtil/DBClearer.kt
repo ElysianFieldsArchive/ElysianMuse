@@ -2,6 +2,8 @@ package org.darkSolace.muse.testUtil
 
 import org.darkSolace.muse.lastSeen.repository.LastSeenRepository
 import org.darkSolace.muse.mail.repository.MailQueueRepository
+import org.darkSolace.muse.news.repository.NewsCommentRepository
+import org.darkSolace.muse.news.repository.NewsRepository
 import org.darkSolace.muse.privMessages.repository.PrivateMessageRepository
 import org.darkSolace.muse.user.repository.*
 import org.springframework.beans.factory.annotation.Autowired
@@ -34,7 +36,15 @@ class DBClearer {
     @Autowired
     lateinit var privateMessageRepository: PrivateMessageRepository
 
+    @Autowired
+    lateinit var newsRepository: NewsRepository
+
+    @Autowired
+    lateinit var newsCommentRepository: NewsCommentRepository
+
     fun clearAll() {
+        newsRepository.deleteAll()
+        newsCommentRepository.deleteAll()
         privateMessageRepository.deleteAll()
         passwordResetRequestRepository.deleteAll()
         mailQueueRepository.deleteAll()

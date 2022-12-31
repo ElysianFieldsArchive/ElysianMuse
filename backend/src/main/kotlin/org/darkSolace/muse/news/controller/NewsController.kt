@@ -34,6 +34,7 @@ class NewsController {
     @PutMapping
     @PreAuthorize("hasAnyAuthority('MODERATOR', 'ADMINISTRATOR')")
     fun postNews(@RequestBody news: NewsEntryDTO): ResponseEntity<Unit> {
+        //TODO: Check if submitter is author
         val success = newsService.createNews(news)
         return if (success)
             ResponseEntity<Unit>(HttpStatus.OK)
@@ -44,6 +45,7 @@ class NewsController {
     @PostMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('MODERATOR', 'ADMINISTRATOR')")
     fun editNews(@PathVariable id: Long, @RequestBody news: NewsEntryDTO): ResponseEntity<Unit> {
+        //TODO: Check if submitter is author or admin
         val success = newsService.editNews(id, news)
         return if (success)
             ResponseEntity<Unit>(HttpStatus.OK)
@@ -54,6 +56,7 @@ class NewsController {
     @PutMapping("/{id}/comment")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun addComment(@PathVariable id: Long, @RequestBody comment: NewsCommentDTO): ResponseEntity<Unit> {
+        //TODO: Check if submitter is author
         val success = newsService.addCommentToNews(id, comment)
         return if (success)
             ResponseEntity<Unit>(HttpStatus.OK)
@@ -67,6 +70,7 @@ class NewsController {
         @PathVariable commentId: Long,
         @RequestBody commentDto: NewsCommentDTO
     ): ResponseEntity<Unit> {
+        //TODO: Check if submitter is author
         val success = newsService.editComment(commentId, commentDto)
         return if (success)
             ResponseEntity<Unit>(HttpStatus.OK)
