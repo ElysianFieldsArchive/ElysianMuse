@@ -30,7 +30,7 @@ internal class NewsServiceTests : TestBase() {
     fun createNews() {
         val sizeBefore = newsRepository.count()
         val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
-        val success = newsService.createNews(NewsEntryDTO(NewsEntry().also {
+        val success = newsService.createNews(NewsEntryDTO.from(NewsEntry().also {
             it.content = "Test Content 1"
             it.subject = "Test Subject 1"
             it.author = author
@@ -51,7 +51,7 @@ internal class NewsServiceTests : TestBase() {
         val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
         //create 5 news articles
         repeat(5) { i ->
-            newsService.createNews(NewsEntryDTO(NewsEntry().also {
+            newsService.createNews(NewsEntryDTO.from(NewsEntry().also {
                 it.content = "Test Content $i"
                 it.subject = "Test Subject $i"
                 it.author = author
@@ -73,7 +73,7 @@ internal class NewsServiceTests : TestBase() {
     @Test
     fun addCommentToNews() {
         val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
-        newsService.createNews(NewsEntryDTO(NewsEntry().also {
+        newsService.createNews(NewsEntryDTO.from(NewsEntry().also {
             it.content = "Test Content 1"
             it.subject = "Test Subject 1"
             it.author = author
@@ -81,7 +81,7 @@ internal class NewsServiceTests : TestBase() {
 
         var news = newsRepository.findAll().firstOrNull()
 
-        val success = newsService.addCommentToNews(news?.id ?: -1, NewsCommentDTO(NewsComment().also {
+        val success = newsService.addCommentToNews(news?.id ?: -1, NewsCommentDTO.from(NewsComment().also {
             it.author = author
             it.content = "Test Comment"
         }))
@@ -98,7 +98,7 @@ internal class NewsServiceTests : TestBase() {
     fun addCommentToNews_invalidNews() {
         val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
 
-        val success = newsService.addCommentToNews(500, NewsCommentDTO(NewsComment().also {
+        val success = newsService.addCommentToNews(500, NewsCommentDTO.from(NewsComment().also {
             it.author = author
             it.content = "Test Comment"
         }))
@@ -109,7 +109,7 @@ internal class NewsServiceTests : TestBase() {
     @Test
     fun addCommentToNews_noAuthor() {
         val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
-        newsService.createNews(NewsEntryDTO(NewsEntry().also {
+        newsService.createNews(NewsEntryDTO.from(NewsEntry().also {
             it.content = "Test Content 1"
             it.subject = "Test Subject 1"
             it.author = author
@@ -117,7 +117,7 @@ internal class NewsServiceTests : TestBase() {
 
         var news = newsRepository.findAll().firstOrNull()
 
-        val success = newsService.addCommentToNews(news?.id ?: -1, NewsCommentDTO(NewsComment().also {
+        val success = newsService.addCommentToNews(news?.id ?: -1, NewsCommentDTO.from(NewsComment().also {
             it.content = "Test Comment"
         }))
 
@@ -134,7 +134,7 @@ internal class NewsServiceTests : TestBase() {
 
         val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
         //create 5 news articles
-        newsService.createNews(NewsEntryDTO(NewsEntry().also {
+        newsService.createNews(NewsEntryDTO.from(NewsEntry().also {
             it.content = "Test Content"
             it.subject = "Test Subject"
             it.author = author
@@ -152,7 +152,7 @@ internal class NewsServiceTests : TestBase() {
     @Test
     fun editNews() {
         val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
-        newsService.createNews(NewsEntryDTO(NewsEntry().also {
+        newsService.createNews(NewsEntryDTO.from(NewsEntry().also {
             it.subject = "Original Subject"
             it.content = "Original Content"
             it.author = author
@@ -160,7 +160,7 @@ internal class NewsServiceTests : TestBase() {
 
         var news = newsRepository.findAll().firstOrNull() ?: fail("Original news was not created.")
 
-        val editedNews = NewsEntryDTO(NewsEntry().also {
+        val editedNews = NewsEntryDTO.from(NewsEntry().also {
             it.subject = "Edited Subject"
             it.content = "Edited Content"
             it.author = author
@@ -177,7 +177,7 @@ internal class NewsServiceTests : TestBase() {
     @Test
     fun editComment() {
         val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
-        newsService.createNews(NewsEntryDTO(NewsEntry().also {
+        newsService.createNews(NewsEntryDTO.from(NewsEntry().also {
             it.content = "Test Content 1"
             it.subject = "Test Subject 1"
             it.author = author
@@ -185,14 +185,14 @@ internal class NewsServiceTests : TestBase() {
 
         var news = newsRepository.findAll().firstOrNull()
 
-        newsService.addCommentToNews(news?.id ?: -1, NewsCommentDTO(NewsComment().also {
+        newsService.addCommentToNews(news?.id ?: -1, NewsCommentDTO.from(NewsComment().also {
             it.author = author
             it.content = "Test Comment"
         }))
 
         news = newsRepository.findAll().firstOrNull()
         val id = news?.newsComments?.first()?.id ?: -1
-        val editedComment = NewsCommentDTO(NewsComment().also {
+        val editedComment = NewsCommentDTO.from(NewsComment().also {
             it.author = author
             it.content = "Edited Comment"
         })
@@ -207,9 +207,9 @@ internal class NewsServiceTests : TestBase() {
     @Test
     fun getAllNews() {
         val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
-        //create 5 news articles
+        //create 8 news articles
         repeat(8) { i ->
-            newsService.createNews(NewsEntryDTO(NewsEntry().also {
+            newsService.createNews(NewsEntryDTO.from(NewsEntry().also {
                 it.content = "Test Content $i"
                 it.subject = "Test Subject $i"
                 it.author = author

@@ -5,20 +5,29 @@ import org.darkSolace.muse.privMessages.model.PrivateMessage
 import org.darkSolace.muse.user.model.dto.UserIdNameDTO
 import java.util.*
 
-class PrivateMessageDTO(privateMessage: PrivateMessage) {
-    var id: Long? = privateMessage.id
+class PrivateMessageDTO {
+    var id: Long? = null
     var direction: MessageDirection = MessageDirection.OUTGOING
-    var sender: UserIdNameDTO = UserIdNameDTO(privateMessage.sender)
-    var recipient: UserIdNameDTO = UserIdNameDTO(privateMessage.recipient)
-    var subject: String = privateMessage.subject
-    var content: String = privateMessage.content
-    var sentDate: Date = privateMessage.sentDate
-    var isRead: Boolean = privateMessage.isRead
-    var inReplyTo: PrivateMessage? = privateMessage.inReplyTo
+    var sender: UserIdNameDTO? = null
+    var recipient: UserIdNameDTO? = null
+    var subject: String = ""
+    var content: String = ""
+    var sentDate: Date = Date()
+    var isRead: Boolean = false
+    var inReplyTo: PrivateMessage? = null
 
     companion object {
-        fun fromPrivateMessageList(list: List<PrivateMessage>) = list.map {
-            PrivateMessageDTO(it)
+        fun fromPrivateMessageList(list: List<PrivateMessage>) = list.map { from(it) }
+        fun from(privateMessage: PrivateMessage) = PrivateMessageDTO().apply {
+            id = privateMessage.id
+            direction = MessageDirection.OUTGOING
+            sender = UserIdNameDTO.from(privateMessage.sender)
+            recipient = UserIdNameDTO.from(privateMessage.recipient)
+            subject = privateMessage.subject
+            content = privateMessage.content
+            sentDate = privateMessage.sentDate
+            isRead = privateMessage.isRead
+            inReplyTo = privateMessage.inReplyTo
         }
     }
 }

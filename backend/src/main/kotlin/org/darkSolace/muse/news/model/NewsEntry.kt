@@ -22,5 +22,5 @@ class NewsEntry {
     var creationDate: Date = Date()
 
     @OneToMany(fetch = FetchType.EAGER)
-    var newsComments : MutableList<NewsComment> = mutableListOf()
+    var newsComments: MutableList<NewsComment> = mutableListOf()
 }

@@ -50,11 +50,11 @@ class UserController(
      * Retrieves all users. Listens on /api/user/all.
      *
      * @sample `curl localhost:8080/api/user/all`
-     * @return a List of [User]s (Username and Id) - might be empty
+     * @return a List of [User]s (username and id) - might be empty
      */
     @GetMapping("/all")
     fun getAllUsers(authentication: Authentication?): List<UserIdNameDTO> =
-        userService.getAll().map { user -> UserIdNameDTO(user) }
+        userService.getAll().map { user -> UserIdNameDTO.from(user) }
 
     /**
      * Deletes a user identified by its id. Listens on /api/user/{id} for DELETE requests.

@@ -41,7 +41,7 @@ class NewsService {
     }
 
     fun createNews(newsDto: NewsEntryDTO): Boolean {
-        val author = userRepository.findById(newsDto.author.id ?: -1).getOrNull() ?: return false
+        val author = userRepository.findById(newsDto.author?.id ?: -1).getOrNull() ?: return false
         val news = NewsEntry().also {
             it.author = author
             it.subject = newsDto.subject
@@ -58,9 +58,12 @@ class NewsService {
 
     fun editNews(id: Long, newsDto: NewsEntryDTO): Boolean {
         val news = newsRepository.findByIdOrNull(id) ?: return false
+        val author = userRepository.findById(newsDto.author?.id ?: -1).getOrNull()
+        if (newsDto.subject.isBlank() || newsDto.content.isBlank() || author == null) return false
         news.apply {
             subject = newsDto.subject
             content = newsDto.content
+            this.author = author
         }
 
         newsRepository.save(news)
@@ -69,7 +72,12 @@ class NewsService {
 
     fun editComment(commentId: Long, commentDto: NewsCommentDTO): Boolean {
         val comment = newsCommentRepository.findByIdOrNull(commentId) ?: return false
+        val author = userRepository.findById(commentDto.author?.id ?: -1).getOrNull() ?: return false
+        //check if edit author is original comment author
+        if (comment.author?.id != author.id) return false
+
         comment.apply {
+            this.author = author
             content = commentDto.content
         }
 
@@ -80,5 +88,4 @@ class NewsService {
     fun getAllNews(): List<NewsEntry> {
         return newsRepository.findByOrderByCreationDateDesc()
     }
-
 }
