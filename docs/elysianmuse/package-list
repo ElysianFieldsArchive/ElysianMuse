@@ -154,6 +154,71 @@ $dokka.location:org.darkSolace.muse.mail.service/MailerSettingsService/getCurren
 $dokka.location:org.darkSolace.muse.mail.service/MailerSettingsService/getMailer/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.service/-mailer-settings-service/get-mailer.md
 $dokka.location:org.darkSolace.muse.mail.service/MailerSettingsService/getSenderAddress/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.service/-mailer-settings-service/get-sender-address.md
 $dokka.location:org.darkSolace.muse.mail.service/MailerSettingsService/updateMailerSettings/#org.darkSolace.muse.mail.model.MailerSettings/PointingToDeclaration/elysianmuse/org.darkSolace.muse.mail.service/-mailer-settings-service/update-mailer-settings.md
+$dokka.location:org.darkSolace.muse.news.controller////PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.controller/index.md
+$dokka.location:org.darkSolace.muse.news.controller/NewsController///PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.controller/-news-controller/index.md
+$dokka.location:org.darkSolace.muse.news.controller/NewsController/NewsController/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.controller/-news-controller/-news-controller.md
+$dokka.location:org.darkSolace.muse.news.controller/NewsController/addComment/#kotlin.Long#org.darkSolace.muse.news.model.dto.NewsCommentDTO#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.controller/-news-controller/add-comment.md
+$dokka.location:org.darkSolace.muse.news.controller/NewsController/editComment/#kotlin.Long#org.darkSolace.muse.news.model.dto.NewsCommentDTO#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.controller/-news-controller/edit-comment.md
+$dokka.location:org.darkSolace.muse.news.controller/NewsController/editNews/#kotlin.Long#org.darkSolace.muse.news.model.dto.NewsEntryDTO#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.controller/-news-controller/edit-news.md
+$dokka.location:org.darkSolace.muse.news.controller/NewsController/getAllNews/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.controller/-news-controller/get-all-news.md
+$dokka.location:org.darkSolace.muse.news.controller/NewsController/getNewest/#kotlin.Int/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.controller/-news-controller/get-newest.md
+$dokka.location:org.darkSolace.muse.news.controller/NewsController/getNewestThree/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.controller/-news-controller/get-newest-three.md
+$dokka.location:org.darkSolace.muse.news.controller/NewsController/getNews/#kotlin.Long/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.controller/-news-controller/get-news.md
+$dokka.location:org.darkSolace.muse.news.controller/NewsController/newsService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.controller/-news-controller/news-service.md
+$dokka.location:org.darkSolace.muse.news.controller/NewsController/postNews/#org.darkSolace.muse.news.model.dto.NewsEntryDTO#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.controller/-news-controller/post-news.md
+$dokka.location:org.darkSolace.muse.news.model.dto////PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/index.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsCommentDTO.Companion///PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-comment-d-t-o/-companion/index.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsCommentDTO.Companion/from/#org.darkSolace.muse.news.model.NewsComment/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-comment-d-t-o/-companion/from.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsCommentDTO.Companion/fromList/#kotlin.collections.List[org.darkSolace.muse.news.model.NewsComment]/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-comment-d-t-o/-companion/from-list.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsCommentDTO///PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-comment-d-t-o/index.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsCommentDTO/NewsCommentDTO/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-comment-d-t-o/-news-comment-d-t-o.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsCommentDTO/author/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-comment-d-t-o/author.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsCommentDTO/content/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-comment-d-t-o/content.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsCommentDTO/creationDate/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-comment-d-t-o/creation-date.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsCommentDTO/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-comment-d-t-o/id.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsEntryDTO.Companion///PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/-companion/index.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsEntryDTO.Companion/from/#org.darkSolace.muse.news.model.NewsEntry/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/-companion/from.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsEntryDTO.Companion/fromList/#kotlin.collections.List[org.darkSolace.muse.news.model.NewsEntry]/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/-companion/from-list.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsEntryDTO///PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/index.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsEntryDTO/NewsEntryDTO/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/-news-entry-d-t-o.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsEntryDTO/author/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/author.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsEntryDTO/content/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/content.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsEntryDTO/creationDate/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/creation-date.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsEntryDTO/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/id.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsEntryDTO/newsComments/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/news-comments.md
+$dokka.location:org.darkSolace.muse.news.model.dto/NewsEntryDTO/subject/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/subject.md
+$dokka.location:org.darkSolace.muse.news.model////PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/index.md
+$dokka.location:org.darkSolace.muse.news.model/NewsComment///PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-comment/index.md
+$dokka.location:org.darkSolace.muse.news.model/NewsComment/NewsComment/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-comment/-news-comment.md
+$dokka.location:org.darkSolace.muse.news.model/NewsComment/author/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-comment/author.md
+$dokka.location:org.darkSolace.muse.news.model/NewsComment/content/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-comment/content.md
+$dokka.location:org.darkSolace.muse.news.model/NewsComment/creationDate/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-comment/creation-date.md
+$dokka.location:org.darkSolace.muse.news.model/NewsComment/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-comment/id.md
+$dokka.location:org.darkSolace.muse.news.model/NewsEntry///PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-entry/index.md
+$dokka.location:org.darkSolace.muse.news.model/NewsEntry/NewsEntry/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-entry/-news-entry.md
+$dokka.location:org.darkSolace.muse.news.model/NewsEntry/author/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-entry/author.md
+$dokka.location:org.darkSolace.muse.news.model/NewsEntry/content/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-entry/content.md
+$dokka.location:org.darkSolace.muse.news.model/NewsEntry/creationDate/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-entry/creation-date.md
+$dokka.location:org.darkSolace.muse.news.model/NewsEntry/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-entry/id.md
+$dokka.location:org.darkSolace.muse.news.model/NewsEntry/newsComments/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-entry/news-comments.md
+$dokka.location:org.darkSolace.muse.news.model/NewsEntry/subject/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.model/-news-entry/subject.md
+$dokka.location:org.darkSolace.muse.news.repository////PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.repository/index.md
+$dokka.location:org.darkSolace.muse.news.repository/NewsCommentRepository///PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.repository/-news-comment-repository/index.md
+$dokka.location:org.darkSolace.muse.news.repository/NewsRepository///PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.repository/-news-repository/index.md
+$dokka.location:org.darkSolace.muse.news.repository/NewsRepository/findByOrderByCreationDateDesc/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.repository/-news-repository/find-by-order-by-creation-date-desc.md
+$dokka.location:org.darkSolace.muse.news.service////PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.service/index.md
+$dokka.location:org.darkSolace.muse.news.service/NewsService///PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.service/-news-service/index.md
+$dokka.location:org.darkSolace.muse.news.service/NewsService/NewsService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.service/-news-service/-news-service.md
+$dokka.location:org.darkSolace.muse.news.service/NewsService/addCommentToNews/#kotlin.Long#org.darkSolace.muse.news.model.dto.NewsCommentDTO/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.service/-news-service/add-comment-to-news.md
+$dokka.location:org.darkSolace.muse.news.service/NewsService/createNews/#org.darkSolace.muse.news.model.dto.NewsEntryDTO/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.service/-news-service/create-news.md
+$dokka.location:org.darkSolace.muse.news.service/NewsService/editComment/#kotlin.Long#org.darkSolace.muse.news.model.dto.NewsCommentDTO/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.service/-news-service/edit-comment.md
+$dokka.location:org.darkSolace.muse.news.service/NewsService/editNews/#kotlin.Long#org.darkSolace.muse.news.model.dto.NewsEntryDTO/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.service/-news-service/edit-news.md
+$dokka.location:org.darkSolace.muse.news.service/NewsService/getAllNews/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.service/-news-service/get-all-news.md
+$dokka.location:org.darkSolace.muse.news.service/NewsService/getLast/#kotlin.Int/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.service/-news-service/get-last.md
+$dokka.location:org.darkSolace.muse.news.service/NewsService/getNews/#kotlin.Long/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.service/-news-service/get-news.md
+$dokka.location:org.darkSolace.muse.news.service/NewsService/newsCommentRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.service/-news-service/news-comment-repository.md
+$dokka.location:org.darkSolace.muse.news.service/NewsService/newsRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.service/-news-service/news-repository.md
+$dokka.location:org.darkSolace.muse.news.service/NewsService/userRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.news.service/-news-service/user-repository.md
 $dokka.location:org.darkSolace.muse.privMessages.controller////PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.controller/index.md
 $dokka.location:org.darkSolace.muse.privMessages.controller/PrivateMessageController///PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.controller/-private-message-controller/index.md
 $dokka.location:org.darkSolace.muse.privMessages.controller/PrivateMessageController/PrivateMessageController/#org.darkSolace.muse.privMessages.service.PrivateMessageService#org.darkSolace.muse.privMessages.repository.PrivateMessageRepository/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.controller/-private-message-controller/-private-message-controller.md
@@ -165,6 +230,21 @@ $dokka.location:org.darkSolace.muse.privMessages.controller/PrivateMessageContro
 $dokka.location:org.darkSolace.muse.privMessages.controller/PrivateMessageController/privateMessageRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.controller/-private-message-controller/private-message-repository.md
 $dokka.location:org.darkSolace.muse.privMessages.controller/PrivateMessageController/privateMessageService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.controller/-private-message-controller/private-message-service.md
 $dokka.location:org.darkSolace.muse.privMessages.controller/PrivateMessageController/sendMessage/#org.darkSolace.muse.privMessages.model.PrivateMessage#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.controller/-private-message-controller/send-message.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto////PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/index.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO.Companion///PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/-companion/index.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO.Companion/from/#org.darkSolace.muse.privMessages.model.PrivateMessage/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/-companion/from.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO.Companion/fromPrivateMessageList/#kotlin.collections.List[org.darkSolace.muse.privMessages.model.PrivateMessage]/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/-companion/from-private-message-list.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO///PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/index.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO/PrivateMessageDTO/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/-private-message-d-t-o.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO/content/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/content.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO/direction/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/direction.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/id.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO/inReplyTo/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/in-reply-to.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO/isRead/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/is-read.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO/recipient/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/recipient.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO/sender/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/sender.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO/sentDate/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/sent-date.md
+$dokka.location:org.darkSolace.muse.privMessages.model.dto/PrivateMessageDTO/subject/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/subject.md
 $dokka.location:org.darkSolace.muse.privMessages.model////PointingToDeclaration/elysianmuse/org.darkSolace.muse.privMessages.model/index.md
 $dokka.location:org.darkSolace.muse.privMessages.model/MessageDirection.INCOMING///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.privMessages.model/-message-direction/-i-n-c-o-m-i-n-g/index.md
 $dokka.location:org.darkSolace.muse.privMessages.model/MessageDirection.OUTGOING///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.privMessages.model/-message-direction/-o-u-t-g-o-i-n-g/index.md
@@ -213,6 +293,15 @@ $dokka.location:org.darkSolace.muse.security.exception////PointingToDeclaration/
 $dokka.location:org.darkSolace.muse.security.exception/EMailNotValidatedException///PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.exception/-e-mail-not-validated-exception/index.md
 $dokka.location:org.darkSolace.muse.security.exception/EMailNotValidatedException/EMailNotValidatedException/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.exception/-e-mail-not-validated-exception/-e-mail-not-validated-exception.md
 $dokka.location:org.darkSolace.muse.security.model////PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/index.md
+$dokka.location:org.darkSolace.muse.security.model/AuthMessages.ERROR_EMAIL_IN_USE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.security.model/-auth-messages/-e-r-r-o-r_-e-m-a-i-l_-i-n_-u-s-e/index.md
+$dokka.location:org.darkSolace.muse.security.model/AuthMessages.ERROR_EMAIL_NOT_VALIDATED///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.security.model/-auth-messages/-e-r-r-o-r_-e-m-a-i-l_-n-o-t_-v-a-l-i-d-a-t-e-d/index.md
+$dokka.location:org.darkSolace.muse.security.model/AuthMessages.ERROR_USERNAME_IN_USE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.security.model/-auth-messages/-e-r-r-o-r_-u-s-e-r-n-a-m-e_-i-n_-u-s-e/index.md
+$dokka.location:org.darkSolace.muse.security.model/AuthMessages.ERROR_USERNAME_PASSWORD_WRONG///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.security.model/-auth-messages/-e-r-r-o-r_-u-s-e-r-n-a-m-e_-p-a-s-s-w-o-r-d_-w-r-o-n-g/index.md
+$dokka.location:org.darkSolace.muse.security.model/AuthMessages.SUCCESS_USER_CREATE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}elysianmuse/org.darkSolace.muse.security.model/-auth-messages/-s-u-c-c-e-s-s_-u-s-e-r_-c-r-e-a-t-e/index.md
+$dokka.location:org.darkSolace.muse.security.model/AuthMessages///PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/-auth-messages/index.md
+$dokka.location:org.darkSolace.muse.security.model/AuthMessages/message/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/-auth-messages/message.md
+$dokka.location:org.darkSolace.muse.security.model/AuthMessages/valueOf/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/-auth-messages/value-of.md
+$dokka.location:org.darkSolace.muse.security.model/AuthMessages/values/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/-auth-messages/values.md
 $dokka.location:org.darkSolace.muse.security.model/JwtResponse///PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/-jwt-response/index.md
 $dokka.location:org.darkSolace.muse.security.model/JwtResponse/JwtResponse/#kotlin.String?#kotlin.Long?#kotlin.String#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/-jwt-response/-jwt-response.md
 $dokka.location:org.darkSolace.muse.security.model/JwtResponse/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.model/-jwt-response/id.md
@@ -288,27 +377,46 @@ $dokka.location:org.darkSolace.muse.story.model/StoryTag/id/#/PointingToDeclarat
 $dokka.location:org.darkSolace.muse.story.model/StoryTag/tagName/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/-story-tag/tag-name.md
 $dokka.location:org.darkSolace.muse.story.model/StoryTag/toString/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/-story-tag/to-string.md
 $dokka.location:org.darkSolace.muse.user.controller////PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/index.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/index.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/UserController/#org.darkSolace.muse.user.service.UserService#org.darkSolace.muse.user.service.UserRoleService#org.darkSolace.muse.user.service.UserTagService#org.darkSolace.muse.user.service.SuspensionService/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/-user-controller.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/addTagToUser/#org.darkSolace.muse.user.model.User?#org.darkSolace.muse.user.model.UserTag#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/add-tag-to-user.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/confirmSuspension/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/confirm-suspension.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/deleteUser/#org.darkSolace.muse.user.model.User?#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/delete-user.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/getAllCurrentlySuspended/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/get-all-currently-suspended.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/getAllUsers/#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/get-all-users.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/getSuspensionHistory/#org.darkSolace.muse.user.model.User/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/get-suspension-history.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/getUserById/#kotlin.Long#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/get-user-by-id.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/removeTagFromUser/#org.darkSolace.muse.user.model.User?#org.darkSolace.muse.user.model.UserTag#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/remove-tag-from-user.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/suspendUser/#kotlin.Long/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/suspend-user.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/suspensionService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/suspension-service.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/userRoleService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/user-role-service.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/userService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/user-service.md
+$dokka.location:org.darkSolace.muse.user.controller/UserController/userTagService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/user-tag-service.md
 $dokka.location:org.darkSolace.muse.user.controller/UserPasswordController///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-password-controller/index.md
 $dokka.location:org.darkSolace.muse.user.controller/UserPasswordController/UserPasswordController/#org.darkSolace.muse.user.service.UserService#org.darkSolace.muse.user.service.UserPasswordService/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-password-controller/-user-password-controller.md
 $dokka.location:org.darkSolace.muse.user.controller/UserPasswordController/requestPasswordResetByEmailOrUsername/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-password-controller/request-password-reset-by-email-or-username.md
 $dokka.location:org.darkSolace.muse.user.controller/UserPasswordController/resetPassword/#kotlin.String#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-password-controller/reset-password.md
 $dokka.location:org.darkSolace.muse.user.controller/UserPasswordController/userPasswordService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-password-controller/user-password-service.md
 $dokka.location:org.darkSolace.muse.user.controller/UserPasswordController/userService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-password-controller/user-service.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/index.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/UserRestController/#org.darkSolace.muse.user.service.UserService#org.darkSolace.muse.user.service.UserRoleService#org.darkSolace.muse.user.service.UserTagService#org.darkSolace.muse.user.service.SuspensionService/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/-user-rest-controller.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/addTagToUser/#org.darkSolace.muse.user.model.User?#org.darkSolace.muse.user.model.UserTag#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/add-tag-to-user.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/confirmSuspension/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/confirm-suspension.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/deleteUser/#org.darkSolace.muse.user.model.User?#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/delete-user.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/getAllCurrentlySuspended/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/get-all-currently-suspended.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/getAllUsers/#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/get-all-users.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/getSuspensionHistory/#org.darkSolace.muse.user.model.User/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/get-suspension-history.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/getUserById/#kotlin.Long#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/get-user-by-id.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/removeTagFromUser/#org.darkSolace.muse.user.model.User?#org.darkSolace.muse.user.model.UserTag#org.springframework.security.core.Authentication?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/remove-tag-from-user.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/suspendUser/#kotlin.Long/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/suspend-user.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/suspensionService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/suspension-service.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/userRoleService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/user-role-service.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/userService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/user-service.md
-$dokka.location:org.darkSolace.muse.user.controller/UserRestController/userTagService/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-rest-controller/user-tag-service.md
+$dokka.location:org.darkSolace.muse.user.model.dto////PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/index.md
+$dokka.location:org.darkSolace.muse.user.model.dto/SuspensionHistoryEntryDTO.Companion///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-suspension-history-entry-d-t-o/-companion/index.md
+$dokka.location:org.darkSolace.muse.user.model.dto/SuspensionHistoryEntryDTO.Companion/from/#org.darkSolace.muse.user.model.SuspensionHistoryEntry/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-suspension-history-entry-d-t-o/-companion/from.md
+$dokka.location:org.darkSolace.muse.user.model.dto/SuspensionHistoryEntryDTO.Companion/fromList/#kotlin.collections.List[org.darkSolace.muse.user.model.SuspensionHistoryEntry]/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-suspension-history-entry-d-t-o/-companion/from-list.md
+$dokka.location:org.darkSolace.muse.user.model.dto/SuspensionHistoryEntryDTO///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-suspension-history-entry-d-t-o/index.md
+$dokka.location:org.darkSolace.muse.user.model.dto/SuspensionHistoryEntryDTO/SuspensionHistoryEntryDTO/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-suspension-history-entry-d-t-o/-suspension-history-entry-d-t-o.md
+$dokka.location:org.darkSolace.muse.user.model.dto/SuspensionHistoryEntryDTO/acceptedDate/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-suspension-history-entry-d-t-o/accepted-date.md
+$dokka.location:org.darkSolace.muse.user.model.dto/SuspensionHistoryEntryDTO/confirmationCode/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-suspension-history-entry-d-t-o/confirmation-code.md
+$dokka.location:org.darkSolace.muse.user.model.dto/SuspensionHistoryEntryDTO/confirmationDetails/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-suspension-history-entry-d-t-o/confirmation-details.md
+$dokka.location:org.darkSolace.muse.user.model.dto/SuspensionHistoryEntryDTO/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-suspension-history-entry-d-t-o/id.md
+$dokka.location:org.darkSolace.muse.user.model.dto/SuspensionHistoryEntryDTO/suspendedDate/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-suspension-history-entry-d-t-o/suspended-date.md
+$dokka.location:org.darkSolace.muse.user.model.dto/SuspensionHistoryEntryDTO/user/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-suspension-history-entry-d-t-o/user.md
+$dokka.location:org.darkSolace.muse.user.model.dto/UserIdNameDTO.Companion///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/-companion/index.md
+$dokka.location:org.darkSolace.muse.user.model.dto/UserIdNameDTO.Companion/from/#org.darkSolace.muse.user.model.User?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/-companion/from.md
+$dokka.location:org.darkSolace.muse.user.model.dto/UserIdNameDTO.Companion/fromList/#kotlin.collections.List[org.darkSolace.muse.user.model.User]/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/-companion/from-list.md
+$dokka.location:org.darkSolace.muse.user.model.dto/UserIdNameDTO///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/index.md
+$dokka.location:org.darkSolace.muse.user.model.dto/UserIdNameDTO/UserIdNameDTO/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/-user-id-name-d-t-o.md
+$dokka.location:org.darkSolace.muse.user.model.dto/UserIdNameDTO/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/id.md
+$dokka.location:org.darkSolace.muse.user.model.dto/UserIdNameDTO/username/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/username.md
 $dokka.location:org.darkSolace.muse.user.model////PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model/index.md
 $dokka.location:org.darkSolace.muse.user.model/Avatar///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model/-avatar/index.md
 $dokka.location:org.darkSolace.muse.user.model/Avatar/Avatar/#kotlin.Long?#kotlin.ByteArray?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.model/-avatar/-avatar.md
@@ -400,7 +508,7 @@ $dokka.location:org.darkSolace.muse.user.repository/UserRepository///PointingToD
 $dokka.location:org.darkSolace.muse.user.repository/UserRepository/existsByEmailIgnoreCase/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.repository/-user-repository/exists-by-email-ignore-case.md
 $dokka.location:org.darkSolace.muse.user.repository/UserRepository/existsByUsernameIgnoreCase/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.repository/-user-repository/exists-by-username-ignore-case.md
 $dokka.location:org.darkSolace.muse.user.repository/UserRepository/findAllByRole/#org.darkSolace.muse.user.model.Role/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.repository/-user-repository/find-all-by-role.md
-$dokka.location:org.darkSolace.muse.user.repository/UserRepository/findAllByUserTags/#org.darkSolace.muse.user.model.UserTag/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.repository/-user-repository/find-all-by-user-tags.md
+$dokka.location:org.darkSolace.muse.user.repository/UserRepository/findAllByUserTagsContains/#org.darkSolace.muse.user.model.UserTag/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.repository/-user-repository/find-all-by-user-tags-contains.md
 $dokka.location:org.darkSolace.muse.user.repository/UserRepository/findByEmail/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.repository/-user-repository/find-by-email.md
 $dokka.location:org.darkSolace.muse.user.repository/UserRepository/findByEmailConfirmationCode/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.repository/-user-repository/find-by-email-confirmation-code.md
 $dokka.location:org.darkSolace.muse.user.repository/UserRepository/findByUsername/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.repository/-user-repository/find-by-username.md
@@ -475,8 +583,14 @@ org.darkSolace.muse.mail.init
 org.darkSolace.muse.mail.model
 org.darkSolace.muse.mail.repository
 org.darkSolace.muse.mail.service
+org.darkSolace.muse.news.controller
+org.darkSolace.muse.news.model
+org.darkSolace.muse.news.model.dto
+org.darkSolace.muse.news.repository
+org.darkSolace.muse.news.service
 org.darkSolace.muse.privMessages.controller
 org.darkSolace.muse.privMessages.model
+org.darkSolace.muse.privMessages.model.dto
 org.darkSolace.muse.privMessages.repository
 org.darkSolace.muse.privMessages.service
 org.darkSolace.muse.security.controller
@@ -486,6 +600,7 @@ org.darkSolace.muse.security.service
 org.darkSolace.muse.story.model
 org.darkSolace.muse.user.controller
 org.darkSolace.muse.user.model
+org.darkSolace.muse.user.model.dto
 org.darkSolace.muse.user.repository
 org.darkSolace.muse.user.service
 

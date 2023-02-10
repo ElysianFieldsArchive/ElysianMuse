@@ -6,7 +6,10 @@
 
 @GetMapping(value = [&quot;/{user}/sent&quot;])
 
-fun [getSentMessages](get-sent-messages.md)(@PathVariableuser: [User](../../org.darkSolace.muse.user.model/-user/index.md), authentication: Authentication?): ResponseEntity&lt;[List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md)&gt;&gt;
+fun [getSentMessages](get-sent-messages.md)(
+@PathVariableuser: [User](../../org.darkSolace.muse.user.model/-user/index.md), authentication: Authentication?):
+ResponseEntity&lt;[List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)
+&lt;[PrivateMessageDTO](../../org.darkSolace.muse.privMessages.model.dto/-private-message-d-t-o/index.md)&gt;&gt;
 
 Retrieves all sent private messages for the specified user. Only accessible for the own user.
 

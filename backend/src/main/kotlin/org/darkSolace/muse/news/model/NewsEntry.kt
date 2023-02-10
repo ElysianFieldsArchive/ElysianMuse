@@ -4,6 +4,11 @@ import jakarta.persistence.*
 import org.darkSolace.muse.user.model.User
 import java.util.*
 
+/**
+ * The [NewsEntry] model class
+ *
+ * Holds all values containing to a news entry.
+ */
 @Entity
 class NewsEntry {
     @Id

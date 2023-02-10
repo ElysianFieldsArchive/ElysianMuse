@@ -50,7 +50,7 @@ class UserController(
      * Retrieves all users. Listens on /api/user/all.
      *
      * @sample `curl localhost:8080/api/user/all`
-     * @return a List of [User]s (username and id) - might be empty
+     * @return a List of [UserIdNameDTO]s (username and id) - might be empty
      */
     @GetMapping("/all")
     fun getAllUsers(authentication: Authentication?): List<UserIdNameDTO> =
@@ -122,9 +122,9 @@ class UserController(
      * You need the [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
      * [org.darkSolace.muse.user.model.Role.MODERATOR] role to access this endpoint.
      *
-     * @sample `curl -X POST -H "Authorization: [...]" localhost:8080/api/user/suspend/history/5`
+     * @sample `curl -H "Authorization: [...]" localhost:8080/api/user/suspend/history/5`
      * @param user the user id
-     * @return List of [SuspensionHistoryEntry]s
+     * @return List of [SuspensionHistoryEntryDTO]s
      */
     @GetMapping("/suspend/history/{user}")
     @PreAuthorize("hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')")

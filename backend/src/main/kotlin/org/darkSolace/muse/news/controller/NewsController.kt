@@ -14,6 +14,9 @@ import org.springframework.security.core.Authentication
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
+/**
+ * RestController defining endpoints regarding news
+ */
 @RestController
 @RequestMapping("/api/news")
 @Validated
@@ -21,27 +24,62 @@ class NewsController {
     @Autowired
     lateinit var newsService: NewsService
 
+    /**
+     * Retrieves the last 3 news stories. Listens on /api/news/last.
+     *
+     * @sample `curl localhost:8080/api/news/last`
+     * @return List of [NewsEntryDTO]s. Max size 3.
+     */
     @GetMapping("/last")
     fun getNewestThree(): List<NewsEntryDTO> {
         return NewsEntryDTO.fromList(newsService.getLast(3))
     }
 
+    /**
+     * Retrieves the last 'size' news stories. Listens on /api/news/last/{size}.
+     *
+     * @sample `curl localhost:8080/api/news/last/5`
+     * @param size Number of news entries to retrieve. Defaults to 3.
+     * @return List of [NewsEntryDTO]s. Defaults to size 3.
+     */
     @GetMapping("/last/{size}")
     fun getNewest(@Valid @PathVariable @Min(1) size: Int = 3): List<NewsEntryDTO> {
         return NewsEntryDTO.fromList(newsService.getLast(size))
     }
 
+    /**
+     * Retrieves a [NewsEntryDTO] by its id. Listens on /api/news/{id}.
+     *
+     * @sample `curl localhost:8080/api/news/5`
+     * @param id the news id
+     * @return the retrieved [NewsEntryDTO] or `null`
+     */
     @GetMapping("/{id}")
     fun getNews(@PathVariable id: Long): ResponseEntity<*> {
         val news = newsService.getNews(id) ?: return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
         return ResponseEntity<NewsEntryDTO>(NewsEntryDTO.from(news), HttpStatus.OK)
     }
 
+    /**
+     * Retrieves all [NewsEntryDTO]s. Listens on /api/news.
+     *
+     * @sample `curl localhost:8080/api/news`
+     * @return the retrieved [NewsEntryDTO], might be empty
+     */
     @GetMapping
     fun getAllNews(): List<NewsEntryDTO> {
         return NewsEntryDTO.fromList(newsService.getAllNews())
     }
 
+    /**
+     * Adds a news entry.
+     * To add news the [org.darkSolace.muse.user.model.Role] of
+     * [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
+     * [org.darkSolace.muse.user.model.Role.MODERATOR] is required.
+     *
+     * @sample `curl -X PUT -H "Authorization: [...]" -d "..." localhost:8080/api/news`
+     * @param news the [NewsEntryDTO] containing the news to be added
+     */
     @PutMapping
     @PreAuthorize("hasAnyAuthority('MODERATOR', 'ADMINISTRATOR')")
     fun postNews(
@@ -58,6 +96,16 @@ class NewsController {
             ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
     }
 
+    /**
+     * Edits a news entry.
+     * To edit news the [org.darkSolace.muse.user.model.Role] of
+     * [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
+     * [org.darkSolace.muse.user.model.Role.MODERATOR] is required.
+     *
+     * @sample `curl -X PUT -H "Authorization: [...]" -d "..." localhost:8080/api/news/{id}`
+     * @param news the [NewsEntryDTO] containing the edited news
+     * @param id the id of the [NewsEntryDTO] to be edited
+     */
     @PostMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('MODERATOR', 'ADMINISTRATOR')")
     fun editNews(
@@ -74,6 +122,17 @@ class NewsController {
             ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
     }
 
+    /**
+     * Adds a comment to a news entry.
+     * To add a comment the [org.darkSolace.muse.user.model.Role] of
+     * [org.darkSolace.muse.user.model.Role.MEMBER],
+     * [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
+     * [org.darkSolace.muse.user.model.Role.MODERATOR] is required.
+     *
+     * @sample `curl -X PUT -H "Authorization: [...]" -d "..." localhost:8080/api/news/{id}/comment`
+     * @param id the id of the [NewsEntryDTO] to be edited
+     * @param commentDto the [NewsCommentDTO] containing the comment to be added
+     */
     @PutMapping("/{id}/comment")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun addComment(
@@ -91,6 +150,17 @@ class NewsController {
             ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
     }
 
+    /**
+     * Edits a comment on a news entry.
+     * To edit a comment the [org.darkSolace.muse.user.model.Role] of
+     * [org.darkSolace.muse.user.model.Role.MEMBER],
+     * [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
+     * [org.darkSolace.muse.user.model.Role.MODERATOR] is required.
+     *
+     * @sample `curl -X POST -H "Authorization: [...]" -d "..." localhost:8080/api/news/comment/{id}`
+     * @param commentId the id of the comment to be edited
+     * @param commentDto the [NewsCommentDTO] containing the edited comment
+     */
     @PostMapping("/comment/{commentId}")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun editComment(

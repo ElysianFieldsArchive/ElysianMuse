@@ -4,6 +4,11 @@ import jakarta.persistence.*
 import org.darkSolace.muse.user.model.User
 import java.util.*
 
+/**
+ * The [NewsComment] model class
+ *
+ * Holds all values containing to a comment posted on a news entry.
+ */
 @Entity
 class NewsComment {
     @Id

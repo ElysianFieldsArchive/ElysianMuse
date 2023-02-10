@@ -14,9 +14,9 @@ Deletes a [User](../../org.darkSolace.muse.user.model/-user/index.md) from the d
 
 jvm
 
-| | |
-|---|---|
-| user | the [User](../../org.darkSolace.muse.user.model/-user/index.md) to be deleted<br>TODO: deal with created content by this user<br>-     assign stories and chapters to orphan accounts -     replace username in private messages and comments -     other occurrences where a user might be involved |
+|      |                                                                                                                                                                                                                                                                                                          |
+|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| user | the [User](../../org.darkSolace.muse.user.model/-user/index.md) to be deleted<br>TODO: deal with created content by this user<br>-     assign stories and chapters to orphan accounts -     replace username in private messages and comments and -     other occurrences where a user might be involved |
 
 [jvm]\
 

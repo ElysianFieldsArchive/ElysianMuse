@@ -12,6 +12,9 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import kotlin.jvm.optionals.getOrNull
 
+/**
+ * Service class for [NewsEntry] and [NewsComment] related tasks.
+ */
 @Service
 class NewsService {
     @Autowired
@@ -23,8 +26,22 @@ class NewsService {
     @Autowired
     lateinit var userRepository: UserRepository
 
-    fun getLast(size: Int): List<NewsEntry> = newsRepository.findByOrderByCreationDateDesc().take(size)
+    /**
+     * Returns the last (newest) _amount_ [NewsEntry]s.
+     *
+     * @param amount number of entries to fetch
+     * @return list of [NewsEntry]s
+     */
+    fun getLast(amount: Int): List<NewsEntry> = newsRepository.findByOrderByCreationDateDesc().take(amount)
 
+    /**
+     * Adds a new [NewsComment] to an existing [NewsEntry].
+     *
+     * @param id Id of the [NewsEntry] to add the comment to
+     * @param comment A [NewsCommentDTO] containing the details of the comment
+     *
+     * @return _true_ if the comment was added successfully, _false_ in case of an error
+     */
     fun addCommentToNews(id: Long, comment: NewsCommentDTO): Boolean {
         val author = userRepository.findById(comment.author?.id ?: -1).getOrNull() ?: return false
         val news = newsRepository.findById(id).getOrNull() ?: return false
@@ -40,6 +57,13 @@ class NewsService {
         return true
     }
 
+    /**
+     * Creates a new [NewsEntry].
+     *
+     * @param newsDto a [NewsEntryDTO] containing all the details of the [NewsEntry] to create
+     *
+     * @return _true_ if the [NewsEntry] was created successfully, _false_ in case of an invalid [NewsEntryDTO].
+     */
     fun createNews(newsDto: NewsEntryDTO): Boolean {
         val author = userRepository.findById(newsDto.author?.id ?: -1).getOrNull() ?: return false
         val news = NewsEntry().also {
@@ -52,10 +76,24 @@ class NewsService {
         return true
     }
 
+    /**
+     * Returns a [NewsEntry] identified by its id.
+     *
+     * @param id the id of the [NewsEntry] to retrieve
+     * @return the loaded [NewsEntry] or _null_ if no [NewsEntry] with the specified id exists
+     */
     fun getNews(id: Long): NewsEntry? {
         return newsRepository.findByIdOrNull(id)
     }
 
+    /**
+     * Edits an existing [NewsEntry], new values are specified by an [NewsEntryDTO]
+     *
+     * @param id the id of the [NewsEntry] to be edited
+     * @param newsDto [NewsEntryDTO] containing the edited details
+     *
+     * @return _true_ if the [NewsEntry] was edited successfully, _false_ in case of an error
+     */
     fun editNews(id: Long, newsDto: NewsEntryDTO): Boolean {
         val news = newsRepository.findByIdOrNull(id) ?: return false
         val author = userRepository.findById(newsDto.author?.id ?: -1).getOrNull()
@@ -70,6 +108,14 @@ class NewsService {
         return true
     }
 
+    /**
+     * Edits an existing [NewsComment], new values are specified by an [NewsCommentDTO]
+     *
+     * @param commentId the id of the [NewsComment] to be edited
+     * @param commentDto [NewsCommentDTO] containing the edited details
+     *
+     * @return _true_ if the [NewsComment] was edited successfully, _false_ in case of an error
+     */
     fun editComment(commentId: Long, commentDto: NewsCommentDTO): Boolean {
         val comment = newsCommentRepository.findByIdOrNull(commentId) ?: return false
         val author = userRepository.findById(commentDto.author?.id ?: -1).getOrNull() ?: return false
@@ -85,6 +131,11 @@ class NewsService {
         return true
     }
 
+    /**
+     * Returns all [NewsEntry]s
+     *
+     * @return list of [NewsEntry]s, might be empty if no news exist
+     */
     fun getAllNews(): List<NewsEntry> {
         return newsRepository.findByOrderByCreationDateDesc()
     }
