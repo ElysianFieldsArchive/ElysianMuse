@@ -1,5 +1,6 @@
 package org.darkSolace.muse.news.repository
 
+import org.darkSolace.muse.news.model.NewsComment
 import org.darkSolace.muse.news.model.NewsEntry
 import org.springframework.data.repository.CrudRepository
 
@@ -13,4 +14,6 @@ interface NewsRepository : CrudRepository<NewsEntry, Long> {
      * @return a list of [NewsEntry], might be empty
      */
     fun findByOrderByCreationDateDesc(): List<NewsEntry>
+
+    fun findByNewsCommentsContains(comment: NewsComment): NewsEntry
 }

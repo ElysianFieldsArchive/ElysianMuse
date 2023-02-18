@@ -221,4 +221,105 @@ internal class NewsServiceTests : TestBase() {
         Assertions.assertEquals(8, entries.size, "Size correct?")
         Assertions.assertEquals("Test Subject 7", entries.first().subject, "Ordering correct?")
     }
+
+    @Test
+    fun deleteNews_success() {
+        val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
+        //create 8 news articles
+        newsService.createNews(NewsEntryDTO.from(NewsEntry().also {
+            it.content = "Test Content 0"
+            it.subject = "Test Subject 0"
+            it.author = author
+        }))
+
+        var news = newsRepository.findAll()
+        val newsId = news.firstOrNull()?.id ?: fail("News not found")
+
+        Assertions.assertNotNull(newsId)
+        Assertions.assertNotEquals(0, news.count())
+
+        newsService.deleteNews(newsId)
+
+        news = newsRepository.findAll()
+
+        Assertions.assertEquals(0, news.count())
+    }
+
+    @Test
+    fun deleteNews_unknownId() {
+        var news = newsRepository.findAll()
+
+        Assertions.assertEquals(0, news.count())
+
+        newsService.deleteNews(-1)
+
+        news = newsRepository.findAll()
+
+        Assertions.assertEquals(0, news.count())
+    }
+
+    @Test
+    fun deleteComment_success() {
+        val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
+        //create 8 news articles
+        newsService.createNews(NewsEntryDTO.from(NewsEntry().also {
+            it.content = "Test Content 0"
+            it.subject = "Test Subject 0"
+            it.author = author
+        }))
+
+        var news = newsRepository.findAll()
+        val newsId = news.firstOrNull()?.id ?: fail("News not found")
+
+        newsService.addCommentToNews(newsId, NewsCommentDTO().apply {
+            this.author = author
+            this.content = "TestComment"
+        })
+
+        //reload news
+        news = newsRepository.findAll()
+        var comments = news.firstOrNull()?.newsComments ?: fail("News not found")
+        val commentId = comments.firstOrNull()?.id ?: fail("Comment not found")
+
+        Assertions.assertNotNull(newsId)
+        Assertions.assertNotEquals(0, news.count())
+        Assertions.assertNotEquals(0, comments.size)
+
+        newsService.deleteComment(commentId)
+
+        //reload news
+        news = newsRepository.findAll()
+        comments = news.firstOrNull()?.newsComments ?: fail("News not found")
+
+        Assertions.assertNotEquals(0, news.count())
+        Assertions.assertEquals(0, comments.size)
+    }
+
+    @Test
+    fun deleteComment_unknownId() {
+        val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
+        //create 8 news articles
+        newsService.createNews(NewsEntryDTO.from(NewsEntry().also {
+            it.content = "Test Content 0"
+            it.subject = "Test Subject 0"
+            it.author = author
+        }))
+
+        var news = newsRepository.findAll()
+        val newsId = news.firstOrNull()?.id ?: fail("News not found")
+
+
+        Assertions.assertNotNull(newsId)
+        Assertions.assertNotEquals(0, news.count())
+        Assertions.assertEquals(0, news.firstOrNull()?.newsComments?.size)
+
+        newsService.deleteComment(-1)
+
+        //reload news
+        news = newsRepository.findAll()
+        val comments = news.firstOrNull()?.newsComments ?: fail("News not found")
+
+        Assertions.assertNotEquals(0, news.count())
+        Assertions.assertEquals(0, comments.size)
+    }
 }

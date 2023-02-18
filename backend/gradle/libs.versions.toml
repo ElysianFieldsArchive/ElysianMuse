@@ -2,15 +2,15 @@
 
 [plugins]
 
-org-springframework-boot = { id = "org.springframework.boot", version = "3.0.0" }
+org-springframework-boot = { id = "org.springframework.boot", version = "3.0.2" }
 
 io-spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.0" }
 
-org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "1.7.22" }
+org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "1.8.10" }
 
-org-jetbrains-kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version = "1.7.22" }
+org-jetbrains-kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version = "1.8.10" }
 
-org-jetbrains-kotlin-plugin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version = "1.7.22" }
+org-jetbrains-kotlin-plugin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version = "1.8.10" }
 
 io-gitlab-arturbosch-detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.22.0" }
 
@@ -18,13 +18,13 @@ org-jetbrains-dokka = { id = "org.jetbrains.dokka", version = "1.7.20" }
 
 [versions]
 
-kotlin = "1.7.22"
+kotlin = "1.8.10"
 
 [libraries]
 
 jjwt-api = "io.jsonwebtoken:jjwt-api:_"
 
-springdoc-openapi-ui = "org.springdoc:springdoc-openapi-ui:_"
+springdoc-openapi-ui = "org.springdoc:springdoc-openapi-starter-webmvc-ui:_"
 
 junit-platform-commons = { module = "org.junit.platform:junit-platform-commons" }
 
@@ -57,3 +57,9 @@ kotlin-allopen = { group = "org.jetbrains.kotlin", name = "kotlin-allopen", vers
 kotlin-noarg = { group = "org.jetbrains.kotlin", name = "kotlin-noarg", version.ref = "kotlin" }
 
 dokka-analysis = "org.jetbrains.dokka:dokka-analysis:_"
+
+springdoc-openapi-starter-webmvc-ui = "org.springdoc:springdoc-openapi-starter-webmvc-ui:_"
+
+springdoc-openapi-starter-common = "org.springdoc:springdoc-openapi-starter-common:_"
+
+gfm-plugin = "org.jetbrains.dokka:gfm-plugin:_"

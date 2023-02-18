@@ -139,4 +139,39 @@ class NewsService {
     fun getAllNews(): List<NewsEntry> {
         return newsRepository.findByOrderByCreationDateDesc()
     }
+
+    /**
+     * Removes a persisted [NewsEntry]
+     *
+     * @param id of the [NewsEntry] to be deleted
+     * @return true if deleteion was successful, false in case of error
+     */
+    fun deleteNews(id: Long): Boolean = try {
+        newsRepository.deleteById(id)
+        true
+    } catch (e: Exception) {
+        false
+    }
+
+    /**
+     * Removes a persisted [NewsComment]
+     *
+     * @param id of the [NewsComment] to be deleted
+     * @return true if deleteion was successful, false in case of error
+     */
+    fun deleteComment(id: Long): Boolean {
+        //remove comment from news
+        val comment = newsCommentRepository.findById(id).getOrNull() ?: return false
+        return try {
+            val news = newsRepository.findByNewsCommentsContains(comment)
+            news.newsComments.removeIf { it.id == comment.id }
+            newsRepository.save(news)
+
+            //remove news
+            newsCommentRepository.deleteById(id)
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
 }

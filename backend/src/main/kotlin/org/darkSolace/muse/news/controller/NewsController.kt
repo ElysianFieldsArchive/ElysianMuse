@@ -2,10 +2,13 @@ package org.darkSolace.muse.news.controller
 
 import jakarta.validation.Valid
 import jakarta.validation.constraints.Min
+import org.darkSolace.muse.news.model.NewsComment
+import org.darkSolace.muse.news.model.NewsEntry
 import org.darkSolace.muse.news.model.dto.NewsCommentDTO
 import org.darkSolace.muse.news.model.dto.NewsEntryDTO
 import org.darkSolace.muse.news.service.NewsService
 import org.darkSolace.muse.security.model.UserDetails
+import org.darkSolace.muse.user.model.Role
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -13,6 +16,7 @@ import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.core.Authentication
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
+import kotlin.jvm.optionals.getOrNull
 
 /**
  * RestController defining endpoints regarding news
@@ -43,7 +47,7 @@ class NewsController {
      * @return List of [NewsEntryDTO]s. Defaults to size 3.
      */
     @GetMapping("/last/{size}")
-    fun getNewest(@Valid @PathVariable @Min(1) size: Int = 3): List<NewsEntryDTO> {
+    fun getNewest(@Valid @PathVariable(required = false) @Min(1) size: Int = 3): List<NewsEntryDTO> {
         return NewsEntryDTO.fromList(newsService.getLast(size))
     }
 
@@ -172,6 +176,55 @@ class NewsController {
             return ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
 
         val success = newsService.editComment(commentId, commentDto)
+        return if (success)
+            ResponseEntity<Unit>(HttpStatus.OK)
+        else
+            ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+    }
+
+    /**
+     * Deletes the specified [NewsEntry]. Can only be called by a user with role [org.darkSolace.muse.user.model.Role.ADMINISTRATOR]
+     *
+     * @param newsId id of the [NewsEntry] to be deleted
+     */
+    @DeleteMapping("/{newsId}")
+    @PreAuthorize("hasAnyAuthority('ADMINISTRATOR')")
+    fun deleteNews(
+        @PathVariable newsId: Long,
+        authentication: Authentication?
+    ): ResponseEntity<Unit> {
+        val success = newsService.deleteNews(newsId)
+        return if (success) {
+            ResponseEntity<Unit>(HttpStatus.OK)
+        } else {
+            ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+        }
+    }
+
+
+    /**
+     * Deletes the specified [NewsComment]. Can be called by a user with role [Role.MODERATOR], [Role.ADMINISTRATOR] or
+     * the author itself.
+     *
+     * @param commentId id of the [NewsComment] to be deleted
+     */
+    @DeleteMapping("/comment/{commentId}")
+    @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
+    fun deleteComment(
+        @PathVariable commentId: Long,
+        authentication: Authentication?
+    ): ResponseEntity<Unit> {
+        //check if comment belongs to user, or user is admin/mod
+        val user = (authentication?.principal as UserDetails?)?.user
+        val comment = newsService.newsCommentRepository.findById(commentId)
+        val success = if (user?.role in listOf(Role.ADMINISTRATOR, Role.MODERATOR) ||
+            comment.getOrNull()?.author?.id == user?.id
+        ) {
+            newsService.deleteComment(commentId)
+        } else {
+            false
+        }
+
         return if (success)
             ResponseEntity<Unit>(HttpStatus.OK)
         else
