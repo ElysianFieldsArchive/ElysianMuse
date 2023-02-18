@@ -11,7 +11,7 @@ Creates a user from a [SignUpRequest](../../org.darkSolace.muse.security.model/-
 
 the created [User](../../org.darkSolace.muse.user.model/-user/index.md)
 
-## Parameters
+#### Parameters
 
 jvm
 

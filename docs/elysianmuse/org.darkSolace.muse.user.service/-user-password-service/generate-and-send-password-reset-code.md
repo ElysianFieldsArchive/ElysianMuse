@@ -7,7 +7,7 @@ fun [generateAndSendPasswordResetCode](generate-and-send-password-reset-code.md)
 
 Generates a password reset code for a given user and sends it via email to the user.
 
-## Parameters
+#### Parameters
 
 jvm
 

@@ -7,7 +7,7 @@ fun [sendPasswordResetMail](send-password-reset-mail.md)(user: [User](../../org.
 
 Sends a password reset email to the specified user containing a reset code.
 
-## Parameters
+#### Parameters
 
 jvm
 

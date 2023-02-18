@@ -6,7 +6,8 @@
 
 @GetMapping(value = [&quot;/online&quot;])
 
-fun [getOnlineUsers](get-online-users.md)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt;
+fun [getOnlineUsers](get-online-users.md)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)
+&lt;[UserIdNameDTO](../../org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/index.md)&gt;
 
 Retrieves all public profiles of currently active logged-in [User](../../org.darkSolace.muse.user.model/-user/index.md)s
 
@@ -14,4 +15,4 @@ Retrieves all public profiles of currently active logged-in [User](../../org.dar
 
 list of active logged-in users
 
-## Samples
+#### Samples

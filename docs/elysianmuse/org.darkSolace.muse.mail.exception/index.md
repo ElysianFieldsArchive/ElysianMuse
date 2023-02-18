@@ -1,6 +1,6 @@
 //[elysianmuse](../../index.md)/[org.darkSolace.muse.mail.exception](index.md)
 
-# Package org.darkSolace.muse.mail.exception
+# Package-level declarations
 
 ## Types
 

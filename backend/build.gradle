@@ -1,5 +1,4 @@
 import io.gitlab.arturbosch.detekt.Detekt
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id "org.springframework.boot"
@@ -31,6 +30,7 @@ dependencies {
     implementation Spring.boot.validation
     implementation libs.jjwt.api
     implementation libs.springdoc.openapi.ui
+    implementation libs.springdoc.openapi.starter.common
 
     runtimeOnly libs.org.postgresql.postgresql
     runtimeOnly libs.kotlin.reflect
@@ -59,16 +59,8 @@ test {
     useJUnitPlatform()
 }
 
-tasks.withType(KotlinCompile).configureEach {
-    kotlinOptions {
-        freeCompilerArgs = ['-Xjsr305=strict']
-        jvmTarget = "17"
-    }
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+kotlin {
+    jvmToolchain(17)
 }
 
 detekt {
@@ -96,6 +88,7 @@ jacocoTestReport {
 }
 
 tasks.register('copyDocs') {
+    dependsOn(dokkaGfm)
     delete("${projectDir}/../docs/elysianmuse")
     copy {
         from "${buildDir}/dokka/gfm"

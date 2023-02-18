@@ -12,10 +12,12 @@ plugins {
 }
 
 refreshVersions {
-    rejectVersionIf {
-        candidate.stabilityLevel.isLessStableThan(current.stabilityLevel)
-    }
+//    rejectVersionIf {
+//        candidate.stabilityLevel != StabilityLevel.Stable
+//    }
 }
 
 rootProject.name = 'elysianmuse'
+
+
 

@@ -1,6 +1,6 @@
 //[elysianmuse](../../index.md)/[org.darkSolace.muse.security.exception](index.md)
 
-# Package org.darkSolace.muse.security.exception
+# Package-level declarations
 
 ## Types
 

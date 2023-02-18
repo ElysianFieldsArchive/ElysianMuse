@@ -14,9 +14,9 @@ Sends a message to another user
 
 HTTP OK or UNAUTHORIZED, depending on the requests success
 
-## Samples
+#### Samples
 
-## Parameters
+#### Parameters
 
 jvm
 

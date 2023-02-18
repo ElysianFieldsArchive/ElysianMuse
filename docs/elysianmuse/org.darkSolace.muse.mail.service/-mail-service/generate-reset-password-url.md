@@ -11,7 +11,7 @@ Generates a password reset url
 
 the password reset url
 
-## Parameters
+#### Parameters
 
 jvm
 
@@ -20,8 +20,8 @@ jvm
 | code | the reset code used in the reset url |
 | siteUrl | the base url of the current site |
 
-## Throws
+#### Throws
 
 | | |
 |---|---|
-| [org.darkSolace.muse.mail.exception.TemplateException](../../org.darkSolace.muse.mail.exception/-template-exception/index.md) | if the site url is null |
+| [TemplateException](../../org.darkSolace.muse.mail.exception/-template-exception/index.md) | if the site url is null |

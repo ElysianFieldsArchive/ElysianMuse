@@ -9,9 +9,9 @@ Retrieves a [User](../../org.darkSolace.muse.user.model/-user/index.md) identifi
 
 #### Return
 
-a user or null
+a user or `null`
 
-## Parameters
+#### Parameters
 
 jvm
 

@@ -7,7 +7,7 @@ fun [updatePassword](update-password.md)(user: [User](../../org.darkSolace.muse.
 
 Updates the password for a given user. Also generates a new salt.
 
-## Parameters
+#### Parameters
 
 jvm
 

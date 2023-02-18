@@ -11,7 +11,7 @@ Retrieves the number of unread messages for a given [User](../../org.darkSolace.
 
 the number of unread [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md)s
 
-## Parameters
+#### Parameters
 
 jvm
 

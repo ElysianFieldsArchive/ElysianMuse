@@ -17,7 +17,7 @@ import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
 
-class AuthControllerAccessTests : TestBase() {
+class AuthControllerAccessApiTests : TestBase() {
     @Autowired
     private lateinit var userRoleService: UserRoleService
 

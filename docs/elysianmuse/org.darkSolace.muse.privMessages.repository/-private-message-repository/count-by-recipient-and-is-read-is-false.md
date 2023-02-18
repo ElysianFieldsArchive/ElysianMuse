@@ -11,7 +11,7 @@ Retrieves the number of unread messassed for a given [User](../../org.darkSolace
 
 the number of unread messages
 
-## Parameters
+#### Parameters
 
 jvm
 

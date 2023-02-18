@@ -14,9 +14,9 @@ Confirms a [SuspensionHistoryEntry](../../org.darkSolace.muse.user.model/-suspen
 
 HTTP 200 on successful confirmation, HTTP 400 otherwise
 
-## Samples
+#### Samples
 
-## Parameters
+#### Parameters
 
 jvm
 

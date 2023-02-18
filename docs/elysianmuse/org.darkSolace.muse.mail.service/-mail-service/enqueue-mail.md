@@ -7,7 +7,7 @@ fun [enqueueMail](enqueue-mail.md)(mail: [Mail](../../org.darkSolace.muse.mail.m
 
 Enqueues a mail to be sent on the next scheduler run
 
-## Parameters
+#### Parameters
 
 jvm
 

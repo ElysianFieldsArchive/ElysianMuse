@@ -11,7 +11,7 @@ Retrieves the confirmation code for a users open [SuspensionHistoryEntry](../../
 
 the confirmation code
 
-## Parameters
+#### Parameters
 
 jvm
 

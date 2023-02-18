@@ -12,9 +12,9 @@ Suspends the provided [User](../../org.darkSolace.muse.user.model/-user/index.md
 
 #### Return
 
-the suspended [User](../../org.darkSolace.muse.user.model/-user/index.md) or null if the [User](../../org.darkSolace.muse.user.model/-user/index.md) was not found
+the suspended [User](../../org.darkSolace.muse.user.model/-user/index.md) or `null` if the [User](../../org.darkSolace.muse.user.model/-user/index.md) was not found
 
-## Parameters
+#### Parameters
 
 jvm
 
@@ -32,9 +32,9 @@ Suspends the provided [User](../../org.darkSolace.muse.user.model/-user/index.md
 
 #### Return
 
-the suspended [User](../../org.darkSolace.muse.user.model/-user/index.md) or null if the [User](../../org.darkSolace.muse.user.model/-user/index.md) was not found
+the suspended [User](../../org.darkSolace.muse.user.model/-user/index.md) or `null` if the [User](../../org.darkSolace.muse.user.model/-user/index.md) was not found
 
-## Parameters
+#### Parameters
 
 jvm
 

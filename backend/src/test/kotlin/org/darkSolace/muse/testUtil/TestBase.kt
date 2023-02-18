@@ -50,11 +50,13 @@ class TestBase {
         @RegisterExtension
         val greenMailExtension: GreenMailExtension =
             GreenMailExtension(
-                ServerSetup(
-                    3025,
-                    "localhost",
-                    "smtp"
-                ).also { it.serverStartupTimeout = 10_000 } //set timeout to 10s
+                arrayOf(
+                    ServerSetup(
+                        3025,
+                        "localhost",
+                        "smtp"
+                    ), ServerSetup(3110, "localhost", "imap")//set timeout to 10s
+                )
             )
                 .withConfiguration(GreenMailConfiguration.aConfig().withUser("test", "testPassword"))
                 .withPerMethodLifecycle(false)

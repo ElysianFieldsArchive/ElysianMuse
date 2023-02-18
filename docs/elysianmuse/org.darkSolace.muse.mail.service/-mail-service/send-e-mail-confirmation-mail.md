@@ -7,7 +7,7 @@ fun [sendEMailConfirmationMail](send-e-mail-confirmation-mail.md)(user: [User](.
 
 Sends an email confirmation message to a newly registered user based on a template.
 
-## Parameters
+#### Parameters
 
 jvm
 

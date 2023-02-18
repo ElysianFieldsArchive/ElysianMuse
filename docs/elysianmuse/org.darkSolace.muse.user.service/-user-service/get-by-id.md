@@ -9,9 +9,9 @@ Finds a [User](../../org.darkSolace.muse.user.model/-user/index.md) by its ID
 
 #### Return
 
-the found [User](../../org.darkSolace.muse.user.model/-user/index.md) or null
+the found [User](../../org.darkSolace.muse.user.model/-user/index.md) or `null`
 
-## Parameters
+#### Parameters
 
 jvm
 

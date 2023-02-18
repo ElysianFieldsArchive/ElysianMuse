@@ -1,6 +1,6 @@
 //[elysianmuse](../../index.md)/[org.darkSolace.muse.user.service](index.md)
 
-# Package org.darkSolace.muse.user.service
+# Package-level declarations
 
 ## Types
 

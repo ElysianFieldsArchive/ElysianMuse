@@ -9,9 +9,9 @@ Finds a user identified by the password reset code
 
 #### Return
 
-the [User](../../org.darkSolace.muse.user.model/-user/index.md) or null
+the [User](../../org.darkSolace.muse.user.model/-user/index.md) or `null`
 
-## Parameters
+#### Parameters
 
 jvm
 

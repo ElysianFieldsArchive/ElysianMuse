@@ -2,6 +2,7 @@ package org.darkSolace.muse.privMessages.controller
 
 import org.darkSolace.muse.privMessages.model.MessageDirection
 import org.darkSolace.muse.privMessages.model.PrivateMessage
+import org.darkSolace.muse.privMessages.model.dto.PrivateMessageDTO
 import org.darkSolace.muse.privMessages.repository.PrivateMessageRepository
 import org.darkSolace.muse.privMessages.service.PrivateMessageService
 import org.darkSolace.muse.security.model.UserDetails
@@ -34,10 +35,11 @@ class PrivateMessageController(
     fun getReceivedMessages(
         @PathVariable user: User,
         authentication: Authentication?
-    ): ResponseEntity<List<PrivateMessage>> {
+    ): ResponseEntity<List<PrivateMessageDTO>> {
         val userDetails = (authentication?.principal as UserDetails?)
         return if (userDetails?.user == user) {
-            val messages = privateMessageService.getReceivedMessagesForUser(user)
+            val messages =
+                PrivateMessageDTO.fromPrivateMessageList(privateMessageService.getReceivedMessagesForUser(user))
             ResponseEntity.ok(messages)
         } else {
             ResponseEntity(HttpStatus.UNAUTHORIZED)
@@ -56,10 +58,11 @@ class PrivateMessageController(
     fun getSentMessages(
         @PathVariable user: User,
         authentication: Authentication?
-    ): ResponseEntity<List<PrivateMessage>> {
+    ): ResponseEntity<List<PrivateMessageDTO>> {
         val userDetails = (authentication?.principal as UserDetails?)
         return if (userDetails?.user == user) {
-            val messages = privateMessageService.getSentMessagesByUser(user)
+            val messages =
+                PrivateMessageDTO.fromPrivateMessageList(privateMessageService.getSentMessagesByUser(user))
             ResponseEntity.ok(messages)
         } else {
             ResponseEntity(HttpStatus.UNAUTHORIZED)

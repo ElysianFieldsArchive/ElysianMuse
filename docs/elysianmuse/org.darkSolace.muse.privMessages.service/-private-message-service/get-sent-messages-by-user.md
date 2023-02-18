@@ -11,7 +11,7 @@ Retrieves [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private
 
 [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) of [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md)s
 
-## Parameters
+#### Parameters
 
 jvm
 
