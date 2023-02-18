@@ -1,12 +1,12 @@
 package org.darkSolace.muse.user.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import jakarta.persistence.*
 import org.hibernate.Hibernate
 import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
 import org.springframework.security.crypto.bcrypt.BCrypt
 import java.util.*
-import javax.persistence.*
 
 /**
  * The [User] model class
@@ -45,25 +45,12 @@ data class User(
     @Cascade(CascadeType.ALL)
     var avatar: Avatar? = null,
     @Enumerated(EnumType.ORDINAL)
-    var role: Role = Role.MEMBER
+    var role: Role = Role.MEMBER,
+    @JsonIgnore
+    var emailConfirmed: Boolean = false,
+    @JsonIgnore
+    var emailConfirmationCode: String? = null,
 ) {
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
-        other as User
-
-        return id != null && id == other.id
-    }
-
-    override fun hashCode(): Int = javaClass.hashCode()
-
-    @Override
-    override fun toString(): String {
-        return this::class.simpleName + "(id = $id, username = $username, email = $email, " +
-                "realName = $realName, signUpDate = $signUpDate, lastLogInDate = $lastLogInDate, bio = $bio, " +
-                "birthday = $birthday, validatedAuthor = $validatedAuthor, onProbation = $onProbation, " +
-                "userSettings = $userSettings, userTags = $userTags, avatar = $avatar, roles = $role)"
-    }
 
     fun toPublicUser(): User {
         val user = User(id, username, "", "", "")
@@ -75,4 +62,23 @@ data class User(
 
         return user
     }
+
+    @Override
+    override fun toString(): String {
+        return this::class.simpleName + "(id = $id , username = $username , email = $email , realName = $realName , " +
+                "signUpDate = $signUpDate , lastLogInDate = $lastLogInDate , bio = $bio , birthday = $birthday , " +
+                "validatedAuthor = $validatedAuthor , onProbation = $onProbation , userSettings = $userSettings , " +
+                "userTags = $userTags , avatar = $avatar , role = $role , emailConfirmed = $emailConfirmed , " +
+                "emailConfirmationCode = $emailConfirmationCode )"
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
+        other as User
+
+        return id != null && id == other.id
+    }
+
+    override fun hashCode(): Int = javaClass.hashCode()
 }

@@ -1,11 +1,16 @@
 package org.darkSolace.muse.testUtil
 
+import com.icegreen.greenmail.configuration.GreenMailConfiguration
+import com.icegreen.greenmail.junit5.GreenMailExtension
+import com.icegreen.greenmail.util.ServerSetup
+import org.darkSolace.muse.mail.service.MailerSettingsService
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.MethodOrderer
 import org.junit.jupiter.api.TestMethodOrder
+import org.junit.jupiter.api.extension.RegisterExtension
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.boot.test.web.server.LocalServerPort
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
 import org.testcontainers.containers.PostgreSQLContainer
@@ -20,9 +25,8 @@ class TestBase {
     @Autowired
     private lateinit var dbClearer: DBClearer
 
-    init {
-        postgresqlContainer.start()
-    }
+    @Autowired
+    lateinit var mailerSettingsService: MailerSettingsService
 
     fun generateUrl(path: String): String = "http://localhost:$port$path"
 
@@ -34,12 +38,27 @@ class TestBase {
     companion object {
         @Container
         val postgresqlContainer: PostgreSQLContainer<*> =
-            PostgreSQLContainer<Nothing>("postgres:14.0-alpine").apply {
+            PostgreSQLContainer<Nothing>("postgres:15.1-alpine").apply {
                 withDatabaseName("foo")
                 withUsername("foo")
                 withPassword("secret")
                 withReuse(true)
+            }.also {
+                it.start()
             }
+
+        @RegisterExtension
+        val greenMailExtension: GreenMailExtension =
+            GreenMailExtension(
+                ServerSetup(
+                    3025,
+                    "localhost",
+                    "smtp"
+                ).also { it.serverStartupTimeout = 10_000 } //set timeout to 10s
+            )
+                .withConfiguration(GreenMailConfiguration.aConfig().withUser("test", "testPassword"))
+                .withPerMethodLifecycle(false)
+
 
         @JvmStatic
         @DynamicPropertySource

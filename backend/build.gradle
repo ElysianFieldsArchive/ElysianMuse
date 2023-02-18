@@ -2,55 +2,57 @@ import io.gitlab.arturbosch.detekt.Detekt
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id "org.springframework.boot" version "2.6.3"
-    id "io.spring.dependency-management" version "1.0.11.RELEASE"
-    id "org.jetbrains.kotlin.jvm" version "1.6.10"
-    id "org.jetbrains.kotlin.plugin.spring" version "1.6.10"
-    id "org.jetbrains.kotlin.plugin.jpa" version "1.6.10"
-    id "io.gitlab.arturbosch.detekt" version "1.19.0"
+    id "org.springframework.boot"
+    id "io.spring.dependency-management"
+    id "org.jetbrains.kotlin.jvm"
+    id "org.jetbrains.kotlin.plugin.spring"
+    id "org.jetbrains.kotlin.plugin.jpa"
+    id "io.gitlab.arturbosch.detekt"
     id "jacoco"
-    id "org.jetbrains.dokka" version "1.5.31"
+    id "org.jetbrains.dokka"
+    id "maven-publish"
 }
+
+apply plugin: "io.spring.dependency-management"
+apply plugin: "maven-publish"
 
 group = "org.darkSolace"
 version = "0.0.1-SNAPSHOT"
-def spring_version = "2.6.4"
-def kotlin_version = "1.6.10"
-def junit_version = "5.8.2"
-
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${spring_version}"
-    implementation "org.springframework.boot:spring-boot-starter-security:${spring_version}"
-    implementation "org.springframework.boot:spring-boot-starter-web:${spring_version}"
-    implementation "io.jsonwebtoken:jjwt-api:0.11.2"
-    developmentOnly "org.springframework.boot:spring-boot-devtools:${spring_version}"
-    runtimeOnly "org.postgresql:postgresql:42.3.3"
-    runtimeOnly "org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}"
-    runtimeOnly "io.jsonwebtoken:jjwt-impl:0.11.2"
-    runtimeOnly "io.jsonwebtoken:jjwt-jackson:0.11.2"
-    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${spring_version}"
-    testImplementation "org.springframework.boot:spring-boot-starter-test:${spring_version}"
-    testImplementation "org.junit.jupiter:junit-jupiter:${junit_version}"
-    testImplementation "org.junit.jupiter:junit-jupiter-api:${junit_version}"
-    testImplementation "org.junit.jupiter:junit-jupiter-engine:${junit_version}"
-    testImplementation "org.junit.jupiter:junit-jupiter-params:${junit_version}"
-    testImplementation "org.junit.platform:junit-platform-commons:1.8.2"
-    testImplementation "org.junit.platform:junit-platform-engine:1.8.2"
-    testImplementation "org.springframework.security:spring-security-test:5.6.2"
-    testImplementation "org.testcontainers:junit-jupiter:1.16.3"
-    testImplementation "org.testcontainers:postgresql:1.16.3"
-    testImplementation "org.apache.httpcomponents:httpclient:4.5.13"
-    dokkaHtmlPlugin "org.jetbrains.dokka:kotlin-as-java-plugin:1.6.0"
+    implementation Spring.boot.data.jpa
+    implementation Spring.boot.security
+    implementation Spring.boot.web
+    implementation Spring.boot.mail
+    implementation Spring.boot.validation
+    implementation libs.jjwt.api
+    implementation libs.springdoc.openapi.ui
+
+    runtimeOnly libs.org.postgresql.postgresql
+    runtimeOnly libs.kotlin.reflect
+    runtimeOnly libs.jjwt.impl
+    runtimeOnly libs.jjwt.jackson
+    annotationProcessor Spring.boot.configurationProcessor
+    developmentOnly Spring.boot.devTools
+
+    testImplementation Spring.boot.test
+    testImplementation Spring.security.spring_security_test
+    testImplementation Testing.junit.jupiter
+    testImplementation Testing.junit.jupiter.api
+    testImplementation Testing.junit.jupiter.engine
+    testImplementation Testing.junit.jupiter.params
+    testImplementation libs.junit.platform.commons
+    testImplementation libs.junit.platform.engine
+    testImplementation libs.junit.jupiter
+    testImplementation libs.org.testcontainers.postgresql
+    testImplementation libs.httpclient5
+    testImplementation libs.greenmail.junit5
+    testImplementation KotlinX.coroutines.test
+    dokkaHtmlPlugin libs.kotlin.as.java.plugin
 }
 
 test {
@@ -58,12 +60,15 @@ test {
 }
 
 tasks.withType(KotlinCompile).configureEach {
-    kotlinOptions { jvmTarget = "11" }
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjsr305=strict']
+        jvmTarget = "17"
+    }
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 detekt {
@@ -74,13 +79,13 @@ detekt {
 
 tasks.withType(Detekt).configureEach {
     reports {
-        html.required = true // observe findings in your browser with structure and code snippets
-        xml.required = true // checkstyle like format mainly for integrations like Jenkins
+        html.required = true
+        xml.required = true
     }
 }
 
 jacoco {
-    toolVersion = "0.8.7"
+    toolVersion = "0.8.8"
 }
 
 jacocoTestReport {
@@ -90,7 +95,7 @@ jacocoTestReport {
     }
 }
 
-task copyDocs(type: Copy, dependsOn: [dokkaGfm]) {
+tasks.register('copyDocs') {
     delete("${projectDir}/../docs/elysianmuse")
     copy {
         from "${buildDir}/dokka/gfm"
@@ -100,4 +105,3 @@ task copyDocs(type: Copy, dependsOn: [dokkaGfm]) {
 
 test.finalizedBy(jacocoTestReport)
 test.finalizedBy(copyDocs)
-

@@ -20,3 +20,10 @@ jvm
 | | |
 |---|---|
 | loginRequest | [LoginRequest](../../org.darkSolace.muse.security.model/-login-request/index.md) containing username and password |
+
+## Throws
+
+| | |
+|---|---|
+| org.springframework.security.authentication.BadCredentialsException |  |
+| [org.darkSolace.muse.security.exception.EMailNotValidatedException](../../org.darkSolace.muse.security.exception/-e-mail-not-validated-exception/index.md) |  |

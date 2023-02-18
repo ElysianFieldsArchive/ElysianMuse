@@ -4,9 +4,9 @@
 
 [jvm]\
 
-@GetMapping(value = ["/suspend/all"])
+@GetMapping(value = [&quot;/suspend/all&quot;])
 
-@PreAuthorize(value = "hasAnyAuthority('ADMINISTRATION', 'MODERATOR')")
+@PreAuthorize(value = &quot;hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')&quot;)
 
 fun [getAllCurrentlySuspended](get-all-currently-suspended.md)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt;
 

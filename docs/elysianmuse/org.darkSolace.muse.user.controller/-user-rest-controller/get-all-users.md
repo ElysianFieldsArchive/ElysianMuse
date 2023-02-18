@@ -4,7 +4,7 @@
 
 [jvm]\
 
-@GetMapping(value = ["/all"])
+@GetMapping(value = [&quot;/all&quot;])
 
 fun [getAllUsers](get-all-users.md)(authentication: Authentication?): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt;
 

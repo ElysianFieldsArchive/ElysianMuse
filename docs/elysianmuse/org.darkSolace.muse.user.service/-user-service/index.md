@@ -5,7 +5,7 @@
 [jvm]\
 @Service
 
-class [UserService](index.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowireduserSettingsRepository: [UserSettingsRepository](../../org.darkSolace.muse.user.repository/-user-settings-repository/index.md), @AutowiredlastSeenRepository: [LastSeenRepository](../../org.darkSolace.muse.lastSeen.repository/-last-seen-repository/index.md))
+class [UserService](index.md)(@Autowiredval userRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowireduserSettingsRepository: [UserSettingsRepository](../../org.darkSolace.muse.user.repository/-user-settings-repository/index.md), @AutowiredlastSeenRepository: [LastSeenRepository](../../org.darkSolace.muse.lastSeen.repository/-last-seen-repository/index.md), @AutowiredmailService: [MailService](../../org.darkSolace.muse.mail.service/-mail-service/index.md), @AutowiredmailQueueRepository: [MailQueueRepository](../../org.darkSolace.muse.mail.repository/-mail-queue-repository/index.md))
 
 Service class for [User](../../org.darkSolace.muse.user.model/-user/index.md) related tasks.
 
@@ -22,7 +22,7 @@ jvm
 
 | | |
 |---|---|
-| [UserService](-user-service.md) | [jvm]<br>fun [UserService](-user-service.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowireduserSettingsRepository: [UserSettingsRepository](../../org.darkSolace.muse.user.repository/-user-settings-repository/index.md), @AutowiredlastSeenRepository: [LastSeenRepository](../../org.darkSolace.muse.lastSeen.repository/-last-seen-repository/index.md)) |
+| [UserService](-user-service.md) | [jvm]<br>fun [UserService](-user-service.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowireduserSettingsRepository: [UserSettingsRepository](../../org.darkSolace.muse.user.repository/-user-settings-repository/index.md), @AutowiredlastSeenRepository: [LastSeenRepository](../../org.darkSolace.muse.lastSeen.repository/-last-seen-repository/index.md), @AutowiredmailService: [MailService](../../org.darkSolace.muse.mail.service/-mail-service/index.md), @AutowiredmailQueueRepository: [MailQueueRepository](../../org.darkSolace.muse.mail.repository/-mail-queue-repository/index.md)) |
 
 ## Functions
 
@@ -33,7 +33,6 @@ jvm
 | [deleteUser](delete-user.md) | [jvm]<br>@Transactional<br>fun [deleteUser](delete-user.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html))<br>@Transactional<br>fun [deleteUser](delete-user.md)(user: [User](../../org.darkSolace.muse.user.model/-user/index.md))<br>Deletes a [User](../../org.darkSolace.muse.user.model/-user/index.md) from the database |
 | [getAll](get-all.md) | [jvm]<br>fun [getAll](get-all.md)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt;<br>Returns a [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) of all [User](../../org.darkSolace.muse.user.model/-user/index.md)s |
 | [getAllWithRole](get-all-with-role.md) | [jvm]<br>fun [getAllWithRole](get-all-with-role.md)(role: [Role](../../org.darkSolace.muse.user.model/-role/index.md)): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt;<br>Returns a [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) of all [User](../../org.darkSolace.muse.user.model/-user/index.md)s with a given [Role](../../org.darkSolace.muse.user.model/-role/index.md) |
-| [getAllWithUserTag](get-all-with-user-tag.md) | [jvm]<br>fun [getAllWithUserTag](get-all-with-user-tag.md)(tag: [UserTag](../../org.darkSolace.muse.user.model/-user-tag/index.md)): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt;<br>Returns a [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html) of all [User](../../org.darkSolace.muse.user.model/-user/index.md)s with a given [UserTag](../../org.darkSolace.muse.user.model/-user-tag/index.md) |
 | [getById](get-by-id.md) | [jvm]<br>fun [getById](get-by-id.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)): [User](../../org.darkSolace.muse.user.model/-user/index.md)?<br>Finds a [User](../../org.darkSolace.muse.user.model/-user/index.md) by its ID |
 | [updateLastLogin](update-last-login.md) | [jvm]<br>fun [updateLastLogin](update-last-login.md)(user: [User](../../org.darkSolace.muse.user.model/-user/index.md))<br>Updates the lastLogInDate timestamp of a given user. |
 | [updateUserSettings](update-user-settings.md) | [jvm]<br>@Transactional<br>fun [updateUserSettings](update-user-settings.md)(user: [User](../../org.darkSolace.muse.user.model/-user/index.md), settings: [UserSettings](../../org.darkSolace.muse.user.model/-user-settings/index.md)): [User](../../org.darkSolace.muse.user.model/-user/index.md)?<br>Replaces the [UserSettings](../../org.darkSolace.muse.user.model/-user-settings/index.md) of a given [User](../../org.darkSolace.muse.user.model/-user/index.md) and persists it |
@@ -42,6 +41,4 @@ jvm
 
 | Name | Summary |
 |---|---|
-| [lastSeenRepository](last-seen-repository.md) | [jvm]<br>val [lastSeenRepository](last-seen-repository.md): [LastSeenRepository](../../org.darkSolace.muse.lastSeen.repository/-last-seen-repository/index.md) |
 | [userRepository](user-repository.md) | [jvm]<br>val [userRepository](user-repository.md): [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md) |
-| [userSettingsRepository](user-settings-repository.md) | [jvm]<br>val [userSettingsRepository](user-settings-repository.md): [UserSettingsRepository](../../org.darkSolace.muse.user.repository/-user-settings-repository/index.md) |

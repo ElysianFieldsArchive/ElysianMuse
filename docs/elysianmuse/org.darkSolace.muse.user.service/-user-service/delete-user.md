@@ -16,7 +16,7 @@ jvm
 
 | | |
 |---|---|
-| user | the [User](../../org.darkSolace.muse.user.model/-user/index.md) to be deleted<br>TODO: deal with created content by this user<br><ul><li>assign stories and chapters to orphan accounts</li><li>replace username in private messages and comments</li><li>other occurrences where a user might be involved</li></ul> |
+| user | the [User](../../org.darkSolace.muse.user.model/-user/index.md) to be deleted<br>TODO: deal with created content by this user<br>-     assign stories and chapters to orphan accounts -     replace username in private messages and comments -     other occurrences where a user might be involved |
 
 [jvm]\
 

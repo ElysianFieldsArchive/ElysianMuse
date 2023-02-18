@@ -1,5 +1,6 @@
 package org.darkSolace.muse.security
 
+import org.darkSolace.muse.mail.service.MailService
 import org.darkSolace.muse.security.model.JwtResponse
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.testUtil.TestBase
@@ -21,6 +22,9 @@ class AuthControllerAccessTests : TestBase() {
     private lateinit var userRoleService: UserRoleService
 
     @Autowired
+    private lateinit var mailService: MailService
+
+    @Autowired
     private lateinit var restTemplate: TestRestTemplate
 
     @Test
@@ -29,7 +33,6 @@ class AuthControllerAccessTests : TestBase() {
         // no user created, trying to sign in with unknown user
         val url = generateUrl("/api/test/auth/")
         val response = restTemplate.getForEntity(url, String::class.java)
-        println(response)
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
         Assertions.assertEquals("Test passed", response.body)
     }
@@ -54,6 +57,8 @@ class AuthControllerAccessTests : TestBase() {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
+        mailService.markEMailAsValid("test")
+
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
             url2,
@@ -93,7 +98,7 @@ class AuthControllerAccessTests : TestBase() {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
-
+        mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.ADMINISTRATOR)
 
         val url2 = generateUrl("/api/auth/signin")
@@ -135,7 +140,7 @@ class AuthControllerAccessTests : TestBase() {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
-
+        mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.MODERATOR)
 
         val url2 = generateUrl("/api/auth/signin")
@@ -177,6 +182,7 @@ class AuthControllerAccessTests : TestBase() {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
+        mailService.markEMailAsValid("test")
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
             url2,
@@ -203,7 +209,7 @@ class AuthControllerAccessTests : TestBase() {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
-
+        mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.MODERATOR)
 
         val url2 = generateUrl("/api/auth/signin")
@@ -234,7 +240,7 @@ class AuthControllerAccessTests : TestBase() {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
-
+        mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.ADMINISTRATOR)
 
         val url2 = generateUrl("/api/auth/signin")

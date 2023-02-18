@@ -32,6 +32,7 @@ docs/uml/**/.metadata
 # backend build and additional files/folders
 build/
 .gradle
+out/
 
 # exclude configurations containing passwords etc
 backend/src/main/resources/*.properties

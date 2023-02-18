@@ -17,4 +17,4 @@ jvm
 
 | | |
 |---|---|
-| timeout | <ul><li>[Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html), used to filter [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md)s older than the specified date</li></ul> |
+| timeout | -     [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html), used to filter [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md)s older than the specified date |

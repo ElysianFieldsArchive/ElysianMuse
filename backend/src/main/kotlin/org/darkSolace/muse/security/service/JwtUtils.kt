@@ -3,6 +3,7 @@ package org.darkSolace.muse.security.service
 import io.jsonwebtoken.*
 import io.jsonwebtoken.security.Keys
 import io.jsonwebtoken.security.SecurityException
+import jakarta.servlet.http.HttpServletRequest
 import org.darkSolace.muse.security.model.UserDetails
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Component
 import java.util.*
-import javax.servlet.http.HttpServletRequest
 
 /**
  * Utility [Component] for tasks related to JWT
@@ -46,7 +46,7 @@ class JwtUtils {
      */
     fun getUserNameFromJwtToken(token: String?): String? {
         return Jwts.parserBuilder()
-            .setSigningKey(Base64.getEncoder().encodeToString(jwtSecret?.toByteArray()))
+            .setSigningKey(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()))
             .build()
             .parseClaimsJws(token)
             .body.subject
@@ -61,7 +61,7 @@ class JwtUtils {
     fun validateJwtToken(authToken: String?): Boolean {
         try {
             Jwts.parserBuilder()
-                .setSigningKey(Base64.getEncoder().encodeToString(jwtSecret?.toByteArray()))
+                .setSigningKey(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()))
                 .build()
                 .parseClaimsJws(authToken)
             return true

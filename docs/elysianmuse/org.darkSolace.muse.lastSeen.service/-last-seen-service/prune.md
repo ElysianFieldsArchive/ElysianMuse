@@ -4,7 +4,7 @@
 
 [jvm]\
 
-@Scheduled(cron = "0/30 * * * * *")
+@Scheduled(cron = &quot;0/30 * * * * *&quot;)
 
 @Transactional
 

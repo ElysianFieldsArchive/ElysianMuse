@@ -2,12 +2,17 @@ package org.darkSolace.muse
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.context.annotation.Bean
 import org.springframework.scheduling.annotation.EnableScheduling
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
 
 @SpringBootApplication
 @EnableScheduling
-class ElysianMuseApplication
+class ElysianMuseApplication {
+    @Bean
+    fun passwordEncoder() = BCryptPasswordEncoder()
+}
 
 const val MINIMUM_KEY_LENGTH = 64
 const val BITS_IN_BYTE = 8
@@ -36,4 +41,3 @@ fun secretCheck() {
             }
         }
 }
-

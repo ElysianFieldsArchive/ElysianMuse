@@ -4,7 +4,7 @@
 
 [jvm]\
 
-@PutMapping(value = ["/{user}/tag/{tag}"])
+@PutMapping(value = [&quot;/{user}/tag/{tag}&quot;])
 
 fun [addTagToUser](add-tag-to-user.md)(@PathVariableuser: [User](../../org.darkSolace.muse.user.model/-user/index.md)?, @PathVariabletag: [UserTag](../../org.darkSolace.muse.user.model/-user-tag/index.md), authentication: Authentication?): ResponseEntity&lt;[Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)&gt;
 

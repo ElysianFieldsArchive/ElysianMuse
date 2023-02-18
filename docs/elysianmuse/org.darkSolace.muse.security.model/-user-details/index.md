@@ -3,7 +3,7 @@
 # UserDetails
 
 [jvm]\
-class [UserDetails](index.md)(user: [User](../../org.darkSolace.muse.user.model/-user/index.md)?) : UserDetails
+class [UserDetails](index.md)(val user: [User](../../org.darkSolace.muse.user.model/-user/index.md)?) : UserDetails
 
 UserDetails model to pass required information to the [org.darkSolace.muse.security.service.AuthTokenFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md)
 

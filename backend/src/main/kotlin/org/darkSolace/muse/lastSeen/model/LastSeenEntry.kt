@@ -1,8 +1,8 @@
 package org.darkSolace.muse.lastSeen.model
 
+import jakarta.persistence.*
 import org.darkSolace.muse.user.model.User
 import java.util.*
-import javax.persistence.*
 
 /**
  * The [LastSeenEntry] class containing visitor session information, a user if the visitor is

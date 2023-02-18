@@ -1,5 +1,6 @@
 package org.darkSolace.muse.security
 
+import org.darkSolace.muse.mail.service.MailService
 import org.darkSolace.muse.security.model.JwtResponse
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.testUtil.TestBase
@@ -15,6 +16,9 @@ import org.springframework.http.HttpStatus
 class AuthControllerApiTests : TestBase() {
     @Autowired
     private lateinit var userRoleService: UserRoleService
+
+    @Autowired
+    private lateinit var mailService: MailService
 
     @Autowired
     private lateinit var restTemplate: TestRestTemplate
@@ -88,6 +92,7 @@ class AuthControllerApiTests : TestBase() {
         )
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
         Assertions.assertEquals("User created successfully.", response.body)
+        mailService.markEMailAsValid("test")
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
@@ -133,6 +138,7 @@ class AuthControllerApiTests : TestBase() {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
+        mailService.markEMailAsValid("test")
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
         Assertions.assertEquals("User created successfully.", response.body)
 
@@ -175,5 +181,26 @@ class AuthControllerApiTests : TestBase() {
         )
         Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.statusCode)
         Assertions.assertEquals("Unknown username or wrong password!", response.body)
+    }
+
+    @Test
+    @Order(9)
+    fun testSignIn_UnconfirmedEmail() {
+        val url = generateUrl("/api/auth/signup")
+        val response = restTemplate.postForEntity(
+            url,
+            SignUpRequest("test", "123", "test@example.com"),
+            String::class.java
+        )
+        Assertions.assertEquals(HttpStatus.OK, response.statusCode)
+        Assertions.assertEquals("User created successfully.", response.body)
+        val url2 = generateUrl("/api/auth/signin")
+        val secondResponse = restTemplate.postForEntity(
+            url2,
+            SignUpRequest("test", "123", "test@example.com"),
+            String::class.java
+        )
+        Assertions.assertEquals(HttpStatus.UNAUTHORIZED, secondResponse.statusCode)
+        Assertions.assertEquals("Email is not validated!", secondResponse.body)
     }
 }

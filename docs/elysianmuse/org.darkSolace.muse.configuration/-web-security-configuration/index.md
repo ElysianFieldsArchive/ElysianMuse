@@ -7,9 +7,9 @@
 
 @EnableWebSecurity
 
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableMethodSecurity(prePostEnabled = true)
 
-class [WebSecurityConfiguration](index.md)(@AutowireduserDetailsService: [UserDetailsService](../../org.darkSolace.muse.security.service/-user-details-service/index.md), @AutowiredunauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md)) : WebSecurityConfigurerAdapter
+class [WebSecurityConfiguration](index.md)(@Autowiredval unauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md), @Autowiredval authTokenFilter: [AuthTokenFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md), @Autowiredval lastSeenFilter: [LastSeenFilter](../../org.darkSolace.muse.lastSeen.service/-last-seen-filter/index.md))
 
 Configuration class to configure authentication via JWT
 
@@ -17,31 +17,18 @@ Configuration class to configure authentication via JWT
 
 | | |
 |---|---|
-| [WebSecurityConfiguration](-web-security-configuration.md) | [jvm]<br>fun [WebSecurityConfiguration](-web-security-configuration.md)(@AutowireduserDetailsService: [UserDetailsService](../../org.darkSolace.muse.security.service/-user-details-service/index.md), @AutowiredunauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md)) |
+| [WebSecurityConfiguration](-web-security-configuration.md) | [jvm]<br>fun [WebSecurityConfiguration](-web-security-configuration.md)(@AutowiredunauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md), @AutowiredauthTokenFilter: [AuthTokenFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md), @AutowiredlastSeenFilter: [LastSeenFilter](../../org.darkSolace.muse.lastSeen.service/-last-seen-filter/index.md)) |
 
 ## Functions
 
 | Name | Summary |
 |---|---|
-| [authenticationManagerBean](index.md#542724139%2FFunctions%2F-1216412040) | [jvm]<br>open fun [authenticationManagerBean](index.md#542724139%2FFunctions%2F-1216412040)(): AuthenticationManager |
-| [configure](index.md#138919942%2FFunctions%2F-1216412040) | [jvm]<br>open override fun [configure](index.md#138919942%2FFunctions%2F-1216412040)(web: WebSecurity) |
-| [getApplicationContext](index.md#581339%2FFunctions%2F-1216412040) | [jvm]<br>fun [getApplicationContext](index.md#581339%2FFunctions%2F-1216412040)(): ApplicationContext |
-| [getHttp](index.md#-1235949710%2FFunctions%2F-1216412040) | [jvm]<br>fun [getHttp](index.md#-1235949710%2FFunctions%2F-1216412040)(): HttpSecurity |
-| [init](index.md#968965430%2FFunctions%2F-1216412040) | [jvm]<br>open override fun [init](index.md#968965430%2FFunctions%2F-1216412040)(web: WebSecurity) |
-| [passwordEncoder](password-encoder.md) | [jvm]<br>@Bean<br>fun [passwordEncoder](password-encoder.md)(): BCryptPasswordEncoder<br>Sets the password encoder to BCryptPasswordEncoder |
-| [setApplicationContext](index.md#-1107405718%2FFunctions%2F-1216412040) | [jvm]<br>@Autowired<br>open fun [setApplicationContext](index.md#-1107405718%2FFunctions%2F-1216412040)(context: ApplicationContext) |
-| [setAuthenticationConfiguration](index.md#528597738%2FFunctions%2F-1216412040) | [jvm]<br>@Autowired<br>open fun [setAuthenticationConfiguration](index.md#528597738%2FFunctions%2F-1216412040)(authenticationConfiguration: AuthenticationConfiguration) |
-| [setContentNegotationStrategy](index.md#1189391010%2FFunctions%2F-1216412040) | [jvm]<br>@Autowired(required = false)<br>open fun [setContentNegotationStrategy](index.md#1189391010%2FFunctions%2F-1216412040)(contentNegotiationStrategy: ContentNegotiationStrategy) |
-| [setObjectPostProcessor](index.md#-1081844195%2FFunctions%2F-1216412040) | [jvm]<br>@Autowired<br>open fun [setObjectPostProcessor](index.md#-1081844195%2FFunctions%2F-1216412040)(objectPostProcessor: ObjectPostProcessor&lt;[Any](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)&gt;) |
-| [setTrustResolver](index.md#1618322525%2FFunctions%2F-1216412040) | [jvm]<br>@Autowired(required = false)<br>open fun [setTrustResolver](index.md#1618322525%2FFunctions%2F-1216412040)(trustResolver: AuthenticationTrustResolver) |
-| [userDetailsService](index.md#462167532%2FFunctions%2F-1216412040) | [jvm]<br>open fun [userDetailsService](index.md#462167532%2FFunctions%2F-1216412040)(): UserDetailsService |
-| [userDetailsServiceBean](index.md#125784220%2FFunctions%2F-1216412040) | [jvm]<br>open fun [userDetailsServiceBean](index.md#125784220%2FFunctions%2F-1216412040)(): UserDetailsService |
+| [filterChain](filter-chain.md) | [jvm]<br>@Bean<br>fun [filterChain](filter-chain.md)(http: HttpSecurity): SecurityFilterChain |
 
 ## Properties
 
 | Name | Summary |
 |---|---|
-| [authTokenFilter](auth-token-filter.md) | [jvm]<br>@Autowired<br>lateinit var [authTokenFilter](auth-token-filter.md): [AuthTokenFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md) |
-| [lastSeenFilter](last-seen-filter.md) | [jvm]<br>@Autowired<br>lateinit var [lastSeenFilter](last-seen-filter.md): [LastSeenFilter](../../org.darkSolace.muse.lastSeen.service/-last-seen-filter/index.md) |
+| [authTokenFilter](auth-token-filter.md) | [jvm]<br>val [authTokenFilter](auth-token-filter.md): [AuthTokenFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md) |
+| [lastSeenFilter](last-seen-filter.md) | [jvm]<br>val [lastSeenFilter](last-seen-filter.md): [LastSeenFilter](../../org.darkSolace.muse.lastSeen.service/-last-seen-filter/index.md) |
 | [unauthorizedHandler](unauthorized-handler.md) | [jvm]<br>val [unauthorizedHandler](unauthorized-handler.md): [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md) |
-| [userDetailsService](user-details-service.md) | [jvm]<br>val [userDetailsService](user-details-service.md): [UserDetailsService](../../org.darkSolace.muse.security.service/-user-details-service/index.md) |

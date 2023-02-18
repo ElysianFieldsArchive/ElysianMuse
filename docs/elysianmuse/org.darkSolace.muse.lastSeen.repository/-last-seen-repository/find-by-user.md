@@ -17,4 +17,4 @@ jvm
 
 | | |
 |---|---|
-| user | <ul><li>the [User](../../org.darkSolace.muse.user.model/-user/index.md) to be used to look up the [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md)</li></ul> |
+| user | -     the [User](../../org.darkSolace.muse.user.model/-user/index.md) to be used to look up the [LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md) |

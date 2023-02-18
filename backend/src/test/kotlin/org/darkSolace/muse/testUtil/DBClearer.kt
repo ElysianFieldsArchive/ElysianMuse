@@ -1,27 +1,43 @@
 package org.darkSolace.muse.testUtil
 
 import org.darkSolace.muse.lastSeen.repository.LastSeenRepository
-import org.darkSolace.muse.user.repository.AvatarRepository
-import org.darkSolace.muse.user.repository.SuspensionHistoryRepository
-import org.darkSolace.muse.user.repository.UserRepository
-import org.darkSolace.muse.user.repository.UserSettingsRepository
+import org.darkSolace.muse.mail.repository.MailQueueRepository
+import org.darkSolace.muse.privMessages.repository.PrivateMessageRepository
+import org.darkSolace.muse.user.repository.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class DBClearer(
+class DBClearer {
+
     @Autowired
-    val userRepository: UserRepository,
+    lateinit var userRepository: UserRepository
+
     @Autowired
-    val userSettingsRepository: UserSettingsRepository,
+    lateinit var userSettingsRepository: UserSettingsRepository
+
     @Autowired
-    val avatarRepository: AvatarRepository,
+    lateinit var avatarRepository: AvatarRepository
+
     @Autowired
-    val suspensionHistoryRepository: SuspensionHistoryRepository,
+    lateinit var suspensionHistoryRepository: SuspensionHistoryRepository
+
     @Autowired
-    val lastSeenRepository: LastSeenRepository
-) {
+    lateinit var lastSeenRepository: LastSeenRepository
+
+    @Autowired
+    lateinit var mailQueueRepository: MailQueueRepository
+
+    @Autowired
+    lateinit var passwordResetRequestRepository: PasswordResetRequestRepository
+
+    @Autowired
+    lateinit var privateMessageRepository: PrivateMessageRepository
+
     fun clearAll() {
+        privateMessageRepository.deleteAll()
+        passwordResetRequestRepository.deleteAll()
+        mailQueueRepository.deleteAll()
         lastSeenRepository.deleteAll()
         suspensionHistoryRepository.deleteAll()
         userRepository.deleteAll()

@@ -4,7 +4,7 @@
 
 [jvm]\
 
-@PostMapping(value = ["/suspend/confirm/{confirmationCode}"])
+@PostMapping(value = [&quot;/suspend/confirm/{confirmationCode}&quot;])
 
 fun [confirmSuspension](confirm-suspension.md)(@PathVariableconfirmationCode: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)): ResponseEntity&lt;[Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)&gt;
 

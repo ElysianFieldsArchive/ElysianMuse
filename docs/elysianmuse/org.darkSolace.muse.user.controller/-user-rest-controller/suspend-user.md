@@ -4,9 +4,9 @@
 
 [jvm]\
 
-@PostMapping(value = ["/suspend/{id}"])
+@PostMapping(value = [&quot;/suspend/{id}&quot;])
 
-@PreAuthorize(value = "hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')")
+@PreAuthorize(value = &quot;hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')&quot;)
 
 fun [suspendUser](suspend-user.md)(@PathVariableid: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)): ResponseEntity&lt;[Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)&gt;
 

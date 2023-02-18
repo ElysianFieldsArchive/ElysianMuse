@@ -4,7 +4,7 @@
 
 [jvm]\
 
-@GetMapping(value = ["/online"])
+@GetMapping(value = [&quot;/online&quot;])
 
 fun [getOnlineUsers](get-online-users.md)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt;
 

@@ -1,8 +1,8 @@
 package org.darkSolace.muse.story.model
 
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
 import org.hibernate.Hibernate
-import javax.persistence.Entity
-import javax.persistence.Id
 
 /**
  * Placeholder for a story tag class

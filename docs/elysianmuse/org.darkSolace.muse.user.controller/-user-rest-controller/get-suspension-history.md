@@ -4,9 +4,9 @@
 
 [jvm]\
 
-@GetMapping(value = ["/suspend/history/{user}"])
+@GetMapping(value = [&quot;/suspend/history/{user}&quot;])
 
-@PreAuthorize(value = "hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')")
+@PreAuthorize(value = &quot;hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')&quot;)
 
 fun [getSuspensionHistory](get-suspension-history.md)(@PathVariableuser: [User](../../org.darkSolace.muse.user.model/-user/index.md)): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[SuspensionHistoryEntry](../../org.darkSolace.muse.user.model/-suspension-history-entry/index.md)&gt;
 

@@ -1,11 +1,12 @@
 package org.darkSolace.muse.user.service
 
 import org.darkSolace.muse.lastSeen.repository.LastSeenRepository
+import org.darkSolace.muse.mail.repository.MailQueueRepository
+import org.darkSolace.muse.mail.service.MailService
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.model.User
 import org.darkSolace.muse.user.model.UserSettings
-import org.darkSolace.muse.user.model.UserTag
 import org.darkSolace.muse.user.repository.UserRepository
 import org.darkSolace.muse.user.repository.UserSettingsRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -24,8 +25,10 @@ import java.util.*
 @Service
 class UserService(
     @Autowired val userRepository: UserRepository,
-    @Autowired val userSettingsRepository: UserSettingsRepository,
-    @Autowired val lastSeenRepository: LastSeenRepository
+    @Autowired private val userSettingsRepository: UserSettingsRepository,
+    @Autowired private val lastSeenRepository: LastSeenRepository,
+    @Autowired private val mailService: MailService,
+    @Autowired private val mailQueueRepository: MailQueueRepository,
 ) {
 
     /**
@@ -43,7 +46,13 @@ class UserService(
         //hash the password before saving the user
         user.password = BCrypt.hashpw(user.password, user.salt)
 
+        //generate email confirmation string
+        user.emailConfirmationCode = UUID.randomUUID().toString()
+
         userRepository.save(user)
+
+        //user saved - send confirmation email
+        mailService.sendEMailConfirmationMail(user)
         return user
     }
 
@@ -70,13 +79,6 @@ class UserService(
      */
     fun getAllWithRole(role: Role) = userRepository.findAllByRole(role)
 
-    /**
-     * Returns a [List] of all [User]s with a given [UserTag]
-     *
-     * @param tag the [UserTag] to filter by
-     * @return a [List] of all [User]s with the given [UserTag]- might be empty if no [User]s exist with this [UserTag]
-     */
-    fun getAllWithUserTag(tag: UserTag) = userRepository.findAllByUserTags(tag)
 
     /**
      * Deletes a [User] from the database
@@ -97,6 +99,7 @@ class UserService(
                 user
             }
 
+        mailQueueRepository.deleteAllByMail_Recipient(deletedUser)
         lastSeenRepository.deleteByUser(deletedUser)
         userRepository.delete(deletedUser)
     }

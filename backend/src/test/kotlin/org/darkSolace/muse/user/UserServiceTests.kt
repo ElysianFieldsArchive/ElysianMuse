@@ -112,12 +112,13 @@ class UserServiceTests : TestBase() {
         MatcherAssert.assertThat(
             userService.getById(user.id!!).toString(),
             Matchers.matchesPattern(
-                """User\(id = \d+, username = testUser2, """ +
-                        """email = test\d@example\.com, realName = Thomas Test, """ +
-                        """signUpDate = 202\d-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{0,3}, """ +
-                        """lastLogInDate = null, bio = Short Bio, birthday = 1980-01-01, """ +
-                        """validatedAuthor = false, onProbation = false, userSettings = $defaultUserSettings, """ +
-                        """userTags = \[BETA], avatar = Avatar\(id = \d+\), roles = MEMBER\)""".toPattern()
+                """User\(id = \d+ , username = testUser2 , email = test\d@example\.com , """ +
+                        """realName = Thomas Test , signUpDate = 202\d-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{0,3} , """ +
+                        """lastLogInDate = null , bio = Short Bio , birthday = 1980-01-01 , """ +
+                        """validatedAuthor = false , onProbation = false , userSettings = $defaultUserSettings , """ +
+                        """userTags = \[BETA] , avatar = Avatar\(id = \d+\) , role = MEMBER , """ +
+                        """emailConfirmed = false , emailConfirmationCode = null \)"""
+                            .toPattern()
             )
         )
     }
@@ -240,72 +241,6 @@ class UserServiceTests : TestBase() {
         Assertions.assertTrue(mods.all { it.role == Role.MODERATOR })
         Assertions.assertTrue(admins.all { it.role == Role.ADMINISTRATOR })
         Assertions.assertTrue(suspended.all { it.role == Role.SUSPENDED })
-    }
-
-    @Test
-    fun getAllWithUserTags() {
-        // create test users
-        userService.createUser(
-            User(
-                username = "testUser18", password = "123", email = "test18@example.com",
-                userTags = mutableSetOf(UserTag.ARTIST)
-            )
-        )
-        userService.createUser(
-            User(
-                username = "testUser19", password = "123", email = "test19@example.com",
-                userTags = mutableSetOf(UserTag.ARTIST_INACTIVE)
-            )
-        )
-        userService.createUser(
-            User(
-                username = "testUser20", password = "123", email = "test20@example.com",
-                userTags = mutableSetOf(UserTag.BETA)
-            )
-        )
-        userService.createUser(
-            User(
-                username = "testUser21", password = "123", email = "test21@example.com",
-                userTags = mutableSetOf(UserTag.BETA_INACTIVE)
-            )
-        )
-        userService.createUser(
-            User(
-                username = "testUser22", password = "123", email = "test22@example.com",
-                userTags = mutableSetOf(UserTag.AUTHOR)
-            )
-        )
-        userService.createUser(
-            User(
-                username = "testUser23", password = "123", email = "test23@example.com",
-                userTags = mutableSetOf(UserTag.COMMENTER)
-            )
-        )
-        userService.createUser(
-            User(
-                username = "testUser24", password = "123", email = "test24@example.com",
-                userTags = mutableSetOf(UserTag.COMMENTER, UserTag.AUTHOR, UserTag.BETA_INACTIVE)
-            )
-        )
-        userService.createUser(User(username = "testUser25", password = "123", email = "test25@example.com"))
-
-        //collect values
-        val countWithoutTags = userRepository.findAll().count { it.userTags.isEmpty() }
-        val countBeta = userService.getAllWithUserTag(UserTag.BETA).count()
-        val countBetaInactive = userService.getAllWithUserTag(UserTag.BETA_INACTIVE).count()
-        val countArtist = userService.getAllWithUserTag(UserTag.ARTIST).count()
-        val countArtistInactive = userService.getAllWithUserTag(UserTag.ARTIST_INACTIVE).count()
-        val countCommenter = userService.getAllWithUserTag(UserTag.COMMENTER).count()
-        val countAuthor = userService.getAllWithUserTag(UserTag.AUTHOR).count()
-
-        //assertions
-        Assertions.assertEquals(1, countWithoutTags)
-        Assertions.assertEquals(1, countBeta)
-        Assertions.assertEquals(2, countBetaInactive)
-        Assertions.assertEquals(1, countArtist)
-        Assertions.assertEquals(1, countArtistInactive)
-        Assertions.assertEquals(2, countCommenter)
-        Assertions.assertEquals(2, countAuthor)
     }
 
     @Test

@@ -1,5 +1,6 @@
 package org.darkSolace.muse.user
 
+import org.darkSolace.muse.mail.service.MailService
 import org.darkSolace.muse.security.model.JwtResponse
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.testUtil.TestBase
@@ -19,6 +20,9 @@ class UserControllerApiTests : TestBase() {
 
     @Autowired
     private lateinit var userService: UserService
+
+    @Autowired
+    private lateinit var mailService: MailService
 
     @Autowired
     private lateinit var userRoleService: UserRoleService
@@ -49,6 +53,7 @@ class UserControllerApiTests : TestBase() {
         )
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
         Assertions.assertEquals("User created successfully.", response.body)
+        mailService.markEMailAsValid("test")
 
         url = generateUrl("/api/auth/signin")
         val jwtResponse = restTemplate.postForEntity(
@@ -123,7 +128,7 @@ class UserControllerApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-
+        mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -162,6 +167,8 @@ class UserControllerApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
+        mailService.markEMailAsValid("test2")
+
 
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
@@ -195,7 +202,7 @@ class UserControllerApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-
+        mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -222,6 +229,7 @@ class UserControllerApiTests : TestBase() {
         //generate user to suspend
         val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
         var user = userService.createUserFromSignUpRequest(signUpRequest)
+        mailService.markEMailAsValid("test")
 
         //generate admin to perform the suspension
         //create user and sign in
@@ -231,7 +239,7 @@ class UserControllerApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-
+        mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -293,6 +301,7 @@ class UserControllerApiTests : TestBase() {
             SignUpRequest("test", "123", "test@example.com"),
             String::class.java
         )
+        mailService.markEMailAsValid("test")
 
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
@@ -334,7 +343,7 @@ class UserControllerApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-
+        mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -373,7 +382,7 @@ class UserControllerApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-
+        mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.MODERATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -412,6 +421,7 @@ class UserControllerApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
+        mailService.markEMailAsValid("test2")
 
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
@@ -445,7 +455,7 @@ class UserControllerApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
-
+        mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.ADMINISTRATOR)
 
         url = generateUrl("/api/auth/signin")
@@ -477,6 +487,7 @@ class UserControllerApiTests : TestBase() {
             SignUpRequest("test2", "123", "test2@example.com"),
             String::class.java
         )
+        mailService.markEMailAsValid("test2")
 
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(

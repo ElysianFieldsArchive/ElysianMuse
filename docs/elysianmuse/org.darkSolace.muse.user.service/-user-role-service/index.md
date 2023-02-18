@@ -5,7 +5,7 @@
 [jvm]\
 @Service
 
-class [UserRoleService](index.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowiredsuspensionHistoryRepository: [SuspensionHistoryRepository](../../org.darkSolace.muse.user.repository/-suspension-history-repository/index.md))
+class [UserRoleService](index.md)(@Autowiredval userRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @Autowiredval suspensionHistoryRepository: [SuspensionHistoryRepository](../../org.darkSolace.muse.user.repository/-suspension-history-repository/index.md))
 
 Service class for [Role](../../org.darkSolace.muse.user.model/-role/index.md) related tasks when working with [User](../../org.darkSolace.muse.user.model/-user/index.md)s.
 

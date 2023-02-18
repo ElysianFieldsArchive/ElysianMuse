@@ -1,5 +1,6 @@
 package org.darkSolace.muse.security.controller
 
+import org.darkSolace.muse.security.exception.EMailNotValidatedException
 import org.darkSolace.muse.security.model.LoginRequest
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.security.model.SignUpResponse
@@ -9,6 +10,7 @@ import org.darkSolace.muse.user.service.UserRoleService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.security.authentication.InternalAuthenticationServiceException
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.authority.SimpleGrantedAuthority
@@ -26,6 +28,9 @@ class AuthController(
     @Autowired val userRoleService: UserRoleService,
     @Autowired val suspensionService: SuspensionService
 ) {
+    private final val usernamePasswordWrongMsg = "Unknown username or wrong password!"
+    private final val emailNotValidatedMsg = "Email is not validated!"
+
     /**
      * Checks a transmitted [LoginRequest] for a valid username/password pair. Listens on /api/auth/signin.
      *
@@ -40,7 +45,7 @@ class AuthController(
         return try {
             val token = authenticationService.authenticate(loginRequest)
             if (token == null) {
-                ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unknown username or wrong password!")
+                ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(usernamePasswordWrongMsg)
             } else {
                 //valid sign in, but check if user is suspended
                 val authentication =
@@ -57,7 +62,11 @@ class AuthController(
                 }
             }
         } catch (_: InternalAuthenticationServiceException) {
-            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unknown username or wrong password!")
+            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(usernamePasswordWrongMsg)
+        } catch (_: BadCredentialsException) {
+            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(usernamePasswordWrongMsg)
+        } catch (_: EMailNotValidatedException) {
+            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(emailNotValidatedMsg)
         }
     }
 

@@ -1,6 +1,7 @@
 package org.darkSolace.muse.lastSeen
 
 import org.darkSolace.muse.lastSeen.service.LastSeenService
+import org.darkSolace.muse.mail.service.MailService
 import org.darkSolace.muse.security.model.LoginRequest
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.security.service.AuthenticationService
@@ -28,6 +29,9 @@ class LastSeenApiTests : TestBase() {
     private lateinit var authService: AuthenticationService
 
     @Autowired
+    private lateinit var mailService: MailService
+
+    @Autowired
     private lateinit var lastSeenService: LastSeenService
 
     @Test
@@ -45,7 +49,7 @@ class LastSeenApiTests : TestBase() {
         //generate user
         val signupRequest = SignUpRequest("test", "123", "test@example.com")
         authService.signUpUser(signupRequest)
-
+        mailService.markEMailAsValid("test")
         val loginRequest = LoginRequest("test", "123")
         val jwtResponse = authService.authenticate(loginRequest)
 
@@ -130,6 +134,7 @@ class LastSeenApiTests : TestBase() {
         //generate user
         val signupRequest = SignUpRequest("test", "123", "test@example.com")
         authService.signUpUser(signupRequest)
+        mailService.markEMailAsValid("test")
 
         val loginRequest = LoginRequest("test", "123")
         val jwtResponse = authService.authenticate(loginRequest)
