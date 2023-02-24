@@ -11,7 +11,9 @@ import org.hibernate.Hibernate
 data class StoryTag(
     @Id
     var id: Long? = null,
-    val tagName: String
+    val name: String,
+    val description: String,
+    val type: StoryTagType
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -25,6 +27,6 @@ data class StoryTag(
 
     @Override
     override fun toString(): String {
-        return this::class.simpleName + "(id = $id , tagName = $tagName )"
+        return this::class.simpleName + "(id = $id , tagName = $name )"
     }
 }

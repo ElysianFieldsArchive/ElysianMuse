@@ -17,7 +17,8 @@ class MailTemplate(
     @GeneratedValue
     var id: Long? = null
 
-    @Column(length = 2048)
+    @Lob
+    @Basic
     var mailContent: String = ""
     var mailSubject: String = ""
 

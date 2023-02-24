@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional
  */
 @Service
 class UserTagService(@Autowired val userRepository: UserRepository) {
-
     /**
      * Adds a [UserTag] to a [User]
      *

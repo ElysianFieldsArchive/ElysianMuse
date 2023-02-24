@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("api/lastSeen")
 class LastSeenController(@Autowired val lastSeenService: LastSeenService) {
-
     /**
      * Retrieves all public profiles of currently active logged-in [User]s
      *

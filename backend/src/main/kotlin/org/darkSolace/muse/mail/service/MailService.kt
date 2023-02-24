@@ -1,5 +1,6 @@
 package org.darkSolace.muse.mail.service
 
+import jakarta.transaction.Transactional
 import org.darkSolace.muse.mail.exception.TemplateException
 import org.darkSolace.muse.mail.model.Mail
 import org.darkSolace.muse.mail.model.MailQueueEntry
@@ -39,6 +40,7 @@ class MailService(
      *
      * @param user the user which email needs to be validated
      */
+    @Transactional
     fun sendEMailConfirmationMail(user: User) {
         //fetch mail template
         val template = mailTemplateRepository.findByType(TemplateType.SIGN_UP_CONFIRMATION)
@@ -79,6 +81,7 @@ class MailService(
      * @param user the user receiving the password reset mail
      * @param code the reset code to be sent in the email
      */
+    @Transactional
     fun sendPasswordResetMail(user: User, code: String) {
         //fetch mail template
         val template = mailTemplateRepository.findByType(TemplateType.FORGOT_PASSWORD)
@@ -128,7 +131,6 @@ class MailService(
         val mailQueueEntry = MailQueueEntry(null, mail)
         mailQueueRepository.save(mailQueueEntry)
     }
-
 
     /**
      * Generates a confirm-url used to verify an email address.

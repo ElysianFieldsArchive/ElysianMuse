@@ -51,7 +51,6 @@ data class User(
     @JsonIgnore
     var emailConfirmationCode: String? = null,
 ) {
-
     fun toPublicUser(): User {
         val user = User(id, username, "", "", "")
         user.role = role

@@ -79,7 +79,6 @@ class UserService(
      */
     fun getAllWithRole(role: Role) = userRepository.findAllByRole(role)
 
-
     /**
      * Deletes a [User] from the database
      *

@@ -15,10 +15,10 @@ class NewsComment {
     @GeneratedValue
     var id: Long? = null
 
-    @OneToOne
+    @ManyToOne
     var author: User? = null
 
-    @Column(length = 3000)
+    @Lob
     var content: String = ""
 
     @Temporal(TemporalType.TIMESTAMP)

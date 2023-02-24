@@ -16,7 +16,6 @@ class UserPasswordController(
     @Autowired val userService: UserService,
     @Autowired val userPasswordService: UserPasswordService,
 ) {
-
     /**
      * Updates a users password if a valid [org.darkSolace.muse.user.model.PasswordResetRequest] exists.
      *

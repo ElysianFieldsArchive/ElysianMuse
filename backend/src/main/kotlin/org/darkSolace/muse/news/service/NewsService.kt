@@ -1,5 +1,6 @@
 package org.darkSolace.muse.news.service
 
+import jakarta.transaction.Transactional
 import org.darkSolace.muse.news.model.NewsComment
 import org.darkSolace.muse.news.model.NewsEntry
 import org.darkSolace.muse.news.model.dto.NewsCommentDTO
@@ -32,6 +33,7 @@ class NewsService {
      * @param amount number of entries to fetch
      * @return list of [NewsEntry]s
      */
+    @Transactional
     fun getLast(amount: Int): List<NewsEntry> = newsRepository.findByOrderByCreationDateDesc().take(amount)
 
     /**
@@ -136,6 +138,7 @@ class NewsService {
      *
      * @return list of [NewsEntry]s, might be empty if no news exist
      */
+    @Transactional
     fun getAllNews(): List<NewsEntry> {
         return newsRepository.findByOrderByCreationDateDesc()
     }
@@ -144,12 +147,13 @@ class NewsService {
      * Removes a persisted [NewsEntry]
      *
      * @param id of the [NewsEntry] to be deleted
-     * @return true if deleteion was successful, false in case of error
+     * @return true if deletion was successful, false in case of error
      */
-    fun deleteNews(id: Long): Boolean = try {
+    @Transactional
+    fun deleteNews(id: Long): Boolean = if (newsRepository.existsById(id)) {
         newsRepository.deleteById(id)
         true
-    } catch (e: Exception) {
+    } else {
         false
     }
 
@@ -159,6 +163,7 @@ class NewsService {
      * @param id of the [NewsComment] to be deleted
      * @return true if deleteion was successful, false in case of error
      */
+    @Transactional
     fun deleteComment(id: Long): Boolean {
         //remove comment from news
         val comment = newsCommentRepository.findById(id).getOrNull() ?: return false

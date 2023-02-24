@@ -10,7 +10,7 @@ Removes a persisted [NewsEntry](../../org.darkSolace.muse.news.model/-news-entry
 
 #### Return
 
-true if deleteion was successful, false in case of error
+true if deletion was successful, false in case of error
 
 #### Parameters
 

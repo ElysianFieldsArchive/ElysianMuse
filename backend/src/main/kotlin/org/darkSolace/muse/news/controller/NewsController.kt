@@ -201,7 +201,6 @@ class NewsController {
         }
     }
 
-
     /**
      * Deletes the specified [NewsComment]. Can be called by a user with role [Role.MODERATOR], [Role.ADMINISTRATOR] or
      * the author itself.

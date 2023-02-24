@@ -26,7 +26,8 @@ data class PrivateMessage(
 
     var subject: String = "",
 
-    @Column(length = 32000)
+    @Lob
+    @Basic
     var content: String = "",
 
     @Temporal(TemporalType.TIMESTAMP)

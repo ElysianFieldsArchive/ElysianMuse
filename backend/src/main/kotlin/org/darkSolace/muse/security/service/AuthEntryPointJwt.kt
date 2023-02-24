@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component
  */
 @Component
 class AuthEntryPointJwt : AuthenticationEntryPoint {
-
     /**
      * Handles the request when an endpoint is accessed without authorisation.
      * Leads to an 401 UNAUTHORIZED HTTP Status code.

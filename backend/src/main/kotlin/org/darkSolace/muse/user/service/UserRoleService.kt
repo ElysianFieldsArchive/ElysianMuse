@@ -20,7 +20,6 @@ class UserRoleService(
     @Autowired val userRepository: UserRepository,
     @Autowired val suspensionHistoryRepository: SuspensionHistoryRepository
 ) {
-
     /**
      * Suspends the provided [User] and persists it in the database.
      *

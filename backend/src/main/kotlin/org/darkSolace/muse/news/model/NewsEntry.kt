@@ -20,12 +20,12 @@ class NewsEntry {
 
     var subject: String = ""
 
-    @Column(length = 3000)
+    @Lob
     var content: String = ""
 
     @Temporal(TemporalType.TIMESTAMP)
     var creationDate: Date = Date()
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.REMOVE])
     var newsComments: MutableList<NewsComment> = mutableListOf()
 }
