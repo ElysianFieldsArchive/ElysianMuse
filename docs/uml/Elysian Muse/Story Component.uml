@@ -292,7 +292,61 @@
         </ownedAttribute>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_3s03sK98Ee2B1o7-xxXlnA" name="service"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_3s03sK98Ee2B1o7-xxXlnA" name="service">
+      <packagedElement xmi:type="uml:Class" xmi:id="_5pFtkLWyEe24Je92fdDPRQ" name="StoryService">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Nq52ELWzEe24Je92fdDPRQ" name="createStory" visibility="private">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_U_gsILWzEe24Je92fdDPRQ" name="story" visibility="public" type="_yoVaYK-NEe2B1o7-xxXlnA" effect="create"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_4112QLWzEe24Je92fdDPRQ" name="getById">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_4112QbWzEe24Je92fdDPRQ" name="id" visibility="public" effect="read">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_EDcXILW0Ee24Je92fdDPRQ" name="story" visibility="public" type="_yoVaYK-NEe2B1o7-xxXlnA" direction="return" effect="create"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_RJJCELW0Ee24Je92fdDPRQ" name="getAllByUser">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_RJJCEbW0Ee24Je92fdDPRQ" name="userId" visibility="public" effect="read">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_RJJCErW0Ee24Je92fdDPRQ" name="story" visibility="public" type="_yoVaYK-NEe2B1o7-xxXlnA" direction="return" effect="create">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YhjaELW0Ee24Je92fdDPRQ"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YiAGALW0Ee24Je92fdDPRQ" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_ils_kLW0Ee24Je92fdDPRQ" name="deleteStory" visibility="private">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_ils_kbW0Ee24Je92fdDPRQ" name="story" visibility="public" type="_yoVaYK-NEe2B1o7-xxXlnA" effect="create"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_p3Tk8LW0Ee24Je92fdDPRQ" name="editStory" visibility="private">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_p3Tk8bW0Ee24Je92fdDPRQ" name="story" visibility="public" type="_yoVaYK-NEe2B1o7-xxXlnA" effect="create"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_yO7-QLW0Ee24Je92fdDPRQ" name="addChapter" visibility="private">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_yO7-QbW0Ee24Je92fdDPRQ" name="chapter" visibility="public" type="_9zSsYK-MEe2B1o7-xxXlnA" effect="create"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_jotfQLW1Ee24Je92fdDPRQ" name="generateEpub" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_jotfQbW1Ee24Je92fdDPRQ" name="storyId" visibility="public" effect="create">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_rpKusLW1Ee24Je92fdDPRQ" name="epub" visibility="public" direction="return" effect="create">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EByteObject"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_4uRjwLW1Ee24Je92fdDPRQ" name="generatePdf" visibility="protected">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_4uRjwbW1Ee24Je92fdDPRQ" name="storyId" visibility="public" effect="create">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_4uRjwrW1Ee24Je92fdDPRQ" name="pdf" visibility="public" direction="return" effect="create">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EByteObject"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_m8YaALW2Ee24Je92fdDPRQ" name="addContributor" visibility="private">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_m8YaAbW2Ee24Je92fdDPRQ" name="userId" visibility="public" effect="update">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedParameter>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_zdg_ULW2Ee24Je92fdDPRQ" name="contributionType" visibility="public" effect="update">
+            <type xmi:type="uml:Enumeration" href="User%20Component.uml#_APREsDXUEeyghuCVBA5yaw"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_-JgWgK-YEe2B-4NBUeqmNQ" memberEnd="_-JjZ0K-YEe2B-4NBUeqmNQ _-JkA4q-YEe2B-4NBUeqmNQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-JiLsK-YEe2B-4NBUeqmNQ" source="org.eclipse.papyrus">
