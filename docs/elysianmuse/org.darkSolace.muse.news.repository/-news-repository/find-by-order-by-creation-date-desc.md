@@ -3,9 +3,7 @@
 # findByOrderByCreationDateDesc
 
 [jvm]\
-abstract
-fun [findByOrderByCreationDateDesc](find-by-order-by-creation-date-desc.md)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)
-&lt;[NewsEntry](../../org.darkSolace.muse.news.model/-news-entry/index.md)&gt;
+abstract fun [findByOrderByCreationDateDesc](find-by-order-by-creation-date-desc.md)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[NewsEntry](../../org.darkSolace.muse.news.model/-news-entry/index.md)&gt;
 
 Retrieves a list of [NewsEntry](../../org.darkSolace.muse.news.model/-news-entry/index.md)s
 

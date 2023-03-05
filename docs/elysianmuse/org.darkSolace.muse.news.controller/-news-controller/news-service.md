@@ -6,5 +6,4 @@
 
 @Autowired
 
-lateinit
-var [newsService](news-service.md): [NewsService](../../org.darkSolace.muse.news.service/-news-service/index.md)
+lateinit var [newsService](news-service.md): [NewsService](../../org.darkSolace.muse.news.service/-news-service/index.md)

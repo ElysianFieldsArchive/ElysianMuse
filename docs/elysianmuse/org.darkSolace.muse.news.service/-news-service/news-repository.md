@@ -6,5 +6,4 @@
 
 @Autowired
 
-lateinit
-var [newsRepository](news-repository.md): [NewsRepository](../../org.darkSolace.muse.news.repository/-news-repository/index.md)
+lateinit var [newsRepository](news-repository.md): [NewsRepository](../../org.darkSolace.muse.news.repository/-news-repository/index.md)

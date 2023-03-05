@@ -9,11 +9,7 @@
 
 @EnableMethodSecurity(prePostEnabled = true)
 
-class [WebSecurityConfiguration](index.md)(@Autowiredval
-unauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md),
-@Autowiredval
-authTokenFilter: [AuthTokenFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md),
-@Autowiredval lastSeenFilter: [LastSeenFilter](../../org.darkSolace.muse.lastSeen.service/-last-seen-filter/index.md))
+class [WebSecurityConfiguration](index.md)(@Autowiredval unauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md), @Autowiredval authTokenFilter: [AuthTokenFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md), @Autowiredval lastSeenFilter: [LastSeenFilter](../../org.darkSolace.muse.lastSeen.service/-last-seen-filter/index.md))
 
 Configuration class to configure authentication via JWT
 
@@ -21,7 +17,7 @@ Configuration class to configure authentication via JWT
 
 | | |
 |---|---|
-| [WebSecurityConfiguration](-web-security-configuration.md) | [jvm]<br>fun [WebSecurityConfiguration](-web-security-configuration.md)(@AutowiredunauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md), @AutowiredauthTokenFilter: [AuthTokenFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md), @AutowiredlastSeenFilter: [LastSeenFilter](../../org.darkSolace.muse.lastSeen.service/-last-seen-filter/index.md)) |
+| [WebSecurityConfiguration](-web-security-configuration.md) | [jvm]<br>constructor(@AutowiredunauthorizedHandler: [AuthEntryPointJwt](../../org.darkSolace.muse.security.service/-auth-entry-point-jwt/index.md), @AutowiredauthTokenFilter: [AuthTokenFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md), @AutowiredlastSeenFilter: [LastSeenFilter](../../org.darkSolace.muse.lastSeen.service/-last-seen-filter/index.md)) |
 
 ## Functions
 

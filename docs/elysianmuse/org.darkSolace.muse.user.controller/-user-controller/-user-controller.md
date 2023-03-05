@@ -3,8 +3,4 @@
 # UserController
 
 [jvm]\
-fun [UserController](-user-controller.md)(
-@AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md),
-@AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md),
-@AutowireduserTagService: [UserTagService](../../org.darkSolace.muse.user.service/-user-tag-service/index.md),
-@AutowiredsuspensionService: [SuspensionService](../../org.darkSolace.muse.user.service/-suspension-service/index.md))
+constructor(@AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md), @AutowireduserTagService: [UserTagService](../../org.darkSolace.muse.user.service/-user-tag-service/index.md), @AutowiredsuspensionService: [SuspensionService](../../org.darkSolace.muse.user.service/-suspension-service/index.md))

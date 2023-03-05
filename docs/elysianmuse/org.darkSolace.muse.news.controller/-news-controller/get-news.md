@@ -6,22 +6,20 @@
 
 @GetMapping(value = [&quot;/{id}&quot;])
 
-fun [getNews](get-news.md)(
-@PathVariableid: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)): ResponseEntity&lt;*&gt;
+fun [getNews](get-news.md)(@PathVariableid: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)): ResponseEntity&lt;*&gt;
 
-Retrieves a [NewsEntryDTO](../../org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/index.md) by its id. Listens on
-/api/news/{id}.
+Retrieves a [NewsEntryDTO](../../org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/index.md) by its id. Listens on /api/news/{id}.
 
 #### Return
 
 the retrieved [NewsEntryDTO](../../org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/index.md) or `null`
 
-#### Samples
-
 #### Parameters
 
 jvm
 
-|     |             |
-|-----|-------------|
-| id  | the news id |
+| | |
+|---|---|
+| id | the news id |
+
+#### Samples

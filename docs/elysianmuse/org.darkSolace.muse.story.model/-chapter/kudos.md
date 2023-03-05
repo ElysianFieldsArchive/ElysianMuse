@@ -3,5 +3,4 @@
 # kudos
 
 [jvm]\
-val [kudos](kudos.md): [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html)
-&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt;
+val [kudos](kudos.md): [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt;

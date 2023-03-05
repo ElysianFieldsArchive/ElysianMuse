@@ -3,5 +3,4 @@
 # commentModeration
 
 [jvm]\
-var [commentModeration](comment-moderation.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) =
-false
+var [commentModeration](comment-moderation.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)

@@ -364,6 +364,66 @@ $dokka.location:org.darkSolace.muse.security.service/UserDetailsService///Pointi
 $dokka.location:org.darkSolace.muse.security.service/UserDetailsService/UserDetailsService/#org.darkSolace.muse.user.repository.UserRepository/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-user-details-service/-user-details-service.md
 $dokka.location:org.darkSolace.muse.security.service/UserDetailsService/loadUserByUsername/#kotlin.String?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-user-details-service/load-user-by-username.md
 $dokka.location:org.darkSolace.muse.security.service/UserDetailsService/userRepository/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.security.service/-user-details-service/user-repository.md
+$dokka.location:org.darkSolace.muse.story.model.dto////PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/index.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterCommentDTO.Companion///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-comment-d-t-o/-companion/index.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterCommentDTO.Companion/from/#org.darkSolace.muse.story.model.ChapterComment/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-comment-d-t-o/-companion/from.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterCommentDTO.Companion/fromList/#kotlin.collections.List[org.darkSolace.muse.story.model.ChapterComment]/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-comment-d-t-o/-companion/from-list.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterCommentDTO///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-comment-d-t-o/index.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterCommentDTO/ChapterCommentDTO/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-comment-d-t-o/-chapter-comment-d-t-o.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterCommentDTO/author/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-comment-d-t-o/author.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterCommentDTO/authorApproved/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-comment-d-t-o/author-approved.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterCommentDTO/chapter/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-comment-d-t-o/chapter.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterCommentDTO/content/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-comment-d-t-o/content.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterCommentDTO/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-comment-d-t-o/id.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterCommentDTO/publishedDate/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-comment-d-t-o/published-date.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterCommentDTO/referenceComment/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-comment-d-t-o/reference-comment.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO.Companion///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/-companion/index.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO.Companion/from/#org.darkSolace.muse.story.model.Chapter/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/-companion/from.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO.Companion/fromList/#kotlin.collections.List[org.darkSolace.muse.story.model.Chapter]/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/-companion/from-list.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/index.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/ChapterDTO/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/-chapter-d-t-o.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/artist/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/artist.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/beta/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/beta.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/comments/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/comments.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/content/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/content.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/endNotes/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/end-notes.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/hitCount/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/hit-count.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/id.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/kudos/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/kudos.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/publishedDate/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/published-date.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/startNotes/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/start-notes.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/story/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/story.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/storyBanner/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/story-banner.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/summary/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/summary.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/title/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/title.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/updatedDate/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/updated-date.md
+$dokka.location:org.darkSolace.muse.story.model.dto/ChapterDTO/wordCount/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-chapter-d-t-o/word-count.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO.Companion///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/-companion/index.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO.Companion/from/#org.darkSolace.muse.story.model.Story/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/-companion/from.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO.Companion/fromList/#kotlin.collections.List[org.darkSolace.muse.story.model.Story]/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/-companion/from-list.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/index.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/StoryDTO/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/-story-d-t-o.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/artist/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/artist.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/author/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/author.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/beta/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/beta.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/chapters/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/chapters.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/commentModeration/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/comment-moderation.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/completed/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/completed.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/eventId/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/event-id.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/favorites/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/favorites.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/favouritesCount/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/favourites-count.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/goalChapterCount/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/goal-chapter-count.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/hitCount/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/hit-count.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/id/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/id.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/kudoCount/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/kudo-count.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/publishedDate/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/published-date.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/rating/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/rating.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/storyBanner/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/story-banner.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/storyNotes/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/story-notes.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/storyTags/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/story-tags.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/summary/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/summary.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/title/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/title.md
+$dokka.location:org.darkSolace.muse.story.model.dto/StoryDTO/wordCount/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model.dto/-story-d-t-o/word-count.md
 $dokka.location:org.darkSolace.muse.story.model////PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/index.md
 $dokka.location:org.darkSolace.muse.story.model/Banner///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/-banner/index.md
 $dokka.location:org.darkSolace.muse.story.model/Banner/Banner/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/-banner/-banner.md
@@ -445,6 +505,24 @@ $dokka.location:org.darkSolace.muse.story.model/StoryTagType.WARNING///PointingT
 $dokka.location:org.darkSolace.muse.story.model/StoryTagType///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/-story-tag-type/index.md
 $dokka.location:org.darkSolace.muse.story.model/StoryTagType/valueOf/#kotlin.String/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/-story-tag-type/value-of.md
 $dokka.location:org.darkSolace.muse.story.model/StoryTagType/values/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.model/-story-tag-type/values.md
+$dokka.location:org.darkSolace.muse.story.repository////PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.repository/index.md
+$dokka.location:org.darkSolace.muse.story.repository/ChapterCommentRepository///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.repository/-chapter-comment-repository/index.md
+$dokka.location:org.darkSolace.muse.story.repository/ChapterCommentRepository/findByChapter/#org.darkSolace.muse.story.model.Chapter/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.repository/-chapter-comment-repository/find-by-chapter.md
+$dokka.location:org.darkSolace.muse.story.repository/ChapterRepository///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.repository/-chapter-repository/index.md
+$dokka.location:org.darkSolace.muse.story.repository/StoryRepository///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.repository/-story-repository/index.md
+$dokka.location:org.darkSolace.muse.story.service////PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.service/index.md
+$dokka.location:org.darkSolace.muse.story.service/StoryService///PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.service/-story-service/index.md
+$dokka.location:org.darkSolace.muse.story.service/StoryService/StoryService/#org.darkSolace.muse.story.repository.StoryRepository#org.darkSolace.muse.story.repository.ChapterRepository#org.darkSolace.muse.story.repository.ChapterCommentRepository#org.darkSolace.muse.user.repository.UserRepository/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.service/-story-service/-story-service.md
+$dokka.location:org.darkSolace.muse.story.service/StoryService/addChapter/#org.darkSolace.muse.story.model.dto.ChapterDTO/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.service/-story-service/add-chapter.md
+$dokka.location:org.darkSolace.muse.story.service/StoryService/addContributor/#kotlin.Long#kotlin.Long#org.darkSolace.muse.user.model.UserTag/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.service/-story-service/add-contributor.md
+$dokka.location:org.darkSolace.muse.story.service/StoryService/createStory/#org.darkSolace.muse.story.model.dto.StoryDTO/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.service/-story-service/create-story.md
+$dokka.location:org.darkSolace.muse.story.service/StoryService/deleteChapter/#kotlin.Long/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.service/-story-service/delete-chapter.md
+$dokka.location:org.darkSolace.muse.story.service/StoryService/deleteStory/#kotlin.Long/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.service/-story-service/delete-story.md
+$dokka.location:org.darkSolace.muse.story.service/StoryService/editChapter/#org.darkSolace.muse.story.model.dto.ChapterDTO/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.service/-story-service/edit-chapter.md
+$dokka.location:org.darkSolace.muse.story.service/StoryService/editStory/#org.darkSolace.muse.story.model.dto.StoryDTO/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.service/-story-service/edit-story.md
+$dokka.location:org.darkSolace.muse.story.service/StoryService/getAllStories/#/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.service/-story-service/get-all-stories.md
+$dokka.location:org.darkSolace.muse.story.service/StoryService/getStoriesFiltered/#kotlin.collections.List[org.darkSolace.muse.story.model.Rating]?#kotlin.collections.List[org.darkSolace.muse.story.model.StoryTag]?/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.service/-story-service/get-stories-filtered.md
+$dokka.location:org.darkSolace.muse.story.service/StoryService/getStoryById/#kotlin.Long/PointingToDeclaration/elysianmuse/org.darkSolace.muse.story.service/-story-service/get-story-by-id.md
 $dokka.location:org.darkSolace.muse.user.controller////PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/index.md
 $dokka.location:org.darkSolace.muse.user.controller/UserController///PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/index.md
 $dokka.location:org.darkSolace.muse.user.controller/UserController/UserController/#org.darkSolace.muse.user.service.UserService#org.darkSolace.muse.user.service.UserRoleService#org.darkSolace.muse.user.service.UserTagService#org.darkSolace.muse.user.service.SuspensionService/PointingToDeclaration/elysianmuse/org.darkSolace.muse.user.controller/-user-controller/-user-controller.md
@@ -667,6 +745,9 @@ org.darkSolace.muse.security.exception
 org.darkSolace.muse.security.model
 org.darkSolace.muse.security.service
 org.darkSolace.muse.story.model
+org.darkSolace.muse.story.model.dto
+org.darkSolace.muse.story.repository
+org.darkSolace.muse.story.service
 org.darkSolace.muse.user.controller
 org.darkSolace.muse.user.model
 org.darkSolace.muse.user.model.dto

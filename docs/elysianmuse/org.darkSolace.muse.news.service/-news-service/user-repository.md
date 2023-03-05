@@ -6,5 +6,4 @@
 
 @Autowired
 
-lateinit
-var [userRepository](user-repository.md): [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md)
+lateinit var [userRepository](user-repository.md): [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md)

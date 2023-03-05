@@ -3,8 +3,7 @@
 # deleteComment
 
 [jvm]\
-fun [deleteComment](delete-comment.md)(
-id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
+fun [deleteComment](delete-comment.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
 
 Removes a persisted [NewsComment](../../org.darkSolace.muse.news.model/-news-comment/index.md)
 
@@ -16,6 +15,6 @@ true if deleteion was successful, false in case of error
 
 jvm
 
-|     |                                                                                                 |
-|-----|-------------------------------------------------------------------------------------------------|
-| id  | of the [NewsComment](../../org.darkSolace.muse.news.model/-news-comment/index.md) to be deleted |
+| | |
+|---|---|
+| id | of the [NewsComment](../../org.darkSolace.muse.news.model/-news-comment/index.md) to be deleted |

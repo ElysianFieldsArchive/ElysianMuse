@@ -3,5 +3,4 @@
 # findByNewsCommentsContains
 
 [jvm]\
-abstract fun [findByNewsCommentsContains](find-by-news-comments-contains.md)(
-comment: [NewsComment](../../org.darkSolace.muse.news.model/-news-comment/index.md)): [NewsEntry](../../org.darkSolace.muse.news.model/-news-entry/index.md)
+abstract fun [findByNewsCommentsContains](find-by-news-comments-contains.md)(comment: [NewsComment](../../org.darkSolace.muse.news.model/-news-comment/index.md)): [NewsEntry](../../org.darkSolace.muse.news.model/-news-entry/index.md)

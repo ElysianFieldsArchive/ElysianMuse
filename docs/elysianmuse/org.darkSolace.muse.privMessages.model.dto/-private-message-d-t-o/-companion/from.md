@@ -3,5 +3,4 @@
 # from
 
 [jvm]\
-fun [from](from.md)(
-privateMessage: [PrivateMessage](../../../org.darkSolace.muse.privMessages.model/-private-message/index.md)): [PrivateMessageDTO](../index.md)
+fun [from](from.md)(privateMessage: [PrivateMessage](../../../org.darkSolace.muse.privMessages.model/-private-message/index.md)): [PrivateMessageDTO](../index.md)

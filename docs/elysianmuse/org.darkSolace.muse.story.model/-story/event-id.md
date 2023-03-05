@@ -3,4 +3,4 @@
 # eventId
 
 [jvm]\
-var [eventId](event-id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html) = 0
+var [eventId](event-id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?

@@ -3,5 +3,4 @@
 # inReplyTo
 
 [jvm]\
-var [inReplyTo](in-reply-to.md): [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md)? =
-null
+var [inReplyTo](in-reply-to.md): [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md)?

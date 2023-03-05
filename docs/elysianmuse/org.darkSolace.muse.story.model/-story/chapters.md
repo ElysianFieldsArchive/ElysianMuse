@@ -3,5 +3,4 @@
 # chapters
 
 [jvm]\
-var [chapters](chapters.md): [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html)
-&lt;[Chapter](../-chapter/index.md)&gt;
+var [chapters](chapters.md): [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html)&lt;[Chapter](../-chapter/index.md)&gt;

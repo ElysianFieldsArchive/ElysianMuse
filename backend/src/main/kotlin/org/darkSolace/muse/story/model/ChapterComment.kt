@@ -24,6 +24,5 @@ class ChapterComment {
     @Temporal(TemporalType.TIMESTAMP)
     var publishedDate: Date = Date()
 
-    @OneToOne(optional = true)
-    var referenceComment: ChapterComment? = null
+    var referenceComment: Long? = null
 }

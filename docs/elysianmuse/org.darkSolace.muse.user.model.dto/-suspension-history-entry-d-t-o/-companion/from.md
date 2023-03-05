@@ -3,5 +3,4 @@
 # from
 
 [jvm]\
-fun [from](from.md)(
-entry: [SuspensionHistoryEntry](../../../org.darkSolace.muse.user.model/-suspension-history-entry/index.md)): [SuspensionHistoryEntryDTO](../index.md)
+fun [from](from.md)(entry: [SuspensionHistoryEntry](../../../org.darkSolace.muse.user.model/-suspension-history-entry/index.md)): [SuspensionHistoryEntryDTO](../index.md)

@@ -3,5 +3,4 @@
 # completed
 
 [jvm]\
-var [completed](completed.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) =
-false
+var [completed](completed.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)

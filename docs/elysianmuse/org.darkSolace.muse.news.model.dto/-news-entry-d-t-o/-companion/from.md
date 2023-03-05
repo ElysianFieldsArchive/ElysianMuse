@@ -3,5 +3,4 @@
 # from
 
 [jvm]\
-fun [from](from.md)(
-news: [NewsEntry](../../../org.darkSolace.muse.news.model/-news-entry/index.md)): [NewsEntryDTO](../index.md)
+fun [from](from.md)(news: [NewsEntry](../../../org.darkSolace.muse.news.model/-news-entry/index.md)): [NewsEntryDTO](../index.md)

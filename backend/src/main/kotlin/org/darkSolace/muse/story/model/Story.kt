@@ -19,7 +19,7 @@ class Story {
     var goalChapterCount: Long = 0
     var completed: Boolean = false
     var commentModeration: Boolean = false
-    var eventId: Long = 0
+    var eventId: Long? = null
 
     @OneToMany
     var author: MutableList<User> = emptyList<User>().toMutableList()

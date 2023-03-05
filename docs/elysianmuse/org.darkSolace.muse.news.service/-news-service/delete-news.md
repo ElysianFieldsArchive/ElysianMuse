@@ -3,8 +3,7 @@
 # deleteNews
 
 [jvm]\
-fun [deleteNews](delete-news.md)(
-id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
+fun [deleteNews](delete-news.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
 
 Removes a persisted [NewsEntry](../../org.darkSolace.muse.news.model/-news-entry/index.md)
 
@@ -16,6 +15,6 @@ true if deletion was successful, false in case of error
 
 jvm
 
-|     |                                                                                             |
-|-----|---------------------------------------------------------------------------------------------|
-| id  | of the [NewsEntry](../../org.darkSolace.muse.news.model/-news-entry/index.md) to be deleted |
+| | |
+|---|---|
+| id | of the [NewsEntry](../../org.darkSolace.muse.news.model/-news-entry/index.md) to be deleted |

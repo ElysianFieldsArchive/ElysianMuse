@@ -4,7 +4,7 @@
 
 ## Types
 
-| Name                                           | Summary                                                       |
-|------------------------------------------------|---------------------------------------------------------------|
+| Name | Summary |
+|---|---|
 | [NewsCommentDTO](-news-comment-d-t-o/index.md) | [jvm]<br>class [NewsCommentDTO](-news-comment-d-t-o/index.md) |
-| [NewsEntryDTO](-news-entry-d-t-o/index.md)     | [jvm]<br>class [NewsEntryDTO](-news-entry-d-t-o/index.md)     |
+| [NewsEntryDTO](-news-entry-d-t-o/index.md) | [jvm]<br>class [NewsEntryDTO](-news-entry-d-t-o/index.md) |

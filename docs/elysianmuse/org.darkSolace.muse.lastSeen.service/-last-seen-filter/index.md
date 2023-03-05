@@ -2,7 +2,6 @@
 
 # LastSeenFilter
 
-[jvm]\
 @Component
 
 class [LastSeenFilter](index.md) : OncePerRequestFilter
@@ -10,8 +9,6 @@ class [LastSeenFilter](index.md) : OncePerRequestFilter
 Filter to create or update [org.darkSolace.muse.lastSeen.model.LastSeenEntry](../../org.darkSolace.muse.lastSeen.model/-last-seen-entry/index.md) for each request
 
 #### See also
-
-jvm
 
 | |
 |---|
@@ -21,17 +18,17 @@ jvm
 
 | | |
 |---|---|
-| [LastSeenFilter](-last-seen-filter.md) | [jvm]<br>fun [LastSeenFilter](-last-seen-filter.md)() |
+| [LastSeenFilter](-last-seen-filter.md) | [jvm]<br>constructor() |
 
 ## Functions
 
-| Name                                                                                                                              | Summary                                                                                                                                                                                                                                          |
-|-----------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [afterPropertiesSet](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#2115246148%2FFunctions%2F-1216412040) | [jvm]<br>open override fun [afterPropertiesSet](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#2115246148%2FFunctions%2F-1216412040)()                                                                                   |
-| [destroy](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#-1289270679%2FFunctions%2F-1216412040)           | [jvm]<br>open override fun [destroy](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#-1289270679%2FFunctions%2F-1216412040)()                                                                                             |
-| [doFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#424373182%2FFunctions%2F-1216412040)            | [jvm]<br>override fun [doFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#424373182%2FFunctions%2F-1216412040)(request: ServletRequest, response: ServletResponse, filterChain: FilterChain)                       |
-| [init](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#-1834940120%2FFunctions%2F-1216412040)              | [jvm]<br>override fun [init](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#-1834940120%2FFunctions%2F-1216412040)(filterConfig: FilterConfig)                                                                           |
-| [setBeanName](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#719905502%2FFunctions%2F-1216412040)         | [jvm]<br>open override fun [setBeanName](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#719905502%2FFunctions%2F-1216412040)(beanName: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)) |
+| Name | Summary |
+|---|---|
+| [afterPropertiesSet](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#2115246148%2FFunctions%2F-1216412040) | [jvm]<br>open override fun [afterPropertiesSet](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#2115246148%2FFunctions%2F-1216412040)() |
+| [destroy](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#-1289270679%2FFunctions%2F-1216412040) | [jvm]<br>open override fun [destroy](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#-1289270679%2FFunctions%2F-1216412040)() |
+| [doFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#424373182%2FFunctions%2F-1216412040) | [jvm]<br>override fun [doFilter](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#424373182%2FFunctions%2F-1216412040)(request: ServletRequest, response: ServletResponse, filterChain: FilterChain) |
+| [init](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#-1834940120%2FFunctions%2F-1216412040) | [jvm]<br>override fun [init](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#-1834940120%2FFunctions%2F-1216412040)(filterConfig: FilterConfig) |
+| [setBeanName](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#719905502%2FFunctions%2F-1216412040) | [jvm]<br>open override fun [setBeanName](../../org.darkSolace.muse.security.service/-auth-token-filter/index.md#719905502%2FFunctions%2F-1216412040)(beanName: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)) |
 
 ## Properties
 

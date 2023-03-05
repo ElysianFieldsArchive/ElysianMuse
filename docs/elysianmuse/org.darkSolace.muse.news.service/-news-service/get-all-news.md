@@ -3,8 +3,7 @@
 # getAllNews
 
 [jvm]\
-fun [getAllNews](get-all-news.md)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)
-&lt;[NewsEntry](../../org.darkSolace.muse.news.model/-news-entry/index.md)&gt;
+fun [getAllNews](get-all-news.md)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[NewsEntry](../../org.darkSolace.muse.news.model/-news-entry/index.md)&gt;
 
 Returns all [NewsEntry](../../org.darkSolace.muse.news.model/-news-entry/index.md)s
 

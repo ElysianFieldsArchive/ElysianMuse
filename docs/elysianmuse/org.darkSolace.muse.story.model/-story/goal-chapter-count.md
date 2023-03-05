@@ -3,5 +3,4 @@
 # goalChapterCount
 
 [jvm]\
-var [goalChapterCount](goal-chapter-count.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html) =
-0
+var [goalChapterCount](goal-chapter-count.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)
