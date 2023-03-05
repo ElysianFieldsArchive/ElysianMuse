@@ -3,4 +3,4 @@
 # AuthEntryPointJwt
 
 [jvm]\
-fun [AuthEntryPointJwt](-auth-entry-point-jwt.md)()
+constructor()

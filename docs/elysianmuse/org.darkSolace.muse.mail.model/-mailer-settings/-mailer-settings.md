@@ -3,4 +3,4 @@
 # MailerSettings
 
 [jvm]\
-fun [MailerSettings](-mailer-settings.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null)
+constructor(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null)

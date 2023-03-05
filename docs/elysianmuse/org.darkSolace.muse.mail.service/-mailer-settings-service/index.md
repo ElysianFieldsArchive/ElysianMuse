@@ -13,7 +13,7 @@ Service class for [MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-
 
 | | |
 |---|---|
-| [MailerSettingsService](-mailer-settings-service.md) | [jvm]<br>fun [MailerSettingsService](-mailer-settings-service.md)() |
+| [MailerSettingsService](-mailer-settings-service.md) | [jvm]<br>constructor() |
 
 ## Functions
 

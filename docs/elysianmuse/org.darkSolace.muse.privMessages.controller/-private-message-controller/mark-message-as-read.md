@@ -14,8 +14,6 @@ Marks a private message as read
 
 HTTP OK or UNAUTHORIZED, depending on the requests success
 
-#### Samples
-
 #### Parameters
 
 jvm
@@ -24,3 +22,5 @@ jvm
 |---|---|
 | id | id of the message to be marked as read |
 | authentication | the authentication used for this request, to verify the right user is logged in |
+
+#### Samples

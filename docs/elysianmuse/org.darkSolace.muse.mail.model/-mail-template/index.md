@@ -13,13 +13,13 @@ Model class representing a [MailTemplate](index.md) to be used to send out stand
 
 | | |
 |---|---|
-| [MailTemplate](-mail-template.md) | [jvm]<br>fun [MailTemplate](-mail-template.md)(type: [TemplateType](../-template-type/index.md)? = null) |
+| [MailTemplate](-mail-template.md) | [jvm]<br>constructor(type: [TemplateType](../-template-type/index.md)? = null) |
 
 ## Properties
 
 | Name | Summary |
 |---|---|
-| [id](id.md) | [jvm]<br>var [id](id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null |
+| [id](id.md) | [jvm]<br>var [id](id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? |
 | [mailContent](mail-content.md) | [jvm]<br>var [mailContent](mail-content.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [mailSubject](mail-subject.md) | [jvm]<br>var [mailSubject](mail-subject.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [templateVars](template-vars.md) | [jvm]<br>val [templateVars](template-vars.md): [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html)&lt;[MailTemplateVar](../-mail-template-var/index.md)&gt; |

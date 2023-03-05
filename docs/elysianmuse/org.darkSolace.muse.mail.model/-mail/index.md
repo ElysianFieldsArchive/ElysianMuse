@@ -2,7 +2,6 @@
 
 # Mail
 
-[jvm]\
 @Entity
 
 data class [Mail](index.md)(var id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null, val recipient: [User](../../org.darkSolace.muse.user.model/-user/index.md), val subject: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), val content: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;)
@@ -10,8 +9,6 @@ data class [Mail](index.md)(var id: [Long](https://kotlinlang.org/api/latest/jvm
 This [Mail](index.md) class holds all information required to be sent via email. Mainly used by [MailQueueEntry](../-mail-queue-entry/index.md) to be sent via the [org.darkSolace.muse.mail.service.MailService](../../org.darkSolace.muse.mail.service/-mail-service/index.md)
 
 #### See also
-
-jvm
 
 | |
 |---|
@@ -22,7 +19,7 @@ jvm
 
 | | |
 |---|---|
-| [Mail](-mail.md) | [jvm]<br>fun [Mail](-mail.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null, recipient: [User](../../org.darkSolace.muse.user.model/-user/index.md), subject: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), content: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;) |
+| [Mail](-mail.md) | [jvm]<br>constructor(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null, recipient: [User](../../org.darkSolace.muse.user.model/-user/index.md), subject: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html), content: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;) |
 
 ## Functions
 
@@ -37,6 +34,6 @@ jvm
 | Name | Summary |
 |---|---|
 | [content](content.md) | [jvm]<br>val [content](content.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
-| [id](id.md) | [jvm]<br>var [id](id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null |
+| [id](id.md) | [jvm]<br>var [id](id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? |
 | [recipient](recipient.md) | [jvm]<br>val [recipient](recipient.md): [User](../../org.darkSolace.muse.user.model/-user/index.md) |
 | [subject](subject.md) | [jvm]<br>val [subject](subject.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |

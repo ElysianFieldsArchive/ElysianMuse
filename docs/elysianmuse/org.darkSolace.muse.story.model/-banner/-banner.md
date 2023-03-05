@@ -3,4 +3,4 @@
 # Banner
 
 [jvm]\
-fun [Banner](-banner.md)()
+constructor()

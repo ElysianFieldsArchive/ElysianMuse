@@ -17,7 +17,7 @@ RestController defining endpoints regarding mail settings and user email confirm
 
 | | |
 |---|---|
-| [MailController](-mail-controller.md) | [jvm]<br>fun [MailController](-mail-controller.md)(@AutowiredmailService: [MailService](../../org.darkSolace.muse.mail.service/-mail-service/index.md), @AutowiredmailerSettingsService: [MailerSettingsService](../../org.darkSolace.muse.mail.service/-mailer-settings-service/index.md)) |
+| [MailController](-mail-controller.md) | [jvm]<br>constructor(@AutowiredmailService: [MailService](../../org.darkSolace.muse.mail.service/-mail-service/index.md), @AutowiredmailerSettingsService: [MailerSettingsService](../../org.darkSolace.muse.mail.service/-mailer-settings-service/index.md)) |
 
 ## Functions
 

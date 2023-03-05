@@ -3,4 +3,4 @@
 # PrivateMessageDTO
 
 [jvm]\
-fun [PrivateMessageDTO](-private-message-d-t-o.md)()
+constructor()

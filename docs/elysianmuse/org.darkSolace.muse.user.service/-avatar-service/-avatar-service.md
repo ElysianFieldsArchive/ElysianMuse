@@ -3,4 +3,4 @@
 # AvatarService
 
 [jvm]\
-fun [AvatarService](-avatar-service.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowiredavatarRepository: [AvatarRepository](../../org.darkSolace.muse.user.repository/-avatar-repository/index.md))
+constructor(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowiredavatarRepository: [AvatarRepository](../../org.darkSolace.muse.user.repository/-avatar-repository/index.md))

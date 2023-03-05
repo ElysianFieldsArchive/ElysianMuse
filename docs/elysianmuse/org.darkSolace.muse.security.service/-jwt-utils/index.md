@@ -13,7 +13,7 @@ Utility Component for tasks related to JWT
 
 | | |
 |---|---|
-| [JwtUtils](-jwt-utils.md) | [jvm]<br>fun [JwtUtils](-jwt-utils.md)() |
+| [JwtUtils](-jwt-utils.md) | [jvm]<br>constructor() |
 
 ## Functions
 

@@ -3,4 +3,4 @@
 # avatarBlob
 
 [jvm]\
-var [avatarBlob](avatar-blob.md): [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html)? = null
+var [avatarBlob](avatar-blob.md): [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html)?

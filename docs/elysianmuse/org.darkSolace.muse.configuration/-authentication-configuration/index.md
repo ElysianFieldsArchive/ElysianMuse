@@ -11,7 +11,7 @@ class [AuthenticationConfiguration](index.md)(@AutowireduserDetailsService: [Use
 
 | | |
 |---|---|
-| [AuthenticationConfiguration](-authentication-configuration.md) | [jvm]<br>fun [AuthenticationConfiguration](-authentication-configuration.md)(@AutowireduserDetailsService: [UserDetailsService](../../org.darkSolace.muse.security.service/-user-details-service/index.md), @AutowiredpasswordEncoder: BCryptPasswordEncoder) |
+| [AuthenticationConfiguration](-authentication-configuration.md) | [jvm]<br>constructor(@AutowireduserDetailsService: [UserDetailsService](../../org.darkSolace.muse.security.service/-user-details-service/index.md), @AutowiredpasswordEncoder: BCryptPasswordEncoder) |
 
 ## Functions
 

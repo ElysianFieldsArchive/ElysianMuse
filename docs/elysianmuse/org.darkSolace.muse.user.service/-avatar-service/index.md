@@ -11,7 +11,7 @@ class [AvatarService](index.md)(@Autowiredval userRepository: [UserRepository](.
 
 | | |
 |---|---|
-| [AvatarService](-avatar-service.md) | [jvm]<br>fun [AvatarService](-avatar-service.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowiredavatarRepository: [AvatarRepository](../../org.darkSolace.muse.user.repository/-avatar-repository/index.md)) |
+| [AvatarService](-avatar-service.md) | [jvm]<br>constructor(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowiredavatarRepository: [AvatarRepository](../../org.darkSolace.muse.user.repository/-avatar-repository/index.md)) |
 
 ## Functions
 

@@ -3,4 +3,4 @@
 # UserPasswordController
 
 [jvm]\
-fun [UserPasswordController](-user-password-controller.md)(@AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowireduserPasswordService: [UserPasswordService](../../org.darkSolace.muse.user.service/-user-password-service/index.md))
+constructor(@AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowireduserPasswordService: [UserPasswordService](../../org.darkSolace.muse.user.service/-user-password-service/index.md))

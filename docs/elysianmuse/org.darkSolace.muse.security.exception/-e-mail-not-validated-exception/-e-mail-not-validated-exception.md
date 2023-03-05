@@ -3,4 +3,4 @@
 # EMailNotValidatedException
 
 [jvm]\
-fun [EMailNotValidatedException](-e-mail-not-validated-exception.md)(message: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;)
+constructor(message: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;)

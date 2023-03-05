@@ -11,7 +11,7 @@ class [SuspensionService](index.md)(@Autowiredval userRoleService: [UserRoleServ
 
 | | |
 |---|---|
-| [SuspensionService](-suspension-service.md) | [jvm]<br>fun [SuspensionService](-suspension-service.md)(@AutowireduserRoleService: [UserRoleService](../-user-role-service/index.md), @AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowiredsuspensionHistoryRepository: [SuspensionHistoryRepository](../../org.darkSolace.muse.user.repository/-suspension-history-repository/index.md)) |
+| [SuspensionService](-suspension-service.md) | [jvm]<br>constructor(@AutowireduserRoleService: [UserRoleService](../-user-role-service/index.md), @AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowiredsuspensionHistoryRepository: [SuspensionHistoryRepository](../../org.darkSolace.muse.user.repository/-suspension-history-repository/index.md)) |
 
 ## Functions
 

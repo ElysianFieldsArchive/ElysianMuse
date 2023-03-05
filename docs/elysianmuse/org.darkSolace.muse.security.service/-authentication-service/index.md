@@ -13,7 +13,7 @@ Service to handle everything in regard to authentication.
 
 | | |
 |---|---|
-| [AuthenticationService](-authentication-service.md) | [jvm]<br>fun [AuthenticationService](-authentication-service.md)(@AutowiredauthenticationManager: AuthenticationManager, @AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowiredjwtUtils: [JwtUtils](../-jwt-utils/index.md)) |
+| [AuthenticationService](-authentication-service.md) | [jvm]<br>constructor(@AutowiredauthenticationManager: AuthenticationManager, @AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowiredjwtUtils: [JwtUtils](../-jwt-utils/index.md)) |
 
 ## Functions
 

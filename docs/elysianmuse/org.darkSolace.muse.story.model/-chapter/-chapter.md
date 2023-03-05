@@ -3,4 +3,4 @@
 # Chapter
 
 [jvm]\
-fun [Chapter](-chapter.md)()
+constructor()

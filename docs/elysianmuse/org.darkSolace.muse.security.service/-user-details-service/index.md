@@ -2,7 +2,6 @@
 
 # UserDetailsService
 
-[jvm]\
 @Service
 
 class [UserDetailsService](index.md)(@Autowiredval userRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md)) : UserDetailsService
@@ -10,8 +9,6 @@ class [UserDetailsService](index.md)(@Autowiredval userRepository: [UserReposito
 Service to handle everything in regard to UserDetails.
 
 #### See also
-
-jvm
 
 | |
 |---|
@@ -21,7 +18,7 @@ jvm
 
 | | |
 |---|---|
-| [UserDetailsService](-user-details-service.md) | [jvm]<br>fun [UserDetailsService](-user-details-service.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md)) |
+| [UserDetailsService](-user-details-service.md) | [jvm]<br>constructor(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md)) |
 
 ## Functions
 

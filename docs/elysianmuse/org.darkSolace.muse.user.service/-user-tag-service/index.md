@@ -2,7 +2,6 @@
 
 # UserTagService
 
-[jvm]\
 @Service
 
 class [UserTagService](index.md)(@Autowiredval userRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md))
@@ -10,8 +9,6 @@ class [UserTagService](index.md)(@Autowiredval userRepository: [UserRepository](
 Service class for [UserTag](../../org.darkSolace.muse.user.model/-user-tag/index.md) related tasks when working with [User](../../org.darkSolace.muse.user.model/-user/index.md)s.
 
 #### See also
-
-jvm
 
 | |
 |---|
@@ -21,7 +18,7 @@ jvm
 
 | | |
 |---|---|
-| [UserTagService](-user-tag-service.md) | [jvm]<br>fun [UserTagService](-user-tag-service.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md)) |
+| [UserTagService](-user-tag-service.md) | [jvm]<br>constructor(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md)) |
 
 ## Functions
 

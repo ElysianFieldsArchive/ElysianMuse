@@ -13,7 +13,7 @@ Represents a queued email to be sent at the next scheduled opportunity
 
 | | |
 |---|---|
-| [MailQueueEntry](-mail-queue-entry.md) | [jvm]<br>fun [MailQueueEntry](-mail-queue-entry.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null, mail: [Mail](../-mail/index.md)? = null, enqueueDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html) = Date()) |
+| [MailQueueEntry](-mail-queue-entry.md) | [jvm]<br>constructor(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null, mail: [Mail](../-mail/index.md)? = null, enqueueDate: [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html) = Date()) |
 
 ## Properties
 

@@ -3,4 +3,4 @@
 # NewsController
 
 [jvm]\
-fun [NewsController](-news-controller.md)()
+constructor()

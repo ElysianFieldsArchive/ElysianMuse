@@ -3,4 +3,4 @@
 # jSession
 
 [jvm]\
-var [jSession](j-session.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null
+var [jSession](j-session.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?

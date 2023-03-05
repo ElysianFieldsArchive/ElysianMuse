@@ -11,7 +11,7 @@ UserDetails model to pass required information to the [org.darkSolace.muse.secur
 
 | | |
 |---|---|
-| [UserDetails](-user-details.md) | [jvm]<br>fun [UserDetails](-user-details.md)(user: [User](../../org.darkSolace.muse.user.model/-user/index.md)?) |
+| [UserDetails](-user-details.md) | [jvm]<br>constructor(user: [User](../../org.darkSolace.muse.user.model/-user/index.md)?) |
 
 ## Functions
 

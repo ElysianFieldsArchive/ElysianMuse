@@ -3,4 +3,4 @@
 # UserTagService
 
 [jvm]\
-fun [UserTagService](-user-tag-service.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md))
+constructor(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md))

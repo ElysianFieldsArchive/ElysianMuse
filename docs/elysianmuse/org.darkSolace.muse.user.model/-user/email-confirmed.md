@@ -3,4 +3,4 @@
 # emailConfirmed
 
 [jvm]\
-var [emailConfirmed](email-confirmed.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false
+var [emailConfirmed](email-confirmed.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)

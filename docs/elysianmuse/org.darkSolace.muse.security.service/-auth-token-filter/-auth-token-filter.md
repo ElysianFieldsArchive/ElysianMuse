@@ -3,4 +3,4 @@
 # AuthTokenFilter
 
 [jvm]\
-fun [AuthTokenFilter](-auth-token-filter.md)()
+constructor()

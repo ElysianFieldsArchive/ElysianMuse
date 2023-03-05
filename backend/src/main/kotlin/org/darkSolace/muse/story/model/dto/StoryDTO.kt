@@ -29,7 +29,7 @@ class StoryDTO {
     var favouritesCount = favorites.count()
 
     companion object {
-        fun fromList(list: List<Story>) = list.map { from(it) }
+        fun fromList(list: List<Story>): List<StoryDTO> = list.map { from(it) }
         fun from(story: Story) = StoryDTO().apply {
             this.id = story.id
             this.title = story.title

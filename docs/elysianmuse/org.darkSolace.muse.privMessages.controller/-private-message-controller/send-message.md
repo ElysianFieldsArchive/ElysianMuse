@@ -14,8 +14,6 @@ Sends a message to another user
 
 HTTP OK or UNAUTHORIZED, depending on the requests success
 
-#### Samples
-
 #### Parameters
 
 jvm
@@ -24,3 +22,5 @@ jvm
 |---|---|
 | message | the private message to be sent, passed as the request body |
 | authentication | the authentication used for this request, to verify the right user is logged in |
+
+#### Samples

@@ -11,7 +11,7 @@ Exception thrown when a valid url can't be generated for a template (e.g. email 
 
 | | |
 |---|---|
-| [TemplateException](-template-exception.md) | [jvm]<br>fun [TemplateException](-template-exception.md)(message: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;) |
+| [TemplateException](-template-exception.md) | [jvm]<br>constructor(message: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;) |
 
 ## Functions
 

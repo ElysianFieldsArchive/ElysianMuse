@@ -13,13 +13,13 @@ The [LastSeenEntry](index.md) class containing visitor session information, a us
 
 | | |
 |---|---|
-| [LastSeenEntry](-last-seen-entry.md) | [jvm]<br>fun [LastSeenEntry](-last-seen-entry.md)() |
+| [LastSeenEntry](-last-seen-entry.md) | [jvm]<br>constructor() |
 
 ## Properties
 
 | Name | Summary |
 |---|---|
 | [id](id.md) | [jvm]<br>val [id](id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html) = 0 |
-| [jSession](j-session.md) | [jvm]<br>var [jSession](j-session.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null |
+| [jSession](j-session.md) | [jvm]<br>var [jSession](j-session.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? |
 | [lastSeen](last-seen.md) | [jvm]<br>var [lastSeen](last-seen.md): [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html) |
-| [user](user.md) | [jvm]<br>var [user](user.md): [User](../../org.darkSolace.muse.user.model/-user/index.md)? = null |
+| [user](user.md) | [jvm]<br>var [user](user.md): [User](../../org.darkSolace.muse.user.model/-user/index.md)? |

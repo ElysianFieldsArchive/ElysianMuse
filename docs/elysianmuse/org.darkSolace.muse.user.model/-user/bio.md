@@ -3,4 +3,4 @@
 # bio
 
 [jvm]\
-var [bio](bio.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null
+var [bio](bio.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?

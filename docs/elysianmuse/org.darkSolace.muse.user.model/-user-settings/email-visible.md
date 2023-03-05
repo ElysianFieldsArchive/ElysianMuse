@@ -3,4 +3,4 @@
 # emailVisible
 
 [jvm]\
-var [emailVisible](email-visible.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false
+var [emailVisible](email-visible.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)

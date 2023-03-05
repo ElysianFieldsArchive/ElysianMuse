@@ -13,7 +13,7 @@ Service class for [PrivateMessage](../../org.darkSolace.muse.privMessages.model/
 
 | | |
 |---|---|
-| [PrivateMessageService](-private-message-service.md) | [jvm]<br>fun [PrivateMessageService](-private-message-service.md)(@AutowiredprivateMessageRepository: [PrivateMessageRepository](../../org.darkSolace.muse.privMessages.repository/-private-message-repository/index.md)) |
+| [PrivateMessageService](-private-message-service.md) | [jvm]<br>constructor(@AutowiredprivateMessageRepository: [PrivateMessageRepository](../../org.darkSolace.muse.privMessages.repository/-private-message-repository/index.md)) |
 
 ## Functions
 

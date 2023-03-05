@@ -3,4 +3,4 @@
 # ElysianMuseApplication
 
 [jvm]\
-fun [ElysianMuseApplication](-elysian-muse-application.md)()
+constructor()

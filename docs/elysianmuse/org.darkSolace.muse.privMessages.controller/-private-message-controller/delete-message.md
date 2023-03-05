@@ -10,8 +10,6 @@ fun [deleteMessage](delete-message.md)(@PathVariablemessage: [PrivateMessage](..
 
 Deletes a private message
 
-#### Samples
-
 #### Parameters
 
 jvm
@@ -20,3 +18,5 @@ jvm
 |---|---|
 | message | the private message to be deleted |
 | authentication | the authentication used for this request, to verify the right user is logged in |
+
+#### Samples

@@ -3,4 +3,4 @@
 # user
 
 [jvm]\
-var [user](user.md): [UserIdNameDTO](../-user-id-name-d-t-o/index.md)? = null
+var [user](user.md): [UserIdNameDTO](../-user-id-name-d-t-o/index.md)?

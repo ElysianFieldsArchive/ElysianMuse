@@ -14,8 +14,6 @@ Checks a transmitted [SignUpRequest](../../org.darkSolace.muse.security.model/-s
 
 HTTP-Status 200 OK if user was created successfully or 400 BAD REQUEST if an error occurred
 
-#### Samples
-
 #### Parameters
 
 jvm
@@ -23,3 +21,5 @@ jvm
 | | |
 |---|---|
 | signUpRequest | a [SignUpRequest](../../org.darkSolace.muse.security.model/-sign-up-request/index.md) containing username, password and email address |
+
+#### Samples

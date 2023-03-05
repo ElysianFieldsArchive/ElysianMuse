@@ -3,4 +3,4 @@
 # referenceComment
 
 [jvm]\
-var [referenceComment](reference-comment.md): [ChapterComment](index.md)? = null
+var [referenceComment](reference-comment.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?

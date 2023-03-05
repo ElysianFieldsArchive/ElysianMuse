@@ -13,7 +13,7 @@ Generates build in [MailTemplate](../../org.darkSolace.muse.mail.model/-mail-tem
 
 | | |
 |---|---|
-| [MailTemplateInitializer](-mail-template-initializer.md) | [jvm]<br>fun [MailTemplateInitializer](-mail-template-initializer.md)() |
+| [MailTemplateInitializer](-mail-template-initializer.md) | [jvm]<br>constructor() |
 
 ## Functions
 

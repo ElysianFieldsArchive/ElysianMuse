@@ -13,7 +13,7 @@ class [ElysianMuseApplication](index.md)
 
 | | |
 |---|---|
-| [ElysianMuseApplication](-elysian-muse-application.md) | [jvm]<br>fun [ElysianMuseApplication](-elysian-muse-application.md)() |
+| [ElysianMuseApplication](-elysian-muse-application.md) | [jvm]<br>constructor() |
 
 ## Functions
 

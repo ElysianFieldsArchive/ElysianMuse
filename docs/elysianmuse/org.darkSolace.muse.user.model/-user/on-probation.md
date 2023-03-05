@@ -3,4 +3,4 @@
 # onProbation
 
 [jvm]\
-var [onProbation](on-probation.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false
+var [onProbation](on-probation.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)

@@ -3,4 +3,4 @@
 # MailTemplateInitializer
 
 [jvm]\
-fun [MailTemplateInitializer](-mail-template-initializer.md)()
+constructor()

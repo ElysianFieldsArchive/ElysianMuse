@@ -27,7 +27,7 @@ class ChapterDTO {
     var kudos: List<UserIdNameDTO> = emptyList()
 
     companion object {
-        fun fromList(list: List<Chapter>) = list.map { ChapterDTO.from(it) }
+        fun fromList(list: List<Chapter>) : List<ChapterDTO> = list.map { from(it) }
         fun from(chapter: Chapter) = ChapterDTO().apply {
             this.id = chapter.id
             this.title = chapter.title
