@@ -3,4 +3,4 @@
 # chapter
 
 [jvm]\
-var [chapter](chapter.md): [Chapter](../-chapter/index.md)? = null
+var [chapter](chapter.md): [Chapter](../-chapter/index.md)?

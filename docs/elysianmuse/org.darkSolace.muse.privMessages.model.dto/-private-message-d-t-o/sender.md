@@ -3,4 +3,4 @@
 # sender
 
 [jvm]\
-var [sender](sender.md): [UserIdNameDTO](../../org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/index.md)? = null
+var [sender](sender.md): [UserIdNameDTO](../../org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/index.md)?

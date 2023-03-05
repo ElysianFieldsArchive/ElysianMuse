@@ -3,4 +3,4 @@
 # story
 
 [jvm]\
-var [story](story.md): [Story](../-story/index.md)? = null
+var [story](story.md): [Story](../-story/index.md)?

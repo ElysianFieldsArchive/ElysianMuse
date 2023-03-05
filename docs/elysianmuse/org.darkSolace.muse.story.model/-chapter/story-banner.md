@@ -3,4 +3,4 @@
 # storyBanner
 
 [jvm]\
-var [storyBanner](story-banner.md): [Banner](../-banner/index.md)? = null
+var [storyBanner](story-banner.md): [Banner](../-banner/index.md)?

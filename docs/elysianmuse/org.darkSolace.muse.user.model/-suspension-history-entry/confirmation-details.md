@@ -3,4 +3,4 @@
 # confirmationDetails
 
 [jvm]\
-var [confirmationDetails](confirmation-details.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null
+var [confirmationDetails](confirmation-details.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?

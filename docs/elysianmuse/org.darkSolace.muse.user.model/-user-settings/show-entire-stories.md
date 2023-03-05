@@ -3,4 +3,4 @@
 # showEntireStories
 
 [jvm]\
-var [showEntireStories](show-entire-stories.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false
+var [showEntireStories](show-entire-stories.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)

@@ -3,4 +3,4 @@
 # LastSeenEntry
 
 [jvm]\
-fun [LastSeenEntry](-last-seen-entry.md)()
+constructor()

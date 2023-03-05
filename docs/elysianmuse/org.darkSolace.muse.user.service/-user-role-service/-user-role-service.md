@@ -3,4 +3,4 @@
 # UserRoleService
 
 [jvm]\
-fun [UserRoleService](-user-role-service.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowiredsuspensionHistoryRepository: [SuspensionHistoryRepository](../../org.darkSolace.muse.user.repository/-suspension-history-repository/index.md))
+constructor(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md), @AutowiredsuspensionHistoryRepository: [SuspensionHistoryRepository](../../org.darkSolace.muse.user.repository/-suspension-history-repository/index.md))

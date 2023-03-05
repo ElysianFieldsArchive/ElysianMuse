@@ -13,7 +13,7 @@ Class holding a reset code to authorize the reset of a users password
 
 | | |
 |---|---|
-| [PasswordResetRequest](-password-reset-request.md) | [jvm]<br>fun [PasswordResetRequest](-password-reset-request.md)(user: [User](../-user/index.md), id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null) |
+| [PasswordResetRequest](-password-reset-request.md) | [jvm]<br>constructor(user: [User](../-user/index.md), id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null) |
 
 ## Properties
 

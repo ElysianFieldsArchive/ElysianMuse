@@ -11,7 +11,7 @@ Exception to be thrown if a user is trying to log in while its email address is 
 
 | | |
 |---|---|
-| [EMailNotValidatedException](-e-mail-not-validated-exception.md) | [jvm]<br>fun [EMailNotValidatedException](-e-mail-not-validated-exception.md)(message: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;) |
+| [EMailNotValidatedException](-e-mail-not-validated-exception.md) | [jvm]<br>constructor(message: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) = &quot;&quot;) |
 
 ## Functions
 

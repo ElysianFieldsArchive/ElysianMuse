@@ -14,8 +14,6 @@ Updates a users password if a valid [org.darkSolace.muse.user.model.PasswordRese
 
 HTTP 200 (OK) on success, 400 (BAD REQUEST) otherwise
 
-#### Samples
-
 #### Parameters
 
 jvm
@@ -24,3 +22,5 @@ jvm
 |---|---|
 | passwordConfirmationCode | confirmation code to verify that the reset request is valid |
 | newPassword | new password to be set, sent as the request body |
+
+#### Samples

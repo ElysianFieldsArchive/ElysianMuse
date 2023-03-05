@@ -3,4 +3,4 @@
 # JwtUtils
 
 [jvm]\
-fun [JwtUtils](-jwt-utils.md)()
+constructor()

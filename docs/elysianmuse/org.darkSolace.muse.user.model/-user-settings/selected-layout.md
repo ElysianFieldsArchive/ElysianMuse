@@ -3,4 +3,4 @@
 # selectedLayout
 
 [jvm]\
-var [selectedLayout](selected-layout.md): [Layout](../../org.darkSolace.muse.layout.model/-layout/index.md)? = null
+var [selectedLayout](selected-layout.md): [Layout](../../org.darkSolace.muse.layout.model/-layout/index.md)?

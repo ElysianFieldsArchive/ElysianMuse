@@ -13,7 +13,7 @@ Generates dummy [MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-se
 
 | | |
 |---|---|
-| [MailSettingInitializer](-mail-setting-initializer.md) | [jvm]<br>fun [MailSettingInitializer](-mail-setting-initializer.md)(@AutowiredmailerSettingsService: [MailerSettingsService](../../org.darkSolace.muse.mail.service/-mailer-settings-service/index.md), @AutowiredmailerSettingsRepository: [MailerSettingsRepository](../../org.darkSolace.muse.mail.repository/-mailer-settings-repository/index.md)) |
+| [MailSettingInitializer](-mail-setting-initializer.md) | [jvm]<br>constructor(@AutowiredmailerSettingsService: [MailerSettingsService](../../org.darkSolace.muse.mail.service/-mailer-settings-service/index.md), @AutowiredmailerSettingsRepository: [MailerSettingsRepository](../../org.darkSolace.muse.mail.repository/-mailer-settings-repository/index.md)) |
 
 ## Functions
 

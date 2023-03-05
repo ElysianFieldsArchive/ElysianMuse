@@ -3,4 +3,4 @@
 # LastSeenFilter
 
 [jvm]\
-fun [LastSeenFilter](-last-seen-filter.md)()
+constructor()

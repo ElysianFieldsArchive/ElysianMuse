@@ -3,4 +3,4 @@
 # Story
 
 [jvm]\
-fun [Story](-story.md)()
+constructor()

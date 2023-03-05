@@ -3,4 +3,4 @@
 # NewsService
 
 [jvm]\
-fun [NewsService](-news-service.md)()
+constructor()

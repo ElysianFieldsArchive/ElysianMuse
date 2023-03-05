@@ -14,8 +14,6 @@ Retrieves the number of unread messages for the given user. The user is derived 
 
 number of unread messages
 
-#### Samples
-
 #### Parameters
 
 jvm
@@ -23,3 +21,5 @@ jvm
 | | |
 |---|---|
 | authentication | the authentication used for this request, to verify the right user is logged in |
+
+#### Samples

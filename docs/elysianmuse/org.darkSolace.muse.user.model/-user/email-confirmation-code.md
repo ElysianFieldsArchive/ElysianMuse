@@ -3,4 +3,4 @@
 # emailConfirmationCode
 
 [jvm]\
-var [emailConfirmationCode](email-confirmation-code.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)? = null
+var [emailConfirmationCode](email-confirmation-code.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)?

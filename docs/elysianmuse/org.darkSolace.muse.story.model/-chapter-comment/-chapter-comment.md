@@ -3,4 +3,4 @@
 # ChapterComment
 
 [jvm]\
-fun [ChapterComment](-chapter-comment.md)()
+constructor()

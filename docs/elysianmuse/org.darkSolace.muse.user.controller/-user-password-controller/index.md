@@ -15,7 +15,7 @@ RestController defining endpoints regarding all password reset activities
 
 | | |
 |---|---|
-| [UserPasswordController](-user-password-controller.md) | [jvm]<br>fun [UserPasswordController](-user-password-controller.md)(@AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowireduserPasswordService: [UserPasswordService](../../org.darkSolace.muse.user.service/-user-password-service/index.md)) |
+| [UserPasswordController](-user-password-controller.md) | [jvm]<br>constructor(@AutowireduserService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @AutowireduserPasswordService: [UserPasswordService](../../org.darkSolace.muse.user.service/-user-password-service/index.md)) |
 
 ## Functions
 

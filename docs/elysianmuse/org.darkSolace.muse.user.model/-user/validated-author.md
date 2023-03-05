@@ -3,4 +3,4 @@
 # validatedAuthor
 
 [jvm]\
-var [validatedAuthor](validated-author.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false
+var [validatedAuthor](validated-author.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)

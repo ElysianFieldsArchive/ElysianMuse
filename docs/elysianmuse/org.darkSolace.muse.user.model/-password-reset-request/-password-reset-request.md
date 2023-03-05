@@ -3,4 +3,4 @@
 # PasswordResetRequest
 
 [jvm]\
-fun [PasswordResetRequest](-password-reset-request.md)(user: [User](../-user/index.md), id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null)
+constructor(user: [User](../-user/index.md), id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null)

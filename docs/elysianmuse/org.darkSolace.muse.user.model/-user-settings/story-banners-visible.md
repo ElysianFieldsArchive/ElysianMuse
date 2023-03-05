@@ -3,4 +3,4 @@
 # storyBannersVisible
 
 [jvm]\
-var [storyBannersVisible](story-banners-visible.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = true
+var [storyBannersVisible](story-banners-visible.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)

@@ -14,8 +14,6 @@ Validates a users email address by a validation code sent to the provided email 
 
 Http status 200 after a successful validation, 400 otherwise
 
-#### Samples
-
 #### Parameters
 
 jvm
@@ -23,3 +21,5 @@ jvm
 | | |
 |---|---|
 | code | the validation code sent to the provided email |
+
+#### Samples

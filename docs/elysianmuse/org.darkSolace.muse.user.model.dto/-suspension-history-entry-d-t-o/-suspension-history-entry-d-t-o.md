@@ -3,4 +3,4 @@
 # SuspensionHistoryEntryDTO
 
 [jvm]\
-fun [SuspensionHistoryEntryDTO](-suspension-history-entry-d-t-o.md)()
+constructor()

@@ -3,4 +3,4 @@
 # birthday
 
 [jvm]\
-var [birthday](birthday.md): [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)? = null
+var [birthday](birthday.md): [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)?

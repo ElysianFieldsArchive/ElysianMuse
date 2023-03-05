@@ -3,4 +3,4 @@
 # MailerSettingsService
 
 [jvm]\
-fun [MailerSettingsService](-mailer-settings-service.md)()
+constructor()

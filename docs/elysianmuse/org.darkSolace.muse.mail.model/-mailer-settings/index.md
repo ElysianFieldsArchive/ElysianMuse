@@ -2,7 +2,6 @@
 
 # MailerSettings
 
-[jvm]\
 @Entity
 
 @Validated
@@ -13,8 +12,6 @@ Holds the settings for a smtp server to be used to send emails
 
 #### See also
 
-jvm
-
 | |
 |---|
 | [MailService](../../org.darkSolace.muse.mail.service/-mail-service/index.md) |
@@ -23,7 +20,7 @@ jvm
 
 | | |
 |---|---|
-| [MailerSettings](-mailer-settings.md) | [jvm]<br>fun [MailerSettings](-mailer-settings.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null) |
+| [MailerSettings](-mailer-settings.md) | [jvm]<br>constructor(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null) |
 
 ## Functions
 
@@ -40,7 +37,7 @@ jvm
 | [auth](auth.md) | [jvm]<br>val [auth](auth.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = true |
 | [fromAddress](from-address.md) | [jvm]<br>var [fromAddress](from-address.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [host](host.md) | [jvm]<br>@NotNull<br>var [host](host.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
-| [id](id.md) | [jvm]<br>var [id](id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null |
+| [id](id.md) | [jvm]<br>var [id](id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? |
 | [password](password.md) | [jvm]<br>@NotNull<br>var [password](password.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [port](port.md) | [jvm]<br>@Min(value = 1)<br>var [port](port.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) |
 | [protocol](protocol.md) | [jvm]<br>val [protocol](protocol.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |

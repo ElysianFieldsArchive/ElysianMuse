@@ -3,4 +3,4 @@
 # NewsEntry
 
 [jvm]\
-fun [NewsEntry](-news-entry.md)()
+constructor()

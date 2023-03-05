@@ -3,4 +3,4 @@
 # NewsComment
 
 [jvm]\
-fun [NewsComment](-news-comment.md)()
+constructor()

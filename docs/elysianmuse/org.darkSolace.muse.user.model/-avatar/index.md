@@ -15,7 +15,7 @@ Holds a [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-ar
 
 | | |
 |---|---|
-| [Avatar](-avatar.md) | [jvm]<br>fun [Avatar](-avatar.md)(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null, avatarBlob: [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html)? = null) |
+| [Avatar](-avatar.md) | [jvm]<br>constructor(id: [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null, avatarBlob: [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html)? = null) |
 
 ## Functions
 
@@ -29,5 +29,5 @@ Holds a [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-ar
 
 | Name | Summary |
 |---|---|
-| [avatarBlob](avatar-blob.md) | [jvm]<br>var [avatarBlob](avatar-blob.md): [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html)? = null |
-| [id](id.md) | [jvm]<br>var [id](id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? = null |
+| [avatarBlob](avatar-blob.md) | [jvm]<br>var [avatarBlob](avatar-blob.md): [ByteArray](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html)? |
+| [id](id.md) | [jvm]<br>var [id](id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? |

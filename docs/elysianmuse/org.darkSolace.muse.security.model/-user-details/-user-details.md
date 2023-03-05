@@ -3,4 +3,4 @@
 # UserDetails
 
 [jvm]\
-fun [UserDetails](-user-details.md)(user: [User](../../org.darkSolace.muse.user.model/-user/index.md)?)
+constructor(user: [User](../../org.darkSolace.muse.user.model/-user/index.md)?)

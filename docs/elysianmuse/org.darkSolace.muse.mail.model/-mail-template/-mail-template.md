@@ -3,4 +3,4 @@
 # MailTemplate
 
 [jvm]\
-fun [MailTemplate](-mail-template.md)(type: [TemplateType](../-template-type/index.md)? = null)
+constructor(type: [TemplateType](../-template-type/index.md)? = null)

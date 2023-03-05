@@ -3,4 +3,4 @@
 # isRead
 
 [jvm]\
-var [isRead](is-read.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = false
+var [isRead](is-read.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)

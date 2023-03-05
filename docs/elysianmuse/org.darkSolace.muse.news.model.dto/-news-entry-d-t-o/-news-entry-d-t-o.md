@@ -3,4 +3,4 @@
 # NewsEntryDTO
 
 [jvm]\
-fun [NewsEntryDTO](-news-entry-d-t-o.md)()
+constructor()

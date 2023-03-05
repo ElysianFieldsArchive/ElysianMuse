@@ -3,4 +3,4 @@
 # shareButtonsVisible
 
 [jvm]\
-var [shareButtonsVisible](share-buttons-visible.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) = true
+var [shareButtonsVisible](share-buttons-visible.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)

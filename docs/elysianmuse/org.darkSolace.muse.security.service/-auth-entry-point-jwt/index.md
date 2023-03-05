@@ -2,7 +2,6 @@
 
 # AuthEntryPointJwt
 
-[jvm]\
 @Component
 
 class [AuthEntryPointJwt](index.md) : AuthenticationEntryPoint
@@ -10,8 +9,6 @@ class [AuthEntryPointJwt](index.md) : AuthenticationEntryPoint
 Component to handle unauthorised access to an endpoint
 
 #### See also
-
-jvm
 
 | |
 |---|
@@ -21,7 +18,7 @@ jvm
 
 | | |
 |---|---|
-| [AuthEntryPointJwt](-auth-entry-point-jwt.md) | [jvm]<br>fun [AuthEntryPointJwt](-auth-entry-point-jwt.md)() |
+| [AuthEntryPointJwt](-auth-entry-point-jwt.md) | [jvm]<br>constructor() |
 
 ## Functions
 

@@ -3,4 +3,4 @@
 # UserDetailsService
 
 [jvm]\
-fun [UserDetailsService](-user-details-service.md)(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md))
+constructor(@AutowireduserRepository: [UserRepository](../../org.darkSolace.muse.user.repository/-user-repository/index.md))

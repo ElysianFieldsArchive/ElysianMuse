@@ -11,14 +11,6 @@ Retrieves a [MailTemplate](../../org.darkSolace.muse.mail.model/-mail-template/i
 
 the mail template
 
-#### See also
-
-jvm
-
-| |
-|---|
-| [TemplateType](../../org.darkSolace.muse.mail.model/-template-type/index.md) |
-
 #### Parameters
 
 jvm
@@ -26,3 +18,9 @@ jvm
 | | |
 |---|---|
 | templateType | the [TemplateType](../../org.darkSolace.muse.mail.model/-template-type/index.md) of the template to be retrieved |
+
+#### See also
+
+| |
+|---|
+| [TemplateType](../../org.darkSolace.muse.mail.model/-template-type/index.md) |

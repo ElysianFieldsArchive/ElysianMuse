@@ -3,4 +3,4 @@
 # user
 
 [jvm]\
-var [user](user.md): [User](../../org.darkSolace.muse.user.model/-user/index.md)? = null
+var [user](user.md): [User](../../org.darkSolace.muse.user.model/-user/index.md)?

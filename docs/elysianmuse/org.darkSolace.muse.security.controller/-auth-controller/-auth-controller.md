@@ -3,4 +3,4 @@
 # AuthController
 
 [jvm]\
-fun [AuthController](-auth-controller.md)(@AutowiredauthenticationService: [AuthenticationService](../../org.darkSolace.muse.security.service/-authentication-service/index.md), @AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md), @AutowiredsuspensionService: [SuspensionService](../../org.darkSolace.muse.user.service/-suspension-service/index.md))
+constructor(@AutowiredauthenticationService: [AuthenticationService](../../org.darkSolace.muse.security.service/-authentication-service/index.md), @AutowireduserRoleService: [UserRoleService](../../org.darkSolace.muse.user.service/-user-role-service/index.md), @AutowiredsuspensionService: [SuspensionService](../../org.darkSolace.muse.user.service/-suspension-service/index.md))

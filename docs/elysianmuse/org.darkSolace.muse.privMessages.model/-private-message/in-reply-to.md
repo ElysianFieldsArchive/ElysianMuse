@@ -3,4 +3,4 @@
 # inReplyTo
 
 [jvm]\
-var [inReplyTo](in-reply-to.md): [PrivateMessage](index.md)? = null
+var [inReplyTo](in-reply-to.md): [PrivateMessage](index.md)?

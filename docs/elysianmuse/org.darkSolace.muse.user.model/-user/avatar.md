@@ -3,4 +3,4 @@
 # avatar
 
 [jvm]\
-var [avatar](avatar.md): [Avatar](../-avatar/index.md)? = null
+var [avatar](avatar.md): [Avatar](../-avatar/index.md)?

@@ -3,4 +3,4 @@
 # sender
 
 [jvm]\
-var [sender](sender.md): [User](../../org.darkSolace.muse.user.model/-user/index.md)? = null
+var [sender](sender.md): [User](../../org.darkSolace.muse.user.model/-user/index.md)?

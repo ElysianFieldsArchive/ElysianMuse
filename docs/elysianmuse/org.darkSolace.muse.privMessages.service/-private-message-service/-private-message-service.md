@@ -3,4 +3,4 @@
 # PrivateMessageService
 
 [jvm]\
-fun [PrivateMessageService](-private-message-service.md)(@AutowiredprivateMessageRepository: [PrivateMessageRepository](../../org.darkSolace.muse.privMessages.repository/-private-message-repository/index.md))
+constructor(@AutowiredprivateMessageRepository: [PrivateMessageRepository](../../org.darkSolace.muse.privMessages.repository/-private-message-repository/index.md))

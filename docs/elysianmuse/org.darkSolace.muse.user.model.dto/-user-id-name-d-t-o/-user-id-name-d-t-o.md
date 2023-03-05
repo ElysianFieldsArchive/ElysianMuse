@@ -3,4 +3,4 @@
 # UserIdNameDTO
 
 [jvm]\
-fun [UserIdNameDTO](-user-id-name-d-t-o.md)()
+constructor()
