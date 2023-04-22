@@ -15,7 +15,7 @@ class ChapterDTO {
     var startNotes: String? = ""
     var endNotes: String? = ""
     var hitCount: Long = 0
-    var wordCount: Long = 0
+    var wordCount: Int = 0
     var content: String = ""
     var publishedDate: Date = Date()
     var updatedDate: Date = Date()

@@ -1,31 +1,40 @@
 package org.darkSolace.muse.story.service
 
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonInclude
+import jakarta.persistence.*
 import jakarta.transaction.Transactional
 import org.darkSolace.muse.story.model.*
 import org.darkSolace.muse.story.model.dto.ChapterCommentDTO
 import org.darkSolace.muse.story.model.dto.ChapterDTO
 import org.darkSolace.muse.story.model.dto.StoryDTO
+import org.darkSolace.muse.story.model.dto.UserContributionDTO
 import org.darkSolace.muse.story.repository.ChapterCommentRepository
 import org.darkSolace.muse.story.repository.ChapterRepository
 import org.darkSolace.muse.story.repository.StoryRepository
 import org.darkSolace.muse.user.model.User
 import org.darkSolace.muse.user.model.UserTag
-import org.darkSolace.muse.user.model.dto.UserIdNameDTO
-import org.darkSolace.muse.user.repository.UserRepository
+import org.darkSolace.muse.user.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.util.*
+import kotlin.jvm.Transient
 
 @Service
 class StoryService(
     @Autowired private val storyRepository: StoryRepository,
     @Autowired private val chapterRepository: ChapterRepository,
     @Autowired private val chapterCommentRepository: ChapterCommentRepository,
-    @Autowired private val userRepository: UserRepository
+    @Autowired private val userService: UserService,
 ) {
     fun getStoryById(id: Long): Story? = storyRepository.findByIdOrNull(id)
+    fun getChapterById(chapterId: Long): Chapter? = chapterRepository.findByIdOrNull(chapterId)
     fun getAllStories(): List<Story> = storyRepository.findAll().toList()
-    fun getStoriesFiltered(ratings: List<Rating>? = null, tags: List<StoryTag>? = null): List<Story> {
+
+    fun getStoriesFiltered(
+        ratings: List<Rating>? = null, tags: List<StoryTag>? = null, authors: List<User>? = null
+    ): List<Story> {
         var stories = storyRepository.findAll()
 
         if (ratings?.isNotEmpty() == true) {
@@ -34,6 +43,10 @@ class StoryService(
 
         if (tags?.isNotEmpty() == true) {
             stories = stories.filter { story -> tags.all { tag -> story.storyTags.contains(tag) } }
+        }
+
+        if (!authors.isNullOrEmpty()) {
+            stories = stories.filter { story -> authors.any { user -> story.author.contains(user) } }
         }
 
         return stories.toList()
@@ -75,6 +88,7 @@ class StoryService(
         return true
     }
 
+    @Transactional
     fun deleteStory(id: Long): Boolean {
         val story = storyRepository.findByIdOrNull(id) ?: return false
 
@@ -153,9 +167,9 @@ class StoryService(
         return true
     }
 
-    fun addContributor(storyId: Long, userId: Long, userTag: UserTag): Boolean {
+    fun addContributorToStory(storyId: Long, userId: Long, userTag: UserTag): Boolean {
         val story = storyRepository.findByIdOrNull(storyId) ?: return false
-        val user = userRepository.findByIdOrNull(userId) ?: return false
+        val user = userService.getById(userId) ?: return false
 
         var change = false
         when (userTag) {
@@ -181,13 +195,165 @@ class StoryService(
 
         if (change) {
             storyRepository.save(story)
-            user.userTags.add(userTag)
-            userRepository.save(user)
         }
         return true
     }
 
-    //TODO: Chapter commenting stuff
+    fun removeContributorFromStory(storyId: Long, userId: Long, userTag: UserTag): Boolean {
+        val story = storyRepository.findByIdOrNull(storyId) ?: return false
+        val user = userService.getById(userId) ?: return false
+
+        var change = false
+        when (userTag) {
+            UserTag.AUTHOR -> {
+                story.author.remove(user)
+                change = true
+            }
+
+            UserTag.ARTIST -> {
+                story.artist.remove(user)
+                change = true
+            }
+
+            UserTag.BETA -> {
+                story.beta.remove(user)
+                change = true
+            }
+
+            else -> {
+                //do nothing
+            }
+        }
+
+        if (change) {
+            storyRepository.save(story)
+        }
+        return true
+    }
+
+    fun addContributorToChapter(storyId: Long, chapterId: Long, userId: Long, userTag: UserTag): Boolean {
+        val story = storyRepository.findByIdOrNull(storyId) ?: return false
+        val chapter = story.chapters.first { it.id == chapterId }
+        val user = userService.getById(userId) ?: return false
+
+        var change = false
+        when (userTag) {
+            UserTag.ARTIST -> {
+                chapter.artist.add(user)
+                change = true
+            }
+
+            UserTag.BETA -> {
+                chapter.beta.add(user)
+                change = true
+            }
+
+            else -> {
+                //do nothing
+            }
+        }
+
+        if (change) {
+            storyRepository.save(story)
+        }
+        return true
+    }
+
+    fun removeContributorFromChapter(storyId: Long, chapterId: Long, userId: Long, userTag: UserTag): Boolean {
+        val story = storyRepository.findByIdOrNull(storyId) ?: return false
+        val chapter = story.chapters.first { it.id == chapterId }
+        val user = userService.getById(userId) ?: return false
+
+        var change = false
+        when (userTag) {
+            UserTag.ARTIST -> {
+                chapter.artist.remove(user)
+                change = true
+            }
+
+            UserTag.BETA -> {
+                chapter.beta.remove(user)
+                change = true
+            }
+
+            else -> {
+                //do nothing
+            }
+        }
+
+        if (change) {
+            storyRepository.save(story)
+        }
+        return true
+    }
+
+    fun addChapterComment(chapterId: Long, comment: ChapterCommentDTO): Boolean {
+        val chapter = chapterRepository.findByIdOrNull(chapterId) ?: return false
+        val commenter = userService.getById(comment.author?.id ?: return false)
+
+        val chapterComment = ChapterComment().apply {
+            this.authorApproved = !(chapter.story?.commentModeration ?: true)
+            this.author = commenter
+            this.chapter = chapter
+            this.content = comment.content
+            this.publishedDate = comment.publishedDate
+            this.referenceComment = comment.referenceComment
+        }
+
+        chapterCommentRepository.save(chapterComment)
+        chapter.comments.add(chapterComment)
+        chapterRepository.save(chapter)
+
+        return true
+    }
+
+    fun editChapterComment(editedChapterComment: ChapterCommentDTO): Boolean {
+        val chapter = chapterRepository.findByIdOrNull(editedChapterComment.chapter?.id ?: -1) ?: return false
+        val commenter = userService.getById(editedChapterComment.author?.id ?: return false)
+        val comment = chapterCommentRepository.findByIdOrNull(editedChapterComment.id ?: -1) ?: return false
+
+        comment.apply {
+            this.authorApproved = !(chapter.story?.commentModeration ?: true)
+            this.author = commenter
+            this.chapter = chapter
+            this.content = comment.content
+            this.publishedDate = comment.publishedDate
+            this.referenceComment = comment.referenceComment
+        }
+
+        chapterCommentRepository.save(comment)
+        return true
+    }
+
+
+    fun deleteChapterComment(chapterCommentId: Long): Boolean {
+        val chapterComment = chapterCommentRepository.findByIdOrNull(chapterCommentId) ?: return false
+        val chapter = chapterComment.chapter ?: return false
+
+        chapter.comments.remove(chapterComment)
+        chapterRepository.save(chapter)
+        return true
+    }
+
+
+    fun getUserContributions(user: User): UserContributionDTO {
+        if (user.userSettings.hideContributions) return UserContributionDTO(emptyList(), emptyList())
+
+        val stories = getAllStories()
+
+        val storyBeta = stories.filter { it.beta.contains(user) }
+        val storyAuthor = stories.filter { it.author.contains(user) }
+        val storyArtist = stories.filter { it.artist.contains(user) }
+
+        val chapters = stories.flatMap { it.chapters }
+
+        val chapterBeta = chapters.filter { it.beta.contains(user) }
+        val chapterArtist = chapters.filter { it.artist.contains(user) }
+
+        return UserContributionDTO(
+            (storyArtist + storyAuthor + storyBeta).distinct(), (chapterArtist + chapterBeta).distinct()
+        )
+    }
 
     private fun generateEpub(id: Long) {
         TODO("research epub creation")
@@ -225,16 +391,16 @@ class StoryService(
     }
 
     private fun StoryDTO.resolveUsersArtistsBetas(): Array<List<User>> {
-        val authors = this.author.mapNotNull { userRepository.findByIdOrNull(it.id ?: -1) }
-        val artists = this.artist.mapNotNull { userRepository.findByIdOrNull(it.id ?: -1) }
-        val betas = this.beta.mapNotNull { userRepository.findByIdOrNull(it.id ?: -1) }
+        val authors = this.author.mapNotNull { userService.getById(it.id ?: -1) }
+        val artists = this.artist.mapNotNull { userService.getById(it.id ?: -1) }
+        val betas = this.beta.mapNotNull { userService.getById(it.id ?: -1) }
 
         return arrayOf(authors, artists, betas)
     }
 
     private fun ChapterDTO.resolveArtistsBetas(): Array<List<User>> {
-        val artists = this.artist.mapNotNull { userRepository.findByIdOrNull(it.id ?: -1) }
-        val betas = this.beta.mapNotNull { userRepository.findByIdOrNull(it.id ?: -1) }
+        val artists = this.artist.mapNotNull { userService.getById(it.id ?: -1) }
+        val betas = this.beta.mapNotNull { userService.getById(it.id ?: -1) }
 
         return arrayOf(artists, betas)
     }

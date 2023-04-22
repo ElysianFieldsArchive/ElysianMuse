@@ -33,6 +33,7 @@
 | [org.darkSolace.muse.security.exception](elysianmuse/org.darkSolace.muse.security.exception/index.md) |
 | [org.darkSolace.muse.security.model](elysianmuse/org.darkSolace.muse.security.model/index.md) |
 | [org.darkSolace.muse.security.service](elysianmuse/org.darkSolace.muse.security.service/index.md) |
+| [org.darkSolace.muse.story.controller](elysianmuse/org.darkSolace.muse.story.controller/index.md) |
 | [org.darkSolace.muse.story.model](elysianmuse/org.darkSolace.muse.story.model/index.md) |
 | [org.darkSolace.muse.story.model.dto](elysianmuse/org.darkSolace.muse.story.model.dto/index.md) |
 | [org.darkSolace.muse.story.repository](elysianmuse/org.darkSolace.muse.story.repository/index.md) |

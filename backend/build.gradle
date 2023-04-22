@@ -32,6 +32,7 @@ dependencies {
     implementation libs.springdoc.openapi.ui
     implementation libs.springdoc.openapi.starter.common
 
+
     runtimeOnly libs.org.postgresql.postgresql
     runtimeOnly libs.kotlin.reflect
     runtimeOnly libs.jjwt.impl

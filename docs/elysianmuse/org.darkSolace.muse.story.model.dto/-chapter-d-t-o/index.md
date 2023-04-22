@@ -36,4 +36,4 @@ class [ChapterDTO](index.md)
 | [summary](summary.md) | [jvm]<br>var [summary](summary.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [title](title.md) | [jvm]<br>var [title](title.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [updatedDate](updated-date.md) | [jvm]<br>var [updatedDate](updated-date.md): [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html) |
-| [wordCount](word-count.md) | [jvm]<br>var [wordCount](word-count.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html) |
+| [wordCount](word-count.md) | [jvm]<br>var [wordCount](word-count.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) |

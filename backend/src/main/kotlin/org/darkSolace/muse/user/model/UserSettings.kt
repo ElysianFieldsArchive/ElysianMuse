@@ -33,7 +33,8 @@ data class UserSettings(
     var showEntireStories: Boolean = false,
     var selectedFontFamily: FontFamily = FontFamily.SANS,
     var storyBannersVisible: Boolean = true,
-    var selectedFontSize: FontSize = FontSize.MEDIUM
+    var selectedFontSize: FontSize = FontSize.MEDIUM,
+    var hideContributions: Boolean = false,
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -52,6 +53,6 @@ data class UserSettings(
                 "realNameVisible = $realNameVisible, maxRating = $maxRating, " +
                 "shareButtonsVisible = $shareButtonsVisible, showEntireStories = $showEntireStories, " +
                 "selectedFontFamily = $selectedFontFamily, storyBannersVisible = $storyBannersVisible, " +
-                "selectedFontSize = $selectedFontSize)"
+                "selectedFontSize = $selectedFontSize, hideContributions = $hideContributions)"
     }
 }

@@ -18,17 +18,17 @@ class Chapter {
     var startNotes: String? = ""
     var endNotes: String? = ""
     val hitCount: Long = 0
-    val wordCount: Long = 0
-
     @Lob
     @Basic(fetch = FetchType.LAZY)
     var content: String = ""
+
+    val wordCount: Int = content.split(" ").size
 
     @Temporal(TemporalType.TIMESTAMP)
     var publishedDate: Date = Date()
 
     @Temporal(TemporalType.TIMESTAMP)
-    val updatedDate: Date = Date()
+    var updatedDate: Date = Date()
 
     @OneToMany
     var beta: MutableList<User> = emptyList<User>().toMutableList()

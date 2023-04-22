@@ -3,4 +3,4 @@
 # wordCount
 
 [jvm]\
-val [wordCount](word-count.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html) = 0
+val [wordCount](word-count.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)

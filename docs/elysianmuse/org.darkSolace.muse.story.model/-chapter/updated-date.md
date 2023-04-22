@@ -3,4 +3,4 @@
 # updatedDate
 
 [jvm]\
-val [updatedDate](updated-date.md): [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)
+var [updatedDate](updated-date.md): [Date](https://docs.oracle.com/javase/8/docs/api/java/util/Date.html)

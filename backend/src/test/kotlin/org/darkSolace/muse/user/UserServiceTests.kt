@@ -28,7 +28,7 @@ class UserServiceTests : TestBase() {
         "UserSettings\\(id = \\d+, selectedLayout = null, emailVisible = false, birthdayVisible = false, " +
                 "realNameVisible = false, maxRating = PARENTAL_GUIDANCE_13, shareButtonsVisible = true, " +
                 "showEntireStories = false, selectedFontFamily = SANS, storyBannersVisible = true, " +
-                "selectedFontSize = MEDIUM\\)"
+                "selectedFontSize = MEDIUM, hideContributions = false\\)"
 
     @Test
     fun createUserTest() {
