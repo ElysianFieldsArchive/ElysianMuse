@@ -6,7 +6,7 @@
 
 @GetMapping(value = [&quot;/last/{size}&quot;])
 
-fun [getNewest](get-newest.md)(@Valid@PathVariable(required = false)@Min(value = 1)size: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 3): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[NewsEntryDTO](../../org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/index.md)&gt;
+fun [getNewest](get-newest.md)(@Valid@PathVariable(required = false)@Min(value = 1)size: [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) = 3): [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html)&lt;[NewsEntryDTO](../../org.darkSolace.muse.news.model.dto/-news-entry-d-t-o/index.md)&gt;
 
 Retrieves the last 'size' news stories. Listens on /api/news/last/{size}.
 

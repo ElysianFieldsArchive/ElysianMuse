@@ -3,4 +3,4 @@
 # NewsController
 
 [jvm]\
-constructor()
+constructor(@AutowirednewsService: [NewsService](../../org.darkSolace.muse.news.service/-news-service/index.md))

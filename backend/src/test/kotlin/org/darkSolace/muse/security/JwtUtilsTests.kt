@@ -38,9 +38,9 @@ class JwtUtilsTests : TestBase() {
 
     @Test
     fun generateJwtToken() {
-        authService.signUpUser(SignUpRequest("test", "123", "test@example.com"))
+        authService.signUpUser(SignUpRequest("test", "123456", "test@example.com"))
         val authentication: Authentication = authenticationManager.authenticate(
-            UsernamePasswordAuthenticationToken("test", "123")
+            UsernamePasswordAuthenticationToken("test", "123456")
         )
         val token = jwtUtils.generateJwtToken(authentication)
         //content of token can't be checked because of changing issuing and expiration date
@@ -49,9 +49,9 @@ class JwtUtilsTests : TestBase() {
 
     @Test
     fun getUserNameFromJwtToken() {
-        authService.signUpUser(SignUpRequest("test", "123", "test@example.com"))
+        authService.signUpUser(SignUpRequest("test", "123456", "test@example.com"))
         val authentication: Authentication = authenticationManager.authenticate(
-            UsernamePasswordAuthenticationToken("test", "123")
+            UsernamePasswordAuthenticationToken("test", "123456")
         )
         val token = jwtUtils.generateJwtToken(authentication)
         Assertions.assertNotNull(token)
@@ -60,9 +60,9 @@ class JwtUtilsTests : TestBase() {
 
     @Test
     fun validateJwtToken() {
-        authService.signUpUser(SignUpRequest("test", "123", "test@example.com"))
+        authService.signUpUser(SignUpRequest("test", "123456", "test@example.com"))
         val authentication: Authentication = authenticationManager.authenticate(
-            UsernamePasswordAuthenticationToken("test", "123")
+            UsernamePasswordAuthenticationToken("test", "123456")
         )
         val token = jwtUtils.generateJwtToken(authentication)
         Assertions.assertNotNull(token)
@@ -72,9 +72,9 @@ class JwtUtilsTests : TestBase() {
 
     @Test
     fun validateJwtToken_invalid() {
-        authService.signUpUser(SignUpRequest("test", "123", "test@example.com"))
+        authService.signUpUser(SignUpRequest("test", "123456", "test@example.com"))
         val authentication: Authentication = authenticationManager.authenticate(
-            UsernamePasswordAuthenticationToken("test", "123")
+            UsernamePasswordAuthenticationToken("test", "123456")
         )
         val token = jwtUtils.generateJwtToken(authentication)
         Assertions.assertNotNull(token)

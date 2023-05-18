@@ -48,14 +48,14 @@ class UserTagApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -81,7 +81,7 @@ class UserTagApiTests : TestBase() {
     @Order(2)
     fun addTag_otherUserAdmin() {
         //generate user to add tag to
-        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        val signUpRequest = SignUpRequest("test", "123456", "test@example.com")
         var user = userService.createUserFromSignUpRequest(signUpRequest)
 
         //generate admin to perform action
@@ -89,7 +89,7 @@ class UserTagApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -98,7 +98,7 @@ class UserTagApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -120,7 +120,7 @@ class UserTagApiTests : TestBase() {
     @Order(3)
     fun addTag_otherUserModerator() {
         //generate user to add tag to
-        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        val signUpRequest = SignUpRequest("test", "123456", "test@example.com")
         var user = userService.createUserFromSignUpRequest(signUpRequest)
 
         //generate moderator to perform action
@@ -128,7 +128,7 @@ class UserTagApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
 
@@ -138,7 +138,7 @@ class UserTagApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -160,7 +160,7 @@ class UserTagApiTests : TestBase() {
     @Order(4)
     fun addTag_otherUserMember() {
         //generate user to add tag to
-        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        val signUpRequest = SignUpRequest("test", "123456", "test@example.com")
         var user = userService.createUserFromSignUpRequest(signUpRequest)
 
         //generate other user to perform action
@@ -168,7 +168,7 @@ class UserTagApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -176,7 +176,7 @@ class UserTagApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -202,7 +202,7 @@ class UserTagApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -211,7 +211,7 @@ class UserTagApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -234,7 +234,7 @@ class UserTagApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -242,7 +242,7 @@ class UserTagApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -265,7 +265,7 @@ class UserTagApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -273,7 +273,7 @@ class UserTagApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -302,7 +302,7 @@ class UserTagApiTests : TestBase() {
     @Order(8)
     fun removeTag_otherUserAdmin() {
         //generate user to add tag to
-        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        val signUpRequest = SignUpRequest("test", "123456", "test@example.com")
         var user = userService.createUserFromSignUpRequest(signUpRequest)
         if (user != null) {
             userTagService.addTagToUser(user, UserTag.ARTIST)
@@ -313,7 +313,7 @@ class UserTagApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -322,7 +322,7 @@ class UserTagApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -344,7 +344,7 @@ class UserTagApiTests : TestBase() {
     @Order(9)
     fun removeTag_otherUserModerator() {
         //generate user to add tag to
-        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        val signUpRequest = SignUpRequest("test", "123456", "test@example.com")
         var user = userService.createUserFromSignUpRequest(signUpRequest)
         if (user != null) {
             userTagService.addTagToUser(user, UserTag.ARTIST)
@@ -355,7 +355,7 @@ class UserTagApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -364,7 +364,7 @@ class UserTagApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -386,7 +386,7 @@ class UserTagApiTests : TestBase() {
     @Order(10)
     fun removeTag_otherUserMember() {
         //generate user to add tag to
-        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        val signUpRequest = SignUpRequest("test", "123456", "test@example.com")
         var user = userService.createUserFromSignUpRequest(signUpRequest)
         if (user != null) {
             userTagService.addTagToUser(user, UserTag.ARTIST)
@@ -397,7 +397,7 @@ class UserTagApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -405,7 +405,7 @@ class UserTagApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -431,7 +431,7 @@ class UserTagApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -440,7 +440,7 @@ class UserTagApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -463,7 +463,7 @@ class UserTagApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -472,7 +472,7 @@ class UserTagApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -493,47 +493,47 @@ class UserTagApiTests : TestBase() {
         // create test users
         userService.createUser(
             User(
-                username = "testUser18", password = "123", email = "test18@example.com",
+                username = "testUser18", password = "123456", email = "test18@example.com",
                 userTags = mutableSetOf(UserTag.ARTIST)
             )
         )
         userService.createUser(
             User(
-                username = "testUser19", password = "123", email = "test19@example.com",
+                username = "testUser19", password = "123456", email = "test19@example.com",
                 userTags = mutableSetOf(UserTag.ARTIST_INACTIVE)
             )
         )
         userService.createUser(
             User(
-                username = "testUser20", password = "123", email = "test20@example.com",
+                username = "testUser20", password = "123456", email = "test20@example.com",
                 userTags = mutableSetOf(UserTag.BETA)
             )
         )
         userService.createUser(
             User(
-                username = "testUser21", password = "123", email = "test21@example.com",
+                username = "testUser21", password = "123456", email = "test21@example.com",
                 userTags = mutableSetOf(UserTag.BETA_INACTIVE)
             )
         )
         userService.createUser(
             User(
-                username = "testUser22", password = "123", email = "test22@example.com",
+                username = "testUser22", password = "123456", email = "test22@example.com",
                 userTags = mutableSetOf(UserTag.AUTHOR)
             )
         )
         userService.createUser(
             User(
-                username = "testUser23", password = "123", email = "test23@example.com",
+                username = "testUser23", password = "123456", email = "test23@example.com",
                 userTags = mutableSetOf(UserTag.COMMENTER)
             )
         )
         userService.createUser(
             User(
-                username = "testUser24", password = "123", email = "test24@example.com",
+                username = "testUser24", password = "123456", email = "test24@example.com",
                 userTags = mutableSetOf(UserTag.COMMENTER, UserTag.AUTHOR, UserTag.BETA_INACTIVE)
             )
         )
-        userService.createUser(User(username = "testUser25", password = "123", email = "test25@example.com"))
+        userService.createUser(User(username = "testUser25", password = "123456", email = "test25@example.com"))
 
         //collect values
         val countWithoutTags = userRepository.findAll().count { it.userTags.isEmpty() }

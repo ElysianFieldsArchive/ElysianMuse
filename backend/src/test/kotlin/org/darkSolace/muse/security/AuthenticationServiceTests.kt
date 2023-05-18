@@ -32,7 +32,7 @@ class AuthenticationServiceTests : TestBase() {
     @Test
     @Order(1)
     fun testSignUp() {
-        val signupRequest = SignUpRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123456", "test@example.com")
         val response = authService.signUpUser(signupRequest)
         Assertions.assertEquals(SignUpResponse.OK, response)
     }
@@ -40,11 +40,11 @@ class AuthenticationServiceTests : TestBase() {
     @Test
     @Order(2)
     fun testSignUp_DuplicateUsername() {
-        val signupRequest = SignUpRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123456", "test@example.com")
         val response = authService.signUpUser(signupRequest)
         Assertions.assertEquals(SignUpResponse.OK, response)
 
-        val secondSignupRequest = SignUpRequest("test", "123", "test2@example.com")
+        val secondSignupRequest = SignUpRequest("test", "123456", "test2@example.com")
         val secondResponse = authService.signUpUser(secondSignupRequest)
         Assertions.assertEquals(SignUpResponse.USERNAME_EXISTS, secondResponse)
     }
@@ -52,11 +52,11 @@ class AuthenticationServiceTests : TestBase() {
     @Test
     @Order(3)
     fun testSignUp_DuplicateEMail() {
-        val signupRequest = SignUpRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123456", "test@example.com")
         val response = authService.signUpUser(signupRequest)
         Assertions.assertEquals(SignUpResponse.OK, response)
 
-        val secondSignupRequest = SignUpRequest("test2", "123", "test@example.com")
+        val secondSignupRequest = SignUpRequest("test2", "123456", "test@example.com")
         val secondResponse = authService.signUpUser(secondSignupRequest)
         Assertions.assertEquals(SignUpResponse.EMAIL_EXISTS, secondResponse)
     }
@@ -64,12 +64,12 @@ class AuthenticationServiceTests : TestBase() {
     @Test
     @Order(4)
     fun testSignIn() {
-        val signupRequest = SignUpRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123456", "test@example.com")
         val response = authService.signUpUser(signupRequest)
         mailService.markEMailAsValid("test")
         Assertions.assertEquals(SignUpResponse.OK, response)
 
-        val loginRequest = LoginRequest("test", "123")
+        val loginRequest = LoginRequest("test", "123456")
         val jwtToken = authService.authenticate(loginRequest)
         Assertions.assertNotNull(jwtToken)
     }
@@ -77,12 +77,12 @@ class AuthenticationServiceTests : TestBase() {
     @Test
     @Order(5)
     fun testSignIn_WrongPassword() {
-        val signupRequest = SignUpRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123456", "test@example.com")
         val response = authService.signUpUser(signupRequest)
         mailService.markEMailAsValid("test")
         Assertions.assertEquals(SignUpResponse.OK, response)
 
-        val loginRequest = LoginRequest("test", "1234")
+        val loginRequest = LoginRequest("test", "wrong_password")
         var jwtToken: JwtResponse? = null
         Assertions.assertThrows(BadCredentialsException::class.java) {
             jwtToken = authService.authenticate(loginRequest)
@@ -94,20 +94,20 @@ class AuthenticationServiceTests : TestBase() {
     @Test
     @Order(6)
     fun testSignIn_SuspendedUser() {
-        val signupRequest = SignUpRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123456", "test@example.com")
         val response = authService.signUpUser(signupRequest)
         mailService.markEMailAsValid("test")
         Assertions.assertEquals(SignUpResponse.OK, response)
 
         userRoleService.suspendUser(User(username = "test", password = "", email = "test@example.com"))
-        val jwtResponse = authService.authenticate(LoginRequest("test", "123"))
+        val jwtResponse = authService.authenticate(LoginRequest("test", "123456"))
         Assertions.assertEquals("SUSPENDED", jwtResponse?.role)
     }
 
     @Test
     @Order(7)
     fun testSignIn_UpdateLoginDate() {
-        val signupRequest = SignUpRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123456", "test@example.com")
         val response = authService.signUpUser(signupRequest)
         mailService.markEMailAsValid("test")
         Assertions.assertEquals(SignUpResponse.OK, response)
@@ -115,7 +115,7 @@ class AuthenticationServiceTests : TestBase() {
         var user = userService.userRepository.findByUsername("test")
         Assertions.assertNull(user?.lastLogInDate)
 
-        val loginRequest = LoginRequest("test", "123")
+        val loginRequest = LoginRequest("test", "123456")
         val jwtToken = authService.authenticate(loginRequest)
         Assertions.assertNotNull(jwtToken)
 

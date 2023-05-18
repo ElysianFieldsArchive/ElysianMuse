@@ -3,4 +3,4 @@
 # from
 
 [jvm]\
-fun [from](from.md)(news: [NewsEntry](../../../org.darkSolace.muse.news.model/-news-entry/index.md)): [NewsEntryDTO](../index.md)
+open override fun [from](from.md)(item: [NewsEntry](../../../org.darkSolace.muse.news.model/-news-entry/index.md)): [NewsEntryDTO](../index.md)

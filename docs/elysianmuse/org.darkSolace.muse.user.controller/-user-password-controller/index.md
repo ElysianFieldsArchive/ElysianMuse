@@ -7,6 +7,8 @@
 
 @RequestMapping(value = [&quot;/api/user&quot;])
 
+@Validated
+
 class [UserPasswordController](index.md)(@Autowiredval userService: [UserService](../../org.darkSolace.muse.user.service/-user-service/index.md), @Autowiredval userPasswordService: [UserPasswordService](../../org.darkSolace.muse.user.service/-user-password-service/index.md))
 
 RestController defining endpoints regarding all password reset activities

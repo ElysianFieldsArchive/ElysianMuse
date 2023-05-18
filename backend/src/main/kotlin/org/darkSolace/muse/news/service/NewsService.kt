@@ -47,6 +47,8 @@ class NewsService {
     fun addCommentToNews(id: Long, comment: NewsCommentDTO): Boolean {
         val author = userRepository.findById(comment.author?.id ?: -1).getOrNull() ?: return false
         val news = newsRepository.findById(id).getOrNull() ?: return false
+        if (comment.author == null) return false
+
         val newsComment = NewsComment().also {
             it.author = author
             it.content = comment.content
@@ -122,7 +124,7 @@ class NewsService {
         val comment = newsCommentRepository.findByIdOrNull(commentId) ?: return false
         val author = userRepository.findById(commentDto.author?.id ?: -1).getOrNull() ?: return false
         //check if edit author is original comment author
-        if (comment.author?.id != author.id) return false
+        if (comment.author.id != author.id) return false
 
         comment.apply {
             this.author = author

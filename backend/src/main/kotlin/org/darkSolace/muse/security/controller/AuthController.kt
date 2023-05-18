@@ -1,5 +1,6 @@
 package org.darkSolace.muse.security.controller
 
+import jakarta.validation.Valid
 import org.darkSolace.muse.security.exception.EMailNotValidatedException
 import org.darkSolace.muse.security.model.AuthMessages
 import org.darkSolace.muse.security.model.LoginRequest
@@ -16,6 +17,7 @@ import org.springframework.security.authentication.InternalAuthenticationService
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("api/auth")
+@Validated
 class AuthController(
     @Autowired val authenticationService: AuthenticationService,
     @Autowired val userRoleService: UserRoleService,
@@ -32,14 +35,14 @@ class AuthController(
     /**
      * Checks a transmitted [LoginRequest] for a valid username/password pair. Listens on /api/auth/signin.
      *
-     * @sample `curl -X POST -H "Content-Type: application/json" -d '{ "username": "test", "password": "123" }'
+     * @sample `curl -X POST -H "Content-Type: application/json" -d '{ "username": "test", "password": "123456" }'
      *          localhost:8000/api/auth/signin`
      * @param loginRequest a [LoginRequest] containing username and password
      * @return a [org.darkSolace.muse.security.model.JwtResponse] containing
      * a token, HTTP 401 is username or password are invalid, or HTTP 301 is user is suspended
      */
     @PostMapping("/signin")
-    fun authenticateUser(@RequestBody loginRequest: LoginRequest): ResponseEntity<*> {
+    fun authenticateUser(@RequestBody @Valid loginRequest: LoginRequest): ResponseEntity<*> {
         return try {
             val token = authenticationService.authenticate(loginRequest)
             if (token == null) {
@@ -72,13 +75,13 @@ class AuthController(
      * Checks a transmitted [SignUpRequest] and creates a user if possible. Listens on /api/auth/signup.
      *
      * @sample `curl -X POST -H "Content-Type: application/json" -d
-     *          '{ "username": "test", "password": "123", "email": "test@example.com" }'
+     *          '{ "username": "test", "password": "123456", "email": "test@example.com" }'
      *          localhost:8000/api/auth/signup`
      * @param signUpRequest a [SignUpRequest] containing username, password and email address
      * @return HTTP-Status 200 OK if user was created successfully or 400 BAD REQUEST if an error occurred
      */
     @PostMapping("/signup")
-    fun registerUser(@RequestBody signUpRequest: SignUpRequest): ResponseEntity<String> {
+    fun registerUser(@Valid @RequestBody signUpRequest: SignUpRequest): ResponseEntity<String> {
         return when (authenticationService.signUpUser(signUpRequest)) {
             SignUpResponse.USERNAME_EXISTS -> {
                 ResponseEntity

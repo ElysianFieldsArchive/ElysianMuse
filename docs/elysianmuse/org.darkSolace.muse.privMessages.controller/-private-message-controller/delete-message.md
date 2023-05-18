@@ -6,7 +6,7 @@
 
 @DeleteMapping(value = [&quot;/{message}&quot;])
 
-fun [deleteMessage](delete-message.md)(@PathVariablemessage: [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md), authentication: Authentication?): ResponseEntity&lt;[Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)&gt;
+fun [deleteMessage](delete-message.md)(@PathVariable@Validmessage: [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md), authentication: Authentication?): ResponseEntity&lt;[Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)&gt;
 
 Deletes a private message
 

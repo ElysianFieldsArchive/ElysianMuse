@@ -3,4 +3,4 @@
 # chapter
 
 [jvm]\
-var [chapter](chapter.md): [Chapter](../-chapter/index.md)?
+lateinit var [chapter](chapter.md): [Chapter](../-chapter/index.md)

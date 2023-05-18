@@ -33,7 +33,7 @@ class SuspensionServiceApiTests : TestBase() {
     @Test
     @Order(1)
     fun getSuspensionHistoryUnauthorized() {
-        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
+        val user = userService.createUser(User(username = "test", password = "123456", email = "test@example.com"))
 
         userRoleService.suspendUser(user?.id ?: -1)
 
@@ -45,9 +45,10 @@ class SuspensionServiceApiTests : TestBase() {
     @Test
     @Order(2)
     fun getSuspensionHistoryModerator() {
-        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
-        val moderator = userService.createUser(User(username = "test2", password = "123", email = "test2@example.com"))
-            ?: fail("Couldn't create moderator user")
+        val user = userService.createUser(User(username = "test", password = "123456", email = "test@example.com"))
+        val moderator =
+            userService.createUser(User(username = "test2", password = "123456", email = "test2@example.com"))
+                ?: fail("Couldn't create moderator user")
         mailService.markEMailAsValid(moderator)
         userRoleService.changeRole(moderator, Role.MODERATOR)
         userRoleService.suspendUser(user?.id ?: -1)
@@ -56,7 +57,7 @@ class SuspensionServiceApiTests : TestBase() {
         val signInUrl = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             signInUrl,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -81,8 +82,8 @@ class SuspensionServiceApiTests : TestBase() {
     @Test
     @Order(3)
     fun getSuspensionHistoryAdmin() {
-        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
-        val admin = userService.createUser(User(username = "test2", password = "123", email = "test2@example.com"))
+        val user = userService.createUser(User(username = "test", password = "123456", email = "test@example.com"))
+        val admin = userService.createUser(User(username = "test2", password = "123456", email = "test2@example.com"))
             ?: fail("Couldn't create admin user")
         mailService.markEMailAsValid(admin)
         userRoleService.changeRole(admin, Role.ADMINISTRATOR)
@@ -92,7 +93,7 @@ class SuspensionServiceApiTests : TestBase() {
         val signInUrl = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             signInUrl,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -117,7 +118,7 @@ class SuspensionServiceApiTests : TestBase() {
     @Test
     @Order(4)
     fun getAllSuspendedUnauthorized() {
-        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
+        val user = userService.createUser(User(username = "test", password = "123456", email = "test@example.com"))
 
         userRoleService.suspendUser(user?.id ?: -1)
 
@@ -129,9 +130,10 @@ class SuspensionServiceApiTests : TestBase() {
     @Test
     @Order(5)
     fun getAllSuspendedAsModerator() {
-        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
-        val moderator = userService.createUser(User(username = "test2", password = "123", email = "test2@example.com"))
-            ?: fail("Couldn't create moderator user")
+        val user = userService.createUser(User(username = "test", password = "123456", email = "test@example.com"))
+        val moderator =
+            userService.createUser(User(username = "test2", password = "123456", email = "test2@example.com"))
+                ?: fail("Couldn't create moderator user")
         mailService.markEMailAsValid(moderator)
         userRoleService.changeRole(moderator, Role.MODERATOR)
         userRoleService.suspendUser(user?.id ?: -1)
@@ -140,7 +142,7 @@ class SuspensionServiceApiTests : TestBase() {
         val signInUrl = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             signInUrl,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -161,8 +163,8 @@ class SuspensionServiceApiTests : TestBase() {
     @Test
     @Order(6)
     fun getAllSuspendedAsAdmin() {
-        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
-        val admin = userService.createUser(User(username = "test2", password = "123", email = "test2@example.com"))
+        val user = userService.createUser(User(username = "test", password = "123456", email = "test@example.com"))
+        val admin = userService.createUser(User(username = "test2", password = "123456", email = "test2@example.com"))
             ?: fail("Couldn't create admin user")
         mailService.markEMailAsValid(admin)
         userRoleService.changeRole(admin, Role.MODERATOR)
@@ -172,7 +174,7 @@ class SuspensionServiceApiTests : TestBase() {
         val signInUrl = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             signInUrl,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 

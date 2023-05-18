@@ -3,4 +3,4 @@
 # inReplyTo
 
 [jvm]\
-var [inReplyTo](in-reply-to.md): [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md)?
+var [inReplyTo](in-reply-to.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)?

@@ -3,4 +3,4 @@
 # chapters
 
 [jvm]\
-val [chapters](chapters.md): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[Chapter](../../org.darkSolace.muse.story.model/-chapter/index.md)&gt;
+val [chapters](chapters.md): [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html)&lt;[ChapterDTO](../-chapter-d-t-o/index.md)&gt;

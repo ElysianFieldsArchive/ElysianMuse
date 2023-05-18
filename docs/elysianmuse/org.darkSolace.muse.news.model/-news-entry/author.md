@@ -3,4 +3,4 @@
 # author
 
 [jvm]\
-var [author](author.md): [User](../../org.darkSolace.muse.user.model/-user/index.md)?
+lateinit var [author](author.md): [User](../../org.darkSolace.muse.user.model/-user/index.md)

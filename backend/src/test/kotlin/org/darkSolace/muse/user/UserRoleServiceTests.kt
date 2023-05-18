@@ -23,8 +23,9 @@ class UserRoleServiceTests : TestBase() {
 
     @Test
     fun suspendUser() {
-        val user = userService.createUser(User(username = "testUser3", password = "123", email = "test3@example.com"))
-            ?: fail("user is null")
+        val user =
+            userService.createUser(User(username = "testUser3", password = "123456", email = "test3@example.com"))
+                ?: fail("user is null")
         Assertions.assertNotEquals(Role.SUSPENDED, user.role)
         val suspendedUser = userRoleService.suspendUser(user)
         Assertions.assertEquals(Role.SUSPENDED, suspendedUser?.role)
@@ -32,8 +33,9 @@ class UserRoleServiceTests : TestBase() {
 
     @Test
     fun suspendUserById() {
-        val user = userService.createUser(User(username = "testUser3", password = "123", email = "test3@example.com"))
-            ?: fail("user is null")
+        val user =
+            userService.createUser(User(username = "testUser3", password = "123456", email = "test3@example.com"))
+                ?: fail("user is null")
         Assertions.assertNotEquals(Role.SUSPENDED, user.role)
         val suspendedUser = userRoleService.suspendUser(user.id ?: -1)
         Assertions.assertEquals(Role.SUSPENDED, suspendedUser?.role)
@@ -41,8 +43,9 @@ class UserRoleServiceTests : TestBase() {
 
     @Test
     fun suspendUserAlreadySuspended() {
-        val user = userService.createUser(User(username = "testUser3", password = "123", email = "test3@example.com"))
-            ?: fail("user is null")
+        val user =
+            userService.createUser(User(username = "testUser3", password = "123456", email = "test3@example.com"))
+                ?: fail("user is null")
         Assertions.assertNotEquals(Role.SUSPENDED, user.role)
         var suspendedUser = userRoleService.suspendUser(user)
         Assertions.assertEquals(Role.SUSPENDED, suspendedUser?.role)
@@ -52,8 +55,9 @@ class UserRoleServiceTests : TestBase() {
 
     @Test
     fun suspendUserAlreadySuspendedWithMissingSuspensionHistoryEntry() {
-        val user = userService.createUser(User(username = "testUser3", password = "123", email = "test3@example.com"))
-            ?: fail("user is null")
+        val user =
+            userService.createUser(User(username = "testUser3", password = "123456", email = "test3@example.com"))
+                ?: fail("user is null")
         Assertions.assertNotEquals(Role.SUSPENDED, user.role)
         var suspendedUser = userRoleService.suspendUser(user)
         Assertions.assertEquals(Role.SUSPENDED, suspendedUser?.role)
@@ -66,8 +70,9 @@ class UserRoleServiceTests : TestBase() {
     @Test
     fun changeRole() {
         // create test user and confirm default role
-        val user = userService.createUser(User(username = "testUser4", password = "123", email = "test4@example.com"))
-            ?: fail("user is null")
+        val user =
+            userService.createUser(User(username = "testUser4", password = "123456", email = "test4@example.com"))
+                ?: fail("user is null")
         Assertions.assertEquals(Role.MEMBER, user.role)
 
         //change role to mod
@@ -86,8 +91,9 @@ class UserRoleServiceTests : TestBase() {
     @Test
     fun changeRoleByUsername() {
         // create test user and confirm default role
-        var user = userService.createUser(User(username = "testUser94", password = "123", email = "test94@example.com"))
-            ?: fail("user is null")
+        var user =
+            userService.createUser(User(username = "testUser94", password = "123456", email = "test94@example.com"))
+                ?: fail("user is null")
         Assertions.assertEquals(Role.MEMBER, user.role)
         val userByUserName = User(username = "testUser94", password = "", email = "")
 
@@ -107,7 +113,7 @@ class UserRoleServiceTests : TestBase() {
     @Test
     fun changeRoleUnknownUser() {
         //create not persisted user
-        val user = User(username = "test", password = "123", email = "test@example.com")
+        val user = User(username = "test", password = "123456", email = "test@example.com")
         val result = userRoleService.changeRole(user, Role.MODERATOR)
         Assertions.assertNull(result)
     }

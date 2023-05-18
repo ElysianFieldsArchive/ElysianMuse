@@ -3,4 +3,4 @@
 # recipient
 
 [jvm]\
-var [recipient](recipient.md): [User](../../org.darkSolace.muse.user.model/-user/index.md)?
+var [recipient](recipient.md): [User](../../org.darkSolace.muse.user.model/-user/index.md)

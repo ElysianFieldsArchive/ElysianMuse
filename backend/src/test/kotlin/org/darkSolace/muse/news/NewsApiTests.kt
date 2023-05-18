@@ -12,10 +12,12 @@ import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.testUtil.TestBase
 import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.model.User
+import org.darkSolace.muse.user.model.dto.UserIdNameDTO
 import org.darkSolace.muse.user.service.UserRoleService
 import org.darkSolace.muse.user.service.UserService
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.fail
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.test.web.client.exchange
@@ -44,7 +46,8 @@ class NewsApiTests : TestBase() {
     @Test
     fun getNewest_defaultSize() {
         //create 5 news articles
-        val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
+        val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "123456", "test@example.org"))
+            ?: fail("Couldn't create User")
         repeat(5) {
             newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
                 subject = "News Subject $it"
@@ -62,7 +65,8 @@ class NewsApiTests : TestBase() {
     @Test
     fun getNewest_customSize() {
         //create 5 news articles
-        val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
+        val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "123456", "test@example.org"))
+            ?: fail("Couldn't create User")
         repeat(5) {
             newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
                 subject = "News Subject $it"
@@ -80,7 +84,8 @@ class NewsApiTests : TestBase() {
     @Test
     fun getNewest_minConstraint() {
         //create 5 news articles
-        val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
+        val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "123456", "test@example.org"))
+            ?: fail("Couldn't create User")
         repeat(5) {
             newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
                 subject = "News Subject $it"
@@ -96,7 +101,8 @@ class NewsApiTests : TestBase() {
 
     @Test
     fun getNews() {
-        val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
+        val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "123456", "test@example.org"))
+            ?: fail("Couldn't create User")
         newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
             subject = "News Subject"
             content = "News Content"
@@ -130,7 +136,8 @@ class NewsApiTests : TestBase() {
         Assertions.assertEquals(0, response.body?.size)
 
         //create 5 news articles
-        val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "1234", "test@example.org"))
+        val author = userService.createUserFromSignUpRequest(SignUpRequest("testUser", "123456", "test@example.org"))
+            ?: fail("Couldn't create User")
         repeat(5) {
             newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
                 subject = "News Subject $it"
@@ -156,14 +163,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.ADMINISTRATOR)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         //try accessing restricted to role MEMBER method
@@ -202,14 +209,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.MODERATOR)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         //try accessing restricted to role MEMBER method
@@ -248,14 +255,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.MEMBER)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         //try accessing restricted to role MEMBER method
@@ -292,14 +299,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.MEMBER)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         //try accessing restricted to role MEMBER method
@@ -336,14 +343,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.ADMINISTRATOR)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         //try accessing restricted to role MEMBER method
@@ -353,7 +360,7 @@ class NewsApiTests : TestBase() {
 
         //try to add empty news
         val putResponse = restTemplate.exchange<Unit>(
-            newsUrl, HttpMethod.PUT, HttpEntity<NewsEntryDTO>(NewsEntryDTO.from(NewsEntry()), headers)
+            newsUrl, HttpMethod.PUT, HttpEntity(NewsEntryDTO(), headers)
         )
 
         Assertions.assertEquals(HttpStatus.UNAUTHORIZED, putResponse.statusCode)
@@ -369,14 +376,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.ADMINISTRATOR)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         val headers = HttpHeaders().apply {
@@ -417,14 +424,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.MODERATOR)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         val headers = HttpHeaders().apply {
@@ -465,14 +472,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.MEMBER)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         val headers = HttpHeaders().apply {
@@ -513,14 +520,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.ADMINISTRATOR)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         val headers = HttpHeaders().apply {
@@ -543,7 +550,7 @@ class NewsApiTests : TestBase() {
         val newsUrl = generateUrl("/api/news/${news?.id}")
 
         val response = restTemplate.postForEntity(
-            newsUrl, HttpEntity<NewsEntryDTO>(NewsEntryDTO.from(NewsEntry()), headers), Unit::class.java
+            newsUrl, HttpEntity(NewsEntryDTO(), headers), Unit::class.java
         )
 
         news = newsService.getNews(news?.id ?: -1)
@@ -557,14 +564,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.ADMINISTRATOR)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         val headers = HttpHeaders().apply {
@@ -604,6 +611,7 @@ class NewsApiTests : TestBase() {
     fun addComment_asMember() {
         //create author and news
         val author = userService.createUser(User(null, "test", "test123", email = "test@example.com"))
+            ?: fail("Couldn't create User")
 
         newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
             subject = "News Subject"
@@ -616,14 +624,14 @@ class NewsApiTests : TestBase() {
         //creat commenter
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test2", "123", "test2@example.com"), String::class.java
+            url, SignUpRequest("test2", "123456", "test2@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.MEMBER)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test2", "123"), JwtResponse::class.java
+            url2, LoginRequest("test2", "123456"), JwtResponse::class.java
         )
 
         val headers = HttpHeaders().apply {
@@ -637,7 +645,7 @@ class NewsApiTests : TestBase() {
 
         val putResponse = restTemplate.exchange<Unit>(
             newsUrl, HttpMethod.PUT, HttpEntity<NewsCommentDTO>(NewsCommentDTO().apply {
-                this.author = commenter
+                this.author = UserIdNameDTO.from(commenter)
                 content = "Test comment"
             }, headers)
         )
@@ -652,6 +660,7 @@ class NewsApiTests : TestBase() {
     fun addComment_noUser() {
         //create author and news
         val author = userService.createUser(User(null, "test", "test123", email = "test@example.com"))
+            ?: fail("Couldn't create User")
 
         newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
             subject = "News Subject"
@@ -681,14 +690,14 @@ class NewsApiTests : TestBase() {
         //creat commenter
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test2", "123", "test2@example.com"), String::class.java
+            url, SignUpRequest("test2", "123456", "test2@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test2")
         userRoleService.changeRole(User(username = "test2", password = "", email = ""), Role.MEMBER)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test2", "123"), JwtResponse::class.java
+            url2, LoginRequest("test2", "123456"), JwtResponse::class.java
         )
 
         val headers = HttpHeaders().apply {
@@ -702,7 +711,7 @@ class NewsApiTests : TestBase() {
 
         val putResponse = restTemplate.exchange<Unit>(
             newsUrl, HttpMethod.PUT, HttpEntity<NewsCommentDTO>(NewsCommentDTO().apply {
-                this.author = commenter
+                this.author = UserIdNameDTO.from(commenter)
                 content = "Test comment"
             }, headers)
         )
@@ -714,6 +723,7 @@ class NewsApiTests : TestBase() {
     fun editComment_asMember() {
         //create author and news
         val author = userService.createUser(User(null, "test", "test123", email = "test@example.com"))
+            ?: fail("Couldn't create User")
 
         newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
             subject = "News Subject"
@@ -748,7 +758,7 @@ class NewsApiTests : TestBase() {
 
         val postResponse = restTemplate.exchange<Unit>(
             newsUrl, HttpMethod.POST, HttpEntity<NewsCommentDTO>(NewsCommentDTO().apply {
-                this.author = author
+                this.author = UserIdNameDTO.from(author)
                 content = "Edited Test comment"
             }, headers)
         )
@@ -763,6 +773,7 @@ class NewsApiTests : TestBase() {
     fun editComment_noUser() {
         //create author and news
         val author = userService.createUser(User(null, "test", "test123", email = "test@example.com"))
+            ?: fail("Couldn't create User")
 
         newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
             subject = "News Subject"
@@ -808,7 +819,9 @@ class NewsApiTests : TestBase() {
     fun editComment_foreignComment() {
         //create author, editor and news
         val author = userService.createUser(User(null, "test", "test123", email = "test@example.com"))
+            ?: fail("Couldn't create User")
         val editor = userService.createUser(User(null, "test2", "test123", email = "test2@example.com"))
+            ?: fail("Couldn't create User")
 
         newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
             subject = "News Subject"
@@ -843,7 +856,7 @@ class NewsApiTests : TestBase() {
 
         val postResponse = restTemplate.exchange<Unit>(
             newsUrl, HttpMethod.POST, HttpEntity<NewsCommentDTO>(NewsCommentDTO().apply {
-                this.author = editor
+                this.author = UserIdNameDTO.from(editor)
                 content = "Edited Test comment"
             }, headers)
         )
@@ -855,6 +868,7 @@ class NewsApiTests : TestBase() {
     fun editComment_impersonateMember() {
         //create author,editor and news
         val author = userService.createUser(User(null, "test", "test123", email = "test@example.com"))
+            ?: fail("Couldn't create User")
         userService.createUser(User(null, "test2", "test123", email = "test2@example.com"))
 
         newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
@@ -890,7 +904,7 @@ class NewsApiTests : TestBase() {
 
         val postResponse = restTemplate.exchange<Unit>(
             newsUrl, HttpMethod.POST, HttpEntity<NewsCommentDTO>(NewsCommentDTO().apply {
-                this.author = author
+                this.author = UserIdNameDTO.from(author)
                 content = "Edited Test comment"
             }, headers)
         )
@@ -905,6 +919,7 @@ class NewsApiTests : TestBase() {
     fun editComment_invalidOldComment() {
         //create author and news
         val author = userService.createUser(User(null, "test", "test123", email = "test@example.com"))
+            ?: fail("Couldn't create User")
 
         newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
             subject = "News Subject"
@@ -936,7 +951,7 @@ class NewsApiTests : TestBase() {
 
         val postResponse = restTemplate.exchange<Unit>(
             newsUrl, HttpMethod.POST, HttpEntity<NewsCommentDTO>(NewsCommentDTO().apply {
-                this.author = author
+                this.author = UserIdNameDTO.from(author)
                 content = "Edited Test comment"
             }, headers)
         )
@@ -952,14 +967,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.ADMINISTRATOR)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         val headers = HttpHeaders().apply {
@@ -995,14 +1010,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.MODERATOR)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         val headers = HttpHeaders().apply {
@@ -1038,14 +1053,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.MEMBER)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         val headers = HttpHeaders().apply {
@@ -1081,14 +1096,14 @@ class NewsApiTests : TestBase() {
         //create user and sign in
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
-            url, SignUpRequest("test", "123", "test@example.com"), String::class.java
+            url, SignUpRequest("test", "123456", "test@example.com"), String::class.java
         )
         mailService.markEMailAsValid("test")
         userRoleService.changeRole(User(username = "test", password = "", email = ""), Role.ADMINISTRATOR)
 
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
-            url2, LoginRequest("test", "123"), JwtResponse::class.java
+            url2, LoginRequest("test", "123456"), JwtResponse::class.java
         )
 
         val headers = HttpHeaders().apply {
@@ -1109,6 +1124,7 @@ class NewsApiTests : TestBase() {
     fun deleteComment_asAdmin() {
         //create author and news
         val author = userService.createUser(User(null, "test", "test123", email = "test@example.com"))
+            ?: fail("Couldn't create User")
         userService.createUser(User(null, "delUser", "delUser123", email = "delUser@example.com"))
 
         newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
@@ -1156,7 +1172,9 @@ class NewsApiTests : TestBase() {
     fun deleteComment_asMod() {
         //create author and news
         val author = userService.createUser(User(null, "test", "test123", email = "test@example.com"))
+            ?: fail("Couldn't create User")
         userService.createUser(User(null, "delUser", "delUser123", email = "delUser@example.com"))
+            ?: fail("Couldn't create User")
 
         newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
             subject = "News Subject"
@@ -1203,6 +1221,7 @@ class NewsApiTests : TestBase() {
     fun deleteComment_asMemeber_own() {
         //create author and news
         val author = userService.createUser(User(null, "test", "test123", email = "test@example.com"))
+            ?: fail("Couldn't create User")
 
         newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
             subject = "News Subject"
@@ -1249,6 +1268,7 @@ class NewsApiTests : TestBase() {
     fun deleteComment_asMemeber_foreign() {
         //create author and news
         val author = userService.createUser(User(null, "test", "test123", email = "test@example.com"))
+            ?: fail("Couldn't create User")
         userService.createUser(User(null, "delUser", "delUser123", email = "delUser@example.com"))
 
         newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
@@ -1296,7 +1316,9 @@ class NewsApiTests : TestBase() {
     fun deleteComment_unknownId() {
         //create author and news
         val author = userService.createUser(User(null, "test", "test123", email = "test@example.com"))
+            ?: fail("Couldn't create User")
         userService.createUser(User(null, "delUser", "delUser123", email = "delUser@example.com"))
+            ?: fail("Couldn't create User")
 
         newsService.createNews(NewsEntryDTO.from(NewsEntry().apply {
             subject = "News Subject"

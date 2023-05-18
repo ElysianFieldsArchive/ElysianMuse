@@ -1,6 +1,7 @@
 package org.darkSolace.muse.story.model
 
 import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
 import org.hibernate.Hibernate
 
@@ -10,6 +11,7 @@ import org.hibernate.Hibernate
 @Entity
 data class StoryTag(
     @Id
+    @GeneratedValue
     var id: Long? = null,
     val name: String,
     val description: String,

@@ -30,13 +30,13 @@ internal class LastSeenServiceTests : TestBase() {
     fun updateLastSeen() {
         val entry = LastSeenEntry().apply {
             lastSeen = Date()
-            jSession = "1234"
+            jSession = "123456"
         }
         lastSeenRepository.save(entry)
         Thread.sleep(2000)
-        lastSeenService.updateLastSeen(null, "1234")
+        lastSeenService.updateLastSeen(null, "123456")
 
-        val updatedEntry = lastSeenRepository.findByjSession("1234")
+        val updatedEntry = lastSeenRepository.findByjSession("123456")
 
         Assertions.assertNotNull(updatedEntry)
         Assertions.assertNotEquals(entry.lastSeen, updatedEntry?.lastSeen)
@@ -47,7 +47,7 @@ internal class LastSeenServiceTests : TestBase() {
     fun getOnlineUserCount() {
         lastSeenRepository.save(LastSeenEntry().apply {
             lastSeen = Date()
-            jSession = "1234"
+            jSession = "123456"
         })
         lastSeenRepository.save(LastSeenEntry().apply {
             lastSeen = Date()
@@ -65,9 +65,9 @@ internal class LastSeenServiceTests : TestBase() {
     @Test
     @Order(3)
     fun getOnlineUsers() {
-        val user1 = userRepository.save(User(null, "test", "1234", "12", "test@test.com"))
-        val user2 = userRepository.save(User(null, "test2", "1234", "12", "test2@test.com"))
-        val user3 = userRepository.save(User(null, "test3", "1234", "12", "test3@test.com"))
+        val user1 = userRepository.save(User(null, "test", "123456", "12", "test@test.com"))
+        val user2 = userRepository.save(User(null, "test2", "123456", "12", "test2@test.com"))
+        val user3 = userRepository.save(User(null, "test3", "123456", "12", "test3@test.com"))
         lastSeenRepository.save(LastSeenEntry().apply {
             lastSeen = Date()
             user = user1
@@ -89,7 +89,7 @@ internal class LastSeenServiceTests : TestBase() {
     @Test
     @Order(4)
     fun prune() {
-        val user1 = userRepository.save(User(null, "test", "1234", "12", "test@test.com"))
+        val user1 = userRepository.save(User(null, "test", "123456", "12", "test@test.com"))
         lastSeenRepository.save(LastSeenEntry().apply {
             lastSeen = Date(Date().time - 90 * 1000) //1.5 minutes in the past
             user = user1
@@ -106,17 +106,17 @@ internal class LastSeenServiceTests : TestBase() {
     fun getBySession() {
         lastSeenRepository.save(LastSeenEntry().apply {
             lastSeen = Date()
-            jSession = "1234"
+            jSession = "123456"
         })
 
-        val lastSeenEntity = lastSeenService.getBySession("1234")
+        val lastSeenEntity = lastSeenService.getBySession("123456")
         Assertions.assertNotNull(lastSeenEntity)
     }
 
     @Test
     @Order(6)
     fun getByUsername() {
-        val user1 = userRepository.save(User(null, "test", "1234", "12", "test@test.com"))
+        val user1 = userRepository.save(User(null, "test", "123456", "12", "test@test.com"))
         lastSeenRepository.save(LastSeenEntry().apply {
             lastSeen = Date(Date().time - 90 * 1000) //1.5 minutes in the past
             user = user1

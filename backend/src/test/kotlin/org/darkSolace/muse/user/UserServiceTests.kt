@@ -33,18 +33,18 @@ class UserServiceTests : TestBase() {
     @Test
     fun createUserTest() {
         val userCount = userRepository.count()
-        userService.createUser(User(username = "testUser", password = "123", email = "test@example.com"))
+        userService.createUser(User(username = "testUser", password = "123456", email = "test@example.com"))
         Assertions.assertEquals(userCount + 1, userRepository.count())
     }
 
     @Test
     fun createUserDuplicateUsername() {
         val userCount = userRepository.count()
-        userService.createUser(User(username = "testUser", password = "123", email = "test@example.com"))
+        userService.createUser(User(username = "testUser", password = "123456", email = "test@example.com"))
         Assertions.assertEquals(userCount + 1, userRepository.count())
 
         val duplicateUser =
-            userService.createUser(User(username = "testUser", password = "123", email = "test2@example.com"))
+            userService.createUser(User(username = "testUser", password = "123456", email = "test2@example.com"))
         Assertions.assertNull(duplicateUser)
     }
 
@@ -52,11 +52,11 @@ class UserServiceTests : TestBase() {
     @Test
     fun createUserDuplicateUsernameDiffCase() {
         val userCount = userRepository.count()
-        userService.createUser(User(username = "testUser", password = "123", email = "test@example.com"))
+        userService.createUser(User(username = "testUser", password = "123456", email = "test@example.com"))
         Assertions.assertEquals(userCount + 1, userRepository.count())
 
         val duplicateUser =
-            userService.createUser(User(username = "TESTuser", password = "123", email = "test2@example.com"))
+            userService.createUser(User(username = "TESTuser", password = "123456", email = "test2@example.com"))
         Assertions.assertNull(duplicateUser)
     }
 
@@ -64,11 +64,11 @@ class UserServiceTests : TestBase() {
     @Test
     fun createUserDuplicateEMail() {
         val userCount = userRepository.count()
-        userService.createUser(User(username = "testUser", password = "123", email = "test@example.com"))
+        userService.createUser(User(username = "testUser", password = "123456", email = "test@example.com"))
         Assertions.assertEquals(userCount + 1, userRepository.count())
 
         val duplicateUser =
-            userService.createUser(User(username = "testUser2", password = "123", email = "test@example.com"))
+            userService.createUser(User(username = "testUser2", password = "123456", email = "test@example.com"))
         Assertions.assertNull(duplicateUser)
     }
 
@@ -76,11 +76,11 @@ class UserServiceTests : TestBase() {
     @Test
     fun createUserDuplicateEMailDiffCase() {
         val userCount = userRepository.count()
-        userService.createUser(User(username = "testUser", password = "123", email = "test@example.com"))
+        userService.createUser(User(username = "testUser", password = "123456", email = "test@example.com"))
         Assertions.assertEquals(userCount + 1, userRepository.count())
 
         val duplicateUser =
-            userService.createUser(User(username = "testUser2", password = "123", email = "TEST@EXample.com"))
+            userService.createUser(User(username = "testUser2", password = "123456", email = "TEST@EXample.com"))
         Assertions.assertNull(duplicateUser)
     }
 
@@ -91,7 +91,7 @@ class UserServiceTests : TestBase() {
         val user = User(
             id = null,
             username = "testUser2",
-            password = "123",
+            password = "123456",
             email = "test2@example.com",
             realName = "Thomas Test",
             signUpDate = Date(),
@@ -126,8 +126,9 @@ class UserServiceTests : TestBase() {
     @Test
     fun changeAvatar() {
         //create test user
-        val user = userService.createUser(User(username = "testUser5", password = "123", email = "test5@example.com"))
-            ?: fail("user is null")
+        val user =
+            userService.createUser(User(username = "testUser5", password = "123456", email = "test5@example.com"))
+                ?: fail("user is null")
         Assertions.assertNull(user.avatar)
 
         //set an avatar and save avatarId
@@ -145,8 +146,9 @@ class UserServiceTests : TestBase() {
     @Test
     fun changeAvatarByUsername() {
         //create test user
-        var user = userService.createUser(User(username = "testUser95", password = "123", email = "test95@example.com"))
-            ?: fail("user is null")
+        var user =
+            userService.createUser(User(username = "testUser95", password = "123456", email = "test95@example.com"))
+                ?: fail("user is null")
         Assertions.assertNull(user.avatar)
         val userByUsername = User(username = "testUser95", password = "", email = "")
 
@@ -177,8 +179,9 @@ class UserServiceTests : TestBase() {
     @Test
     fun getById() {
         // create test user and save to db
-        val user = userService.createUser(User(username = "testUser6", password = "123", email = "test6@example.com"))
-            ?: fail("user is null")
+        val user =
+            userService.createUser(User(username = "testUser6", password = "123456", email = "test6@example.com"))
+                ?: fail("user is null")
         val id = user.id
         // retrieve same user from db
         val otherUser = userService.getById(id ?: -1L)
@@ -191,9 +194,12 @@ class UserServiceTests : TestBase() {
         // get before count
         val count = userRepository.count()
         // create test user
-        val user = userService.createUser(User(username = "testUser7", password = "123", email = "test7@example.com"))
-        val user2 = userService.createUser(User(username = "testUser8", password = "123", email = "test8@example.com"))
-        val user3 = userService.createUser(User(username = "testUser9", password = "123", email = "test9@example.com"))
+        val user =
+            userService.createUser(User(username = "testUser7", password = "123456", email = "test7@example.com"))
+        val user2 =
+            userService.createUser(User(username = "testUser8", password = "123456", email = "test8@example.com"))
+        val user3 =
+            userService.createUser(User(username = "testUser9", password = "123456", email = "test9@example.com"))
 
         // get all users
         val all = userService.getAll()
@@ -208,22 +214,22 @@ class UserServiceTests : TestBase() {
     @Test
     fun getAllWithRole() {
         // create test user
-        userService.createUser(User(username = "testUser10", password = "123", email = "test10@example.com"))
+        userService.createUser(User(username = "testUser10", password = "123456", email = "test10@example.com"))
         userService.createUser(
             User(
-                username = "testUser11", password = "123", email = "test11@example.com",
+                username = "testUser11", password = "123456", email = "test11@example.com",
                 role = Role.ADMINISTRATOR
             )
         )
         userService.createUser(
             User(
-                username = "testUser12", password = "123", email = "test12@example.com",
+                username = "testUser12", password = "123456", email = "test12@example.com",
                 role = Role.MODERATOR
             )
         )
         userService.createUser(
             User(
-                username = "testUser13", password = "123", email = "test13@example.com",
+                username = "testUser13", password = "123456", email = "test13@example.com",
                 role = Role.SUSPENDED
             )
         )
@@ -246,8 +252,9 @@ class UserServiceTests : TestBase() {
     @Test
     fun deleteUser() {
         // create test user
-        val user = userService.createUser(User(username = "testUser16", password = "123", email = "test16@example.com"))
-            ?: fail("user is null")
+        val user =
+            userService.createUser(User(username = "testUser16", password = "123456", email = "test16@example.com"))
+                ?: fail("user is null")
         val count = userRepository.count()
         Assertions.assertTrue(userService.getAll().contains(user))
 
@@ -260,8 +267,9 @@ class UserServiceTests : TestBase() {
     @Test
     fun deleteUserById() {
         // create test user
-        val user = userService.createUser(User(username = "testUser16", password = "123", email = "test16@example.com"))
-            ?: fail("user is null")
+        val user =
+            userService.createUser(User(username = "testUser16", password = "123456", email = "test16@example.com"))
+                ?: fail("user is null")
         val count = userRepository.count()
         Assertions.assertTrue(userService.getAll().contains(user))
 
@@ -275,7 +283,7 @@ class UserServiceTests : TestBase() {
     fun deleteUserByUserName() {
         // create test user
         val user =
-            userService.createUser(User(username = "testUser916", password = "123", email = "test916@example.com"))
+            userService.createUser(User(username = "testUser916", password = "123456", email = "test916@example.com"))
         val count = userRepository.count()
         Assertions.assertTrue(userService.getAll().contains(user))
         val userByUsername = User(username = "testUser916", password = "", email = "")
@@ -299,8 +307,9 @@ class UserServiceTests : TestBase() {
     @Test
     fun updateUserSettings() {
         // create test user
-        val user = userService.createUser(User(username = "testUser17", password = "123", email = "test17@example.com"))
-            ?: fail("user is null")
+        val user =
+            userService.createUser(User(username = "testUser17", password = "123456", email = "test17@example.com"))
+                ?: fail("user is null")
         val oldUserSettings = user.userSettings.copy()
 
         // set new user settings and check changes as well as check if previous settings are still default
@@ -315,7 +324,7 @@ class UserServiceTests : TestBase() {
     fun updateUserSettingsByUsername() {
         // create test user
         var user =
-            userService.createUser(User(username = "testUser917", password = "123", email = "test17@example.com"))
+            userService.createUser(User(username = "testUser917", password = "123456", email = "test17@example.com"))
                 ?: fail("user is null")
         val oldUserSettings = user.userSettings.copy()
         val userByUsername = User(username = "testUser917", password = "", email = "")

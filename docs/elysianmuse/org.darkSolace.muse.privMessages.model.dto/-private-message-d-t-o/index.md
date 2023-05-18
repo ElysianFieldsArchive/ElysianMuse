@@ -15,7 +15,7 @@ class [PrivateMessageDTO](index.md)
 
 | Name | Summary |
 |---|---|
-| [Companion](-companion/index.md) | [jvm]<br>object [Companion](-companion/index.md) |
+| [Companion](-companion/index.md) | [jvm]<br>object [Companion](-companion/index.md) : [DTO](../../org.darkSolace.muse/-d-t-o/index.md)&lt;[PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md), [PrivateMessageDTO](index.md)&gt; |
 
 ## Properties
 
@@ -24,7 +24,7 @@ class [PrivateMessageDTO](index.md)
 | [content](content.md) | [jvm]<br>var [content](content.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [direction](direction.md) | [jvm]<br>var [direction](direction.md): [MessageDirection](../../org.darkSolace.muse.privMessages.model/-message-direction/index.md) |
 | [id](id.md) | [jvm]<br>var [id](id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? |
-| [inReplyTo](in-reply-to.md) | [jvm]<br>var [inReplyTo](in-reply-to.md): [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md)? |
+| [inReplyTo](in-reply-to.md) | [jvm]<br>var [inReplyTo](in-reply-to.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? |
 | [isRead](is-read.md) | [jvm]<br>var [isRead](is-read.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) |
 | [recipient](recipient.md) | [jvm]<br>var [recipient](recipient.md): [UserIdNameDTO](../../org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/index.md)? |
 | [sender](sender.md) | [jvm]<br>var [sender](sender.md): [UserIdNameDTO](../../org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/index.md)? |

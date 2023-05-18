@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonInclude
 import jakarta.persistence.*
 import org.darkSolace.muse.user.model.User
+import org.hibernate.annotations.Cascade
+import org.hibernate.annotations.CascadeType
 import java.util.*
 import kotlin.jvm.Transient
 
@@ -21,14 +23,14 @@ class Story {
     var commentModeration: Boolean = false
     var eventId: Long? = null
 
-    @OneToMany
-    var author: MutableList<User> = emptyList<User>().toMutableList()
+    @ManyToMany(fetch = FetchType.EAGER)
+    var author: MutableSet<User> = mutableSetOf()
 
-    @OneToMany
-    var beta: MutableList<User> = emptyList<User>().toMutableList()
+    @ManyToMany(fetch = FetchType.EAGER)
+    var beta: MutableSet<User> = mutableSetOf()
 
-    @OneToMany
-    var artist: MutableList<User> = emptyList<User>().toMutableList()
+    @ManyToMany(fetch = FetchType.EAGER)
+    var artist: MutableSet<User> = mutableSetOf()
 
     @Temporal(TemporalType.TIMESTAMP)
     var publishedDate: Date = Date()
@@ -39,11 +41,12 @@ class Story {
     @OneToOne(optional = true)
     var storyBanner: Banner? = null
 
-    @OneToMany
-    var chapters: MutableList<Chapter> = emptyList<Chapter>().toMutableList()
+    @OneToMany(fetch = FetchType.EAGER)
+    @Cascade(CascadeType.DELETE)
+    var chapters: MutableSet<Chapter> = mutableSetOf()
 
-    @ManyToMany
-    var storyTags: MutableList<StoryTag> = emptyList<StoryTag>().toMutableList()
+    @ManyToMany(fetch = FetchType.EAGER)
+    var storyTags: MutableSet<StoryTag> = mutableSetOf()
 
     @Transient
     @JsonInclude
@@ -57,9 +60,9 @@ class Story {
     @JsonInclude
     var kudoCount = chapters.sumOf { it.kudoCount }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JsonIgnore
-    var favorites: MutableList<User> = emptyList<User>().toMutableList()
+    var favorites: MutableList<User> = mutableListOf()
 
     @Transient
     @JsonInclude

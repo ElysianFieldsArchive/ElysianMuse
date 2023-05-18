@@ -74,7 +74,7 @@ internal class MailApiTests : TestBase() {
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -83,7 +83,7 @@ internal class MailApiTests : TestBase() {
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
             url2,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -117,7 +117,7 @@ internal class MailApiTests : TestBase() {
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -126,7 +126,7 @@ internal class MailApiTests : TestBase() {
         val url2 = generateUrl("/api/auth/signin")
         val secondResponse = restTemplate.postForEntity(
             url2,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 

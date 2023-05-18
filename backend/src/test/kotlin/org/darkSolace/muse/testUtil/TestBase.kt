@@ -38,7 +38,7 @@ class TestBase {
     companion object {
         @Container
         val postgresqlContainer: PostgreSQLContainer<*> =
-            PostgreSQLContainer<Nothing>("postgres:15.1-alpine").apply {
+            PostgreSQLContainer<Nothing>("postgres:15-alpine").apply {
                 withDatabaseName("foo")
                 withUsername("foo")
                 withPassword("secret")
@@ -47,6 +47,7 @@ class TestBase {
                 it.start()
             }
 
+        @JvmField
         @RegisterExtension
         val greenMailExtension: GreenMailExtension =
             GreenMailExtension(

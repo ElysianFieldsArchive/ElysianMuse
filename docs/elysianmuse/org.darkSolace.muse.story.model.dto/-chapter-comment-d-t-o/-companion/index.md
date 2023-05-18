@@ -10,4 +10,4 @@ object [Companion](index.md)
 | Name | Summary |
 |---|---|
 | [from](from.md) | [jvm]<br>fun [from](from.md)(chapterComment: [ChapterComment](../../../org.darkSolace.muse.story.model/-chapter-comment/index.md)): [ChapterCommentDTO](../index.md) |
-| [fromList](from-list.md) | [jvm]<br>fun [fromList](from-list.md)(list: [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[ChapterComment](../../../org.darkSolace.muse.story.model/-chapter-comment/index.md)&gt;): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[ChapterCommentDTO](../index.md)&gt; |
+| [fromCollection](from-collection.md) | [jvm]<br>fun [fromCollection](from-collection.md)(list: [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html)&lt;[ChapterComment](../../../org.darkSolace.muse.story.model/-chapter-comment/index.md)&gt;): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[ChapterCommentDTO](../index.md)&gt; |

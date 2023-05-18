@@ -45,7 +45,6 @@ class MailController(
      * @sample `curl -d '...' localhost:8080/api/mail/settings`
      */
     @PostMapping("/settings")
-    @Validated
     @PreAuthorize("hasAnyAuthority('ADMINISTRATOR')")
     fun updateMailerSettings(
         @Valid @RequestBody mailerSettings: MailerSettings

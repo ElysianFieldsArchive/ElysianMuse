@@ -15,7 +15,7 @@ class [NewsEntryDTO](index.md)
 
 | Name | Summary |
 |---|---|
-| [Companion](-companion/index.md) | [jvm]<br>object [Companion](-companion/index.md) |
+| [Companion](-companion/index.md) | [jvm]<br>object [Companion](-companion/index.md) : [DTO](../../org.darkSolace.muse/-d-t-o/index.md)&lt;[NewsEntry](../../org.darkSolace.muse.news.model/-news-entry/index.md), [NewsEntryDTO](index.md)&gt; |
 
 ## Properties
 

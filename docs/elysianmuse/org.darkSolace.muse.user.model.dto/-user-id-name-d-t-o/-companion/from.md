@@ -3,4 +3,4 @@
 # from
 
 [jvm]\
-fun [from](from.md)(user: [User](../../../org.darkSolace.muse.user.model/-user/index.md)?): [UserIdNameDTO](../index.md)
+open override fun [from](from.md)(item: [User](../../../org.darkSolace.muse.user.model/-user/index.md)): [UserIdNameDTO](../index.md)

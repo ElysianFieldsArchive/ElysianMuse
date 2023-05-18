@@ -32,8 +32,9 @@ class UserPasswordServiceTests : TestBase() {
     @Test
     @Order(1)
     fun generateAndSendPasswordResetCode() {
-        val user = userService.createUser(User(username = "testUser10", password = "123", email = "test10@example.com"))
-            ?: fail("User couldn't be created")
+        val user =
+            userService.createUser(User(username = "testUser10", password = "123456", email = "test10@example.com"))
+                ?: fail("User couldn't be created")
         mailService.markEMailAsValid(user)
         mailQueueRepository.deleteAll()
 
@@ -51,8 +52,9 @@ class UserPasswordServiceTests : TestBase() {
     @Test
     @Order(2)
     fun updatePassword() {
-        val user = userService.createUser(User(username = "testUser10", password = "123", email = "test10@example.com"))
-            ?: fail("User couldn't be created")
+        val user =
+            userService.createUser(User(username = "testUser10", password = "123456", email = "test10@example.com"))
+                ?: fail("User couldn't be created")
         mailService.markEMailAsValid(user)
 
         val oldHashedPassword = user.password
@@ -69,8 +71,9 @@ class UserPasswordServiceTests : TestBase() {
     @Test
     @Order(3)
     fun getUserByCode() {
-        val user = userService.createUser(User(username = "testUser10", password = "123", email = "test10@example.com"))
-            ?: fail("User couldn't be created")
+        val user =
+            userService.createUser(User(username = "testUser10", password = "123456", email = "test10@example.com"))
+                ?: fail("User couldn't be created")
         mailService.markEMailAsValid(user)
 
         userPasswordService.generateAndSendPasswordResetCode(user)

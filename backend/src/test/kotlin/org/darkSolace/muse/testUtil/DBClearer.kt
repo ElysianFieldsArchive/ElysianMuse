@@ -5,6 +5,9 @@ import org.darkSolace.muse.mail.repository.MailQueueRepository
 import org.darkSolace.muse.news.repository.NewsCommentRepository
 import org.darkSolace.muse.news.repository.NewsRepository
 import org.darkSolace.muse.privMessages.repository.PrivateMessageRepository
+import org.darkSolace.muse.story.repository.ChapterCommentRepository
+import org.darkSolace.muse.story.repository.ChapterRepository
+import org.darkSolace.muse.story.repository.StoryRepository
 import org.darkSolace.muse.user.repository.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -42,7 +45,19 @@ class DBClearer {
     @Autowired
     lateinit var newsCommentRepository: NewsCommentRepository
 
+    @Autowired
+    lateinit var storyRepository: StoryRepository
+
+    @Autowired
+    lateinit var chapterRepository: ChapterRepository
+
+    @Autowired
+    lateinit var chapterCommentRepository: ChapterCommentRepository
+
     fun clearAll() {
+        storyRepository.deleteAll()
+        chapterRepository.deleteAll()
+        chapterCommentRepository.deleteAll()
         newsRepository.deleteAll()
         newsCommentRepository.deleteAll()
         privateMessageRepository.deleteAll()

@@ -1,5 +1,6 @@
 package org.darkSolace.muse.user.controller
 
+import jakarta.validation.Valid
 import org.darkSolace.muse.security.model.UserDetails
 import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.model.SuspensionHistoryEntry
@@ -17,6 +18,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.authority.SimpleGrantedAuthority
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
 /**
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.*
  */
 @RestController
 @RequestMapping("/api/user")
+@Validated
 class UserController(
     @Autowired val userService: UserService,
     @Autowired val userRoleService: UserRoleService,
@@ -66,7 +69,7 @@ class UserController(
      */
     @DeleteMapping("/{user}")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
-    fun deleteUser(@PathVariable user: User?, authentication: Authentication?): ResponseEntity<Unit> {
+    fun deleteUser(@PathVariable @Valid user: User?, authentication: Authentication?): ResponseEntity<Unit> {
         if (user == null) return ResponseEntity<Unit>(HttpStatus.OK)
 
         return if ((authentication?.principal as UserDetails?)?.user?.id == user.id
@@ -128,7 +131,7 @@ class UserController(
      */
     @GetMapping("/suspend/history/{user}")
     @PreAuthorize("hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')")
-    fun getSuspensionHistory(@PathVariable user: User): List<SuspensionHistoryEntryDTO> {
+    fun getSuspensionHistory(@PathVariable @Valid user: User): List<SuspensionHistoryEntryDTO> {
         return SuspensionHistoryEntryDTO.fromList(suspensionService.getSuspensionHistory(user))
     }
 
@@ -142,8 +145,8 @@ class UserController(
      */
     @GetMapping("/suspend/all")
     @PreAuthorize("hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')")
-    fun getAllCurrentlySuspended(): List<UserIdNameDTO> {
-        return UserIdNameDTO.fromList(suspensionService.getAllCurrentlySuspendedUsers())
+    fun getAllCurrentlySuspended(): Collection<UserIdNameDTO> {
+        return UserIdNameDTO.fromCollection(suspensionService.getAllCurrentlySuspendedUsers())
     }
 
     /**
@@ -159,8 +162,8 @@ class UserController(
      */
     @PutMapping("/{user}/tag/{tag}")
     fun addTagToUser(
-        @PathVariable user: User?,
-        @PathVariable tag: UserTag,
+        @PathVariable @Valid user: User?,
+        @PathVariable @Valid tag: UserTag,
         authentication: Authentication?
     ): ResponseEntity<Unit> {
         if (user == null) return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
@@ -193,8 +196,8 @@ class UserController(
      */
     @DeleteMapping("/{user}/tag/{tag}")
     fun removeTagFromUser(
-        @PathVariable user: User?,
-        @PathVariable tag: UserTag,
+        @PathVariable @Valid user: User?,
+        @PathVariable @Valid tag: UserTag,
         authentication: Authentication?
     ): ResponseEntity<Unit> {
         if (user == null) return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)

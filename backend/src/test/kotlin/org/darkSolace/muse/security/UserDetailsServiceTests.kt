@@ -18,7 +18,7 @@ class UserDetailsServiceTests : TestBase() {
 
     @Test
     fun loadUserDetailsByUsername() {
-        userService.createUser(User(username = "testUser", password = "123", email = "test@example.com"))
+        userService.createUser(User(username = "testUser", password = "123456", email = "test@example.com"))
 
         val userDetails = userDetailsService.loadUserByUsername("testUser")
         Assertions.assertInstanceOf(UserDetails::class.java, userDetails)

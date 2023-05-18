@@ -47,10 +47,10 @@ class LastSeenApiTests : TestBase() {
     @Order(2)
     fun generateLastSeenFromUser() {
         //generate user
-        val signupRequest = SignUpRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123456", "test@example.com")
         authService.signUpUser(signupRequest)
         mailService.markEMailAsValid("test")
-        val loginRequest = LoginRequest("test", "123")
+        val loginRequest = LoginRequest("test", "123456")
         val jwtResponse = authService.authenticate(loginRequest)
 
 
@@ -132,11 +132,11 @@ class LastSeenApiTests : TestBase() {
     @Order(5)
     fun refreshLastSeenFromUser() {
         //generate user
-        val signupRequest = SignUpRequest("test", "123", "test@example.com")
+        val signupRequest = SignUpRequest("test", "123456", "test@example.com")
         authService.signUpUser(signupRequest)
         mailService.markEMailAsValid("test")
 
-        val loginRequest = LoginRequest("test", "123")
+        val loginRequest = LoginRequest("test", "123456")
         val jwtResponse = authService.authenticate(loginRequest)
 
         val headers = HttpHeaders().apply {

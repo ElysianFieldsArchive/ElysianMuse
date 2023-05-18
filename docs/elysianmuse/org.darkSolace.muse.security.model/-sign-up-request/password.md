@@ -3,4 +3,7 @@
 # password
 
 [jvm]\
+
+@Size(min = 6)
+
 val [password](password.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)

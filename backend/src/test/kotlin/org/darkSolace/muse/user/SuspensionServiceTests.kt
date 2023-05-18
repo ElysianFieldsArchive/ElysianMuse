@@ -23,7 +23,7 @@ class SuspensionServiceTests : TestBase() {
     @Test
     @Order(1)
     fun getSuspensionHistory() {
-        val user = userService.createUserFromSignUpRequest(SignUpRequest("test", "123", "test@example.com"))
+        val user = userService.createUserFromSignUpRequest(SignUpRequest("test", "123456", "test@example.com"))
 
         var history = suspensionService.getSuspensionHistory(user?.id ?: -1)
         Assertions.assertTrue(history.isEmpty())
@@ -38,7 +38,7 @@ class SuspensionServiceTests : TestBase() {
     @Test
     @Order(2)
     fun getAllCurrentlySuspendedUsers() {
-        val user = userService.createUserFromSignUpRequest(SignUpRequest("test", "123", "test@example.com"))
+        val user = userService.createUserFromSignUpRequest(SignUpRequest("test", "123456", "test@example.com"))
 
         var allSuspended = suspensionService.getAllCurrentlySuspendedUsers()
         Assertions.assertTrue(allSuspended.isEmpty())
@@ -53,7 +53,7 @@ class SuspensionServiceTests : TestBase() {
     @Test
     @Order(3)
     fun suspensionCodeForUsername() {
-        val user = userService.createUserFromSignUpRequest(SignUpRequest("test", "123", "test@example.com"))
+        val user = userService.createUserFromSignUpRequest(SignUpRequest("test", "123456", "test@example.com"))
         userRoleService.suspendUser(user?.id ?: -1)
 
         val code = suspensionService.suspensionCodeForUsername(user?.username ?: "")
@@ -63,7 +63,7 @@ class SuspensionServiceTests : TestBase() {
     @Test
     @Order(4)
     fun suspensionCodeForUsernameUnsuspended() {
-        val user = userService.createUserFromSignUpRequest(SignUpRequest("test", "123", "test@example.com"))
+        val user = userService.createUserFromSignUpRequest(SignUpRequest("test", "123456", "test@example.com"))
 
         val code = suspensionService.suspensionCodeForUsername(user?.username ?: "")
         Assertions.assertNull(code)

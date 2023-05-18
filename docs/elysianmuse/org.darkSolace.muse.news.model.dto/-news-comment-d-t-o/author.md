@@ -3,4 +3,4 @@
 # author
 
 [jvm]\
-var [author](author.md): [User](../../org.darkSolace.muse.user.model/-user/index.md)?
+var [author](author.md): [UserIdNameDTO](../../org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/index.md)?

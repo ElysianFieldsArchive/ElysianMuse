@@ -17,10 +17,10 @@ class [Story](index.md)
 
 | Name | Summary |
 |---|---|
-| [artist](artist.md) | [jvm]<br>var [artist](artist.md): [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt; |
-| [author](author.md) | [jvm]<br>var [author](author.md): [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt; |
-| [beta](beta.md) | [jvm]<br>var [beta](beta.md): [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt; |
-| [chapters](chapters.md) | [jvm]<br>var [chapters](chapters.md): [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html)&lt;[Chapter](../-chapter/index.md)&gt; |
+| [artist](artist.md) | [jvm]<br>var [artist](artist.md): [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt; |
+| [author](author.md) | [jvm]<br>var [author](author.md): [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt; |
+| [beta](beta.md) | [jvm]<br>var [beta](beta.md): [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt; |
+| [chapters](chapters.md) | [jvm]<br>var [chapters](chapters.md): [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html)&lt;[Chapter](../-chapter/index.md)&gt; |
 | [commentModeration](comment-moderation.md) | [jvm]<br>var [commentModeration](comment-moderation.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) |
 | [completed](completed.md) | [jvm]<br>var [completed](completed.md): [Boolean](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html) |
 | [eventId](event-id.md) | [jvm]<br>var [eventId](event-id.md): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)? |
@@ -34,7 +34,7 @@ class [Story](index.md)
 | [rating](rating.md) | [jvm]<br>var [rating](rating.md): [Rating](../-rating/index.md) |
 | [storyBanner](story-banner.md) | [jvm]<br>var [storyBanner](story-banner.md): [Banner](../-banner/index.md)? |
 | [storyNotes](story-notes.md) | [jvm]<br>var [storyNotes](story-notes.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
-| [storyTags](story-tags.md) | [jvm]<br>var [storyTags](story-tags.md): [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html)&lt;[StoryTag](../-story-tag/index.md)&gt; |
+| [storyTags](story-tags.md) | [jvm]<br>var [storyTags](story-tags.md): [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html)&lt;[StoryTag](../-story-tag/index.md)&gt; |
 | [summary](summary.md) | [jvm]<br>var [summary](summary.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [title](title.md) | [jvm]<br>var [title](title.md): [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 | [wordCount](word-count.md) | [jvm]<br>@[Transient](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-transient/index.html)<br>var [wordCount](word-count.md): [Int](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html) |

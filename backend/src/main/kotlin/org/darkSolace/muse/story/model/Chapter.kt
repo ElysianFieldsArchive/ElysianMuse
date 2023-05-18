@@ -30,24 +30,23 @@ class Chapter {
     @Temporal(TemporalType.TIMESTAMP)
     var updatedDate: Date = Date()
 
-    @OneToMany
-    var beta: MutableList<User> = emptyList<User>().toMutableList()
+    @ManyToMany(fetch = FetchType.EAGER)
+    var beta: MutableSet<User> = mutableSetOf()
 
-    @OneToMany
-    var artist: MutableList<User> = emptyList<User>().toMutableList()
+    @ManyToMany(fetch = FetchType.EAGER)
+    var artist: MutableSet<User> = mutableSetOf()
 
     @OneToOne(optional = true)
     var storyBanner: Banner? = null
 
-    @OneToOne(fetch = FetchType.LAZY)
-    var story: Story? = null
+    var storyId: Long? = null
 
-    @OneToMany
-    var comments: MutableList<ChapterComment> = emptyList<ChapterComment>().toMutableList()
+    @OneToMany(fetch = FetchType.EAGER)
+    var comments: MutableSet<ChapterComment> = mutableSetOf()
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JsonIgnore
-    val kudos: MutableList<User> = emptyList<User>().toMutableList()
+    val kudos: MutableSet<User> = mutableSetOf()
 
     @Transient
     @JsonInclude

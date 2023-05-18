@@ -7,6 +7,8 @@
 
 @RequestMapping(value = [&quot;api/lastSeen&quot;])
 
+@Validated
+
 class [LastSeenController](index.md)(@Autowiredval lastSeenService: [LastSeenService](../../org.darkSolace.muse.lastSeen.service/-last-seen-service/index.md))
 
 ## Constructors
@@ -19,7 +21,7 @@ class [LastSeenController](index.md)(@Autowiredval lastSeenService: [LastSeenSer
 
 | Name | Summary |
 |---|---|
-| [getOnlineUsers](get-online-users.md) | [jvm]<br>@GetMapping(value = [&quot;/online&quot;])<br>fun [getOnlineUsers](get-online-users.md)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[UserIdNameDTO](../../org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/index.md)&gt;<br>Retrieves all public profiles of currently active logged-in [User](../../org.darkSolace.muse.user.model/-user/index.md)s |
+| [getOnlineUsers](get-online-users.md) | [jvm]<br>@GetMapping(value = [&quot;/online&quot;])<br>fun [getOnlineUsers](get-online-users.md)(): [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html)&lt;[UserIdNameDTO](../../org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/index.md)&gt;<br>Retrieves all public profiles of currently active logged-in [User](../../org.darkSolace.muse.user.model/-user/index.md)s |
 | [getOnlineUsersCount](get-online-users-count.md) | [jvm]<br>@GetMapping(value = [&quot;/online/count&quot;])<br>fun [getOnlineUsersCount](get-online-users-count.md)(): [Long](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)<br>Retrieves number of currently active visitors (logged-in users and visitors) |
 
 ## Properties

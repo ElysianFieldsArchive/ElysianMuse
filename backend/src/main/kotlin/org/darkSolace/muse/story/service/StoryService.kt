@@ -1,8 +1,5 @@
 package org.darkSolace.muse.story.service
 
-import com.fasterxml.jackson.annotation.JsonIgnore
-import com.fasterxml.jackson.annotation.JsonInclude
-import jakarta.persistence.*
 import jakarta.transaction.Transactional
 import org.darkSolace.muse.story.model.*
 import org.darkSolace.muse.story.model.dto.ChapterCommentDTO
@@ -12,20 +9,20 @@ import org.darkSolace.muse.story.model.dto.UserContributionDTO
 import org.darkSolace.muse.story.repository.ChapterCommentRepository
 import org.darkSolace.muse.story.repository.ChapterRepository
 import org.darkSolace.muse.story.repository.StoryRepository
+import org.darkSolace.muse.story.repository.StoryTagRepository
 import org.darkSolace.muse.user.model.User
 import org.darkSolace.muse.user.model.UserTag
 import org.darkSolace.muse.user.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
-import java.util.*
-import kotlin.jvm.Transient
 
 @Service
 class StoryService(
     @Autowired private val storyRepository: StoryRepository,
     @Autowired private val chapterRepository: ChapterRepository,
     @Autowired private val chapterCommentRepository: ChapterCommentRepository,
+    @Autowired private val storyTagRepository: StoryTagRepository,
     @Autowired private val userService: UserService,
 ) {
     fun getStoryById(id: Long): Story? = storyRepository.findByIdOrNull(id)
@@ -64,6 +61,9 @@ class StoryService(
 
         //save chapters if there are any first
         newStory.chapters.forEach { chapterRepository.save(it) }
+        //save tags if there are any first
+        newStory.storyTags.forEach { storyTagRepository.save(it) }
+
         storyRepository.save(newStory)
 
         return true
@@ -108,7 +108,7 @@ class StoryService(
     }
 
     fun addChapter(newChapter: ChapterDTO): Boolean {
-        val story = storyRepository.findByIdOrNull(newChapter.story?.id ?: -1) ?: return false
+        val story = storyRepository.findByIdOrNull(newChapter.storyId ?: -1) ?: return false
 
         val (artists, betas) = newChapter.resolveArtistsBetas()
 
@@ -120,10 +120,10 @@ class StoryService(
             it.endNotes = newChapter.endNotes
             it.content = newChapter.content
             it.publishedDate = newChapter.publishedDate
-            it.artist = artists.toMutableList()
-            it.beta = betas.toMutableList()
+            it.artist = artists.toMutableSet()
+            it.beta = betas.toMutableSet()
             it.storyBanner = newChapter.storyBanner
-            it.story = story
+            it.storyId = story.id
         }
 
         story.chapters.add(chapter)
@@ -145,8 +145,8 @@ class StoryService(
             it.endNotes = chapter.endNotes
             it.content = chapter.content
             it.publishedDate = chapter.publishedDate
-            it.artist = artists.toMutableList()
-            it.beta = betas.toMutableList()
+            it.artist = artists.toMutableSet()
+            it.beta = betas.toMutableSet()
             it.storyBanner = chapter.storyBanner
         }
 
@@ -156,12 +156,10 @@ class StoryService(
 
     fun deleteChapter(id: Long): Boolean {
         val chapter = chapterRepository.findByIdOrNull(id) ?: return false
-        val story = chapter.story
+        val story = storyRepository.findByIdOrNull(chapter.storyId ?: -1) ?: return false
 
-        if (story != null) {
-            story.chapters.remove(chapter)
-            storyRepository.save(story)
-        }
+        story.chapters.remove(chapter)
+        storyRepository.save(story)
 
         chapterRepository.delete(chapter)
         return true
@@ -289,10 +287,11 @@ class StoryService(
 
     fun addChapterComment(chapterId: Long, comment: ChapterCommentDTO): Boolean {
         val chapter = chapterRepository.findByIdOrNull(chapterId) ?: return false
-        val commenter = userService.getById(comment.author?.id ?: return false)
+        val commenter = userService.getById(comment.author?.id ?: return false) ?: return false
+        val story = storyRepository.findByIdOrNull(chapter.storyId ?: -1) ?: return false
 
         val chapterComment = ChapterComment().apply {
-            this.authorApproved = !(chapter.story?.commentModeration ?: true)
+            this.authorApproved = !story.commentModeration
             this.author = commenter
             this.chapter = chapter
             this.content = comment.content
@@ -308,12 +307,13 @@ class StoryService(
     }
 
     fun editChapterComment(editedChapterComment: ChapterCommentDTO): Boolean {
-        val chapter = chapterRepository.findByIdOrNull(editedChapterComment.chapter?.id ?: -1) ?: return false
-        val commenter = userService.getById(editedChapterComment.author?.id ?: return false)
+        val chapter = chapterRepository.findByIdOrNull(editedChapterComment.chapterId ?: -1) ?: return false
+        val story = storyRepository.findByIdOrNull(chapter.storyId ?: -1) ?: return false
+        val commenter = userService.getById(editedChapterComment.author?.id ?: return false) ?: return false
         val comment = chapterCommentRepository.findByIdOrNull(editedChapterComment.id ?: -1) ?: return false
 
         comment.apply {
-            this.authorApproved = !(chapter.story?.commentModeration ?: true)
+            this.authorApproved = !story.commentModeration
             this.author = commenter
             this.chapter = chapter
             this.content = comment.content
@@ -328,7 +328,7 @@ class StoryService(
 
     fun deleteChapterComment(chapterCommentId: Long): Boolean {
         val chapterComment = chapterCommentRepository.findByIdOrNull(chapterCommentId) ?: return false
-        val chapter = chapterComment.chapter ?: return false
+        val chapter = chapterComment.chapter
 
         chapter.comments.remove(chapterComment)
         chapterRepository.save(chapter)
@@ -351,8 +351,35 @@ class StoryService(
         val chapterArtist = chapters.filter { it.artist.contains(user) }
 
         return UserContributionDTO(
-            (storyArtist + storyAuthor + storyBeta).distinct(), (chapterArtist + chapterBeta).distinct()
+            StoryDTO.fromCollection((storyArtist + storyAuthor + storyBeta).distinct()),
+            ChapterDTO.fromCollection((chapterArtist + chapterBeta).distinct())
         )
+    }
+
+    fun createStoryTag(tag: StoryTag): StoryTag {
+        return storyTagRepository.save(tag)
+    }
+
+    fun deleteStoryTag(tag: StoryTag): Boolean {
+        val inUse = storyRepository.existsByStoryTagsContaining(tag)
+        if (!inUse)
+            storyTagRepository.save(tag)
+
+        return !inUse
+    }
+
+    fun replaceStoryTag(oldTag: StoryTag, newTag: StoryTag) {
+        val storiesContainingTag = storyRepository.findAllByStoryTagsContaining(oldTag)
+        if (newTag.id == null && !storyTagRepository.existsByName(newTag.name)) {
+            //new tag doesn't exist yet -> creating it
+            storyTagRepository.save(newTag)
+        }
+
+        storiesContainingTag.forEach { story ->
+            story.storyTags.remove(oldTag)
+            story.storyTags.add(newTag)
+            storyRepository.save(story)
+        }
     }
 
     private fun generateEpub(id: Long) {

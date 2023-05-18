@@ -15,7 +15,7 @@ class [UserIdNameDTO](index.md)
 
 | Name | Summary |
 |---|---|
-| [Companion](-companion/index.md) | [jvm]<br>object [Companion](-companion/index.md) |
+| [Companion](-companion/index.md) | [jvm]<br>object [Companion](-companion/index.md) : [DTO](../../org.darkSolace.muse/-d-t-o/index.md)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md), [UserIdNameDTO](index.md)&gt; |
 
 ## Properties
 

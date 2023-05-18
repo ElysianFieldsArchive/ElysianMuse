@@ -13,10 +13,10 @@ class ChapterComment {
     var authorApproved: Boolean = false
 
     @ManyToOne
-    var author: User? = null
+    lateinit var author: User
 
     @ManyToOne
-    var chapter: Chapter? = null
+    lateinit var chapter: Chapter
 
     @Lob
     var content: String = ""

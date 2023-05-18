@@ -3,4 +3,4 @@
 # artist
 
 [jvm]\
-var [artist](artist.md): [MutableList](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt;
+var [artist](artist.md): [MutableSet](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html)&lt;[User](../../org.darkSolace.muse.user.model/-user/index.md)&gt;

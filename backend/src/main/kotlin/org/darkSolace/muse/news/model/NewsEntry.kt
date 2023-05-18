@@ -16,7 +16,7 @@ class NewsEntry {
     var id: Long? = null
 
     @OneToOne
-    var author: User? = null
+    lateinit var author: User
 
     var subject: String = ""
 

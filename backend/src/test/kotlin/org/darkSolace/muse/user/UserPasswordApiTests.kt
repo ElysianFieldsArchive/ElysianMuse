@@ -37,7 +37,7 @@ class UserPasswordApiTests : TestBase() {
     @Order(1)
     fun requestResetByUsername() {
         //create user to reset password
-        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
+        val user = userService.createUser(User(username = "test", password = "123456", email = "test@example.com"))
             ?: fail("User couldn't be created")
         mailService.markEMailAsValid(user)
 
@@ -55,7 +55,7 @@ class UserPasswordApiTests : TestBase() {
     @Order(2)
     fun requestResetByEMail() {
         //create user to reset password
-        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
+        val user = userService.createUser(User(username = "test", password = "123456", email = "test@example.com"))
             ?: fail("User couldn't be created")
         mailService.markEMailAsValid(user)
 
@@ -87,7 +87,7 @@ class UserPasswordApiTests : TestBase() {
     @Order(4)
     fun confirmReset() {
         //create user to reset password
-        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
+        val user = userService.createUser(User(username = "test", password = "123456", email = "test@example.com"))
             ?: fail("User couldn't be created")
         mailService.markEMailAsValid(user)
 
@@ -118,7 +118,7 @@ class UserPasswordApiTests : TestBase() {
     @Order(5)
     fun confirmResetInvalidCode() {
 //create user to reset password
-        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
+        val user = userService.createUser(User(username = "test", password = "123456", email = "test@example.com"))
             ?: fail("User couldn't be created")
         mailService.markEMailAsValid(user)
 

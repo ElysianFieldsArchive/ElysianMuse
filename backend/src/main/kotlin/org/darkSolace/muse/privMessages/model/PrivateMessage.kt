@@ -19,10 +19,10 @@ data class PrivateMessage(
     var direction: MessageDirection = MessageDirection.OUTGOING,
 
     @OneToOne
-    var sender: User? = null,
+    var sender: User,
 
     @OneToOne
-    var recipient: User? = null,
+    var recipient: User,
 
     var subject: String = "",
 

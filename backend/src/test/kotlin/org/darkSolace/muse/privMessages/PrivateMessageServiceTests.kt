@@ -31,7 +31,7 @@ class PrivateMessageServiceTests : TestBase() {
         val recipient = userService.createUser(User(null, "test2", "", email = "test2@example.org"))
             ?: fail("Couldn't create recipient")
 
-        privateMessageService.sendMessage(PrivateMessage(null).apply {
+        privateMessageService.sendMessage(PrivateMessage(sender = sender, recipient = recipient).apply {
             this.sender = sender
             this.recipient = recipient
             this.subject = "Test private message"
@@ -76,7 +76,7 @@ class PrivateMessageServiceTests : TestBase() {
         val recipient = userService.createUser(User(null, "test2", "", email = "test2@example.org"))
             ?: fail("Couldn't create recipient")
 
-        privateMessageService.sendMessage(PrivateMessage(null).apply {
+        privateMessageService.sendMessage(PrivateMessage(sender = sender, recipient = recipient).apply {
             this.sender = sender
             this.recipient = recipient
             this.subject = "Test private message"
@@ -101,7 +101,7 @@ class PrivateMessageServiceTests : TestBase() {
         val recipient = userService.createUser(User(null, "test2", "", email = "test2@example.org"))
             ?: fail("Couldn't create recipient")
 
-        privateMessageService.sendMessage(PrivateMessage(null).apply {
+        privateMessageService.sendMessage(PrivateMessage(sender = sender, recipient = recipient).apply {
             this.sender = sender
             this.recipient = recipient
             this.subject = "Test private message"
@@ -126,7 +126,7 @@ class PrivateMessageServiceTests : TestBase() {
         val recipient = userService.createUser(User(null, "test2", "", email = "test2@example.org"))
             ?: fail("Couldn't create recipient")
 
-        privateMessageService.sendMessage(PrivateMessage(null).apply {
+        privateMessageService.sendMessage(PrivateMessage(sender = sender, recipient = recipient).apply {
             this.sender = sender
             this.recipient = recipient
             this.subject = "Test private message"
@@ -154,7 +154,7 @@ class PrivateMessageServiceTests : TestBase() {
         val recipient = userService.createUser(User(null, "test2", "", email = "test2@example.org"))
             ?: fail("Couldn't create recipient")
 
-        privateMessageService.sendMessage(PrivateMessage(null).apply {
+        privateMessageService.sendMessage(PrivateMessage(sender = sender, recipient = recipient).apply {
             this.sender = sender
             this.recipient = recipient
             this.subject = "Test private message"
@@ -179,7 +179,7 @@ class PrivateMessageServiceTests : TestBase() {
         val recipient = userService.createUser(User(null, "test2", "", email = "test2@example.org"))
             ?: fail("Couldn't create recipient")
 
-        val originalMessage = PrivateMessage(null).apply {
+        val originalMessage = PrivateMessage(sender = sender, recipient = recipient).apply {
             this.sender = sender
             this.recipient = recipient
             this.subject = "Test private message"
@@ -192,7 +192,7 @@ class PrivateMessageServiceTests : TestBase() {
         val fetchedMessage = messages.first() //getting the original message
         Assertions.assertEquals(1, messages.count())
 
-        val replyMessage = PrivateMessage(null).apply {
+        val replyMessage = PrivateMessage(sender = sender, recipient = recipient).apply {
             this.sender = recipient
             this.recipient = sender
             this.subject = "Reply Test private message"

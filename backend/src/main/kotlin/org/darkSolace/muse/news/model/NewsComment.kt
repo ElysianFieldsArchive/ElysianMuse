@@ -16,7 +16,7 @@ class NewsComment {
     var id: Long? = null
 
     @ManyToOne
-    var author: User? = null
+    lateinit var author: User
 
     @Lob
     var content: String = ""

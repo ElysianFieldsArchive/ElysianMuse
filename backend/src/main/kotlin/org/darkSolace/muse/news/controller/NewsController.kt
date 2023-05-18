@@ -24,10 +24,9 @@ import kotlin.jvm.optionals.getOrNull
 @RestController
 @RequestMapping("/api/news")
 @Validated
-class NewsController {
-    @Autowired
-    lateinit var newsService: NewsService
-
+class NewsController(
+    @Autowired val newsService: NewsService
+) {
     /**
      * Retrieves the last 3 news stories. Listens on /api/news/last.
      *
@@ -35,8 +34,8 @@ class NewsController {
      * @return List of [NewsEntryDTO]s. Max size 3.
      */
     @GetMapping("/last")
-    fun getNewestThree(): List<NewsEntryDTO> {
-        return NewsEntryDTO.fromList(newsService.getLast(3))
+    fun getNewestThree(): Collection<NewsEntryDTO> {
+        return NewsEntryDTO.fromCollection(newsService.getLast(3))
     }
 
     /**
@@ -47,8 +46,8 @@ class NewsController {
      * @return List of [NewsEntryDTO]s. Defaults to size 3.
      */
     @GetMapping("/last/{size}")
-    fun getNewest(@Valid @PathVariable(required = false) @Min(1) size: Int = 3): List<NewsEntryDTO> {
-        return NewsEntryDTO.fromList(newsService.getLast(size))
+    fun getNewest(@Valid @PathVariable(required = false) @Min(1) size: Int = 3): Collection<NewsEntryDTO> {
+        return NewsEntryDTO.fromCollection(newsService.getLast(size))
     }
 
     /**
@@ -61,7 +60,7 @@ class NewsController {
     @GetMapping("/{id}")
     fun getNews(@PathVariable id: Long): ResponseEntity<*> {
         val news = newsService.getNews(id) ?: return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
-        return ResponseEntity<NewsEntryDTO>(NewsEntryDTO.from(news), HttpStatus.OK)
+        return ResponseEntity(NewsEntryDTO.from(news), HttpStatus.OK)
     }
 
     /**
@@ -71,8 +70,8 @@ class NewsController {
      * @return the retrieved [NewsEntryDTO], might be empty
      */
     @GetMapping
-    fun getAllNews(): List<NewsEntryDTO> {
-        return NewsEntryDTO.fromList(newsService.getAllNews())
+    fun getAllNews(): Collection<NewsEntryDTO> {
+        return NewsEntryDTO.fromCollection(newsService.getAllNews())
     }
 
     /**
@@ -87,7 +86,7 @@ class NewsController {
     @PutMapping
     @PreAuthorize("hasAnyAuthority('MODERATOR', 'ADMINISTRATOR')")
     fun postNews(
-        @RequestBody news: NewsEntryDTO,
+        @RequestBody @Valid news: NewsEntryDTO,
         authentication: Authentication?
     ): ResponseEntity<Unit> {
         if ((authentication?.principal as UserDetails?)?.user?.username != news.author?.username)
@@ -114,7 +113,7 @@ class NewsController {
     @PreAuthorize("hasAnyAuthority('MODERATOR', 'ADMINISTRATOR')")
     fun editNews(
         @PathVariable id: Long,
-        @RequestBody news: NewsEntryDTO,
+        @RequestBody @Valid news: NewsEntryDTO,
         authentication: Authentication?
     ): ResponseEntity<Unit> {
         if ((authentication?.principal as UserDetails?)?.user?.username != news.author?.username)
@@ -141,7 +140,7 @@ class NewsController {
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun addComment(
         @PathVariable id: Long,
-        @RequestBody commentDto: NewsCommentDTO,
+        @RequestBody @Valid commentDto: NewsCommentDTO,
         authentication: Authentication?
     ): ResponseEntity<Unit> {
         if ((authentication?.principal as UserDetails?)?.user?.username != commentDto.author?.username)
@@ -169,7 +168,7 @@ class NewsController {
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun editComment(
         @PathVariable commentId: Long,
-        @RequestBody commentDto: NewsCommentDTO,
+        @RequestBody @Valid commentDto: NewsCommentDTO,
         authentication: Authentication?
     ): ResponseEntity<Unit> {
         if ((authentication?.principal as UserDetails?)?.user?.username != commentDto.author?.username)

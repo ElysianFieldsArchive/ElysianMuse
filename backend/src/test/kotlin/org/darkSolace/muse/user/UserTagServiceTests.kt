@@ -23,7 +23,7 @@ class UserTagServiceTests : TestBase() {
         val user = userService.createUser(
             User(
                 username = "testUser14",
-                password = "123",
+                password = "123456",
                 email = "test14@example.com"
             )
         ) ?: fail("user is null")
@@ -56,7 +56,7 @@ class UserTagServiceTests : TestBase() {
         userService.createUser(
             User(
                 username = "testUser914",
-                password = "123",
+                password = "123456",
                 email = "test914@example.com"
             )
         )
@@ -89,7 +89,7 @@ class UserTagServiceTests : TestBase() {
     fun addTagToUserUnknownUser() {
         //try to remove tag from unknown user
         val result = userTagService.addTagToUser(
-            User(username = "unknown", password = "123", email = "test@example.com"),
+            User(username = "unknown", password = "123456", email = "test@example.com"),
             UserTag.BETA
         )
         Assertions.assertNull(result)
@@ -101,7 +101,7 @@ class UserTagServiceTests : TestBase() {
         val user = userService.createUser(
             User(
                 username = "testUser15",
-                password = "123",
+                password = "123456",
                 email = "test15@example.com",
                 userTags = mutableSetOf(UserTag.BETA, UserTag.ARTIST)
             )
@@ -131,7 +131,7 @@ class UserTagServiceTests : TestBase() {
         var user = userService.createUser(
             User(
                 username = "testUser915",
-                password = "123",
+                password = "123456",
                 email = "test915@example.com",
                 userTags = mutableSetOf(UserTag.BETA, UserTag.ARTIST)
             )
@@ -160,7 +160,7 @@ class UserTagServiceTests : TestBase() {
     fun removeTagFromUserUnknownUser() {
         //try to remove tag from unknown user
         val result = userTagService.removeTagFromUser(
-            User(username = "unknown", password = "123", email = "test@example.com"),
+            User(username = "unknown", password = "123456", email = "test@example.com"),
             UserTag.BETA
         )
         Assertions.assertNull(result)

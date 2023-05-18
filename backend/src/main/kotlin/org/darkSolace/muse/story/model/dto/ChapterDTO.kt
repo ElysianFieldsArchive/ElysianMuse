@@ -1,10 +1,9 @@
 package org.darkSolace.muse.story.model.dto
 
+import jakarta.validation.constraints.NotEmpty
+import org.darkSolace.muse.DTO
 import org.darkSolace.muse.story.model.Banner
 import org.darkSolace.muse.story.model.Chapter
-import org.darkSolace.muse.story.model.ChapterComment
-import org.darkSolace.muse.story.model.Story
-import org.darkSolace.muse.user.model.User
 import org.darkSolace.muse.user.model.dto.UserIdNameDTO
 import java.util.*
 
@@ -16,35 +15,36 @@ class ChapterDTO {
     var endNotes: String? = ""
     var hitCount: Long = 0
     var wordCount: Int = 0
+
+    @NotEmpty
     var content: String = ""
     var publishedDate: Date = Date()
     var updatedDate: Date = Date()
-    var beta: List<UserIdNameDTO> = emptyList()
-    var artist: List<UserIdNameDTO> = emptyList()
+    var beta: Set<UserIdNameDTO> = emptySet()
+    var artist: Set<UserIdNameDTO> = emptySet()
     var storyBanner: Banner? = null
-    var story: StoryDTO? = null
+    var storyId: Long? = 0
     var comments: List<ChapterCommentDTO> = emptyList()
-    var kudos: List<UserIdNameDTO> = emptyList()
+    var kudos: Set<UserIdNameDTO> = emptySet()
 
-    companion object {
-        fun fromList(list: List<Chapter>) : List<ChapterDTO> = list.map { from(it) }
-        fun from(chapter: Chapter) = ChapterDTO().apply {
-            this.id = chapter.id
-            this.title = chapter.title
-            this.summary = chapter.summary
-            this.startNotes = chapter.startNotes
-            this.endNotes = chapter.endNotes
-            this.hitCount = chapter.hitCount
-            this.wordCount = chapter.wordCount
-            this.content = chapter.content
-            this.publishedDate = chapter.publishedDate
-            this.updatedDate = chapter.updatedDate
-            this.beta = UserIdNameDTO.fromList(chapter.beta)
-            this.artist = UserIdNameDTO.fromList(chapter.artist)
-            this.storyBanner = chapter.storyBanner
-            this.story = chapter.story?.let { s -> StoryDTO.from(s) }
-            this.comments = ChapterCommentDTO.fromList(chapter.comments)
-            this.kudos = UserIdNameDTO.fromList(chapter.kudos)
+    companion object : DTO<Chapter, ChapterDTO> {
+        override fun from(item: Chapter) = ChapterDTO().apply {
+            this.id = item.id
+            this.title = item.title
+            this.summary = item.summary
+            this.startNotes = item.startNotes
+            this.endNotes = item.endNotes
+            this.hitCount = item.hitCount
+            this.wordCount = item.wordCount
+            this.content = item.content
+            this.publishedDate = item.publishedDate
+            this.updatedDate = item.updatedDate
+            this.beta = UserIdNameDTO.fromCollection(item.beta).toSet()
+            this.artist = UserIdNameDTO.fromCollection(item.artist).toSet()
+            this.storyBanner = item.storyBanner
+            this.storyId = item.storyId
+            this.comments = ChapterCommentDTO.fromCollection(item.comments)
+            this.kudos = UserIdNameDTO.fromCollection(item.kudos).toSet()
         }
     }
 }

@@ -3,4 +3,4 @@
 # from
 
 [jvm]\
-fun [from](from.md)(chapter: [Chapter](../../../org.darkSolace.muse.story.model/-chapter/index.md)): [ChapterDTO](../index.md)
+open override fun [from](from.md)(item: [Chapter](../../../org.darkSolace.muse.story.model/-chapter/index.md)): [ChapterDTO](../index.md)

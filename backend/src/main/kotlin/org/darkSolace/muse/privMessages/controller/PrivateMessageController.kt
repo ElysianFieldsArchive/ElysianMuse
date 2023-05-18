@@ -1,5 +1,6 @@
 package org.darkSolace.muse.privMessages.controller
 
+import jakarta.validation.Valid
 import org.darkSolace.muse.privMessages.model.MessageDirection
 import org.darkSolace.muse.privMessages.model.PrivateMessage
 import org.darkSolace.muse.privMessages.model.dto.PrivateMessageDTO
@@ -12,6 +13,7 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.Authentication
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
 /**
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.*
  */
 @RestController
 @RequestMapping("/api/message")
+@Validated
 class PrivateMessageController(
     @Autowired val privateMessageService: PrivateMessageService,
     @Autowired val privateMessageRepository: PrivateMessageRepository,
@@ -33,13 +36,13 @@ class PrivateMessageController(
      */
     @GetMapping("/{user}")
     fun getReceivedMessages(
-        @PathVariable user: User,
+        @PathVariable @Valid user: User,
         authentication: Authentication?
-    ): ResponseEntity<List<PrivateMessageDTO>> {
+    ): ResponseEntity<Collection<PrivateMessageDTO>> {
         val userDetails = (authentication?.principal as UserDetails?)
         return if (userDetails?.user == user) {
             val messages =
-                PrivateMessageDTO.fromPrivateMessageList(privateMessageService.getReceivedMessagesForUser(user))
+                PrivateMessageDTO.fromCollection(privateMessageService.getReceivedMessagesForUser(user))
             ResponseEntity.ok(messages)
         } else {
             ResponseEntity(HttpStatus.UNAUTHORIZED)
@@ -56,13 +59,13 @@ class PrivateMessageController(
      */
     @GetMapping("/{user}/sent")
     fun getSentMessages(
-        @PathVariable user: User,
+        @PathVariable @Valid user: User,
         authentication: Authentication?
-    ): ResponseEntity<List<PrivateMessageDTO>> {
+    ): ResponseEntity<Collection<PrivateMessageDTO>> {
         val userDetails = (authentication?.principal as UserDetails?)
         return if (userDetails?.user == user) {
             val messages =
-                PrivateMessageDTO.fromPrivateMessageList(privateMessageService.getSentMessagesByUser(user))
+                PrivateMessageDTO.fromCollection(privateMessageService.getSentMessagesByUser(user))
             ResponseEntity.ok(messages)
         } else {
             ResponseEntity(HttpStatus.UNAUTHORIZED)
@@ -101,7 +104,10 @@ class PrivateMessageController(
      * @return HTTP OK or UNAUTHORIZED, depending on the requests success
      */
     @PostMapping("/send")
-    fun sendMessage(@RequestBody message: PrivateMessage, authentication: Authentication?): ResponseEntity<Unit> {
+    fun sendMessage(
+        @RequestBody @Valid message: PrivateMessage,
+        authentication: Authentication?
+    ): ResponseEntity<Unit> {
         val userDetails = authentication?.principal as UserDetails?
         return if (userDetails?.user == message.sender) {
             privateMessageService.sendMessage(message)
@@ -119,7 +125,10 @@ class PrivateMessageController(
      * @param authentication the authentication used for this request, to verify the right user is logged in
      */
     @DeleteMapping("/{message}")
-    fun deleteMessage(@PathVariable message: PrivateMessage, authentication: Authentication?): ResponseEntity<Unit> {
+    fun deleteMessage(
+        @PathVariable @Valid message: PrivateMessage,
+        authentication: Authentication?
+    ): ResponseEntity<Unit> {
         val userDetails = authentication?.principal as UserDetails?
         val user = userDetails?.user
         val receiverAllowed = message.direction == MessageDirection.INCOMING && user == message.recipient

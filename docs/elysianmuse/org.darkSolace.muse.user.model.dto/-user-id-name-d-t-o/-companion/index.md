@@ -3,11 +3,11 @@
 # Companion
 
 [jvm]\
-object [Companion](index.md)
+object [Companion](index.md) : [DTO](../../../org.darkSolace.muse/-d-t-o/index.md)&lt;[User](../../../org.darkSolace.muse.user.model/-user/index.md), [UserIdNameDTO](../index.md)&gt;
 
 ## Functions
 
 | Name | Summary |
 |---|---|
-| [from](from.md) | [jvm]<br>fun [from](from.md)(user: [User](../../../org.darkSolace.muse.user.model/-user/index.md)?): [UserIdNameDTO](../index.md) |
-| [fromList](from-list.md) | [jvm]<br>fun [fromList](from-list.md)(list: [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[User](../../../org.darkSolace.muse.user.model/-user/index.md)&gt;): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[UserIdNameDTO](../index.md)&gt; |
+| [from](from.md) | [jvm]<br>open override fun [from](from.md)(item: [User](../../../org.darkSolace.muse.user.model/-user/index.md)): [UserIdNameDTO](../index.md) |
+| [fromCollection](index.md#-1924476911%2FFunctions%2F-1216412040) | [jvm]<br>open fun [fromCollection](index.md#-1924476911%2FFunctions%2F-1216412040)(collection: [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html)&lt;[User](../../../org.darkSolace.muse.user.model/-user/index.md)&gt;): [Collection](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html)&lt;[UserIdNameDTO](../index.md)&gt; |

@@ -6,6 +6,7 @@
 
 | Name | Summary |
 |---|---|
+| [DTO](-d-t-o/index.md) | [jvm]<br>interface [DTO](-d-t-o/index.md)&lt;[T](-d-t-o/index.md), [E](-d-t-o/index.md)&gt; |
 | [ElysianMuseApplication](-elysian-muse-application/index.md) | [jvm]<br>@SpringBootApplication<br>@EnableScheduling<br>class [ElysianMuseApplication](-elysian-muse-application/index.md) |
 
 ## Functions

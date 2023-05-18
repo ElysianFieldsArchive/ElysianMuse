@@ -42,7 +42,7 @@ class PrivateMessageApiTests : TestBase() {
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -50,7 +50,7 @@ class PrivateMessageApiTests : TestBase() {
         val url2 = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url2,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -59,8 +59,9 @@ class PrivateMessageApiTests : TestBase() {
         }
 
         val recipient = userService.getById(signInResponse?.body?.id ?: fail("Couldn't get recipient user"))
+            ?: fail("Couldn't create User")
 
-        val url3 = generateUrl("/api/message/${recipient?.id}")
+        val url3 = generateUrl("/api/message/${recipient.id}")
         val response = restTemplate.exchange(
             url3,
             HttpMethod.GET,
@@ -71,9 +72,7 @@ class PrivateMessageApiTests : TestBase() {
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
         Assertions.assertEquals(0, response?.body?.size)
 
-        privateMessageService.sendMessage(PrivateMessage(null).apply {
-            this.sender = sender
-            this.recipient = recipient
+        privateMessageService.sendMessage(PrivateMessage(sender = sender, recipient = recipient).apply {
             this.subject = "Test private message"
             this.content = "Test private message content"
         })
@@ -98,7 +97,7 @@ class PrivateMessageApiTests : TestBase() {
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -106,7 +105,7 @@ class PrivateMessageApiTests : TestBase() {
         val url2 = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url2,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -135,7 +134,7 @@ class PrivateMessageApiTests : TestBase() {
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -143,7 +142,7 @@ class PrivateMessageApiTests : TestBase() {
         val url2 = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url2,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -152,8 +151,9 @@ class PrivateMessageApiTests : TestBase() {
         }
 
         val sender = userService.getById(signInResponse?.body?.id ?: fail("Couldn't get recipient user"))
+            ?: fail("Couldn't create sender")
 
-        val url3 = generateUrl("/api/message/${sender?.id}/sent")
+        val url3 = generateUrl("/api/message/${sender.id}/sent")
         val response = restTemplate.exchange(
             url3,
             HttpMethod.GET,
@@ -164,9 +164,7 @@ class PrivateMessageApiTests : TestBase() {
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
         Assertions.assertEquals(0, response?.body?.size)
 
-        privateMessageService.sendMessage(PrivateMessage(null).apply {
-            this.sender = sender
-            this.recipient = recipient
+        privateMessageService.sendMessage(PrivateMessage(sender = sender, recipient = recipient).apply {
             this.subject = "Test private message"
             this.content = "Test private message content"
         })
@@ -191,7 +189,7 @@ class PrivateMessageApiTests : TestBase() {
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -199,7 +197,7 @@ class PrivateMessageApiTests : TestBase() {
         val url2 = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url2,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -228,7 +226,7 @@ class PrivateMessageApiTests : TestBase() {
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -236,7 +234,7 @@ class PrivateMessageApiTests : TestBase() {
         val url2 = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url2,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -245,16 +243,15 @@ class PrivateMessageApiTests : TestBase() {
         }
 
         val recipient = userService.getById(signInResponse?.body?.id ?: fail("Couldn't get recipient user"))
+            ?: fail("Couldn't create sender")
 
 
-        privateMessageService.sendMessage(PrivateMessage(null).apply {
-            this.sender = sender
-            this.recipient = recipient
+        privateMessageService.sendMessage(PrivateMessage(recipient = recipient, sender = sender).apply {
             this.subject = "Test private message"
             this.content = "Test private message content"
         })
 
-        val url3 = generateUrl("/api/message/${recipient?.id}")
+        val url3 = generateUrl("/api/message/${recipient.id}")
         val secondResponse = restTemplate.exchange(
             url3,
             HttpMethod.GET,
@@ -298,7 +295,7 @@ class PrivateMessageApiTests : TestBase() {
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -306,7 +303,7 @@ class PrivateMessageApiTests : TestBase() {
         val url2 = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url2,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -315,11 +312,10 @@ class PrivateMessageApiTests : TestBase() {
         }
 
         val sender = userService.getById(signInResponse?.body?.id ?: fail("Couldn't get recipient user"))
+            ?: fail("Couldn't create sender")
 
 
-        privateMessageService.sendMessage(PrivateMessage(null).apply {
-            this.sender = sender
-            this.recipient = recipient
+        privateMessageService.sendMessage(PrivateMessage(sender = sender, recipient = recipient).apply {
             this.subject = "Test private message"
             this.content = "Test private message content"
         })
@@ -348,7 +344,7 @@ class PrivateMessageApiTests : TestBase() {
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -356,11 +352,12 @@ class PrivateMessageApiTests : TestBase() {
         val url2 = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url2,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
         val sender = userService.getById(signInResponse?.body?.id ?: fail("Couldn't retrieve sender"))
+            ?: fail("Couldn't create sender")
 
         val headers = HttpHeaders().apply {
             add("Authorization", "Bearer ${signInResponse.body?.token}")
@@ -390,7 +387,7 @@ class PrivateMessageApiTests : TestBase() {
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -398,7 +395,7 @@ class PrivateMessageApiTests : TestBase() {
         val url2 = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url2,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -433,7 +430,7 @@ class PrivateMessageApiTests : TestBase() {
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -441,7 +438,7 @@ class PrivateMessageApiTests : TestBase() {
         val url2 = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url2,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -463,7 +460,7 @@ class PrivateMessageApiTests : TestBase() {
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
         Assertions.assertEquals(0, response?.body)
 
-        privateMessageService.sendMessage(PrivateMessage(null).apply {
+        privateMessageService.sendMessage(PrivateMessage(sender = sender, recipient = recipient).apply {
             this.sender = sender
             this.recipient = recipient
             this.subject = "Test private message"
@@ -520,7 +517,7 @@ class PrivateMessageApiTests : TestBase() {
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -528,7 +525,7 @@ class PrivateMessageApiTests : TestBase() {
         val url2 = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url2,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -571,7 +568,7 @@ class PrivateMessageApiTests : TestBase() {
         val url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -579,7 +576,7 @@ class PrivateMessageApiTests : TestBase() {
         val url2 = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url2,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 

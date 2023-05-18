@@ -6,8 +6,6 @@
 
 @PostMapping(value = [&quot;/settings&quot;])
 
-@Validated
-
 @PreAuthorize(value = &quot;hasAnyAuthority('ADMINISTRATOR')&quot;)
 
 fun [updateMailerSettings](update-mailer-settings.md)(@Valid@RequestBodymailerSettings: [MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-settings/index.md))

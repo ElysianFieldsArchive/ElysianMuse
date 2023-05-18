@@ -24,7 +24,7 @@ RestController defining endpoints regarding mail settings and user email confirm
 | Name | Summary |
 |---|---|
 | [processEMailConfirmation](process-e-mail-confirmation.md) | [jvm]<br>@GetMapping(value = [&quot;/confirm/{code}&quot;])<br>fun [processEMailConfirmation](process-e-mail-confirmation.md)(@PathVariablecode: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)): ResponseEntity&lt;[Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)&gt;<br>Validates a users email address by a validation code sent to the provided email address. |
-| [updateMailerSettings](update-mailer-settings.md) | [jvm]<br>@PostMapping(value = [&quot;/settings&quot;])<br>@Validated<br>@PreAuthorize(value = &quot;hasAnyAuthority('ADMINISTRATOR')&quot;)<br>fun [updateMailerSettings](update-mailer-settings.md)(@Valid@RequestBodymailerSettings: [MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-settings/index.md))<br>Updates the [MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-settings/index.md) used to send emails. New settings are validated rudimentary. |
+| [updateMailerSettings](update-mailer-settings.md) | [jvm]<br>@PostMapping(value = [&quot;/settings&quot;])<br>@PreAuthorize(value = &quot;hasAnyAuthority('ADMINISTRATOR')&quot;)<br>fun [updateMailerSettings](update-mailer-settings.md)(@Valid@RequestBodymailerSettings: [MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-settings/index.md))<br>Updates the [MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-settings/index.md) used to send emails. New settings are validated rudimentary. |
 
 ## Properties
 

@@ -6,7 +6,7 @@
 
 @PostMapping(value = [&quot;/signin&quot;])
 
-fun [authenticateUser](authenticate-user.md)(@RequestBodyloginRequest: [LoginRequest](../../org.darkSolace.muse.security.model/-login-request/index.md)): ResponseEntity&lt;*&gt;
+fun [authenticateUser](authenticate-user.md)(@RequestBody@ValidloginRequest: [LoginRequest](../../org.darkSolace.muse.security.model/-login-request/index.md)): ResponseEntity&lt;*&gt;
 
 Checks a transmitted [LoginRequest](../../org.darkSolace.muse.security.model/-login-request/index.md) for a valid username/password pair. Listens on /api/auth/signin.
 

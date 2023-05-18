@@ -30,7 +30,7 @@ class UserControllerApiTests : TestBase() {
     @Test
     @Order(1)
     fun getUserById_publicUser() {
-        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
+        val user = userService.createUser(User(username = "test", password = "123456", email = "test@example.com"))
 
         val url = generateUrl("/api/user/${user?.id}")
         val response = restTemplate.getForEntity(url, User::class.java)
@@ -48,7 +48,7 @@ class UserControllerApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         val response = restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         Assertions.assertEquals(HttpStatus.OK, response.statusCode)
@@ -58,7 +58,7 @@ class UserControllerApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val jwtResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -88,10 +88,10 @@ class UserControllerApiTests : TestBase() {
     @Test
     @Order(4)
     fun getAll() {
-        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
-        val user2 = userService.createUser(User(username = "test2", password = "123", email = "test2@example.com"))
-        val user3 = userService.createUser(User(username = "test3", password = "123", email = "test3@example.com"))
-        val user4 = userService.createUser(User(username = "test4", password = "123", email = "test4@example.com"))
+        val user = userService.createUser(User(username = "test", password = "123456", email = "test@example.com"))
+        val user2 = userService.createUser(User(username = "test2", password = "123456", email = "test2@example.com"))
+        val user3 = userService.createUser(User(username = "test3", password = "123456", email = "test3@example.com"))
+        val user4 = userService.createUser(User(username = "test4", password = "123456", email = "test4@example.com"))
 
         val url = generateUrl("/api/user/all")
         val response = restTemplate.getForEntity(url, Array<User>::class.java)
@@ -117,7 +117,7 @@ class UserControllerApiTests : TestBase() {
     @Order(6)
     fun suspendUser_success() {
         //generate user to suspend
-        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        val signUpRequest = SignUpRequest("test", "123456", "test@example.com")
         var user = userService.createUserFromSignUpRequest(signUpRequest)
 
         //generate admin to perform the suspension
@@ -125,7 +125,7 @@ class UserControllerApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -134,7 +134,7 @@ class UserControllerApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -156,7 +156,7 @@ class UserControllerApiTests : TestBase() {
     @Order(7)
     fun suspendUser_noRights() {
         //generate user to suspend
-        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        val signUpRequest = SignUpRequest("test", "123456", "test@example.com")
         var user = userService.createUserFromSignUpRequest(signUpRequest)
 
         //generate second user to perform the suspension
@@ -164,7 +164,7 @@ class UserControllerApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -173,7 +173,7 @@ class UserControllerApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -199,7 +199,7 @@ class UserControllerApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -208,7 +208,7 @@ class UserControllerApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -227,7 +227,7 @@ class UserControllerApiTests : TestBase() {
     @Order(9)
     fun confirmSuspension_success() {
         //generate user to suspend
-        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        val signUpRequest = SignUpRequest("test", "123456", "test@example.com")
         var user = userService.createUserFromSignUpRequest(signUpRequest)
         mailService.markEMailAsValid("test")
 
@@ -236,7 +236,7 @@ class UserControllerApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -245,7 +245,7 @@ class UserControllerApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -266,7 +266,7 @@ class UserControllerApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val userSignInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "1234", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
 
@@ -298,7 +298,7 @@ class UserControllerApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test")
@@ -306,7 +306,7 @@ class UserControllerApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test", "123", "test@example.com"),
+            SignUpRequest("test", "123456", "test@example.com"),
             JwtResponse::class.java
         )
 
@@ -332,7 +332,7 @@ class UserControllerApiTests : TestBase() {
     @Order(12)
     fun deleteUser_otherUserAdmin() {
         //generate user to delete
-        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        val signUpRequest = SignUpRequest("test", "123456", "test@example.com")
         var user = userService.createUserFromSignUpRequest(signUpRequest)
 
         //generate admin to perform deletion
@@ -340,7 +340,7 @@ class UserControllerApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -349,7 +349,7 @@ class UserControllerApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -371,7 +371,7 @@ class UserControllerApiTests : TestBase() {
     @Order(13)
     fun deleteUser_otherUserModerator() {
         //generate user to delete
-        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        val signUpRequest = SignUpRequest("test", "123456", "test@example.com")
         var user = userService.createUserFromSignUpRequest(signUpRequest)
 
         //generate admin to perform deletion
@@ -379,7 +379,7 @@ class UserControllerApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -388,7 +388,7 @@ class UserControllerApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -410,7 +410,7 @@ class UserControllerApiTests : TestBase() {
     @Order(14)
     fun deleteUser_otherUserMember() {
         //generate user to delete
-        val signUpRequest = SignUpRequest("test", "1234", "test@example.com")
+        val signUpRequest = SignUpRequest("test", "123456", "test@example.com")
         var user = userService.createUserFromSignUpRequest(signUpRequest)
 
         //generate admin to perform deletion
@@ -418,7 +418,7 @@ class UserControllerApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -426,7 +426,7 @@ class UserControllerApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -452,7 +452,7 @@ class UserControllerApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -461,7 +461,7 @@ class UserControllerApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -484,7 +484,7 @@ class UserControllerApiTests : TestBase() {
         var url = generateUrl("/api/auth/signup")
         restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             String::class.java
         )
         mailService.markEMailAsValid("test2")
@@ -492,7 +492,7 @@ class UserControllerApiTests : TestBase() {
         url = generateUrl("/api/auth/signin")
         val signInResponse = restTemplate.postForEntity(
             url,
-            SignUpRequest("test2", "123", "test2@example.com"),
+            SignUpRequest("test2", "123456", "test2@example.com"),
             JwtResponse::class.java
         )
 
@@ -510,7 +510,7 @@ class UserControllerApiTests : TestBase() {
     @Test
     @Order(1)
     fun getUserById_publicUserPrivate() {
-        val user = userService.createUser(User(username = "test", password = "123", email = "test@example.com"))
+        val user = userService.createUser(User(username = "test", password = "123456", email = "test@example.com"))
         user?.birthday = Date()
         user?.realName = "Tom"
 

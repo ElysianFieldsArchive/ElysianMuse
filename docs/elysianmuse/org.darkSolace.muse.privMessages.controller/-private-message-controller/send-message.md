@@ -6,7 +6,7 @@
 
 @PostMapping(value = [&quot;/send&quot;])
 
-fun [sendMessage](send-message.md)(@RequestBodymessage: [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md), authentication: Authentication?): ResponseEntity&lt;[Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)&gt;
+fun [sendMessage](send-message.md)(@RequestBody@Validmessage: [PrivateMessage](../../org.darkSolace.muse.privMessages.model/-private-message/index.md), authentication: Authentication?): ResponseEntity&lt;[Unit](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)&gt;
 
 Sends a message to another user
 
