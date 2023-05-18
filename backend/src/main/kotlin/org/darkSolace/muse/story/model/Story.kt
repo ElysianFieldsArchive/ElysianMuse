@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonInclude
 import jakarta.persistence.*
 import org.darkSolace.muse.user.model.User
-import org.hibernate.annotations.Cascade
-import org.hibernate.annotations.CascadeType
 import java.util.*
 import kotlin.jvm.Transient
 
@@ -23,13 +21,13 @@ class Story {
     var commentModeration: Boolean = false
     var eventId: Long? = null
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     var author: MutableSet<User> = mutableSetOf()
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     var beta: MutableSet<User> = mutableSetOf()
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     var artist: MutableSet<User> = mutableSetOf()
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -42,7 +40,7 @@ class Story {
     var storyBanner: Banner? = null
 
     @OneToMany(fetch = FetchType.EAGER)
-    @Cascade(CascadeType.DELETE)
+//    @Cascade(CascadeType.DELETE)
     var chapters: MutableSet<Chapter> = mutableSetOf()
 
     @ManyToMany(fetch = FetchType.EAGER)

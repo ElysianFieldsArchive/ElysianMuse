@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository
 interface StoryRepository : CrudRepository<Story, Long> {
     fun existsByStoryTagsContaining(tag: StoryTag): Boolean
     fun findAllByStoryTagsContaining(tag: StoryTag): List<Story>
-
 }

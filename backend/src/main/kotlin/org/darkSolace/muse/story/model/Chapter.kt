@@ -30,10 +30,10 @@ class Chapter {
     @Temporal(TemporalType.TIMESTAMP)
     var updatedDate: Date = Date()
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     var beta: MutableSet<User> = mutableSetOf()
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     var artist: MutableSet<User> = mutableSetOf()
 
     @OneToOne(optional = true)
@@ -41,10 +41,10 @@ class Chapter {
 
     var storyId: Long? = null
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     var comments: MutableSet<ChapterComment> = mutableSetOf()
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JsonIgnore
     val kudos: MutableSet<User> = mutableSetOf()
 

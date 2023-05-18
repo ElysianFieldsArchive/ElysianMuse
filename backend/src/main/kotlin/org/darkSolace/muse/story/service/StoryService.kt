@@ -27,8 +27,11 @@ class StoryService(
 ) {
     fun getStoryById(id: Long): Story? = storyRepository.findByIdOrNull(id)
     fun getChapterById(chapterId: Long): Chapter? = chapterRepository.findByIdOrNull(chapterId)
+
+    @Transactional
     fun getAllStories(): List<Story> = storyRepository.findAll().toList()
 
+    @Transactional
     fun getStoriesFiltered(
         ratings: List<Rating>? = null, tags: List<StoryTag>? = null, authors: List<User>? = null
     ): List<Story> {
@@ -107,6 +110,7 @@ class StoryService(
         return true
     }
 
+    @Transactional
     fun addChapter(newChapter: ChapterDTO): Boolean {
         val story = storyRepository.findByIdOrNull(newChapter.storyId ?: -1) ?: return false
 
@@ -133,6 +137,7 @@ class StoryService(
         return true
     }
 
+    @Transactional
     fun editChapter(chapter: ChapterDTO): Boolean {
         var oldChapter = chapterRepository.findByIdOrNull(chapter.id ?: -1) ?: return false
         val (artists, betas) = chapter.resolveArtistsBetas()
@@ -310,15 +315,15 @@ class StoryService(
         val chapter = chapterRepository.findByIdOrNull(editedChapterComment.chapterId ?: -1) ?: return false
         val story = storyRepository.findByIdOrNull(chapter.storyId ?: -1) ?: return false
         val commenter = userService.getById(editedChapterComment.author?.id ?: return false) ?: return false
-        val comment = chapterCommentRepository.findByIdOrNull(editedChapterComment.id ?: -1) ?: return false
+        var comment = chapterCommentRepository.findByIdOrNull(editedChapterComment.id ?: -1) ?: return false
 
-        comment.apply {
+        comment = comment.apply {
             this.authorApproved = !story.commentModeration
             this.author = commenter
             this.chapter = chapter
-            this.content = comment.content
-            this.publishedDate = comment.publishedDate
-            this.referenceComment = comment.referenceComment
+            this.content = editedChapterComment.content
+            this.publishedDate = editedChapterComment.publishedDate
+            this.referenceComment = editedChapterComment.referenceComment
         }
 
         chapterCommentRepository.save(comment)
@@ -418,20 +423,20 @@ class StoryService(
     }
 
     private fun StoryDTO.resolveUsersArtistsBetas(): Array<List<User>> {
-        val authors = this.author.mapNotNull { userService.getById(it.id ?: -1) }
-        val artists = this.artist.mapNotNull { userService.getById(it.id ?: -1) }
-        val betas = this.beta.mapNotNull { userService.getById(it.id ?: -1) }
+        val authors = userService.getByIds(this.author.map { it.id }.filterNotNull())
+        val artists = userService.getByIds(this.artist.map { it.id }.filterNotNull())
+        val betas = userService.getByIds(this.beta.map { it.id }.filterNotNull())
 
         return arrayOf(authors, artists, betas)
     }
 
     private fun ChapterDTO.resolveArtistsBetas(): Array<List<User>> {
-        val artists = this.artist.mapNotNull { userService.getById(it.id ?: -1) }
-        val betas = this.beta.mapNotNull { userService.getById(it.id ?: -1) }
+        val artists = userService.getByIds(this.artist.map { it.id }.filterNotNull())
+        val betas = userService.getByIds(this.beta.map { it.id }.filterNotNull())
 
         return arrayOf(artists, betas)
     }
 
     private fun StoryDTO.resolveChapters(): List<Chapter> =
-        this.chapters.mapNotNull { chapterRepository.findByIdOrNull(it.id ?: -1) }
+        chapterRepository.findAllById(this.chapters.mapNotNull { it.id }).toList()
 }

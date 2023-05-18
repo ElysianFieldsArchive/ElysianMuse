@@ -10,6 +10,7 @@ spring.datasource.username=username
 spring.datasource.password=password
 spring.devtools.add-properties=false
 muse.app.jwtSecret=512ByteLongSecret
-muse.app.jwtExpirationMs=86400000  #24 hours
-#How long a site visitor without activity should be considered "online"
-session.timeInMinutes=180 #3 hours
+#JWT Expiration: 24 hours
+muse.app.jwtExpirationMs=86400000
+#How long a site visitor without activity should be considered "online": 3 hours
+session.timeInMinutes=180

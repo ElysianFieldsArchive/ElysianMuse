@@ -65,6 +65,14 @@ class UserService(
     fun getById(id: Long) = userRepository.findByIdOrNull(id)
 
     /**
+     * Finds multiple [User]s by their IDs
+     *
+     * @param ids a list of IDs
+     * @return the found [User]s
+     */
+    fun getByIds(ids: Collection<Long>) = userRepository.findAllById(ids).filterNotNull()
+
+    /**
      * Returns a [List] of all [User]s
      *
      * @return a [List] of all [User]s - might be empty if no [User]s exist
