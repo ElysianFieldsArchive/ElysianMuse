@@ -15,7 +15,14 @@ import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.core.Authentication
 import org.springframework.validation.annotation.Validated
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 import kotlin.jvm.optionals.getOrNull
 
 /**
@@ -35,7 +42,7 @@ class NewsController(
      */
     @GetMapping("/last")
     fun getNewestThree(): Collection<NewsEntryDTO> {
-        return NewsEntryDTO.fromCollection(newsService.getLast(3))
+        return NewsEntryDTO.fromCollection(newsService.getLast(Companion.defaultNewsSize))
     }
 
     /**
@@ -86,17 +93,16 @@ class NewsController(
     @PutMapping
     @PreAuthorize("hasAnyAuthority('MODERATOR', 'ADMINISTRATOR')")
     fun postNews(
-        @RequestBody @Valid news: NewsEntryDTO,
-        authentication: Authentication?
+        @RequestBody @Valid news: NewsEntryDTO, authentication: Authentication?
     ): ResponseEntity<Unit> {
         if ((authentication?.principal as UserDetails?)?.user?.username != news.author?.username)
-            return ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
+            return ResponseEntity<Unit>(
+                HttpStatus.UNAUTHORIZED
+            )
 
         val success = newsService.createNews(news)
-        return if (success)
-            ResponseEntity<Unit>(HttpStatus.OK)
-        else
-            ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+        return if (success) ResponseEntity<Unit>(HttpStatus.OK)
+        else ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
     }
 
     /**
@@ -112,17 +118,15 @@ class NewsController(
     @PostMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('MODERATOR', 'ADMINISTRATOR')")
     fun editNews(
-        @PathVariable id: Long,
-        @RequestBody @Valid news: NewsEntryDTO,
-        authentication: Authentication?
+        @PathVariable id: Long, @RequestBody @Valid news: NewsEntryDTO, authentication: Authentication?
     ): ResponseEntity<Unit> {
         if ((authentication?.principal as UserDetails?)?.user?.username != news.author?.username)
-            return ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
+            return ResponseEntity<Unit>(
+                HttpStatus.UNAUTHORIZED
+            )
         val success = newsService.editNews(id, news)
-        return if (success)
-            ResponseEntity<Unit>(HttpStatus.OK)
-        else
-            ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+        return if (success) ResponseEntity<Unit>(HttpStatus.OK)
+        else ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
     }
 
     /**
@@ -139,18 +143,16 @@ class NewsController(
     @PutMapping("/{id}/comment")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun addComment(
-        @PathVariable id: Long,
-        @RequestBody @Valid commentDto: NewsCommentDTO,
-        authentication: Authentication?
+        @PathVariable id: Long, @RequestBody @Valid commentDto: NewsCommentDTO, authentication: Authentication?
     ): ResponseEntity<Unit> {
         if ((authentication?.principal as UserDetails?)?.user?.username != commentDto.author?.username)
-            return ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
+            return ResponseEntity<Unit>(
+                HttpStatus.UNAUTHORIZED
+            )
 
         val success = newsService.addCommentToNews(id, commentDto)
-        return if (success)
-            ResponseEntity<Unit>(HttpStatus.OK)
-        else
-            ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+        return if (success) ResponseEntity<Unit>(HttpStatus.OK)
+        else ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
     }
 
     /**
@@ -167,22 +169,21 @@ class NewsController(
     @PostMapping("/comment/{commentId}")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun editComment(
-        @PathVariable commentId: Long,
-        @RequestBody @Valid commentDto: NewsCommentDTO,
-        authentication: Authentication?
+        @PathVariable commentId: Long, @RequestBody @Valid commentDto: NewsCommentDTO, authentication: Authentication?
     ): ResponseEntity<Unit> {
         if ((authentication?.principal as UserDetails?)?.user?.username != commentDto.author?.username)
-            return ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
+            return ResponseEntity<Unit>(
+                HttpStatus.UNAUTHORIZED
+            )
 
         val success = newsService.editComment(commentId, commentDto)
-        return if (success)
-            ResponseEntity<Unit>(HttpStatus.OK)
-        else
-            ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+        return if (success) ResponseEntity<Unit>(HttpStatus.OK)
+        else ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
     }
 
     /**
-     * Deletes the specified [NewsEntry]. Can only be called by a user with role [org.darkSolace.muse.user.model.Role.ADMINISTRATOR]
+     * Deletes the specified [NewsEntry]. Can only be called by a user with role
+     * [org.darkSolace.muse.user.model.Role.ADMINISTRATOR]
      *
      * @param newsId id of the [NewsEntry] to be deleted
      */
@@ -190,7 +191,6 @@ class NewsController(
     @PreAuthorize("hasAnyAuthority('ADMINISTRATOR')")
     fun deleteNews(
         @PathVariable newsId: Long,
-        authentication: Authentication?
     ): ResponseEntity<Unit> {
         val success = newsService.deleteNews(newsId)
         return if (success) {
@@ -209,23 +209,25 @@ class NewsController(
     @DeleteMapping("/comment/{commentId}")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun deleteComment(
-        @PathVariable commentId: Long,
-        authentication: Authentication?
+        @PathVariable commentId: Long, authentication: Authentication?
     ): ResponseEntity<Unit> {
         //check if comment belongs to user, or user is admin/mod
         val user = (authentication?.principal as UserDetails?)?.user
         val comment = newsService.newsCommentRepository.findById(commentId)
-        val success = if (user?.role in listOf(Role.ADMINISTRATOR, Role.MODERATOR) ||
-            comment.getOrNull()?.author?.id == user?.id
+        val success = if (user?.role in listOf(
+                Role.ADMINISTRATOR, Role.MODERATOR
+            ) || comment.getOrNull()?.author?.id == user?.id
         ) {
             newsService.deleteComment(commentId)
         } else {
             false
         }
 
-        return if (success)
-            ResponseEntity<Unit>(HttpStatus.OK)
-        else
-            ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+        return if (success) ResponseEntity<Unit>(HttpStatus.OK)
+        else ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+    }
+
+    companion object {
+        private const val defaultNewsSize = 3
     }
 }

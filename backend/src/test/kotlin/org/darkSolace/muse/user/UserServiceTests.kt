@@ -1,7 +1,11 @@
 package org.darkSolace.muse.user
 
 import org.darkSolace.muse.testUtil.TestBase
-import org.darkSolace.muse.user.model.*
+import org.darkSolace.muse.user.model.Avatar
+import org.darkSolace.muse.user.model.Role
+import org.darkSolace.muse.user.model.User
+import org.darkSolace.muse.user.model.UserSettings
+import org.darkSolace.muse.user.model.UserTag
 import org.darkSolace.muse.user.repository.UserRepository
 import org.darkSolace.muse.user.service.AvatarService
 import org.darkSolace.muse.user.service.UserService

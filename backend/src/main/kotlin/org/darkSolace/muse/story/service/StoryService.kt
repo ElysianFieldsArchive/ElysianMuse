@@ -1,7 +1,11 @@
 package org.darkSolace.muse.story.service
 
 import jakarta.transaction.Transactional
-import org.darkSolace.muse.story.model.*
+import org.darkSolace.muse.story.model.Chapter
+import org.darkSolace.muse.story.model.ChapterComment
+import org.darkSolace.muse.story.model.Rating
+import org.darkSolace.muse.story.model.Story
+import org.darkSolace.muse.story.model.StoryTag
 import org.darkSolace.muse.story.model.dto.ChapterCommentDTO
 import org.darkSolace.muse.story.model.dto.ChapterDTO
 import org.darkSolace.muse.story.model.dto.StoryDTO
@@ -386,6 +390,9 @@ class StoryService(
         return storyTagRepository.save(tag)
     }
 
+    /**
+     * TODO: Controller methods and unittests - consult with Bibi
+     */
     fun deleteStoryTag(tag: StoryTag): Boolean {
         val inUse = storyRepository.existsByStoryTagsContaining(tag)
         if (!inUse) storyTagRepository.save(tag)
@@ -393,6 +400,9 @@ class StoryService(
         return !inUse
     }
 
+    /**
+     * TODO: Controller methods and unittests - consult with Bibi
+     */
     fun replaceStoryTag(oldTag: StoryTag, newTag: StoryTag) {
         val storiesContainingTag = storyRepository.findAllByStoryTagsContaining(oldTag)
         if (newTag.id == null && !storyTagRepository.existsByName(newTag.name)) {

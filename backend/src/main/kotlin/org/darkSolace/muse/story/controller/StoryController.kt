@@ -2,7 +2,11 @@ package org.darkSolace.muse.story.controller
 
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
-import org.darkSolace.muse.story.model.dto.*
+import org.darkSolace.muse.story.model.dto.ChapterCommentDTO
+import org.darkSolace.muse.story.model.dto.ChapterDTO
+import org.darkSolace.muse.story.model.dto.FilterStoriesDTO
+import org.darkSolace.muse.story.model.dto.StoryChapterContributorDTO
+import org.darkSolace.muse.story.model.dto.StoryDTO
 import org.darkSolace.muse.story.service.StoryService
 import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.model.User
@@ -11,7 +15,14 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.core.Authentication
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/story")
@@ -295,6 +306,7 @@ class StoryController(@Autowired private val storyService: StoryService) {
         authentication: Authentication?
     ): ResponseEntity<Unit> {
         val requestUser = (authentication?.principal as org.darkSolace.muse.security.model.UserDetails?)?.user
+        if (chapterId != editedComment.chapterId) return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
         if ((requestUser?.id != editedComment.author?.id || requestUser?.id == null) && requestUser?.role !in listOf(
                 Role.ADMINISTRATOR, Role.MODERATOR
             )

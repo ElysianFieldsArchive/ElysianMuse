@@ -1,8 +1,17 @@
 package org.darkSolace.muse.mail.model
 
-import jakarta.persistence.*
-import org.hibernate.annotations.*
+import jakarta.persistence.Basic
+import jakarta.persistence.ElementCollection
+import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.Id
+import jakarta.persistence.Lob
+import jakarta.persistence.OneToMany
+import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
+import org.hibernate.annotations.Fetch
+import org.hibernate.annotations.FetchMode
 
 
 /**

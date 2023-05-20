@@ -10,7 +10,12 @@ import org.darkSolace.muse.testUtil.TestBase
 import org.darkSolace.muse.testUtil.TestInit
 import org.darkSolace.muse.user.model.User
 import org.darkSolace.muse.user.service.UserService
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Order
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.fail
 import org.springframework.beans.factory.annotation.Autowired
 
 class MailServiceTests : TestBase() {

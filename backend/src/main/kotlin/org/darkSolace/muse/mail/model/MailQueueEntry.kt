@@ -1,6 +1,11 @@
 package org.darkSolace.muse.mail.model
 
-import jakarta.persistence.*
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.Id
+import jakarta.persistence.OneToOne
+import jakarta.persistence.Temporal
+import jakarta.persistence.TemporalType
 import org.hibernate.annotations.Cascade
 import org.hibernate.annotations.CascadeType
 import java.util.*

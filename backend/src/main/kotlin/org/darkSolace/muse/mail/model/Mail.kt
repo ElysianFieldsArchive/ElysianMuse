@@ -1,6 +1,10 @@
 package org.darkSolace.muse.mail.model
 
-import jakarta.persistence.*
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.Id
+import jakarta.persistence.Lob
+import jakarta.persistence.ManyToOne
 import org.darkSolace.muse.user.model.User
 import org.hibernate.Hibernate
 

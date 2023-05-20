@@ -1,7 +1,11 @@
 package org.darkSolace.muse.security.service
 
 import org.darkSolace.muse.security.exception.EMailNotValidatedException
-import org.darkSolace.muse.security.model.*
+import org.darkSolace.muse.security.model.JwtResponse
+import org.darkSolace.muse.security.model.LoginRequest
+import org.darkSolace.muse.security.model.SignUpRequest
+import org.darkSolace.muse.security.model.SignUpResponse
+import org.darkSolace.muse.security.model.UserDetails
 import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.repository.UserRepository
 import org.darkSolace.muse.user.service.UserService

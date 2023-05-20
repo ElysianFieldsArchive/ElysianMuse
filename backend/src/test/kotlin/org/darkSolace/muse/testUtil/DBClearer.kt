@@ -8,7 +8,11 @@ import org.darkSolace.muse.privMessages.repository.PrivateMessageRepository
 import org.darkSolace.muse.story.repository.ChapterCommentRepository
 import org.darkSolace.muse.story.repository.ChapterRepository
 import org.darkSolace.muse.story.repository.StoryRepository
-import org.darkSolace.muse.user.repository.*
+import org.darkSolace.muse.user.repository.AvatarRepository
+import org.darkSolace.muse.user.repository.PasswordResetRequestRepository
+import org.darkSolace.muse.user.repository.SuspensionHistoryRepository
+import org.darkSolace.muse.user.repository.UserRepository
+import org.darkSolace.muse.user.repository.UserSettingsRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

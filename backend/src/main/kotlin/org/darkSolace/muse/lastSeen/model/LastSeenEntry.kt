@@ -1,6 +1,11 @@
 package org.darkSolace.muse.lastSeen.model
 
-import jakarta.persistence.*
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.Id
+import jakarta.persistence.OneToOne
+import jakarta.persistence.Temporal
+import jakarta.persistence.TemporalType
 import org.darkSolace.muse.user.model.User
 import java.util.*
 

@@ -20,7 +20,8 @@ class UserDetailsService(@Autowired val userRepository: UserRepository) : UserDe
      * @return the created [UserDetails]
      */
     override fun loadUserByUsername(username: String?): UserDetails {
-        if (username.isNullOrEmpty()) throw IllegalArgumentException("Empty username")
+        require(!username.isNullOrEmpty())
+
         val user = userRepository.findByUsername(username) ?: throw IllegalArgumentException("Invalid username")
 
         return org.darkSolace.muse.security.model.UserDetails(user)

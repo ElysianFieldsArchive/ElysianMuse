@@ -18,14 +18,13 @@ class MailSettingInitializer(
     @Autowired private val mailerSettingsRepository: MailerSettingsRepository
 ) : ApplicationRunner {
     private val logger = LoggerFactory.getLogger(this::class.java)
-    private val defaultPort = 539
 
     override fun run(args: ApplicationArguments?) {
         val settings = MailerSettings(
             null
         ).apply {
             host = "example.org"
-            port = defaultPort
+            port = Companion.defaultPort
             username = "exampleUser"
             password = "examplePassword"
             fromAddress = "muse@example.org"
@@ -37,5 +36,9 @@ class MailSettingInitializer(
         } else {
             logger.info("Mailer Settings already exist. Skip creating...")
         }
+    }
+
+    companion object {
+        private const val defaultPort = 539
     }
 }

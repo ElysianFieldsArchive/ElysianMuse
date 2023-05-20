@@ -8,7 +8,11 @@ import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.story.model.Rating
 import org.darkSolace.muse.story.model.StoryTag
 import org.darkSolace.muse.story.model.StoryTagType
-import org.darkSolace.muse.story.model.dto.*
+import org.darkSolace.muse.story.model.dto.ChapterCommentDTO
+import org.darkSolace.muse.story.model.dto.ChapterDTO
+import org.darkSolace.muse.story.model.dto.StoryChapterContributorDTO
+import org.darkSolace.muse.story.model.dto.StoryDTO
+import org.darkSolace.muse.story.model.dto.UserContributionDTO
 import org.darkSolace.muse.story.repository.StoryRepository
 import org.darkSolace.muse.story.service.StoryService
 import org.darkSolace.muse.testUtil.TestBase
@@ -18,7 +22,11 @@ import org.darkSolace.muse.user.model.UserTag
 import org.darkSolace.muse.user.model.dto.UserIdNameDTO
 import org.darkSolace.muse.user.service.UserRoleService
 import org.darkSolace.muse.user.service.UserService
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Order
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.fail
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.test.web.client.exchange
@@ -1381,7 +1389,7 @@ class StoryApiTests(
         }
 
         var url = generateUrl("/api/story/${story.id}/contributor")
-        val storyContributorDTO = """{ 'user' : null, 'userTag' : 'BETA' }"""
+        val storyContributorDTO = """{ "user" : null, "userTag" : "BETA" }"""
 
         val response = restTemplate.exchange<String>(url, HttpMethod.PUT, HttpEntity(storyContributorDTO, headers))
 
@@ -3042,7 +3050,10 @@ class StoryApiTests(
         val chapterCommentDTOs = retrievedStory.body?.chapters?.first()?.comments
 
         url =
-            generateUrl("/api/story/chapter/${retrievedStory.body?.chapters?.first()?.id}/comment/${chapterCommentDTOs?.first()?.id}")
+            generateUrl(
+                "/api/story/chapter/${retrievedStory.body?.chapters?.first()?.id}/" +
+                        "comment/${chapterCommentDTOs?.first()?.id}"
+            )
 
         val response = restTemplate.exchange<String>(url, HttpMethod.DELETE, HttpEntity(null, headers))
 
@@ -3203,7 +3214,10 @@ class StoryApiTests(
         val chapterCommentDTOs = retrievedStory.body?.chapters?.first()?.comments
 
         url =
-            generateUrl("/api/story/chapter/${retrievedStory.body?.chapters?.first()?.id}/comment/${chapterCommentDTOs?.first()?.id}")
+            generateUrl(
+                "/api/story/chapter/${retrievedStory.body?.chapters?.first()?.id}/" +
+                        "comment/${chapterCommentDTOs?.first()?.id}"
+            )
 
         val response = restTemplate.exchange<String>(url, HttpMethod.DELETE, HttpEntity(null, headers))
 
@@ -3249,7 +3263,10 @@ class StoryApiTests(
         val chapterCommentDTOs = retrievedStory.body?.chapters?.first()?.comments
 
         url =
-            generateUrl("/api/story/chapter/${retrievedStory.body?.chapters?.first()?.id}/comment/${chapterCommentDTOs?.first()?.id}")
+            generateUrl(
+                "/api/story/chapter/${retrievedStory.body?.chapters?.first()?.id}/" +
+                        "comment/${chapterCommentDTOs?.first()?.id}"
+            )
 
         val response = restTemplate.exchange<String>(url, HttpMethod.DELETE)
 
@@ -3305,8 +3322,10 @@ class StoryApiTests(
 
         val chapterCommentDTOs = retrievedStory.body?.chapters?.first()?.comments
 
-        url =
-            generateUrl("/api/story/chapter/${retrievedStory.body?.chapters?.first()?.id}/comment/${chapterCommentDTOs?.first()?.id}")
+        url = generateUrl(
+            "/api/story/chapter/${retrievedStory.body?.chapters?.first()?.id}/" +
+                    "comment/${chapterCommentDTOs?.first()?.id}"
+        )
 
         val response = restTemplate.exchange<String>(url, HttpMethod.DELETE, HttpEntity(null, headers))
 

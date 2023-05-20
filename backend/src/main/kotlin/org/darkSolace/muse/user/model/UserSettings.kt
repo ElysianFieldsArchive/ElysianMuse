@@ -1,6 +1,12 @@
 package org.darkSolace.muse.user.model
 
-import jakarta.persistence.*
+import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
+import jakarta.persistence.OneToMany
+import jakarta.persistence.OneToOne
 import org.darkSolace.muse.layout.model.FontFamily
 import org.darkSolace.muse.layout.model.FontSize
 import org.darkSolace.muse.layout.model.Layout

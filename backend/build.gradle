@@ -68,6 +68,7 @@ detekt {
     buildUponDefaultConfig = true
     allRules = false
     ignoreFailures = true
+
 }
 
 tasks.withType(Detekt).configureEach {

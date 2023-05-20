@@ -40,6 +40,6 @@ class UserDetailsServiceTests : TestBase() {
             userDetailsService.loadUserByUsername("")
         }
 
-        Assertions.assertEquals("Empty username", e.message)
+        Assertions.assertEquals("Failed requirement.", e.message)
     }
 }

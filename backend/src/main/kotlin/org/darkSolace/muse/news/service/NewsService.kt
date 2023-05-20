@@ -11,6 +11,7 @@ import org.darkSolace.muse.user.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.security.InvalidKeyException
 import kotlin.jvm.optionals.getOrNull
 
 /**
@@ -45,20 +46,22 @@ class NewsService {
      * @return _true_ if the comment was added successfully, _false_ in case of an error
      */
     fun addCommentToNews(id: Long, comment: NewsCommentDTO): Boolean {
-        val author = userRepository.findById(comment.author?.id ?: -1).getOrNull() ?: return false
-        val news = newsRepository.findById(id).getOrNull() ?: return false
-        if (comment.author == null) return false
+        return runCatching {
+            val author = userRepository.findById(comment.author?.id ?: -1).getOrNull() ?: throw InvalidKeyException()
+            val news = newsRepository.findById(id).getOrNull() ?: throw InvalidKeyException()
+            if (comment.author == null) throw InvalidKeyException()
 
-        val newsComment = NewsComment().also {
-            it.author = author
-            it.content = comment.content
-        }
+            val newsComment = NewsComment().also {
+                it.author = author
+                it.content = comment.content
+            }
 
-        news.newsComments.add(newsComment)
+            news.newsComments.add(newsComment)
 
-        newsCommentRepository.save(newsComment)
-        newsRepository.save(news)
-        return true
+            newsCommentRepository.save(newsComment)
+            newsRepository.save(news)
+            true
+        }.getOrElse { false }
     }
 
     /**
@@ -169,7 +172,7 @@ class NewsService {
     fun deleteComment(id: Long): Boolean {
         //remove comment from news
         val comment = newsCommentRepository.findById(id).getOrNull() ?: return false
-        return try {
+        return runCatching {
             val news = newsRepository.findByNewsCommentsContains(comment)
             news.newsComments.removeIf { it.id == comment.id }
             newsRepository.save(news)
@@ -177,8 +180,6 @@ class NewsService {
             //remove news
             newsCommentRepository.deleteById(id)
             true
-        } catch (e: Exception) {
-            false
-        }
+        }.getOrElse { false }
     }
 }

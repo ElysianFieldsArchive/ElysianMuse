@@ -8,10 +8,16 @@ import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.model.User
 import org.darkSolace.muse.user.service.UserRoleService
 import org.darkSolace.muse.user.service.UserService
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Order
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.web.client.TestRestTemplate
-import org.springframework.http.*
+import org.springframework.http.HttpEntity
+import org.springframework.http.HttpHeaders
+import org.springframework.http.HttpMethod
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import java.util.*
 
 class UserControllerApiTests : TestBase() {

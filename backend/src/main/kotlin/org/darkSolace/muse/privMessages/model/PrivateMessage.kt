@@ -1,7 +1,16 @@
 package org.darkSolace.muse.privMessages.model
 
 import com.fasterxml.jackson.annotation.JsonIdentityReference
-import jakarta.persistence.*
+import jakarta.persistence.Basic
+import jakarta.persistence.Entity
+import jakarta.persistence.Enumerated
+import jakarta.persistence.FetchType
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.Id
+import jakarta.persistence.Lob
+import jakarta.persistence.ManyToOne
+import jakarta.persistence.Temporal
+import jakarta.persistence.TemporalType
 import org.darkSolace.muse.user.model.User
 import org.hibernate.Hibernate
 import java.util.*

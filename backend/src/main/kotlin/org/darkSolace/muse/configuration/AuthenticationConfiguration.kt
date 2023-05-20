@@ -17,6 +17,8 @@ class AuthenticationConfiguration(
     /**
      * Configures the [AuthenticationManager], via [AuthenticationManagerBuilder],
      * to use [UserDetailsService] and [BCryptPasswordEncoder]
+     *
+     * @return configured [AuthenticationManager]
      */
     @Bean
     fun authenticationManager(http: HttpSecurity): AuthenticationManager {
