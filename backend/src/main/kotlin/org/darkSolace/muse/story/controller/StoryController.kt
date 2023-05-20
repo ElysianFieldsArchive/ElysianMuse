@@ -1,15 +1,11 @@
 package org.darkSolace.muse.story.controller
 
+import jakarta.transaction.Transactional
 import jakarta.validation.Valid
-import org.darkSolace.muse.story.model.Rating
-import org.darkSolace.muse.story.model.StoryTag
-import org.darkSolace.muse.story.model.dto.ChapterCommentDTO
-import org.darkSolace.muse.story.model.dto.ChapterDTO
-import org.darkSolace.muse.story.model.dto.StoryDTO
+import org.darkSolace.muse.story.model.dto.*
 import org.darkSolace.muse.story.service.StoryService
 import org.darkSolace.muse.user.model.Role
 import org.darkSolace.muse.user.model.User
-import org.darkSolace.muse.user.model.UserTag
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -21,6 +17,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/story")
 class StoryController(@Autowired private val storyService: StoryService) {
     @GetMapping("/{id}")
+    @Transactional
     fun getStoryById(@PathVariable id: Long): ResponseEntity<*> {
         val story = storyService.getStoryById(id)
         return if (story != null) {
@@ -35,13 +32,11 @@ class StoryController(@Autowired private val storyService: StoryService) {
         return StoryDTO.fromCollection(storyService.getAllStories())
     }
 
-    @GetMapping("/filtered")
+    @PostMapping("/filtered")
     fun getStoriesFiltered(
-        @RequestParam(required = false) ratings: List<Rating>,
-        @RequestParam(required = false) tags: List<StoryTag>,
-        @RequestParam(required = false) users: List<User>,
+        @RequestBody filters: FilterStoriesDTO
     ): Collection<StoryDTO> {
-        val stories = storyService.getStoriesFiltered(ratings, tags, users)
+        val stories = storyService.getStoriesFiltered(filters.ratings, filters.tags, filters.authors)
         return StoryDTO.fromCollection(stories)
     }
 
@@ -93,19 +88,20 @@ class StoryController(@Autowired private val storyService: StoryService) {
     }
 
     @PutMapping("/{storyId}")
-    @PreAuthorize("hasAnyAuthority('MEMEBR', 'MODERATOR', 'ADMINISTRATOR')")
+    @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun addChapter(
-        @PathVariable storyId: Long, @RequestBody @Valid chapter: ChapterDTO, authentication: Authentication?
+        @PathVariable storyId: Long,
+        @RequestBody @Valid chapter: ChapterDTO,
+        authentication: Authentication?,
     ): ResponseEntity<*> {
         var errorResponse: ResponseEntity<String>? = null
         val story = storyService.getStoryById(storyId)
         val user = (authentication?.principal as org.darkSolace.muse.security.model.UserDetails?)?.user
 
-        if (user == null) errorResponse = ResponseEntity("User not found", HttpStatus.UNAUTHORIZED)
         if (story == null) errorResponse = ResponseEntity("Story not found", HttpStatus.BAD_REQUEST)
-        if (story?.id != chapter.storyId) errorResponse =
+        if (story?.id != chapter.storyId && errorResponse == null) errorResponse =
             ResponseEntity("Chapter does not match story", HttpStatus.BAD_REQUEST)
-        if (story?.author?.contains(user) == false) {
+        if (story?.author?.contains(user) == false && errorResponse == null) {
             errorResponse = ResponseEntity("User is not an author", HttpStatus.UNAUTHORIZED)
         }
 
@@ -117,22 +113,25 @@ class StoryController(@Autowired private val storyService: StoryService) {
     }
 
     @PostMapping("/{storyId}")
-    @PreAuthorize("hasAnyAuthority('MEMEBR', 'MODERATOR', 'ADMINISTRATOR')")
+    @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun editChapter(
-        @PathVariable storyId: Long, @RequestBody @Valid editedChapter: ChapterDTO, authentication: Authentication?
-    ): ResponseEntity<*> {
+        @PathVariable storyId: Long, @RequestBody @Valid editedChapter: ChapterDTO, authentication: Authentication?,
+
+        ): ResponseEntity<*> {
         var errorResponse: ResponseEntity<String>? = null
         val story = storyService.getStoryById(storyId)
         val user = (authentication?.principal as org.darkSolace.muse.security.model.UserDetails?)?.user
 
-        if (user == null) errorResponse = ResponseEntity("User not found", HttpStatus.UNAUTHORIZED)
         if (story == null) errorResponse = ResponseEntity("Story not found", HttpStatus.BAD_REQUEST)
         if (story?.id != editedChapter.storyId) errorResponse =
             ResponseEntity("Chapter does not match story", HttpStatus.BAD_REQUEST)
-        if (story?.chapters?.map { it.id }?.contains(editedChapter.id) == false) {
+        if (story?.chapters?.map { it.id }?.contains(editedChapter.id) == false && errorResponse == null) {
             errorResponse = ResponseEntity("Chapter not in Story", HttpStatus.BAD_REQUEST)
         }
-        if (story?.author?.contains(user) == false) {
+        if ((user?.role !in listOf(
+                Role.ADMINISTRATOR, Role.MODERATOR
+            ) && story?.author?.contains(user) == false) && errorResponse == null
+        ) {
             errorResponse = ResponseEntity("User is not an author", HttpStatus.UNAUTHORIZED)
         }
 
@@ -144,7 +143,7 @@ class StoryController(@Autowired private val storyService: StoryService) {
     }
 
     @DeleteMapping("/{storyId}/{chapterId}")
-    @PreAuthorize("hasAnyAuthority('MEMEBR', 'MODERATOR', 'ADMINISTRATOR')")
+    @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun deleteChapter(
         @PathVariable storyId: Long, @PathVariable chapterId: Long, authentication: Authentication?
     ): ResponseEntity<*> {
@@ -163,93 +162,115 @@ class StoryController(@Autowired private val storyService: StoryService) {
     }
 
     @PutMapping("/{storyId}/contributor")
-    @PreAuthorize("hasAnyAuthority('MEMEBR', 'MODERATOR', 'ADMINISTRATOR')")
+    @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun addContributorToStory(
         @PathVariable storyId: Long,
-        @RequestParam @Valid user: User,
-        @RequestParam @Valid userTag: UserTag,
+        @RequestBody storyContributorDTO: StoryChapterContributorDTO,
         authentication: Authentication?
     ): ResponseEntity<Unit> {
         val requestUser = (authentication?.principal as org.darkSolace.muse.security.model.UserDetails?)?.user
-        val story = storyService.getStoryById(storyId)
+        val story = storyService.getStoryById(storyId) ?: return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
 
-        return if (story?.author?.contains(requestUser) == true || requestUser?.role in listOf(
+        return if (story.author.contains(requestUser) || requestUser?.role in listOf(
                 Role.ADMINISTRATOR, Role.MODERATOR
             )
         ) {
-            val success = storyService.addContributorToStory(storyId, user.id ?: -1, userTag)
+            val success = storyService.addContributorToStory(
+                storyId, storyContributorDTO.user.id ?: -1, storyContributorDTO.userTag
+            )
             if (success) ResponseEntity(HttpStatus.OK)
             else ResponseEntity(HttpStatus.BAD_REQUEST)
-        } else ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+        } else ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
     }
 
     @DeleteMapping("/{storyId}/contributor")
-    @PreAuthorize("hasAnyAuthority('MEMEBR', 'MODERATOR', 'ADMINISTRATOR')")
+    @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun removeContributorFromStory(
         @PathVariable storyId: Long,
-        @RequestParam @Valid user: User,
-        @RequestParam @Valid userTag: UserTag,
+        @RequestBody storyContributorDTO: StoryChapterContributorDTO,
         authentication: Authentication?
     ): ResponseEntity<Unit> {
         val requestUser = (authentication?.principal as org.darkSolace.muse.security.model.UserDetails?)?.user
-        val story = storyService.getStoryById(storyId)
+        val story = storyService.getStoryById(storyId) ?: return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
 
-        return if (story?.author?.contains(requestUser) == true || requestUser?.role in listOf(
+        return if (story.author.contains(requestUser) || requestUser?.role in listOf(
                 Role.ADMINISTRATOR, Role.MODERATOR
             )
         ) {
-            val success = storyService.removeContributorFromStory(storyId, user.id ?: -1, userTag)
+            val success = storyService.removeContributorFromStory(
+                storyId, storyContributorDTO.user.id ?: -1, storyContributorDTO.userTag
+            )
             if (success) ResponseEntity(HttpStatus.OK)
             else ResponseEntity(HttpStatus.BAD_REQUEST)
-        } else ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+        } else ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
     }
 
     @PutMapping("/{storyId}/{chapterId}/contributor")
-    @PreAuthorize("hasAnyAuthority('MEMEBR', 'MODERATOR', 'ADMINISTRATOR')")
+    @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun addContributorToChapter(
         @PathVariable storyId: Long,
         @PathVariable chapterId: Long,
-        @RequestParam @Valid userTag: UserTag,
-        @RequestParam @Valid user: User,
+        @RequestBody chapterContributorDTO: StoryChapterContributorDTO,
         authentication: Authentication?
     ): ResponseEntity<Unit> {
         val requestUser = (authentication?.principal as org.darkSolace.muse.security.model.UserDetails?)?.user
         val story = storyService.getStoryById(storyId)
 
-        return if ((story?.author?.contains(requestUser) == true || requestUser?.role in listOf(
+        return when {
+            story == null -> ResponseEntity(HttpStatus.BAD_REQUEST)
+            !story.chapters.map { it.id }.contains(chapterId) -> {
+                ResponseEntity(HttpStatus.BAD_REQUEST)
+            }
+
+            (story.author.contains(requestUser) || requestUser?.role in listOf(
                 Role.ADMINISTRATOR, Role.MODERATOR
-            )) && story?.chapters?.map { it.id }?.contains(chapterId) == true
-        ) {
-            val success = storyService.addContributorToChapter(storyId, chapterId, user.id ?: -1, userTag)
-            if (success) ResponseEntity(HttpStatus.OK)
-            else ResponseEntity(HttpStatus.BAD_REQUEST)
-        } else ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+            )) -> {
+                val success = storyService.addContributorToChapter(
+                    storyId, chapterId, chapterContributorDTO.user.id ?: -1, chapterContributorDTO.userTag
+                )
+                if (success) ResponseEntity(HttpStatus.OK)
+                else ResponseEntity(HttpStatus.BAD_REQUEST)
+
+            }
+
+            else -> ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
+        }
     }
 
     @DeleteMapping("/{storyId}/{chapterId}/contributor")
-    @PreAuthorize("hasAnyAuthority('MEMEBR', 'MODERATOR', 'ADMINISTRATOR')")
+    @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun removeContributorFromChapter(
         @PathVariable storyId: Long,
         @PathVariable chapterId: Long,
-        @RequestParam @Valid userTag: UserTag,
-        @RequestParam @Valid user: User,
+        @RequestBody chapterContributorDTO: StoryChapterContributorDTO,
         authentication: Authentication?
     ): ResponseEntity<Unit> {
         val requestUser = (authentication?.principal as org.darkSolace.muse.security.model.UserDetails?)?.user
         val story = storyService.getStoryById(storyId)
 
-        return if ((story?.author?.contains(requestUser) == true || requestUser?.role in listOf(
+        return when {
+            story == null -> ResponseEntity(HttpStatus.BAD_REQUEST)
+            !story.chapters.map { it.id }.contains(chapterId) -> {
+                ResponseEntity(HttpStatus.BAD_REQUEST)
+            }
+
+            (story.author.contains(requestUser) || requestUser?.role in listOf(
                 Role.ADMINISTRATOR, Role.MODERATOR
-            )) && story?.chapters?.map { it.id }?.contains(chapterId) == true
-        ) {
-            val success = storyService.removeContributorFromChapter(storyId, chapterId, user.id ?: -1, userTag)
-            if (success) ResponseEntity(HttpStatus.OK)
-            else ResponseEntity(HttpStatus.BAD_REQUEST)
-        } else ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
+            )) -> {
+                val success = storyService.removeContributorFromChapter(
+                    storyId, chapterId, chapterContributorDTO.user.id ?: -1, chapterContributorDTO.userTag
+                )
+                if (success) ResponseEntity(HttpStatus.OK)
+                else ResponseEntity(HttpStatus.BAD_REQUEST)
+
+            }
+
+            else -> ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
+        }
     }
 
     @PutMapping("/chapter/{chapterId}/comment")
-    @PreAuthorize("hasAnyAuthority('MEMEBR', 'MODERATOR', 'ADMINISTRATOR')")
+    @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun addChapterComment(
         @PathVariable chapterId: Long, @RequestBody @Valid comment: ChapterCommentDTO, authentication: Authentication?
     ): ResponseEntity<*> {
@@ -267,16 +288,15 @@ class StoryController(@Autowired private val storyService: StoryService) {
     }
 
     @PostMapping("/chapter/{chapterId}/comment")
-    @PreAuthorize("hasAnyAuthority('MEMEBR', 'MODERATOR', 'ADMINISTRATOR')")
+    @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun editChapterComment(
         @PathVariable chapterId: Long,
-        @RequestParam @Valid editedComment: ChapterCommentDTO,
+        @RequestBody @Valid editedComment: ChapterCommentDTO,
         authentication: Authentication?
     ): ResponseEntity<Unit> {
         val requestUser = (authentication?.principal as org.darkSolace.muse.security.model.UserDetails?)?.user
         if ((requestUser?.id != editedComment.author?.id || requestUser?.id == null) && requestUser?.role !in listOf(
-                Role.ADMINISTRATOR,
-                Role.MODERATOR
+                Role.ADMINISTRATOR, Role.MODERATOR
             )
         ) {
             return ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
@@ -291,19 +311,17 @@ class StoryController(@Autowired private val storyService: StoryService) {
     }
 
     @DeleteMapping("/chapter/{chapterId}/comment/{commentId}")
-    @PreAuthorize("hasAnyAuthority('MEMEBR', 'MODERATOR', 'ADMINISTRATOR')")
+    @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
+    @Transactional
     fun deleteChapterComment(
-        @PathVariable chapterId: Long,
-        @PathVariable commentId: Long,
-        authentication: Authentication?
+        @PathVariable chapterId: Long, @PathVariable commentId: Long, authentication: Authentication?
     ): ResponseEntity<Unit> {
         val requestUser = (authentication?.principal as org.darkSolace.muse.security.model.UserDetails?)?.user
         val chapter = storyService.getChapterById(chapterId) ?: return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
         val comment =
             chapter.comments.firstOrNull { it.id == commentId } ?: return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
         if ((requestUser?.id != comment.author.id || requestUser?.id == null) && requestUser?.role !in listOf(
-                Role.ADMINISTRATOR,
-                Role.MODERATOR
+                Role.ADMINISTRATOR, Role.MODERATOR
             )
         ) {
             return ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)

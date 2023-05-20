@@ -70,22 +70,22 @@ class UserRoleServiceTests : TestBase() {
     @Test
     fun changeRole() {
         // create test user and confirm default role
-        val user =
+        val user: User =
             userService.createUser(User(username = "testUser4", password = "123456", email = "test4@example.com"))
                 ?: fail("user is null")
         Assertions.assertEquals(Role.MEMBER, user.role)
 
         //change role to mod
-        userRoleService.changeRole(user, Role.MODERATOR)
-        Assertions.assertEquals(Role.MODERATOR, user.role)
+        var changedUser = userRoleService.changeRole(user, Role.MODERATOR)
+        Assertions.assertEquals(Role.MODERATOR, changedUser?.role)
 
         //change role to admin
-        userRoleService.changeRole(user, Role.ADMINISTRATOR)
-        Assertions.assertEquals(Role.ADMINISTRATOR, user.role)
+        changedUser = userRoleService.changeRole(user, Role.ADMINISTRATOR)
+        Assertions.assertEquals(Role.ADMINISTRATOR, changedUser?.role)
 
         //change role to suspended
-        userRoleService.changeRole(user, Role.SUSPENDED)
-        Assertions.assertEquals(Role.SUSPENDED, user.role)
+        changedUser = userRoleService.changeRole(user, Role.SUSPENDED)
+        Assertions.assertEquals(Role.SUSPENDED, changedUser?.role)
     }
 
     @Test

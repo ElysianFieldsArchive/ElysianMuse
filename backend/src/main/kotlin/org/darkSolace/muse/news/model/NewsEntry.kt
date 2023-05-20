@@ -15,7 +15,7 @@ class NewsEntry {
     @GeneratedValue
     var id: Long? = null
 
-    @OneToOne
+    @ManyToOne
     lateinit var author: User
 
     var subject: String = ""

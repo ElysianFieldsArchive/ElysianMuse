@@ -55,14 +55,14 @@ class DBClearer {
     lateinit var chapterCommentRepository: ChapterCommentRepository
 
     fun clearAll() {
+        passwordResetRequestRepository.deleteAll()
+        mailQueueRepository.deleteAll()
         storyRepository.deleteAll()
         chapterRepository.deleteAll()
         chapterCommentRepository.deleteAll()
         newsRepository.deleteAll()
         newsCommentRepository.deleteAll()
         privateMessageRepository.deleteAll()
-        passwordResetRequestRepository.deleteAll()
-        mailQueueRepository.deleteAll()
         lastSeenRepository.deleteAll()
         suspensionHistoryRepository.deleteAll()
         userRepository.deleteAll()

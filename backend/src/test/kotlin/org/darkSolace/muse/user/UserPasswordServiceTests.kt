@@ -60,7 +60,7 @@ class UserPasswordServiceTests : TestBase() {
         val oldHashedPassword = user.password
         val oldSalt = user.salt
 
-        userPasswordService.updatePassword(user, "234")
+        userPasswordService.updatePassword(user, "2345678")
 
         val userFromDB = userService.getById(user.id ?: -1)
 

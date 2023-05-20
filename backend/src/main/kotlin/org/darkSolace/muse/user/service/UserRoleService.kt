@@ -69,18 +69,10 @@ class UserRoleService(
      */
     @Transactional
     fun changeRole(user: User, role: Role): User? {
-        val changedUser =
-            if (user.id == null) {
-                userRepository.findByUsername(user.username)
-            } else {
-                user
-            }
+        val changedUser = userRepository.findByUsername(user.username) ?: return null
 
-        return if (changedUser != null) {
-            changedUser.role = role
-            userRepository.save(changedUser)
-            changedUser
-        } else
-            null
+        changedUser.role = role
+        userRepository.save(changedUser)
+        return changedUser
     }
 }

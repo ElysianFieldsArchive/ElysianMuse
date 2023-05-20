@@ -16,6 +16,7 @@ import org.darkSolace.muse.user.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class StoryService(
@@ -55,19 +56,36 @@ class StoryService(
     @Transactional
     fun createStory(story: StoryDTO): Boolean {
         val (authors, artists, betas) = story.resolveUsersArtistsBetas()
-        val chapters = story.resolveChapters()
 
         //only authors are required,
         if (authors.isEmpty()) return false
 
-        val newStory = Story().updateStory(story, authors, chapters, artists, betas)
+        var newStory = Story().updateStory(story, authors, emptyList(), artists, betas)
 
-        //save chapters if there are any first
-        newStory.chapters.forEach { chapterRepository.save(it) }
         //save tags if there are any first
         newStory.storyTags.forEach { storyTagRepository.save(it) }
 
-        storyRepository.save(newStory)
+        newStory = storyRepository.save(newStory)
+
+        //save chapters if there are any first
+        story.chapters.forEach { chapterDTO ->
+            val chapter = Chapter().also {
+                it.title = chapterDTO.title
+                it.summary = chapterDTO.summary
+                it.startNotes = chapterDTO.startNotes
+                it.endNotes = chapterDTO.endNotes
+                it.content = chapterDTO.content
+                it.publishedDate = Date()
+                it.updatedDate = Date()
+                it.beta = chapterDTO.beta.mapNotNull { userService.getById(it.id ?: -1) }.toMutableSet()
+                it.artist = chapterDTO.artist.mapNotNull { userService.getById(it.id ?: -1) }.toMutableSet()
+                it.storyBanner = chapterDTO.storyBanner
+                it.storyId = newStory.id
+            }
+            chapterRepository.save(chapter)
+            newStory.chapters.add(chapter)
+        }
+        newStory = storyRepository.save(newStory)
 
         return true
     }
@@ -98,7 +116,7 @@ class StoryService(
         //remove all chapters
         story.chapters.forEach { chapter ->
             //remove all comments from chapter
-            val comments = chapterCommentRepository.findByChapter(chapter)
+            val comments = chapterCommentRepository.findByChapterId(chapter.id ?: -1)
             comments.forEach { comment ->
                 chapterCommentRepository.delete(comment)
             }
@@ -290,6 +308,7 @@ class StoryService(
         return true
     }
 
+    @Transactional
     fun addChapterComment(chapterId: Long, comment: ChapterCommentDTO): Boolean {
         val chapter = chapterRepository.findByIdOrNull(chapterId) ?: return false
         val commenter = userService.getById(comment.author?.id ?: return false) ?: return false
@@ -298,7 +317,7 @@ class StoryService(
         val chapterComment = ChapterComment().apply {
             this.authorApproved = !story.commentModeration
             this.author = commenter
-            this.chapter = chapter
+            this.chapterId = chapter.id
             this.content = comment.content
             this.publishedDate = comment.publishedDate
             this.referenceComment = comment.referenceComment
@@ -311,6 +330,7 @@ class StoryService(
         return true
     }
 
+    @Transactional
     fun editChapterComment(editedChapterComment: ChapterCommentDTO): Boolean {
         val chapter = chapterRepository.findByIdOrNull(editedChapterComment.chapterId ?: -1) ?: return false
         val story = storyRepository.findByIdOrNull(chapter.storyId ?: -1) ?: return false
@@ -320,7 +340,7 @@ class StoryService(
         comment = comment.apply {
             this.authorApproved = !story.commentModeration
             this.author = commenter
-            this.chapter = chapter
+            this.chapterId = chapter.id
             this.content = editedChapterComment.content
             this.publishedDate = editedChapterComment.publishedDate
             this.referenceComment = editedChapterComment.referenceComment
@@ -331,9 +351,10 @@ class StoryService(
     }
 
 
+    @Transactional
     fun deleteChapterComment(chapterCommentId: Long): Boolean {
         val chapterComment = chapterCommentRepository.findByIdOrNull(chapterCommentId) ?: return false
-        val chapter = chapterComment.chapter
+        val chapter = chapterRepository.findByIdOrNull(chapterComment.chapterId ?: -1) ?: return false
 
         chapter.comments.remove(chapterComment)
         chapterRepository.save(chapter)
@@ -367,8 +388,7 @@ class StoryService(
 
     fun deleteStoryTag(tag: StoryTag): Boolean {
         val inUse = storyRepository.existsByStoryTagsContaining(tag)
-        if (!inUse)
-            storyTagRepository.save(tag)
+        if (!inUse) storyTagRepository.save(tag)
 
         return !inUse
     }

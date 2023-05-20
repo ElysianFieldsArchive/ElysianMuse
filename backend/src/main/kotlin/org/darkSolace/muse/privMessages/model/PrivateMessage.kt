@@ -18,10 +18,10 @@ data class PrivateMessage(
     @Enumerated
     var direction: MessageDirection = MessageDirection.OUTGOING,
 
-    @OneToOne
+    @ManyToOne
     var sender: User,
 
-    @OneToOne
+    @ManyToOne
     var recipient: User,
 
     var subject: String = "",
@@ -35,7 +35,7 @@ data class PrivateMessage(
 
     var isRead: Boolean = false,
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIdentityReference
     var inReplyTo: PrivateMessage? = null,
 ) {

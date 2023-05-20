@@ -17,7 +17,7 @@ data class Mail(
     @GeneratedValue
     var id: Long? = null,
 
-    @OneToOne
+    @ManyToOne
     val recipient: User,
     val subject: String,
 

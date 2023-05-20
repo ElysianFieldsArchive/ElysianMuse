@@ -15,10 +15,10 @@ class ChapterComment {
     @ManyToOne
     lateinit var author: User
 
-    @ManyToOne
-    lateinit var chapter: Chapter
+    var chapterId: Long? = null
 
     @Lob
+    @Basic(fetch = FetchType.LAZY)
     var content: String = ""
 
     @Temporal(TemporalType.TIMESTAMP)

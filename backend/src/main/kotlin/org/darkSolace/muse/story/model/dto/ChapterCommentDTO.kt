@@ -20,7 +20,7 @@ class ChapterCommentDTO {
                 this.id = chapterComment.id
                 this.authorApproved = chapterComment.authorApproved
                 this.author = UserIdNameDTO.from(chapterComment.author)
-                this.chapterId = chapterComment.chapter.id
+                this.chapterId = chapterComment.chapterId
                 this.content = chapterComment.content
                 this.publishedDate = chapterComment.publishedDate
                 this.referenceComment = chapterComment.referenceComment

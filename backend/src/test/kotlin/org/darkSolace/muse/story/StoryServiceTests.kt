@@ -147,12 +147,13 @@ class StoryServiceTests(
         storyService.createStory(storyDTO3)
 
         val storiesAll = storyService.getStoriesFiltered(ratings = listOf(Rating.PARENTAL_GUIDANCE, Rating.NC_17))
-        Assertions.assertEquals(3, storiesAll.size)
         val storiesPG = storyService.getStoriesFiltered(ratings = listOf(Rating.PARENTAL_GUIDANCE))
-        Assertions.assertEquals(2, storiesPG.size)
         val storiesNC = storyService.getStoriesFiltered(ratings = listOf(Rating.NC_17))
-        Assertions.assertEquals(1, storiesNC.size)
         val storiesAdult = storyService.getStoriesFiltered(ratings = listOf(Rating.ADULT_ONLY))
+
+        Assertions.assertEquals(3, storiesAll.size)
+        Assertions.assertEquals(2, storiesPG.size)
+        Assertions.assertEquals(1, storiesNC.size)
         Assertions.assertEquals(0, storiesAdult.size)
     }
 

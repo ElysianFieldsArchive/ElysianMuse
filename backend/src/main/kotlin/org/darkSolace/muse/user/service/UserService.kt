@@ -49,11 +49,11 @@ class UserService(
         //generate email confirmation string
         user.emailConfirmationCode = UUID.randomUUID().toString()
 
-        userRepository.save(user)
+        val savedUser = userRepository.save(user)
 
         //user saved - send confirmation email
         mailService.sendEMailConfirmationMail(user)
-        return user
+        return savedUser
     }
 
     /**
