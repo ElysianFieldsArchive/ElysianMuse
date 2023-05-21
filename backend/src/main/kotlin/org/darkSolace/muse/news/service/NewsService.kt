@@ -11,7 +11,6 @@ import org.darkSolace.muse.user.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
-import java.security.InvalidKeyException
 import kotlin.jvm.optionals.getOrNull
 
 /**
@@ -46,22 +45,20 @@ class NewsService {
      * @return _true_ if the comment was added successfully, _false_ in case of an error
      */
     fun addCommentToNews(id: Long, comment: NewsCommentDTO): Boolean {
-        return runCatching {
-            val author = userRepository.findById(comment.author?.id ?: -1).getOrNull() ?: throw InvalidKeyException()
-            val news = newsRepository.findById(id).getOrNull() ?: throw InvalidKeyException()
-            if (comment.author == null) throw InvalidKeyException()
+        val author = userRepository.findById(comment.author?.id ?: -1).getOrNull()
+        val news = newsRepository.findById(id).getOrNull()
+        if (comment.author == null || news == null || author == null) return false
 
-            val newsComment = NewsComment().also {
-                it.author = author
-                it.content = comment.content
-            }
+        val newsComment = NewsComment().also {
+            it.author = author
+            it.content = comment.content
+        }
 
-            news.newsComments.add(newsComment)
+        news.newsComments.add(newsComment)
 
-            newsCommentRepository.save(newsComment)
-            newsRepository.save(news)
-            true
-        }.getOrElse { false }
+        newsCommentRepository.save(newsComment)
+        newsRepository.save(news)
+        return true
     }
 
     /**
@@ -102,17 +99,24 @@ class NewsService {
      * @return _true_ if the [NewsEntry] was edited successfully, _false_ in case of an error
      */
     fun editNews(id: Long, newsDto: NewsEntryDTO): Boolean {
-        val news = newsRepository.findByIdOrNull(id) ?: return false
+        val news = newsRepository.findByIdOrNull(id)
         val author = userRepository.findById(newsDto.author?.id ?: -1).getOrNull()
-        if (newsDto.subject.isBlank() || newsDto.content.isBlank() || author == null) return false
-        news.apply {
-            subject = newsDto.subject
-            content = newsDto.content
-            this.author = author
-        }
+        return when {
+            news == null -> false
+            newsDto.subject.isBlank() -> false
+            newsDto.content.isBlank() -> false
+            author == null -> false
+            else -> {
+                news.apply {
+                    subject = newsDto.subject
+                    content = newsDto.content
+                    this.author = author
+                }
 
-        newsRepository.save(news)
-        return true
+                newsRepository.save(news)
+                true
+            }
+        }
     }
 
     /**
@@ -124,10 +128,12 @@ class NewsService {
      * @return _true_ if the [NewsComment] was edited successfully, _false_ in case of an error
      */
     fun editComment(commentId: Long, commentDto: NewsCommentDTO): Boolean {
-        val comment = newsCommentRepository.findByIdOrNull(commentId) ?: return false
-        val author = userRepository.findById(commentDto.author?.id ?: -1).getOrNull() ?: return false
+        val comment = newsCommentRepository.findByIdOrNull(commentId)
+        val author = userRepository.findById(commentDto.author?.id ?: -1).getOrNull()
         //check if edit author is original comment author
-        if (comment.author.id != author.id) return false
+        if (comment == null || author == null || comment.author.id != author.id) {
+            return false
+        }
 
         comment.apply {
             this.author = author

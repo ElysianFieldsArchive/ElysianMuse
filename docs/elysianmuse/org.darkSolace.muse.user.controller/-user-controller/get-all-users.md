@@ -6,7 +6,7 @@
 
 @GetMapping(value = [&quot;/all&quot;])
 
-fun [getAllUsers](get-all-users.md)(authentication: Authentication?): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[UserIdNameDTO](../../org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/index.md)&gt;
+fun [getAllUsers](get-all-users.md)(): [List](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html)&lt;[UserIdNameDTO](../../org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/index.md)&gt;
 
 Retrieves all users. Listens on /api/user/all.
 

@@ -15,6 +15,12 @@ Generates dummy [MailerSettings](../../org.darkSolace.muse.mail.model/-mailer-se
 |---|---|
 | [MailSettingInitializer](-mail-setting-initializer.md) | [jvm]<br>constructor(@AutowiredmailerSettingsService: [MailerSettingsService](../../org.darkSolace.muse.mail.service/-mailer-settings-service/index.md), @AutowiredmailerSettingsRepository: [MailerSettingsRepository](../../org.darkSolace.muse.mail.repository/-mailer-settings-repository/index.md)) |
 
+## Types
+
+| Name | Summary |
+|---|---|
+| [Companion](-companion/index.md) | [jvm]<br>object [Companion](-companion/index.md) |
+
 ## Functions
 
 | Name | Summary |
