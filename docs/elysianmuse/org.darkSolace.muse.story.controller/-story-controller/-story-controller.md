@@ -3,4 +3,4 @@
 # StoryController
 
 [jvm]\
-constructor(@AutowiredstoryService: [StoryService](../../org.darkSolace.muse.story.service/-story-service/index.md))
+constructor(@AutowiredstoryService: [StoryService](../../org.darkSolace.muse.story.service/-story-service/index.md), @AutowiredstoryContributionService: [StoryContributionService](../../org.darkSolace.muse.story.service/-story-contribution-service/index.md))
