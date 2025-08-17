@@ -21,12 +21,27 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
+
+/**
+ * RestController defining endpoints regarding all story chapter activity.
+ * Same endpoint as [StoryController]
+ *
+ * @see StoryController
+ */
 @RestController
 @RequestMapping("/api/story")
 class StoryChapterController(
-    @Autowired private val storyService: StoryService,
-    @Autowired private val chapterService: StoryChapterService,
+    @param:Autowired private val storyService: StoryService,
+    @param:Autowired private val chapterService: StoryChapterService,
 ) {
+    /**
+     * Adds a [ChapterDTO] to a [org.darkSolace.muse.story.model.Story] identified by its id.
+     *
+     * @param storyId id of the story a chapter should be added to
+     * @param chapter [ChapterDTO] containing the chapter to be added
+     * @return [ResponseEntity] having HTTP status 200 OK or 400 BAD REQUEST; 401 UNAUTHORIZED if no valid
+     * authorization was provided
+     */
     @PutMapping("/{storyId}")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun addChapter(
@@ -52,12 +67,20 @@ class StoryChapterController(
         } else errorResponse
     }
 
+    /**
+     * Edits an existing [org.darkSolace.muse.story.model.Chapter] of a [org.darkSolace.muse.story.model.Story]
+     * identified by its id.
+     *
+     * @param storyId id of the story a chapter should be added to
+     * @param editedChapter [ChapterDTO] containing the edited chapter
+     * @return [ResponseEntity] having HTTP status 200 OK or 400 BAD REQUEST; 401 UNAUTHORIZED if no valid
+     * authorization was provided
+     */
     @PostMapping("/{storyId}")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun editChapter(
         @PathVariable storyId: Long, @RequestBody @Valid editedChapter: ChapterDTO, authentication: Authentication?,
-
-        ): ResponseEntity<*> {
+    ): ResponseEntity<*> {
         var errorResponse: ResponseEntity<String>? = null
         val story = storyService.getStoryById(storyId)
         val user = (authentication?.principal as org.darkSolace.muse.security.model.UserDetails?)?.user
@@ -82,6 +105,15 @@ class StoryChapterController(
         } else errorResponse
     }
 
+    /**
+     * Delete an existing [org.darkSolace.muse.story.model.Chapter] of a [org.darkSolace.muse.story.model.Story], both
+     * identified by their ids.
+     *
+     * @param storyId id of the [org.darkSolace.muse.story.model.Story] a chapter should be removed from
+     * @param chapterId id of the [org.darkSolace.muse.story.model.Chapter] to be removed
+     * @return [ResponseEntity] having HTTP status 200 OK or 400 BAD REQUEST; 401 UNAUTHORIZED if no valid
+     * authorization was provided
+     */
     @DeleteMapping("/{storyId}/{chapterId}")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun deleteChapter(
@@ -101,6 +133,17 @@ class StoryChapterController(
         } else ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)
     }
 
+    /**
+     * Adds a contributor to a chapter.
+     *
+     * @param storyId id identifying the [org.darkSolace.muse.story.model.Story]
+     * @param chapterId id identifying the [org.darkSolace.muse.story.model.Chapter]
+     * @param chapterContributorDTO [StoryChapterContributorDTO] holding the [org.darkSolace.muse.user.model.User] id
+     * and [org.darkSolace.muse.user.model.UserTag]
+     *
+     * @return [ResponseEntity] having HTTP status 200 OK or 400 BAD REQUEST; 401 UNAUTHORIZED if no valid
+     * authorization was provided
+     */
     @PutMapping("/{storyId}/{chapterId}/contributor")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun addContributorToChapter(
@@ -133,6 +176,17 @@ class StoryChapterController(
         }
     }
 
+    /**
+     * Removes a contributor from a chapter.
+     *
+     * @param storyId id identifying the [org.darkSolace.muse.story.model.Story]
+     * @param chapterId id identifying the [org.darkSolace.muse.story.model.Chapter]
+     * @param chapterContributorDTO [StoryChapterContributorDTO] holding the [org.darkSolace.muse.user.model.User] id
+     * and [org.darkSolace.muse.user.model.UserTag]
+     *
+     * @return [ResponseEntity] having HTTP status 200 OK or 400 BAD REQUEST; 401 UNAUTHORIZED if no valid
+     * authorization was provided
+     */
     @DeleteMapping("/{storyId}/{chapterId}/contributor")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun removeContributorFromChapter(
@@ -165,7 +219,15 @@ class StoryChapterController(
         }
     }
 
-
+    /**
+     * Adds a comment to the specified chapter
+     *
+     * @param chapterId the id of the [org.darkSolace.muse.story.model.ChapterComment] to add the comment to
+     * @param comment the [ChapterCommentDTO]
+     *
+     * @return [ResponseEntity] having HTTP status 200 OK or 400 BAD REQUEST; 401 UNAUTHORIZED if no valid
+     *      * authorization was provided
+     */
     @PutMapping("/chapter/{chapterId}/comment")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun addChapterComment(
@@ -184,6 +246,16 @@ class StoryChapterController(
         }
     }
 
+    /**
+     * Edit a comment to the specified chapter
+     *
+     * @param chapterId the id of the [org.darkSolace.muse.story.model.ChapterComment] which has the comment to
+     *                  be edited
+     * @param editedComment the [ChapterCommentDTO] containing the edited comment
+     *
+     * @return [ResponseEntity] having HTTP status 200 OK or 400 BAD REQUEST; 401 UNAUTHORIZED if no valid
+     *      * authorization was provided
+     */
     @PostMapping("/chapter/{chapterId}/comment")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun editChapterComment(
@@ -212,6 +284,15 @@ class StoryChapterController(
         }
     }
 
+    /**
+     * Delete a comment to the specified chapter
+     *
+     * @param chapterId the id of the [org.darkSolace.muse.story.model.Chapter] to remove the comment from
+     * @param commentId the id of the [org.darkSolace.muse.story.model.ChapterComment] to be removed
+     *
+     * @return [ResponseEntity] having HTTP status 200 OK or 400 BAD REQUEST; 401 UNAUTHORIZED if no valid
+     *         authorization was provided
+     */
     @DeleteMapping("/chapter/{chapterId}/comment/{commentId}")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     @Transactional
@@ -228,8 +309,7 @@ class StoryChapterController(
             }
 
             (requestUser?.id != comment.author.id || requestUser?.id == null) && requestUser?.role !in listOf(
-                Role.ADMINISTRATOR,
-                Role.MODERATOR
+                Role.ADMINISTRATOR, Role.MODERATOR
             ) -> {
                 ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
             }

@@ -23,14 +23,13 @@ import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.fail
 import org.springframework.beans.factory.annotation.Autowired
-import java.util.*
 
 class StoryServiceTests(
-    @Autowired private val storyService: StoryService,
-    @Autowired private val storyChapterService: StoryChapterService,
-    @Autowired private val storyTagService: StoryTagService,
-    @Autowired private val storyRepository: StoryRepository,
-    @Autowired private val userService: UserService,
+    @param:Autowired private val storyService: StoryService,
+    @param:Autowired private val storyChapterService: StoryChapterService,
+    @param:Autowired private val storyTagService: StoryTagService,
+    @param:Autowired private val storyRepository: StoryRepository,
+    @param:Autowired private val userService: UserService,
 ) : TestBase() {
     private lateinit var user1: User
     private lateinit var user2: User

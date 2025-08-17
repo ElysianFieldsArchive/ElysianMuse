@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.http.client.ClientHttpRequestFactorySettings.Redirects
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.HttpStatus
 
@@ -76,7 +77,8 @@ class AuthControllerApiTests : TestBase() {
         val secondResponse = restTemplate.postForEntity(
             url,
             SignUpRequest("test2", "123456", "test@example.com"),
-            String::class.java
+            String::class.java,
+
         )
         Assertions.assertEquals(HttpStatus.BAD_REQUEST, secondResponse.statusCode)
         Assertions.assertEquals(AuthMessages.ERROR_EMAIL_IN_USE.message, secondResponse.body)
@@ -146,7 +148,7 @@ class AuthControllerApiTests : TestBase() {
         userRoleService.suspendUser(User(username = "test", password = "", email = ""))
 
         val url2 = generateUrl("/api/auth/signin")
-        val secondResponse = restTemplate.postForEntity(
+        val secondResponse = restTemplate.withRedirects(Redirects.DONT_FOLLOW).postForEntity(
             url2,
             SignUpRequest("test", "123456", "test@example.com"),
             String::class.java

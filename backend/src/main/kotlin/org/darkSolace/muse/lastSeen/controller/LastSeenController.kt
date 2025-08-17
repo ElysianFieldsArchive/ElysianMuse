@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("api/lastSeen")
 @Validated
-class LastSeenController(@Autowired val lastSeenService: LastSeenService) {
+class LastSeenController(@param:Autowired val lastSeenService: LastSeenService) {
     /**
      * Retrieves all public profiles of currently active logged-in [User]s
      *
-     * @sample `curl localhost:8000/api/stats/online`
      *
      * @return list of active logged-in users
      */
@@ -26,7 +25,6 @@ class LastSeenController(@Autowired val lastSeenService: LastSeenService) {
     /**
      * Retrieves number of currently active visitors (logged-in users and visitors)
      *
-     * @sample `curl localhost:8000/api/stats/online/count`
      *
      * @return number of currently active visitors
      */

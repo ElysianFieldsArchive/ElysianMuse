@@ -18,6 +18,7 @@ class ElysianMuseApplicationTests : TestBase() {
     @Order(1)
     fun contextLoads() {
         //just checking
+        println(KotlinVersion.CURRENT)
     }
 
     /**

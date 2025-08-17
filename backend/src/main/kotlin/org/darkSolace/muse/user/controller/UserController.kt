@@ -35,15 +35,14 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/user")
 @Validated
 class UserController(
-    @Autowired val userService: UserService,
-    @Autowired val userRoleService: UserRoleService,
-    @Autowired val userTagService: UserTagService,
-    @Autowired val suspensionService: SuspensionService,
+    @param:Autowired val userService: UserService,
+    @param:Autowired val userRoleService: UserRoleService,
+    @param:Autowired val userTagService: UserTagService,
+    @param:Autowired val suspensionService: SuspensionService,
 ) {
     /**
      * Retrieves a user by its id. Listens on /api/user/{id}.
      *
-     * @sample `curl localhost:8080/api/user/5`
      * @param id the user id
      * @return the retrieved [User] or `null`
      */
@@ -58,7 +57,6 @@ class UserController(
     /**
      * Retrieves all users. Listens on /api/user/all.
      *
-     * @sample `curl localhost:8080/api/user/all`
      * @return a List of [UserIdNameDTO]s (username and id) - might be empty
      */
     @GetMapping("/all")
@@ -69,7 +67,6 @@ class UserController(
      * Deletes a user identified by its id. Listens on /api/user/{id} for DELETE requests.
      * You need the [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] role to access this endpoint.
      *
-     * @sample `curl -X DELETE -H "Authorization: [...]" localhost:8080/api/user/5`
      * @param user the user id
      * @return HTTP 200 on success, HTTP 401 otherwise
      */
@@ -95,7 +92,6 @@ class UserController(
      * You need the [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
      * [org.darkSolace.muse.user.model.Role.MODERATOR] role to access this endpoint.
      *
-     * @sample `curl -X POST -H "Authorization: [...]" localhost:8080/api/user/suspend/5`
      * @param id the user id
      * @return HTTP 200 or 400
      */
@@ -113,7 +109,6 @@ class UserController(
     /**
      * Confirms a [SuspensionHistoryEntry], identified by its confirmation code.
      *
-     * @sample `curl -X POST localhost:8080/api/user/suspend/confirm/9df2cc31-f733-4daa-8277-d3c0afdb1a5a`
      * @param confirmationCode the confirmation code
      * @return HTTP 200 on successful confirmation, HTTP 400 otherwise
      */
@@ -131,7 +126,6 @@ class UserController(
      * You need the [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
      * [org.darkSolace.muse.user.model.Role.MODERATOR] role to access this endpoint.
      *
-     * @sample `curl -H "Authorization: [...]" localhost:8080/api/user/suspend/history/5`
      * @param user the user id
      * @return List of [SuspensionHistoryEntryDTO]s
      */
@@ -146,7 +140,6 @@ class UserController(
      * You need the [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
      * [org.darkSolace.muse.user.model.Role.MODERATOR] role to access this endpoint.
      *
-     * @sample `curl -H "Authorization: [...]" localhost:8080/api/user/suspend/all`
      * @return List of the suspended [User]s
      */
     @GetMapping("/suspend/all")
@@ -162,7 +155,6 @@ class UserController(
      * [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
      * [org.darkSolace.muse.user.model.Role.MODERATOR] is required.
      *
-     * @sample `curl -X PUT -H "Authorization: [...]" localhost:8080/api/user/5/ARTIST`
      * @param user the id of the [User] to add a [UserTag] to
      * @param tag the [UserTag] to add
      */
@@ -196,7 +188,6 @@ class UserController(
      * [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
      * [org.darkSolace.muse.user.model.Role.MODERATOR] is required.
      *
-     * @sample `curl -X DELETE -H "Authorization: [...]" localhost:8080/api/user/5/ARTIST`
      * @param user the id of the [User] to remove a [UserTag] from
      * @param tag the [UserTag] to remove
      */

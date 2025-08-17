@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class AvatarService(@Autowired val userRepository: UserRepository, @Autowired val avatarRepository: AvatarRepository) {
+class AvatarService(
+    @param:Autowired val userRepository: UserRepository,
+    @param:Autowired val avatarRepository: AvatarRepository,
+) {
     /**
      * Changes the [Avatar] for the specified [User] and persists it in the database.
      *

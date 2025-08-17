@@ -38,7 +38,7 @@ class TestBase {
     companion object {
         @Container
         val postgresqlContainer: PostgreSQLContainer<*> =
-            PostgreSQLContainer<Nothing>("postgres:15-alpine").apply {
+            PostgreSQLContainer<Nothing>("postgres:17-alpine").apply {
                 withDatabaseName("foo")
                 withUsername("foo")
                 withPassword("secret")

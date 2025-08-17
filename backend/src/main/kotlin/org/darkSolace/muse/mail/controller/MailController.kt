@@ -22,13 +22,12 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/mail")
 @Validated
 class MailController(
-    @Autowired val mailService: MailService,
-    @Autowired val mailerSettingsService: MailerSettingsService
+    @param:Autowired val mailService: MailService,
+    @param:Autowired val mailerSettingsService: MailerSettingsService,
 ) {
     /**
      * Validates a users email address by a validation code sent to the provided email address.
      *
-     * @sample `curl localhost:8080/api/mail/confirm/9df2cc31-f733-4daa-8277-d3c0afdb1a5a`
      * @param code the validation code sent to the provided email
      * @return Http status 200 after a successful validation, 400 otherwise
      */
@@ -47,12 +46,11 @@ class MailController(
      * New settings are validated rudimentary.
      *
      * Expects a [MailerSettings] object as JSON as the request body
-     * @sample `curl -d '...' localhost:8080/api/mail/settings`
      */
     @PostMapping("/settings")
     @PreAuthorize("hasAnyAuthority('ADMINISTRATOR')")
     fun updateMailerSettings(
-        @Valid @RequestBody mailerSettings: MailerSettings
+        @Valid @RequestBody mailerSettings: MailerSettings,
     ) {
         mailerSettingsService.updateMailerSettings(mailerSettings)
     }

@@ -13,8 +13,8 @@ import java.util.*
  */
 @Entity
 class PasswordResetRequest(
-    @Cascade(CascadeType.SAVE_UPDATE) @OneToOne val user: User,
-    @Id @GeneratedValue val id: Long? = null
+    @Cascade(CascadeType.MERGE) @OneToOne val user: User,
+    @Id @GeneratedValue val id: Long? = null,
 ) {
     val code = UUID.randomUUID().toString()
 }

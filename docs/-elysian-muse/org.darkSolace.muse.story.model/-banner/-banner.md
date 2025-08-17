@@ -1,0 +1,6 @@
+//[ElysianMuse](../../../index.md)/[org.darkSolace.muse.story.model](../index.md)/[Banner](index.md)/[Banner](-banner.md)
+
+# Banner
+
+[jvm]\
+constructor()

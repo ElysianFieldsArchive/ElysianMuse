@@ -28,15 +28,13 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("api/auth")
 @Validated
 class AuthController(
-    @Autowired val authenticationService: AuthenticationService,
-    @Autowired val userRoleService: UserRoleService,
-    @Autowired val suspensionService: SuspensionService
+    @param:Autowired val authenticationService: AuthenticationService,
+    @param:Autowired val userRoleService: UserRoleService,
+    @param:Autowired val suspensionService: SuspensionService,
 ) {
     /**
      * Checks a transmitted [LoginRequest] for a valid username/password pair. Listens on /api/auth/signin.
      *
-     * @sample `curl -X POST -H "Content-Type: application/json" -d '{ "username": "test", "password": "123456" }'
-     *          localhost:8000/api/auth/signin`
      * @param loginRequest a [LoginRequest] containing username and password
      * @return a [org.darkSolace.muse.security.model.JwtResponse] containing
      * a token, HTTP 401 is username or password are invalid, or HTTP 301 is user is suspended
@@ -74,7 +72,6 @@ class AuthController(
     /**
      * Checks a transmitted [SignUpRequest] and creates a user if possible. Listens on /api/auth/signup.
      *
-     * @sample `curl -X POST -H "Content-Type: application/json" -d
      *          '{ "username": "test", "password": "123456", "email": "test@example.com" }'
      *          localhost:8000/api/auth/signup`
      * @param signUpRequest a [SignUpRequest] containing username, password and email address

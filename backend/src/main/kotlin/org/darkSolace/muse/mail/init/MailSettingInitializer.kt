@@ -14,8 +14,8 @@ import org.springframework.stereotype.Component
  */
 @Component
 class MailSettingInitializer(
-    @Autowired private val mailerSettingsService: MailerSettingsService,
-    @Autowired private val mailerSettingsRepository: MailerSettingsRepository
+    @param:Autowired private val mailerSettingsService: MailerSettingsService,
+    @param:Autowired private val mailerSettingsRepository: MailerSettingsRepository,
 ) : ApplicationRunner {
     private val logger = LoggerFactory.getLogger(this::class.java)
 
@@ -24,7 +24,7 @@ class MailSettingInitializer(
             null
         ).apply {
             host = "example.org"
-            port = Companion.defaultPort
+            port = defaultPort
             username = "exampleUser"
             password = "examplePassword"
             fromAddress = "muse@example.org"

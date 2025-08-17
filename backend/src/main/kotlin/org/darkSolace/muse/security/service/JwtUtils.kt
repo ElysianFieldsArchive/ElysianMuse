@@ -3,7 +3,6 @@ package org.darkSolace.muse.security.service
 import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.MalformedJwtException
-import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.UnsupportedJwtException
 import io.jsonwebtoken.security.Keys
 import io.jsonwebtoken.security.SecurityException
@@ -37,9 +36,11 @@ class JwtUtils {
      */
     fun generateJwtToken(authentication: Authentication): String? {
         val userPrincipal: UserDetails = authentication.principal as UserDetails
-        return Jwts.builder().setSubject(userPrincipal.username).setIssuedAt(Date())
-            .setExpiration(Date(Date().time + jwtExpirationMs))
-            .signWith(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()), SignatureAlgorithm.HS512)
+        return Jwts.builder()
+            .subject(userPrincipal.username)
+            .issuedAt(Date())
+            .expiration(Date(Date().time + jwtExpirationMs))
+            .signWith(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()), Jwts.SIG.HS512)
             .compact()
     }
 
@@ -49,11 +50,11 @@ class JwtUtils {
      * @return the username encoded in the token, or `null` if no username is found
      */
     fun getUserNameFromJwtToken(token: String?): String? {
-        return Jwts.parserBuilder()
-            .setSigningKey(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()))
+        return Jwts.parser()
+            .verifyWith(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()))
             .build()
-            .parseClaimsJws(token)
-            .body.subject
+            .parseSignedClaims(token)
+            .payload.subject
     }
 
     /**
@@ -64,10 +65,10 @@ class JwtUtils {
      */
     fun validateJwtToken(authToken: String?): Boolean {
         try {
-            Jwts.parserBuilder()
-                .setSigningKey(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()))
+            Jwts.parser()
+                .verifyWith(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()))
                 .build()
-                .parseClaimsJws(authToken)
+                .parseSignedClaims(authToken)
             return true
         } catch (e: SecurityException) {
             logger.error("Invalid JWT signature: {}", e.message)

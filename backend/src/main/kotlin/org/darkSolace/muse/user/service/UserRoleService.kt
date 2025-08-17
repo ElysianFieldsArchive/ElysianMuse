@@ -17,8 +17,8 @@ import org.springframework.transaction.annotation.Transactional
  */
 @Service
 class UserRoleService(
-    @Autowired val userRepository: UserRepository,
-    @Autowired val suspensionHistoryRepository: SuspensionHistoryRepository
+    @param:Autowired val userRepository: UserRepository,
+    @param:Autowired val suspensionHistoryRepository: SuspensionHistoryRepository,
 ) {
     /**
      * Suspends the provided [User] and persists it in the database.

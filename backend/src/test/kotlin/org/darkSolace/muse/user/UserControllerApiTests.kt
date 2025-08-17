@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.http.client.ClientHttpRequestFactorySettings.Redirects.DONT_FOLLOW
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
@@ -270,7 +271,7 @@ class UserControllerApiTests : TestBase() {
 
         //try to sign in suspended user
         url = generateUrl("/api/auth/signin")
-        val userSignInResponse = restTemplate.postForEntity(
+        val userSignInResponse = restTemplate.withRedirects(DONT_FOLLOW).postForEntity(
             url,
             SignUpRequest("test", "123456", "test@example.com"),
             String::class.java

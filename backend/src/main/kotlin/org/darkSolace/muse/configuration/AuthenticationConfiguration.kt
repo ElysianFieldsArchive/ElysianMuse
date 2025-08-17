@@ -11,8 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
 @Configuration
 class AuthenticationConfiguration(
-    @Autowired private val userDetailsService: UserDetailsService,
-    @Autowired private val passwordEncoder: BCryptPasswordEncoder,
+    @param:Autowired private val userDetailsService: UserDetailsService,
+    @param:Autowired private val passwordEncoder: BCryptPasswordEncoder,
 ) {
     /**
      * Configures the [AuthenticationManager], via [AuthenticationManagerBuilder],

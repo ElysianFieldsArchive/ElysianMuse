@@ -32,23 +32,21 @@ import kotlin.jvm.optionals.getOrNull
 @RequestMapping("/api/news")
 @Validated
 class NewsController(
-    @Autowired val newsService: NewsService
+    @param:Autowired val newsService: NewsService,
 ) {
     /**
      * Retrieves the last 3 news stories. Listens on /api/news/last.
      *
-     * @sample `curl localhost:8080/api/news/last`
      * @return List of [NewsEntryDTO]s. Max size 3.
      */
     @GetMapping("/last")
     fun getNewestThree(): Collection<NewsEntryDTO> {
-        return NewsEntryDTO.fromCollection(newsService.getLast(Companion.defaultNewsSize))
+        return NewsEntryDTO.fromCollection(newsService.getLast(defaultNewsSize))
     }
 
     /**
      * Retrieves the last 'size' news stories. Listens on /api/news/last/{size}.
      *
-     * @sample `curl localhost:8080/api/news/last/5`
      * @param size Number of news entries to retrieve. Defaults to 3.
      * @return List of [NewsEntryDTO]s. Defaults to size 3.
      */
@@ -60,7 +58,6 @@ class NewsController(
     /**
      * Retrieves a [NewsEntryDTO] by its id. Listens on /api/news/{id}.
      *
-     * @sample `curl localhost:8080/api/news/5`
      * @param id the news id
      * @return the retrieved [NewsEntryDTO] or `null`
      */
@@ -73,7 +70,6 @@ class NewsController(
     /**
      * Retrieves all [NewsEntryDTO]s. Listens on /api/news.
      *
-     * @sample `curl localhost:8080/api/news`
      * @return the retrieved [NewsEntryDTO], might be empty
      */
     @GetMapping
@@ -87,7 +83,6 @@ class NewsController(
      * [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
      * [org.darkSolace.muse.user.model.Role.MODERATOR] is required.
      *
-     * @sample `curl -X PUT -H "Authorization: [...]" -d "..." localhost:8080/api/news`
      * @param news the [NewsEntryDTO] containing the news to be added
      */
     @PutMapping
@@ -111,7 +106,6 @@ class NewsController(
      * [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
      * [org.darkSolace.muse.user.model.Role.MODERATOR] is required.
      *
-     * @sample `curl -X PUT -H "Authorization: [...]" -d "..." localhost:8080/api/news/{id}`
      * @param news the [NewsEntryDTO] containing the edited news
      * @param id the id of the [NewsEntryDTO] to be edited
      */
@@ -136,7 +130,6 @@ class NewsController(
      * [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
      * [org.darkSolace.muse.user.model.Role.MODERATOR] is required.
      *
-     * @sample `curl -X PUT -H "Authorization: [...]" -d "..." localhost:8080/api/news/{id}/comment`
      * @param id the id of the [NewsEntryDTO] to be edited
      * @param commentDto the [NewsCommentDTO] containing the comment to be added
      */
@@ -162,7 +155,6 @@ class NewsController(
      * [org.darkSolace.muse.user.model.Role.ADMINISTRATOR] or
      * [org.darkSolace.muse.user.model.Role.MODERATOR] is required.
      *
-     * @sample `curl -X POST -H "Authorization: [...]" -d "..." localhost:8080/api/news/comment/{id}`
      * @param commentId the id of the comment to be edited
      * @param commentDto the [NewsCommentDTO] containing the edited comment
      */

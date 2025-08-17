@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service
  * @see [UserDetailsService]
  */
 @Service
-class UserDetailsService(@Autowired val userRepository: UserRepository) : UserDetailsService {
+class UserDetailsService(@param:Autowired val userRepository: UserRepository) : UserDetailsService {
     /**
      * Loads a [org.darkSolace.muse.user.model.User] and creates the corresponding [UserDetails]
      *

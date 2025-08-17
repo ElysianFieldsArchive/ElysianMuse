@@ -14,9 +14,9 @@ import org.springframework.stereotype.Service
  */
 @Service
 class UserPasswordService(
-    @Autowired val passwordResetRequestRepository: PasswordResetRequestRepository,
-    @Autowired val userRepository: UserRepository,
-    @Autowired val mailService: MailService,
+    @param:Autowired val passwordResetRequestRepository: PasswordResetRequestRepository,
+    @param:Autowired val userRepository: UserRepository,
+    @param:Autowired val mailService: MailService,
 ) {
     /**
      * Generates a password reset code for a given user and sends it via email to the user.
