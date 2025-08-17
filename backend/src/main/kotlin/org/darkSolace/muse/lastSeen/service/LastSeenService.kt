@@ -17,9 +17,9 @@ import java.util.*
  */
 @Service
 class LastSeenService(
-    @Autowired val userRepository: UserRepository,
-    @Autowired val lastSeenRepository: LastSeenRepository,
-    @Value("\${session.timeInMinutes}") val sessionTimeInMinutes: String
+    @param:Autowired val userRepository: UserRepository,
+    @param:Autowired val lastSeenRepository: LastSeenRepository,
+    @param:Value("\${session.timeInMinutes}") val sessionTimeInMinutes: String,
 ) {
 
     /**

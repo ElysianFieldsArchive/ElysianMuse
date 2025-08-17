@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service
 
 @Service
 class StoryTagService(
-    @Autowired val storyRepository: StoryRepository,
-    @Autowired val storyTagRepository: StoryTagRepository,
+    @param:Autowired val storyRepository: StoryRepository,
+    @param:Autowired val storyTagRepository: StoryTagRepository,
 ) {
     fun createStoryTag(tag: StoryTag): StoryTag {
         return storyTagRepository.save(tag)

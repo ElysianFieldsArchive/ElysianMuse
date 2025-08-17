@@ -22,10 +22,10 @@ import org.springframework.stereotype.Service
  */
 @Service
 class AuthenticationService(
-    @Autowired val authenticationManager: AuthenticationManager,
-    @Autowired val userRepository: UserRepository,
-    @Autowired val userService: UserService,
-    @Autowired val jwtUtils: JwtUtils
+    @param:Autowired val authenticationManager: AuthenticationManager,
+    @param:Autowired val userRepository: UserRepository,
+    @param:Autowired val userService: UserService,
+    @param:Autowired val jwtUtils: JwtUtils,
 ) {
     /**
      * Tries to authenticate a user.

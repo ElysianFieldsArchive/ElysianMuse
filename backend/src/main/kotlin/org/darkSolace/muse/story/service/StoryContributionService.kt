@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service
 
 @Service
 class StoryContributionService(
-    @Autowired private val storyRepository: StoryRepository,
-    @Autowired private val userService: UserService,
-    @Autowired private val storyService: StoryService,
+    @param:Autowired private val storyRepository: StoryRepository,
+    @param:Autowired private val userService: UserService,
+    @param:Autowired private val storyService: StoryService,
 ) {
     fun addContributorToStory(storyId: Long, userId: Long, userTag: UserTag): Boolean {
         val story = storyRepository.findByIdOrNull(storyId)

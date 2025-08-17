@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional
  * @see UserService
  */
 @Service
-class UserTagService(@Autowired val userRepository: UserRepository) {
+class UserTagService(@param:Autowired val userRepository: UserRepository) {
     /**
      * Adds a [UserTag] to a [User]
      *
@@ -34,11 +34,11 @@ class UserTagService(@Autowired val userRepository: UserRepository) {
 
         changedUser.userTags.add(tag)
         if (tag.name.endsWith("_INACTIVE")) {
-            val activeTag = UserTag.values().firstOrNull { it.name == tag.name.removeSuffix("_INACTIVE") }
+            val activeTag = UserTag.entries.firstOrNull { it.name == tag.name.removeSuffix("_INACTIVE") }
             if (activeTag != null)
                 removeTagFromUser(changedUser, activeTag)
         } else {
-            val inactiveTag = UserTag.values().firstOrNull { it.name == (tag.name + "_INACTIVE") }
+            val inactiveTag = UserTag.entries.firstOrNull { it.name == (tag.name + "_INACTIVE") }
             if (inactiveTag != null)
                 removeTagFromUser(changedUser, inactiveTag)
         }

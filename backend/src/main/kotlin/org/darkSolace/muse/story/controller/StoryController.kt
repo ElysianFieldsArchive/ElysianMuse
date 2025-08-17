@@ -23,12 +23,24 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
+/**
+ * RestController defining endpoints regarding all story activity.
+ * Same endpoint as [StoryChapterController]
+ *
+ * @see StoryChapterController
+ */
 @RestController
 @RequestMapping("/api/story")
 class StoryController(
-    @Autowired private val storyService: StoryService,
-    @Autowired private val storyContributionService: StoryContributionService,
+    @param:Autowired private val storyService: StoryService,
+    @param:Autowired private val storyContributionService: StoryContributionService,
 ) {
+    /**
+     * Retrieves a [StoryDTO] by its id
+     *
+     * @param id id of the story
+     * @return [ResponseEntity] containing a [StoryDTO] or empty in case of [HttpStatus.NOT_FOUND]
+     */
     @GetMapping("/{id}")
     @Transactional
     fun getStoryById(@PathVariable id: Long): ResponseEntity<*> {
@@ -40,11 +52,22 @@ class StoryController(
         }
     }
 
+    /**
+     * Retrieves all [StoryDTO]s
+     *
+     * @return [ResponseEntity] containing a list of [StoryDTO]s
+     */
     @GetMapping("/all")
     fun getAllStories(): Collection<StoryDTO> {
         return StoryDTO.fromCollection(storyService.getAllStories())
     }
 
+    /**
+     * Retrieves a list of [StoryDTO]s, filtered by the provided filters
+     *
+     * @param filters [FilterStoriesDTO] specifying the values to filter by
+     * @return [ResponseEntity] containing a list of [StoryDTO]s
+     */
     @PostMapping("/filtered")
     fun getStoriesFiltered(
         @RequestBody filters: FilterStoriesDTO,
@@ -53,6 +76,12 @@ class StoryController(
         return StoryDTO.fromCollection(stories)
     }
 
+    /**
+     * Creates a new [org.darkSolace.muse.story.model.Story]
+     *
+     * @param story [StoryDTO] containing the new story
+     * @return [ResponseEntity] with HTTP 200 or 400, depending on success
+     */
     @PutMapping
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun createStory(@RequestBody @Valid story: StoryDTO): ResponseEntity<Unit> {
@@ -64,6 +93,12 @@ class StoryController(
         }
     }
 
+    /**
+     * Edits an existing [org.darkSolace.muse.story.model.Story]
+     *
+     * @param editedStory [StoryDTO] containing the edited story, including the original id
+     * @return [ResponseEntity] with HTTP 200 or 400, depending on success
+     */
     @PostMapping("/")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun editStory(
@@ -82,6 +117,12 @@ class StoryController(
         }
     }
 
+    /**
+     * Edits an existing [org.darkSolace.muse.story.model.Story]
+     *
+     * @param id id of the [org.darkSolace.muse.story.model.Story] to be deleted
+     * @return [ResponseEntity] with HTTP 200 or 400, depending on success
+     */
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun deleteStory(
@@ -100,6 +141,13 @@ class StoryController(
         }
     }
 
+    /**
+     * Adds a [org.darkSolace.muse.user.model.User] as a contributor to a [org.darkSolace.muse.story.model.Story]
+     *
+     * @param storyId id of the [org.darkSolace.muse.story.model.Story] the contributor should be added to
+     * @param storyContributorDTO dto holding the user and type of contribution
+     * @return [ResponseEntity] with HTTP 200 or 400, depending on success
+     */
     @PutMapping("/{storyId}/contributor")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun addContributorToStory(
@@ -122,6 +170,14 @@ class StoryController(
         } else ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
     }
 
+    /**
+     * Removes the contribution of a [org.darkSolace.muse.user.model.User] from a [org.darkSolace.muse.story.model.Story]
+     *
+     * @param storyId id of the [org.darkSolace.muse.story.model.Story] for which the contribution should be removed
+     *                from
+     * @param storyContributorDTO dto holding the user and type of contribution to be removed
+     * @return [ResponseEntity] with HTTP 200 or 400, depending on success
+     */
     @DeleteMapping("/{storyId}/contributor")
     @PreAuthorize("hasAnyAuthority('MEMBER', 'MODERATOR', 'ADMINISTRATOR')")
     fun removeContributorFromStory(
@@ -144,6 +200,13 @@ class StoryController(
         } else ResponseEntity<Unit>(HttpStatus.UNAUTHORIZED)
     }
 
+    /**
+     * Retrieves a [Collection] of [org.darkSolace.muse.story.model.Story]s a given user has contributed to
+     *
+     * @param user the user for which all contributions will be retrieveds
+     * @return [ResponseEntity] with HTTP 200 or 400, depending on success. In case of success contains a [Collection]
+     *         of [org.darkSolace.muse.story.model.Story]s the user has contributed to
+     */
     @GetMapping("/{user}/contributions")
     fun getUserContributions(@PathVariable user: User?): ResponseEntity<*> {
         if (user == null) return ResponseEntity<Unit>(HttpStatus.BAD_REQUEST)

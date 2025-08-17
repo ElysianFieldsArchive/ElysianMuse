@@ -17,10 +17,10 @@ import org.springframework.stereotype.Service
 
 @Service
 class StoryChapterService(
-    @Autowired private val storyRepository: StoryRepository,
-    @Autowired private val chapterRepository: ChapterRepository,
-    @Autowired private val chapterCommentRepository: ChapterCommentRepository,
-    @Autowired private val userService: UserService,
+    @param:Autowired private val storyRepository: StoryRepository,
+    @param:Autowired private val chapterRepository: ChapterRepository,
+    @param:Autowired private val chapterCommentRepository: ChapterCommentRepository,
+    @param:Autowired private val userService: UserService,
 ) {
     fun getChapterById(chapterId: Long): Chapter? = chapterRepository.findByIdOrNull(chapterId)
 

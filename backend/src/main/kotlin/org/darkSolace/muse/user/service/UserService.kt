@@ -24,11 +24,11 @@ import java.util.*
  */
 @Service
 class UserService(
-    @Autowired val userRepository: UserRepository,
-    @Autowired private val userSettingsRepository: UserSettingsRepository,
-    @Autowired private val lastSeenRepository: LastSeenRepository,
-    @Autowired private val mailService: MailService,
-    @Autowired private val mailQueueRepository: MailQueueRepository,
+    @param:Autowired val userRepository: UserRepository,
+    @param:Autowired private val userSettingsRepository: UserSettingsRepository,
+    @param:Autowired private val lastSeenRepository: LastSeenRepository,
+    @param:Autowired private val mailService: MailService,
+    @param:Autowired private val mailQueueRepository: MailQueueRepository,
 ) {
 
     /**

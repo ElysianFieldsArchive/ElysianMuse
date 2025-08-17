@@ -1,0 +1,17 @@
+//[ElysianMuse](../../../index.md)/[org.darkSolace.muse.user.controller](../index.md)/[UserController](index.md)/[getAllCurrentlySuspended](get-all-currently-suspended.md)
+
+# getAllCurrentlySuspended
+
+[jvm]\
+
+@GetMapping(value = [&quot;/suspend/all&quot;])
+
+@PreAuthorize(value = &quot;hasAnyAuthority('ADMINISTRATOR', 'MODERATOR')&quot;)
+
+fun [getAllCurrentlySuspended](get-all-currently-suspended.md)(): [Collection](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html)&lt;[UserIdNameDTO](../../org.darkSolace.muse.user.model.dto/-user-id-name-d-t-o/index.md)&gt;
+
+Retrieves all currently suspended users You need the [org.darkSolace.muse.user.model.Role.ADMINISTRATOR](../../org.darkSolace.muse.user.model/-role/-a-d-m-i-n-i-s-t-r-a-t-o-r/index.md) or [org.darkSolace.muse.user.model.Role.MODERATOR](../../org.darkSolace.muse.user.model/-role/-m-o-d-e-r-a-t-o-r/index.md) role to access this endpoint.
+
+#### Return
+
+List of the suspended [User](../../org.darkSolace.muse.user.model/-user/index.md)s

@@ -1,0 +1,20 @@
+//[ElysianMuse](../../../index.md)/[org.darkSolace.muse.security.service](../index.md)/[JwtUtils](index.md)/[validateJwtToken](validate-jwt-token.md)
+
+# validateJwtToken
+
+[jvm]\
+fun [validateJwtToken](validate-jwt-token.md)(authToken: [String](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html)?): [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)
+
+Validates a token for validity
+
+#### Return
+
+true if token is valid, else false
+
+#### Parameters
+
+jvm
+
+| | |
+|---|---|
+| authToken | the token to be validated |

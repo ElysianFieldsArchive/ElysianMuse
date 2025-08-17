@@ -12,9 +12,9 @@ import java.util.*
 
 @Service
 class SuspensionService(
-    @Autowired val userRoleService: UserRoleService,
-    @Autowired val userRepository: UserRepository,
-    @Autowired val suspensionHistoryRepository: SuspensionHistoryRepository
+    @param:Autowired val userRoleService: UserRoleService,
+    @param:Autowired val userRepository: UserRepository,
+    @param:Autowired val suspensionHistoryRepository: SuspensionHistoryRepository,
 ) {
     /**
      * Retrieves the confirmation code for a users open [SuspensionHistoryEntry].

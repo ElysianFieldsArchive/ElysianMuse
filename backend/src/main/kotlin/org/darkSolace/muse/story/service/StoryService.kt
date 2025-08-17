@@ -19,11 +19,11 @@ import java.util.*
 
 @Service
 class StoryService(
-    @Autowired private val storyRepository: StoryRepository,
-    @Autowired private val chapterRepository: ChapterRepository,
-    @Autowired private val chapterCommentRepository: ChapterCommentRepository,
-    @Autowired private val storyTagRepository: StoryTagRepository,
-    @Autowired private val userService: UserService,
+    @param:Autowired private val storyRepository: StoryRepository,
+    @param:Autowired private val chapterRepository: ChapterRepository,
+    @param:Autowired private val chapterCommentRepository: ChapterCommentRepository,
+    @param:Autowired private val storyTagRepository: StoryTagRepository,
+    @param:Autowired private val userService: UserService,
 ) {
     fun getStoryById(id: Long): Story? = storyRepository.findByIdOrNull(id)
 
@@ -83,7 +83,7 @@ class StoryService(
             chapterRepository.save(chapter)
             newStory.chapters.add(chapter)
         }
-        newStory = storyRepository.save(newStory)
+        storyRepository.save(newStory)
 
         return true
     }

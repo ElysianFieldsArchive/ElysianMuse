@@ -20,15 +20,15 @@ import org.springframework.stereotype.Service
  */
 @Service
 class MailService(
-    @Autowired
+    @param:Autowired
     private val mailTemplateRepository: MailTemplateRepository,
 
-    @Autowired
+    @param:Autowired
     private val mailQueueRepository: MailQueueRepository,
 
-    @Autowired
+    @param:Autowired
     private val mailerSettingsService: MailerSettingsService,
-    @Autowired
+    @param:Autowired
     private val userRepository: UserRepository,
 ) {
     var mailEnabled = true

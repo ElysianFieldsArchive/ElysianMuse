@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
  * Service class for [PrivateMessage] related tasks.
  */
 @Service
-class PrivateMessageService(@Autowired val privateMessageRepository: PrivateMessageRepository) {
+class PrivateMessageService(@param:Autowired val privateMessageRepository: PrivateMessageRepository) {
 
     /**
      * Retrieves [PrivateMessage]s retrieved by the provided [User]

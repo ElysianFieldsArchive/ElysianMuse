@@ -6,6 +6,7 @@ import org.darkSolace.muse.security.service.AuthTokenFilter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.security.config.Customizer
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
@@ -21,15 +22,15 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 class WebSecurityConfiguration(
-    @Autowired val unauthorizedHandler: AuthEntryPointJwt,
-    @Autowired val authTokenFilter: AuthTokenFilter,
-    @Autowired val lastSeenFilter: LastSeenFilter,
+    @param:Autowired val unauthorizedHandler: AuthEntryPointJwt,
+    @param:Autowired val authTokenFilter: AuthTokenFilter,
+    @param:Autowired val lastSeenFilter: LastSeenFilter,
 ) {
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
-        http.cors().and().csrf().disable()
-            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).and()
+        http.cors(Customizer.withDefaults()).csrf { it.disable() }
+            .exceptionHandling { it.authenticationEntryPoint(unauthorizedHandler) }
+            .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) }
             .authorizeHttpRequests {
                 it.requestMatchers("/**").permitAll()
                 it.anyRequest().authenticated()

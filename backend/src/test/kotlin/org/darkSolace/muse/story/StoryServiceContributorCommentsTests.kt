@@ -24,11 +24,11 @@ import org.springframework.beans.factory.annotation.Autowired
 import java.util.*
 
 class StoryServiceContributorCommentsTests(
-    @Autowired private val storyService: StoryService,
-    @Autowired private val storyRepository: StoryRepository,
-    @Autowired private val userService: UserService,
-    @Autowired private val storyChapterService: StoryChapterService,
-    @Autowired private val storyContributionService: StoryContributionService,
+    @param:Autowired private val storyService: StoryService,
+    @param:Autowired private val storyRepository: StoryRepository,
+    @param:Autowired private val userService: UserService,
+    @param:Autowired private val storyChapterService: StoryChapterService,
+    @param:Autowired private val storyContributionService: StoryContributionService,
 ) : TestBase() {
     private lateinit var user1: User
     private lateinit var user2: User

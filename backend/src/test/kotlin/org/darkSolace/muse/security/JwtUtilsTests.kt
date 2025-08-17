@@ -4,7 +4,6 @@ import ch.qos.logback.classic.Logger
 import ch.qos.logback.classic.spi.ILoggingEvent
 import ch.qos.logback.core.read.ListAppender
 import io.jsonwebtoken.Jwts
-import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
 import org.darkSolace.muse.security.model.SignUpRequest
 import org.darkSolace.muse.security.service.AuthenticationService
@@ -94,8 +93,8 @@ class JwtUtilsTests : TestBase() {
 
         //create valid token
         val token =
-            Jwts.builder().setSubject("test").setIssuedAt(Date()).setExpiration(Date(Date().time + jwtExpirationMs))
-                .signWith(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()), SignatureAlgorithm.HS512).compact()
+            Jwts.builder().subject("test").issuedAt(Date()).expiration(Date(Date().time + jwtExpirationMs))
+                .signWith(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()), Jwts.SIG.HS512).compact()
 
         //make it invalid
         val invalidToken = "${token?.take(token.length - 8)}12345678"
@@ -119,10 +118,10 @@ class JwtUtilsTests : TestBase() {
         //create valid token
         val token =
             Jwts.builder()
-                .setSubject("test")
-                .setIssuedAt(Date())
-                .setExpiration(Date(Date().time + jwtExpirationMs))
-                .signWith(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()), SignatureAlgorithm.HS512)
+                .subject("test")
+                .issuedAt(Date())
+                .expiration(Date(Date().time + jwtExpirationMs))
+                .signWith(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()), Jwts.SIG.HS512)
                 .compact()
 
         //make it malformed by replacing the separating "." with "_"
@@ -147,10 +146,10 @@ class JwtUtilsTests : TestBase() {
         //create expired token
         val token =
             Jwts.builder()
-                .setSubject("test")
-                .setIssuedAt(Date(Date().time - jwtExpirationMs * 2))
-                .setExpiration(Date(Date().time - jwtExpirationMs))
-                .signWith(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()), SignatureAlgorithm.HS512)
+                .subject("test")
+                .issuedAt(Date(Date().time - jwtExpirationMs * 2))
+                .expiration(Date(Date().time - jwtExpirationMs))
+                .signWith(Keys.hmacShaKeyFor(jwtSecret?.toByteArray()), Jwts.SIG.HS512)
                 .compact()
 
         //ExpiredJwtException should be caught by validateJwtToken
@@ -172,9 +171,9 @@ class JwtUtilsTests : TestBase() {
         //create unsupported, because unsigned, token
         val token =
             Jwts.builder()
-                .setSubject("test")
-                .setIssuedAt(Date(Date().time))
-                .setExpiration(Date(Date().time + jwtExpirationMs))
+                .subject("test")
+                .issuedAt(Date(Date().time))
+                .expiration(Date(Date().time + jwtExpirationMs))
                 .compact()
 
         //UnsupportedJwtException should be caught by validateJwtToken

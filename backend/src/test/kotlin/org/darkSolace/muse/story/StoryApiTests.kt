@@ -31,15 +31,14 @@ import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
 import org.springframework.http.HttpStatus
-import java.util.*
 
 class StoryApiTests(
-    @Autowired private val userService: UserService,
-    @Autowired private val userRoleService: UserRoleService,
-    @Autowired private val mailService: MailService,
-    @Autowired private val storyService: StoryService,
-    @Autowired private val storyRepository: StoryRepository,
-    @Autowired private val storyTagService: StoryTagService,
+    @param:Autowired private val userService: UserService,
+    @param:Autowired private val userRoleService: UserRoleService,
+    @param:Autowired private val mailService: MailService,
+    @param:Autowired private val storyService: StoryService,
+    @param:Autowired private val storyRepository: StoryRepository,
+    @param:Autowired private val storyTagService: StoryTagService,
 ) : TestBase() {
     private lateinit var user1: User
     private lateinit var user2: User

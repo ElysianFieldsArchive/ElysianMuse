@@ -19,13 +19,12 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/user")
 @Validated
 class UserPasswordController(
-    @Autowired val userService: UserService,
-    @Autowired val userPasswordService: UserPasswordService,
+    @param:Autowired val userService: UserService,
+    @param:Autowired val userPasswordService: UserPasswordService,
 ) {
     /**
      * Updates a users password if a valid [org.darkSolace.muse.user.model.PasswordResetRequest] exists.
      *
-     * @sample `curl -X POST -d '...' localhost:8080/api/reset/9df2cc31-f733-4daa-8277-d3c0afdb1a5a`
      *
      * @param passwordConfirmationCode confirmation code to verify that the reset request is valid
      * @param newPassword new password to be set, sent as the request body
